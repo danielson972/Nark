@@ -49,6 +49,10 @@ var current_panel: = ""
 var inventory_view: Control
 var skills_view: Control
 
+const SkillArt = preload("res://scripts/ui/skill_icon.gd")
+const SkillCatalog = preload("res://scripts/ui/skill_catalog.gd")
+const SkillHover = preload("res://scripts/ui/skill_hover.gd")
+
 const SkillsPanelView = preload("res://scripts/ui/skills_panel.gd")
 
 const InventoryPanelView = preload("res://scripts/ui/inventory_panel.gd")
@@ -69,6 +73,7 @@ func _ready() -> void :
 	root.add_child(hud)
 
 	overlay = Control.new()
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
 	root.add_child(overlay)
 
@@ -241,34 +246,37 @@ func _build_hud() -> void :
 
 
 func _build_slot(index: int) -> Control:
-	var panel: = PanelContainer.new()
+	var panel: PanelContainer = PanelContainer.new()
 	panel.custom_minimum_size = Vector2(58, 58)
+	panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	UiKit.apply_panel(panel, Color(0.1, 0.08, 0.07, 0.92), Color(0.35, 0.3, 0.22))
-	var box: = VBoxContainer.new()
+	var box: VBoxContainer = VBoxContainer.new()
+	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	box.add_theme_constant_override("separation", 0)
 	panel.add_child(box)
-	var key: = UiKit.label(str((index + 1) % 10), 11, UiKit.MUTED)
-	key.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	var key: Label = UiKit.label(str((index + 1) % 10), 11, UiKit.MUTED)
+	key.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	box.add_child(key)
-	var glyph: = UiKit.label("", 20, UiKit.GOLD)
-	glyph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	glyph.custom_minimum_size = Vector2(0, 24)
-	box.add_child(glyph)
-	var cooldown: = ColorRect.new()
+	var icon: Control = SkillArt.new()
+	icon.custom_minimum_size = Vector2(24, 24)
+	icon.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.add_child(icon)
+	var cooldown: ColorRect = ColorRect.new()
 	cooldown.color = Color(0.02, 0.02, 0.04, 0.72)
 	cooldown.anchor_right = 1.0
 	cooldown.anchor_bottom = 1.0
-	cooldown.offset_top = 0
 	cooldown.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	panel.add_child(cooldown)
-	var cd_label: = UiKit.label("", 14, UiKit.PARCHMENT)
+	var cd_label: Label = UiKit.label("", 14, UiKit.PARCHMENT)
 	cd_label.anchor_right = 1.0
 	cd_label.anchor_bottom = 1.0
 	cd_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	cd_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	cd_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	panel.add_child(cd_label)
-	hotbar_slots.append({"panel": panel, "key": key, "glyph": glyph, "cooldown": cooldown, "label": cd_label})
-	hotbar_slots[index]["glyph"].text = ""
+	var hover: Node = SkillHover.new()
+	panel.add_child(hover)
+	hotbar_slots.append({"panel": panel, "key": key, "icon": icon, "hover": hover, "cooldown": cooldown, "label": cd_label})
 	return panel
 
 
@@ -316,31 +324,28 @@ func refresh(state: PlayerState, world: WorldView, hero: Hero, interaction: Dict
 	_update_hotbar(state, hero)
 
 
-func _update_hotbar(state: PlayerState, hero: Hero) -> void :
+func _update_hotbar(state: PlayerState, hero: Hero) -> void:
 	for index in hotbar_slots.size():
 		var slot: Dictionary = hotbar_slots[index]
-		var skill_id: = str(state.hotbar[index]) if index < state.hotbar.size() else ""
-		var glyph: Label = slot["glyph"]
+		var skill_id: String = str(state.hotbar[index]) if index < state.hotbar.size() else ""
+		var icon: Control = slot["icon"]
 		var cooldown: ColorRect = slot["cooldown"]
 		var label: Label = slot["label"]
-		if skill_id.is_empty():
-			glyph.text = "—"
-			glyph.add_theme_color_override("font_color", Color(0.35, 0.32, 0.28))
+		var definition: Dictionary = SkillCatalog.definition(state.class_id, skill_id)
+		icon.definition = definition
+		icon.learned = SkillCatalog.is_learned(state, definition)
+		slot["hover"].configure(state, definition)
+		if definition.is_empty():
 			cooldown.visible = false
 			label.text = ""
 			continue
-		var definition: = GameData.skill(state.class_id, skill_id)
-		if definition.is_empty():
-			definition = GameData.UNIVERSAL_AURA if skill_id == "explosao_aura" else GameData.UNIVERSAL_DESPERTAR
-		glyph.text = _glyph_for(skill_id)
-		glyph.add_theme_color_override("font_color", UiKit.GOLD if state.is_skill_learned(skill_id) else Color(0.45, 0.42, 0.38))
-		var ratio: = hero.cooldown_ratio(skill_id)
+		var ratio: float = hero.cooldown_ratio(skill_id)
 		cooldown.visible = ratio > 0.01
 		cooldown.anchor_top = 0.0
 		cooldown.anchor_bottom = 1.0 - ratio
 		cooldown.offset_top = 0
 		cooldown.offset_bottom = 0
-		var remaining: = float(hero.cooldowns.get(skill_id, 0.0))
+		var remaining: float = float(hero.cooldowns.get(skill_id, 0.0))
 		label.text = ("%.1f" % remaining) if remaining > 0.05 else ""
 
 

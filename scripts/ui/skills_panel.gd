@@ -4,6 +4,8 @@ extends PanelContainer
 signal action_requested(action: String, payload: Dictionary)
 
 const ThemeKit = preload("res://scripts/ui/rpg_panel_theme.gd")
+const Catalog = preload("res://scripts/ui/skill_catalog.gd")
+const SkillHover = preload("res://scripts/ui/skill_hover.gd")
 const SkillIcon = preload("res://scripts/ui/skill_icon.gd")
 const SLOT_SIZE = 38
 const COLUMNS = 5
@@ -160,6 +162,8 @@ func _definitions() -> Array:
 	if active_tab == "ativas":
 		definitions.append(GameData.UNIVERSAL_AURA)
 		definitions.append(GameData.UNIVERSAL_DESPERTAR)
+	else:
+		definitions.append_array(Catalog.GRADE_BONUSES)
 	return definitions
 
 func _populate() -> void:
@@ -192,7 +196,7 @@ func _populate() -> void:
 			button.focus_mode = Control.FOCUS_NONE
 			continue
 		var skill_id: String = str(definition["id"])
-		var learned: bool = state.is_skill_learned(skill_id)
+		var learned: bool = Catalog.is_learned(state, definition)
 		var icon: Control = SkillIcon.new()
 		icon.definition = definition
 		icon.learned = learned
@@ -202,7 +206,7 @@ func _populate() -> void:
 		icon.offset_top = 3
 		icon.offset_right = -3
 		icon.offset_bottom = -3
-		var badge: Label = ThemeKit.text(str(maxi(1, state.skill_level(skill_id))) if learned else str(definition["unlock"]), 10, ThemeKit.CREAM if learned else ThemeKit.MUTED)
+		var badge: Label = ThemeKit.text(("+" if definition.has("grade_bonus") else str(maxi(1, state.skill_level(skill_id)))) if learned else str(definition["unlock"]), 10, ThemeKit.CREAM if learned else ThemeKit.MUTED)
 		badge.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		badge.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 		badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -213,19 +217,16 @@ func _populate() -> void:
 		badge.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		badge.offset_right = -3
 		badge.offset_bottom = -2
-		button.tooltip_text = "%s\n%s\n%s" % [definition["name"], definition["desc"], _status(definition)]
+		var hover: Node = SkillHover.new()
+		hover.configure(state, definition)
+		button.add_child(hover)
 		button.pressed.connect(_select.bind(skill_id))
 		skill_buttons[skill_id] = button
 	_update_selection()
 
 func _status(definition: Dictionary) -> String:
-	var skill_id: String = str(definition["id"])
-	if state.is_skill_learned(skill_id):
-		return "Nível %d / %d · %s" % [maxi(1, state.skill_level(skill_id)), state.skill_cap(), "Ativa" if definition["type"] == "ativa" else "Passiva"]
-	var requirement: String = "Requer nível %d" % int(definition["unlock"])
-	if int(definition["unlock"]) == 20:
-		requirement += " e missão de classe"
-	return requirement
+	return Catalog.status_text(state, definition)
+
 
 func _select(skill_id: String) -> void:
 	selected_id = skill_id
@@ -251,7 +252,7 @@ func _update_selection() -> void:
 	for candidate: Dictionary in _definitions():
 		if str(candidate["id"]) == selected_id:
 			definition = candidate
-	var learned: bool = not definition.is_empty() and state.is_skill_learned(selected_id)
+	var learned: bool = Catalog.is_learned(state, definition)
 	assign_button.disabled = not learned or str(definition.get("type", "")) != "ativa" or state.hotbar_has(selected_id) or not state.hotbar_has_free_slot()
 	assign_button.text = "Na hotbar" if learned and state.hotbar_has(selected_id) and definition.get("type", "") == "ativa" else "Para a hotbar"
 	assign_button.tooltip_text = "As habilidades passivas ficam sempre ativas." if definition.get("type", "") == "passiva" else ("Não há espaço livre na hotbar." if not state.hotbar_has_free_slot() and not state.hotbar_has(selected_id) else "Adiciona ao primeiro espaço livre.")
@@ -268,17 +269,9 @@ func _update_selection() -> void:
 	selected_status.add_theme_color_override("font_color", ThemeKit.MUTED if learned else Color("cf9c78"))
 	selected_description.text = str(definition.get("desc", ""))
 	selected_description.tooltip_text = selected_description.text
-	var costs: Array[String] = []
-	var cost: Dictionary = definition.get("cost", {})
-	for resource: String in ["mana", "energia"]:
-		if cost.has(resource):
-			costs.append("%d %s" % [int(cost[resource]), resource])
-	if definition.has("cd"):
-		costs.append("%.1f s de recarga" % float(definition["cd"]))
-	if float(definition.get("cast", 0)) > 0:
-		costs.append("%.1f s para conjurar" % float(definition["cast"]))
-	selected_cost.text = " · ".join(costs) if not costs.is_empty() else "Efeito passivo · sem ativação manual"
+	selected_cost.text = Catalog.cost_text(definition)
 	selected_cost.tooltip_text = selected_cost.text
+
 
 func _perform(action: String) -> void:
 	if action == "assign_hotbar" and assign_button.disabled:
