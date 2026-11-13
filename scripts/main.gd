@@ -38,6 +38,10 @@ func _process(delta: float) -> void :
 
 
 func _unhandled_input(event: InputEvent) -> void :
+	if mode == "panel" and ui.current_panel == "skills" and event.is_action_pressed("skill_menu"):
+		_close_panel()
+		get_viewport().set_input_as_handled()
+		return
 	if mode == "panel" and ui.current_panel == "inventory" and event.is_action_pressed("inventory"):
 		_close_panel()
 		get_viewport().set_input_as_handled()

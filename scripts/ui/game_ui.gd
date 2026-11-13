@@ -47,6 +47,9 @@ var rebind_buttons: Dictionary = {}
 var options_status: Label
 var current_panel: = ""
 var inventory_view: Control
+var skills_view: Control
+
+const SkillsPanelView = preload("res://scripts/ui/skills_panel.gd")
 
 const InventoryPanelView = preload("res://scripts/ui/inventory_panel.gd")
 
@@ -377,7 +380,7 @@ func toast(text: String, color: Color = UiKit.PARCHMENT) -> void :
 		var first: = toasts.get_child(0)
 		toasts.remove_child(first)
 		first.queue_free()
-	var tween: = create_tween()
+	var tween: = panel.create_tween()
 	tween.tween_property(panel, "modulate:a", 1.0, 0.12)
 	tween.tween_interval(2.6)
 	tween.tween_property(panel, "modulate:a", 0.0, 0.4)
@@ -999,78 +1002,32 @@ func show_inventory_panel() -> void:
 	modal_layer.add_child(inventory_view)
 
 
-func show_skills_panel(tab: String = "ativas") -> void :
+func show_skills_panel(tab: String = "") -> void:
+	var selection: String = ""
+	var scroll_y: int = 0
+	if current_panel == "skills" and is_instance_valid(skills_view) and not skills_view.is_queued_for_deletion():
+		if tab.is_empty() or tab == skills_view.active_tab:
+			selection = skills_view.selected_id
+			scroll_y = skills_view.skill_scroll.scroll_vertical
+		if tab.is_empty():
+			tab = skills_view.active_tab
+	if tab.is_empty():
+		tab = "ativas"
 	current_panel = "skills"
-	var content: = open_modal("Skills — %s (%s)" % [state.class_data()["name"], UiKit.grade_name(state.level)], Vector2(900, 600))
-	var tabs: = HBoxContainer.new()
-	tabs.add_theme_constant_override("separation", 8)
-	content.add_child(tabs)
-	for tab_id: String in ["ativas", "passivas"]:
-		var button: = UiKit.button("Ativas" if tab_id == "ativas" else "Passivas", Vector2(150, 34), tab_id == tab)
-		button.pressed.connect( func() -> void : show_skills_panel(tab_id))
-		tabs.add_child(button)
-	content.add_child(UiKit.label("Teto da grade atual: nível %d por skill. Livros de skill sobem um nível." % state.skill_cap(), 13, UiKit.MUTED))
-	content.add_child(UiKit.divider())
-	var list: Array = state.class_data()["ativas"] if tab == "ativas" else state.class_data()["passivas"]
-	for skill: Dictionary in list:
-		content.add_child(_skill_row(skill))
-	if state.level >= 80:
-		content.add_child(_skill_row(GameData.UNIVERSAL_AURA))
-	if state.level >= 100:
-		content.add_child(_skill_row(GameData.UNIVERSAL_DESPERTAR))
-
-
-func _skill_row(skill: Dictionary) -> Control:
-	var skill_id: = str(skill["id"])
-	var learned: bool = state.is_skill_learned(skill_id)
-	var level_value: int = state.skill_level(skill_id)
-	var panel: = PanelContainer.new()
-	UiKit.apply_panel(panel, Color(0.13, 0.11, 0.085, 0.9), Color(0.3, 0.26, 0.19))
-	var row: = HBoxContainer.new()
-	row.add_theme_constant_override("separation", 12)
-	panel.add_child(row)
-	var info: = VBoxContainer.new()
-	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(info)
-	var header: = HBoxContainer.new()
-	header.add_theme_constant_override("separation", 8)
-	info.add_child(header)
-	header.add_child(UiKit.label(str(skill["name"]), 16, UiKit.GOLD if learned else Color(0.5, 0.47, 0.42)))
-	header.add_child(UiKit.label("Nível %d / %d" % [maxi(1, level_value) if learned else 0, state.skill_cap()], 12, UiKit.MUTED))
-	if not learned:
-		var requirement: = "Requer nível %d" % int(skill["unlock"])
-		if int(skill["unlock"]) == 20:
-			requirement += " e missão de classe"
-		header.add_child(UiKit.label(requirement, 12, UiKit.BAD))
-	var description: = UiKit.label(str(skill["desc"]), 13, UiKit.PARCHMENT)
-	description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	description.custom_minimum_size = Vector2(520, 0)
-	info.add_child(description)
-	var cost: Dictionary = skill.get("cost", {})
-	var cost_parts: Array = []
-	if cost.has("mana"):
-		cost_parts.append("%d mana" % int(cost["mana"]))
-	if cost.has("energia"):
-		cost_parts.append("%d energia" % int(cost["energia"]))
-	if skill.has("cd"):
-		cost_parts.append("%.1f s de recarga" % float(skill["cd"]))
-	if skill.has("cast") and float(skill["cast"]) > 0.0:
-		cost_parts.append("%.1f s de conjuração" % float(skill["cast"]))
-	if not cost_parts.is_empty():
-		info.add_child(UiKit.label(" · ".join(cost_parts), 12, UiKit.MUTED))
-
-	var actions: = VBoxContainer.new()
-	actions.add_theme_constant_override("separation", 4)
-	row.add_child(actions)
-	if learned and str(skill["type"]) == "ativa":
-		var assign: = UiKit.button("Para a hotbar", Vector2(150, 28))
-		assign.pressed.connect( func() -> void : panel_action.emit("assign_hotbar", {"id": skill_id}))
-		actions.add_child(assign)
-	if learned and state.count_item("livro_skill") > 0 and level_value < state.skill_cap():
-		var upgrade: = UiKit.button("Usar livro (%d)" % state.count_item("livro_skill"), Vector2(150, 28))
-		upgrade.pressed.connect( func() -> void : panel_action.emit("upgrade_skill", {"id": skill_id}))
-		actions.add_child(upgrade)
-	return panel
+	modal_layer.visible = true
+	for child in modal_layer.get_children():
+		modal_layer.remove_child(child)
+		child.queue_free()
+	var shade: ColorRect = ColorRect.new()
+	shade.color = Color(0.015, 0.01, 0.008, 0.8)
+	modal_layer.add_child(shade)
+	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	skills_view = SkillsPanelView.new()
+	skills_view.configure(state, tab, selection, scroll_y)
+	skills_view.action_requested.connect(func(action: String, payload: Dictionary) -> void:
+		panel_action.emit(action, payload)
+	)
+	modal_layer.add_child(skills_view)
 
 
 func show_region_map() -> void :

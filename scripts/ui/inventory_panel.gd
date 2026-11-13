@@ -3,12 +3,13 @@ extends PanelContainer
 
 signal action_requested(action: String, payload: Dictionary)
 
+const PanelTheme = preload("res://scripts/ui/rpg_panel_theme.gd")
 const Icon = preload("res://scripts/ui/inventory_icon.gd")
-const INK = Color("19120e")
-const GOLD = Color("b98a45")
-const BRIGHT = Color("f2c768")
-const CREAM = Color("f4e3ba")
-const MUTED = Color("a28d70")
+const INK = PanelTheme.INK
+const GOLD = PanelTheme.GOLD
+const BRIGHT = PanelTheme.BRIGHT
+const CREAM = PanelTheme.CREAM
+const MUTED = PanelTheme.MUTED
 
 var state: PlayerState
 var selected_id: String = ""
@@ -53,36 +54,16 @@ func _fit() -> void:
 	queue_redraw()
 
 func _draw() -> void:
-	# Stepped corner ornaments mirror the reference without raster scaling.
-	for corner in [Vector2(7, 7), Vector2(size.x - 7, 7), Vector2(7, size.y - 7), size - Vector2(7, 7)]:
-		var sx: float = 1.0 if corner.x < size.x * 0.5 else -1.0
-		var sy: float = 1.0 if corner.y < size.y * 0.5 else -1.0
-		draw_line(corner, corner + Vector2(19 * sx, 0), BRIGHT, 2)
-		draw_line(corner, corner + Vector2(0, 19 * sy), BRIGHT, 2)
-		draw_polyline(PackedVector2Array([corner + Vector2(5 * sx, 15 * sy), corner + Vector2(5 * sx, 5 * sy), corner + Vector2(15 * sx, 5 * sy), corner + Vector2(15 * sx, 10 * sy), corner + Vector2(10 * sx, 10 * sy)]), GOLD, 2)
+	PanelTheme.draw_corners(self)
 
 func _frame(fill: Color, border: Color, border_width: int = 2, padding: int = 8) -> StyleBoxFlat:
-	var style: StyleBoxFlat = StyleBoxFlat.new()
-	style.bg_color = fill
-	style.border_color = border
-	style.set_border_width_all(border_width)
-	style.set_corner_radius_all(2)
-	style.corner_detail = 1
-	style.set_content_margin_all(padding)
-	return style
+	return PanelTheme.frame(fill, border, border_width, padding)
 
 func _text(caption: String, font_size: int = 13, color: Color = CREAM, heading: bool = false) -> Label:
-	var label: Label = UiKit.label(caption, font_size, color)
-	if heading:
-		label.add_theme_font_override("font", UiKit.display_font())
-	return label
+	return PanelTheme.text(caption, font_size, color, heading)
 
 func _line(vertical: bool = false) -> ColorRect:
-	var line: ColorRect = ColorRect.new()
-	line.color = GOLD.darkened(0.22)
-	line.custom_minimum_size = Vector2(1, 0) if vertical else Vector2(0, 1)
-	line.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	return line
+	return PanelTheme.line(vertical)
 
 func _build() -> void:
 	var column: VBoxContainer = VBoxContainer.new()
@@ -325,20 +306,7 @@ func _slot(item_id: String, quantity: int, equip_slot: String, side: int) -> But
 	return button
 
 func _button(caption: String) -> Button:
-	var button: Button = Button.new()
-	button.text = caption
-	button.custom_minimum_size.y = 30
-	button.add_theme_font_size_override("font_size", 12)
-	button.add_theme_font_override("font", UiKit.display_font())
-	button.add_theme_color_override("font_color", CREAM)
-	button.add_theme_color_override("font_hover_color", Color.WHITE)
-	button.add_theme_color_override("font_disabled_color", Color("75634f"))
-	button.add_theme_stylebox_override("normal", _frame(Color("332416"), GOLD, 2, 5))
-	button.add_theme_stylebox_override("hover", _frame(Color("50391b"), BRIGHT, 2, 5))
-	button.add_theme_stylebox_override("pressed", _frame(Color("62431c"), BRIGHT, 2, 5))
-	button.add_theme_stylebox_override("focus", _frame(Color(0, 0, 0, 0), BRIGHT, 2, 5))
-	button.add_theme_stylebox_override("disabled", _frame(Color("211b15"), Color("55432e"), 2, 5))
-	return button
+	return PanelTheme.button(caption)
 
 func _select(item_id: String, equip_slot: String) -> void:
 	selected_id = item_id
