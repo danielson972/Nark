@@ -48,8 +48,6 @@ func _draw() -> void:
 				color = Color("a9b3bb")
 			pixels = ["................", "................", ".......ee.......", "......ecle......", ".....ecccle.....", "....ecccclle....", "...ecccccllle...", "..ecccccccllle..", "..ecccccccclle..", "...ecccccccle...", "....ecccccle....", ".....ecccle.....", "......eeee......", "................", "................", "................"]
 	if item_id.is_empty() and empty_slot.is_empty():
-		var center: Vector2 = size * 0.5
-		draw_rect(Rect2(center - Vector2(10, 12), Vector2(20, 24)), Color("453624"), false, 2)
 		return
 	var unit: float = maxf(1.0, floorf(minf(size.x, size.y) / 18.0))
 	var origin: Vector2 = (size - Vector2(16, 16) * unit) * 0.5
