@@ -1,0 +1,989 @@
+{
+  "engine": "4.7.2",
+  "files": [
+    {
+      "path": ".godot/exported/133200997/export-182f84b4def62742520c20dbf29c6217-generic_menu.res",
+      "size": 893,
+      "flags": 0,
+      "header": "52535243"
+    },
+    {
+      "path": ".godot/exported/133200997/export-194460842e1aa7bc627674fa9209e702-generic_heading.res",
+      "size": 861,
+      "flags": 0,
+      "header": "52535243"
+    },
+    {
+      "path": ".godot/exported/133200997/export-23bdf5edf1d48dcf2e5623a3afd26961-noto_sans_sc_regular.res",
+      "size": 741,
+      "flags": 0,
+      "header": "52535243"
+    },
+    {
+      "path": ".godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn",
+      "size": 866,
+      "flags": 0,
+      "header": "52535243"
+    },
+    {
+      "path": ".godot/exported/133200997/export-4093a2396acb6fb0026468bef1319412-noto_sans_sc_bold.res",
+      "size": 738,
+      "flags": 0,
+      "header": "52535243"
+    },
+    {
+      "path": ".godot/exported/133200997/export-42c31a399421aa9b50d209081e8c4590-generic_title.res",
+      "size": 844,
+      "flags": 0,
+      "header": "52535243"
+    },
+    {
+      "path": ".godot/exported/133200997/export-435fcc8d09f0c7769c0ad3ff69528933-generic_eyebrow.res",
+      "size": 894,
+      "flags": 0,
+      "header": "52535243"
+    },
+    {
+      "path": ".godot/exported/133200997/export-79b78808ab60f3bc748ee6c0fe382fb4-ui_medium.res",
+      "size": 836,
+      "flags": 0,
+      "header": "52535243"
+    },
+    {
+      "path": ".godot/exported/133200997/export-d9c617f9f3fb33db304ede0589e58e96-ui_bold.res",
+      "size": 830,
+      "flags": 0,
+      "header": "52535243"
+    },
+    {
+      "path": ".godot/exported/133200997/export-dbf61434badbefb2da2d4ceec1ec9921-ui_regular.res",
+      "size": 839,
+      "flags": 0,
+      "header": "52535243"
+    },
+    {
+      "path": ".godot/exported/133200997/export-fdb232468d420a26d71707ee0a3abc86-noto_sans_sc_medium.res",
+      "size": 740,
+      "flags": 0,
+      "header": "52535243"
+    },
+    {
+      "path": ".godot/global_script_class_cache.cfg",
+      "size": 2669,
+      "flags": 0,
+      "header": "6c697374"
+    },
+    {
+      "path": ".godot/imported/Cinzel-Bold.ttf-375f0911ffa1cf90fc8bc3dbcf19abb6.fontdata",
+      "size": 28389,
+      "flags": 0,
+      "header": "52534343"
+    },
+    {
+      "path": ".godot/imported/Cinzel-SemiBold.ttf-7bb3412409ad7ddf1a8f6bda8c94a4e9.fontdata",
+      "size": 28395,
+      "flags": 0,
+      "header": "52534343"
+    },
+    {
+      "path": ".godot/imported/Figtree-VF.subset.woff2-960299ac7a5d623501451e0aa12a7475.fontdata",
+      "size": 24429,
+      "flags": 0,
+      "header": "52534343"
+    },
+    {
+      "path": ".godot/imported/NotoSansSC-VF.subset.woff2-f6fad6169b0c694b08ce79daccd34611.fontdata",
+      "size": 1876614,
+      "flags": 0,
+      "header": "52534343"
+    },
+    {
+      "path": ".godot/imported/Sora-VF.subset.woff2-ef1cbf9c68f7b63ee37974fa561e4c8b.fontdata",
+      "size": 42703,
+      "flags": 0,
+      "header": "52534343"
+    },
+    {
+      "path": ".godot/imported/backdrop.png-1e83232d9c054429a9757f0823354f39.ctex",
+      "size": 667122,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/boss_beast.png-5c48df6dac37452c7873dee7c4a97ec1.ctex",
+      "size": 20124,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/boss_colossal.png-4689829775457e6bd9c8f9c9bc748958.ctex",
+      "size": 45034,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/energy.png-349243d9eeb6250242708244b5fca3e1.ctex",
+      "size": 35686,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/foreground.png-889f09911937bf1a007eab94d5f9ef7e.ctex",
+      "size": 25264,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/hero_archer.png-06f043c1d6d4eb69b22dfd98c329e40c.ctex",
+      "size": 8132,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/hero_knight.png-b400103f62f4bccac38df10d485b3f7e.ctex",
+      "size": 8102,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/hero_mage.png-7549e49b0a8faf22c2b44e810f101e8d.ctex",
+      "size": 7942,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/hero_rogue.png-faff0c79e14fa5f96c852a6edc379d27.ctex",
+      "size": 6748,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/hero_tank.png-722014085cf2cefc60d4b723e8116cba.ctex",
+      "size": 9762,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/hero_warrior.png-332f0eabd2286e73397a53f9de25fa29.ctex",
+      "size": 7782,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/icon.png-230ba45e56cb7f49cd4ad833520a64b6.ctex",
+      "size": 102282,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/loading-background.png-057ce22f10f7be88ba9273f8d7246d6e.ctex",
+      "size": 423998,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/magnet.png-2929f6c786fc69a21e905c5c6220af14.ctex",
+      "size": 36708,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/monster_bandit.png-28077bcd3473a5e73b1d472a916762da.ctex",
+      "size": 8330,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/monster_slime.png-5b78c4424ec734512d96415f7f3c7676.ctex",
+      "size": 7386,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/monster_wolf.png-bb9204277fe3fab0bf0595f157ebe6bc.ctex",
+      "size": 9852,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/overdrive.png-be825361be6aac8f5252206fbd6085b6.ctex",
+      "size": 27592,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/pause_glass.png-a2808e62ffaae2bb3dd8f456bfa3a3fb.ctex",
+      "size": 71240,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/prop_board.png-2287ca3415b97cb8c23ec16c3b3c6bc7.ctex",
+      "size": 8160,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/prop_chest.png-41804a3ce09bf0e4e9e112095eac9e80.ctex",
+      "size": 6312,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/prop_forge.png-d45460be59c6c8d55551c4b08b6a32b2.ctex",
+      "size": 10658,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/prop_gate.png-33317168860e2f0a71a7d9a559b73831.ctex",
+      "size": 25742,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/prop_statue.png-7a2f7d3a6d415c24266d86ff78501fe5.ctex",
+      "size": 9932,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/runner.png-8e5ed729fd9e54f7f9b451e7805ea4f1.ctex",
+      "size": 44282,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/sentinel.png-12229b0e229f39f934d4fab6eb1265b1.ctex",
+      "size": 40040,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/shield.png-4df4d47c856d4c7cf769c67ce71e9f5f.ctex",
+      "size": 31198,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/slow_field.png-510acc517d18635b31d52860244b3dd4.ctex",
+      "size": 36262,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/terrain.png-4ff6d42fff190c2e2e4e23dd16a37c31.ctex",
+      "size": 15054,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/title_glass.png-871a81dc14006aaa438b87edc23188fb.ctex",
+      "size": 93470,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/title_keyart.png-be0732d83b2ded8256f192cd27749c78.ctex",
+      "size": 1799996,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/imported/title_keyart_small.png-7c7440d1788673696fea2a2461737fad.ctex",
+      "size": 526742,
+      "flags": 0,
+      "header": "47535432"
+    },
+    {
+      "path": ".godot/uid_cache.bin",
+      "size": 3301,
+      "flags": 0,
+      "header": "42000000"
+    },
+    {
+      "path": "assets.lock.json",
+      "size": 21181,
+      "flags": 0,
+      "header": "7b0a2020"
+    },
+    {
+      "path": "assets/fonts/Cinzel-Bold.ttf.import",
+      "size": 168,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/fonts/Cinzel-SemiBold.ttf.import",
+      "size": 172,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/boss_beast.png.import",
+      "size": 199,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/boss_colossal.png.import",
+      "size": 202,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/hero_archer.png.import",
+      "size": 199,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/hero_knight.png.import",
+      "size": 199,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/hero_mage.png.import",
+      "size": 198,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/hero_rogue.png.import",
+      "size": 198,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/hero_tank.png.import",
+      "size": 197,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/hero_warrior.png.import",
+      "size": 200,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/monster_bandit.png.import",
+      "size": 203,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/monster_slime.png.import",
+      "size": 202,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/monster_wolf.png.import",
+      "size": 201,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/prop_board.png.import",
+      "size": 199,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/prop_chest.png.import",
+      "size": 199,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/prop_forge.png.import",
+      "size": 198,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/prop_gate.png.import",
+      "size": 198,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/prop_statue.png.import",
+      "size": 200,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/title_keyart.png.import",
+      "size": 201,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/sprites/title_keyart_small.png.import",
+      "size": 207,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/tiles/terrain.png.import",
+      "size": 196,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/game/ui/icon.png",
+      "size": 122891,
+      "flags": 0,
+      "header": "89504e47"
+    },
+    {
+      "path": "assets/game/ui/icon.png.import",
+      "size": 192,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/characters/runner.png.import",
+      "size": 193,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/characters/sentinel.png.import",
+      "size": 197,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/environment/backdrop.png.import",
+      "size": 196,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/environment/foreground.png.import",
+      "size": 199,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/Figtree-OFL.txt",
+      "size": 4388,
+      "flags": 0,
+      "header": "436f7079"
+    },
+    {
+      "path": "assets/template/fonts/Figtree-VF.subset.woff2.import",
+      "size": 176,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/NotoSansSC-OFL.txt",
+      "size": 4388,
+      "flags": 0,
+      "header": "436f7079"
+    },
+    {
+      "path": "assets/template/fonts/NotoSansSC-VF.subset.woff2.import",
+      "size": 179,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/display/Sora-OFL.txt",
+      "size": 4385,
+      "flags": 0,
+      "header": "436f7079"
+    },
+    {
+      "path": "assets/template/fonts/display/Sora-VF.subset.woff2.import",
+      "size": 173,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/display/generic_eyebrow.tres.remap",
+      "size": 108,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/display/generic_heading.tres.remap",
+      "size": 108,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/display/generic_menu.tres.remap",
+      "size": 105,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/display/generic_title.tres.remap",
+      "size": 106,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/noto_sans_sc_bold.tres.remap",
+      "size": 110,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/noto_sans_sc_medium.tres.remap",
+      "size": 112,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/noto_sans_sc_regular.tres.remap",
+      "size": 113,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/runtime-cjk.json",
+      "size": 1269,
+      "flags": 0,
+      "header": "7b0a2020"
+    },
+    {
+      "path": "assets/template/fonts/ui_bold.tres.remap",
+      "size": 100,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/ui_medium.tres.remap",
+      "size": 102,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/fonts/ui_regular.tres.remap",
+      "size": 103,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/powerups/energy.png.import",
+      "size": 195,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/powerups/magnet.png.import",
+      "size": 194,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/powerups/overdrive.png.import",
+      "size": 198,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/powerups/shield.png.import",
+      "size": 194,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/powerups/slow_field.png.import",
+      "size": 199,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/ui/loading-background.png.import",
+      "size": 207,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/ui/pause_glass.png.import",
+      "size": 200,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "assets/template/ui/title_glass.png.import",
+      "size": 200,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "autoload/audio_director.gd.remap",
+      "size": 50,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "autoload/audio_director.gdc",
+      "size": 6562,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "autoload/manus_font_theme.gd.remap",
+      "size": 52,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "autoload/manus_font_theme.gdc",
+      "size": 1018,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "autoload/save_game.gd.remap",
+      "size": 45,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "autoload/save_game.gdc",
+      "size": 3014,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "game-verification.json",
+      "size": 344,
+      "flags": 0,
+      "header": "7b0a2020"
+    },
+    {
+      "path": "package.json",
+      "size": 937,
+      "flags": 0,
+      "header": "7b0a2020"
+    },
+    {
+      "path": "project.binary",
+      "size": 5460,
+      "flags": 0,
+      "header": "45434647"
+    },
+    {
+      "path": "scenes/main.tscn.remap",
+      "size": 97,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/actors/actor.gd.remap",
+      "size": 47,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/actors/actor.gdc",
+      "size": 5610,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/actors/enemy.gd.remap",
+      "size": 47,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/actors/enemy.gdc",
+      "size": 12033,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/actors/hero.gd.remap",
+      "size": 46,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/actors/hero.gdc",
+      "size": 12560,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/combat/combat.gd.remap",
+      "size": 48,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/combat/combat.gdc",
+      "size": 1338,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/combat/ground_effect.gd.remap",
+      "size": 55,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/combat/ground_effect.gdc",
+      "size": 3454,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/combat/projectile.gd.remap",
+      "size": 52,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/combat/projectile.gdc",
+      "size": 2313,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/combat/skill_engine.gd.remap",
+      "size": 54,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/combat/skill_engine.gdc",
+      "size": 12814,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/combat/vfx.gd.remap",
+      "size": 45,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/combat/vfx.gdc",
+      "size": 2478,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/core/balance.gd.remap",
+      "size": 47,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/core/balance.gdc",
+      "size": 1819,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/core/controls.gd.remap",
+      "size": 48,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/core/controls.gdc",
+      "size": 3667,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/core/game_data.gd.remap",
+      "size": 49,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/core/game_data.gdc",
+      "size": 20106,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/core/player_state.gd.remap",
+      "size": 52,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/core/player_state.gdc",
+      "size": 12938,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/main.gd.remap",
+      "size": 39,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/main.gdc",
+      "size": 17122,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/manus/browser_bgm_backend.gd.remap",
+      "size": 60,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/manus/browser_bgm_backend.gdc",
+      "size": 3528,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/manus/browser_bgm_player.gd.remap",
+      "size": 59,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/manus/browser_bgm_player.gdc",
+      "size": 9529,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/manus/game_fonts.gd.remap",
+      "size": 51,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/manus/game_fonts.gdc",
+      "size": 9109,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/manus/open_source_licenses.gd.remap",
+      "size": 61,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/manus/open_source_licenses.gdc",
+      "size": 1302,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/manus/procedural_sfx.gd.remap",
+      "size": 55,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/manus/procedural_sfx.gdc",
+      "size": 1464,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/ui/game_ui.gd.remap",
+      "size": 45,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/ui/game_ui.gdc",
+      "size": 41705,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/ui/ui_kit.gd.remap",
+      "size": 44,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/ui/ui_kit.gdc",
+      "size": 4489,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/world/region_map.gd.remap",
+      "size": 51,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/world/region_map.gdc",
+      "size": 8758,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "scripts/world/world_view.gd.remap",
+      "size": 51,
+      "flags": 0,
+      "header": "5b72656d"
+    },
+    {
+      "path": "scripts/world/world_view.gdc",
+      "size": 25761,
+      "flags": 0,
+      "header": "47445343"
+    },
+    {
+      "path": "shaders/arcade_filter.gdshader",
+      "size": 524,
+      "flags": 0,
+      "header": "73686164"
+    },
+    {
+      "path": "shaders/holo_panel.gdshader",
+      "size": 771,
+      "flags": 0,
+      "header": "73686164"
+    },
+    {
+      "path": "shaders/logo_chrome.gdshader",
+      "size": 1190,
+      "flags": 0,
+      "header": "73686164"
+    },
+    {
+      "path": "shaders/modal_backdrop.gdshader",
+      "size": 840,
+      "flags": 0,
+      "header": "73686164"
+    },
+    {
+      "path": "template-provenance.json",
+      "size": 10886,
+      "flags": 0,
+      "header": "7b0a2020"
+    },
+    {
+      "path": "template.json",
+      "size": 433,
+      "flags": 0,
+      "header": "7b0a2020"
+    },
+    {
+      "path": "web/loader-cjk.json",
+      "size": 2072,
+      "flags": 0,
+      "header": "7b0a2020"
+    }
+  ]
+}

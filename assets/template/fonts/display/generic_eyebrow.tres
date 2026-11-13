@@ -1,0 +1,13 @@
+[gd_resource type="FontVariation" format=3]
+
+[ext_resource type="FontFile" uid="uid://dl6r6k315cueb" path="res://assets/template/fonts/display/Sora-VF.subset.woff2" id="1"]
+[ext_resource type="FontVariation" path="res://assets/template/fonts/noto_sans_sc_medium.tres" id="2"]
+
+[resource]
+resource_name = "Generic eyebrow caps: Sora SemiBold tracked (Latin only) + Noto Sans SC Medium"
+fallbacks = [ExtResource("2")]
+base_font = ExtResource("1")
+variation_opentype = {
+2003265652: 600
+}
+spacing_glyph = 2
