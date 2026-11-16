@@ -19,9 +19,6 @@ var toasts: VBoxContainer
 
 var name_label: Label
 var level_label: Label
-var grade_label: Label
-var fame_label: Label
-var coins_label: Label
 var clock_label: Label
 var region_label: Label
 var hp_bar: ProgressBar
@@ -29,8 +26,6 @@ var mp_bar: ProgressBar
 var xp_bar: ProgressBar
 var xp_text: Label
 var energy_bar: ProgressBar
-var energy_gauge: Control
-var energy_usage_text: Label
 var hp_text: Label
 var mp_text: Label
 var energy_text: Label
@@ -93,78 +88,24 @@ func _ready() -> void :
 
 
 func _build_hud() -> void :
-	var status_panel: = PanelContainer.new()
-	status_panel.position = Vector2(16, 14)
-	status_panel.size = Vector2(346, 156)
-	status_panel.custom_minimum_size = Vector2(346, 156)
-	status_panel.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	status_panel.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-	status_panel.name = "StatusHUD"
-	var transparent_panel := StyleBoxEmpty.new()
-	transparent_panel.content_margin_left = 18
-	transparent_panel.content_margin_right = 18
-	transparent_panel.content_margin_top = 14
-	transparent_panel.content_margin_bottom = 14
-	status_panel.add_theme_stylebox_override("panel", transparent_panel)
+	# Cena independente: layout e estilos editáveis no Godot.
+	var status_panel := preload("res://scenes/ui/hero_status.tscn").instantiate()
+	status_panel.position = Vector2(34, 28)
 	hud.add_child(status_panel)
-	var column: = VBoxContainer.new()
-	column.add_theme_constant_override("separation", 4)
-	status_panel.add_child(column)
-
-	var header: = HBoxContainer.new()
-	header.add_theme_constant_override("separation", 8)
-	column.add_child(header)
-	name_label = UiKit.label("Herói", 19, UiKit.PARCHMENT)
-	header.add_child(name_label)
-	level_label = UiKit.label("Nv 1", 17, UiKit.GOLD)
-	header.add_child(level_label)
-	grade_label = UiKit.label("No-Grade", 14, UiKit.MUTED)
-	header.add_child(grade_label)
-
-	var bars: = GridContainer.new()
-	bars.columns = 1
-	bars.add_theme_constant_override("h_separation", 6)
-	bars.add_theme_constant_override("v_separation", 3)
-	column.add_child(bars)
-	hp_bar = UiKit.bar(UiKit.HP)
-	hp_bar.custom_minimum_size = Vector2(210, 22)
-	hp_bar.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	bars.add_child(hp_bar)
-	hp_text = _status_value_label(hp_bar, "100 / 100")
-	mp_bar = UiKit.bar(UiKit.MP)
-	mp_bar.custom_minimum_size = Vector2(210, 22)
-	mp_bar.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	bars.add_child(mp_bar)
-	mp_text = _status_value_label(mp_bar, "40 / 40")
-	energy_gauge = preload("res://scripts/ui/energy_gauge.gd").new()
-	energy_bar = energy_gauge.bar
-	bars.add_child(energy_gauge)
-	energy_text = _status_value_label(energy_bar, "50 / 50")
-	var xp_row := HBoxContainer.new()
-	xp_row.add_theme_constant_override("separation", 6)
-	bars.add_child(xp_row)
-	xp_bar = UiKit.bar(Color(0.55, 0.38, 0.85))
-	xp_bar.name = "Experiencia"
-	xp_bar.custom_minimum_size = Vector2(210, 10)
+	name_label = status_panel.get_node("Column/Header/HeroName")
+	level_label = status_panel.get_node("Column/Header/Level")
+	hp_bar = status_panel.get_node("Column/Bars/HP/Bar")
+	mp_bar = status_panel.get_node("Column/Bars/MP/Bar")
+	energy_bar = status_panel.get_node("Column/Bars/EP/Bar")
+	xp_bar = status_panel.get_node("Column/Bars/XP/Bar")
+	hp_text = hp_bar.get_node("Value")
+	mp_text = mp_bar.get_node("Value")
+	energy_text = energy_bar.get_node("Value")
+	xp_text = xp_bar.get_node("Value")
 	xp_bar.tooltip_text = "Experiência para o próximo nível"
-	xp_row.add_child(xp_bar)
-	xp_text = UiKit.label("XP 0 / 100", 12, UiKit.PARCHMENT)
-	xp_row.add_child(xp_text)
-	energy_usage_text = UiKit.label("Esquiva pronta · custo 18", 12, UiKit.PARCHMENT)
-	energy_usage_text.add_theme_color_override("font_outline_color", Color(0.04, 0.04, 0.03, 0.95))
-	energy_usage_text.add_theme_constant_override("outline_size", 3)
-	column.add_child(energy_usage_text)
-
-	var footer: = HBoxContainer.new()
-	footer.add_theme_constant_override("separation", 12)
-	column.add_child(footer)
-	fame_label = UiKit.label("Fama 0 / 80", 13, UiKit.GOLD)
-	footer.add_child(fame_label)
-	coins_label = UiKit.label("0 bronze", 13, UiKit.PARCHMENT)
-	footer.add_child(coins_label)
 
 	state_label = UiKit.label("", 13, UiKit.BAD)
-	state_label.position = Vector2(20, 176)
+	state_label.position = Vector2(34, 110)
 	hud.add_child(state_label)
 
 
@@ -307,32 +248,29 @@ func refresh(state: PlayerState, world: WorldView, hero: Hero, interaction: Dict
 	if state == null or hero == null:
 		return
 	name_label.text = state.hero_name
-	level_label.text = "Nv %d" % state.level
-	grade_label.text = UiKit.grade_name(state.level)
-	fame_label.text = "Fama %d / %d" % [int(state.fame), int(state.fame_cap())]
-	coins_label.text = UiKit.money_text(state.coins)
+	level_label.text = "Nv. %d" % state.level
 	hp_bar.max_value = hero.max_hp
 	hp_bar.value = hero.hp
 	hp_text.text = "%d / %d" % [int(hero.hp), int(hero.max_hp)]
 	mp_bar.max_value = state.max_mp()
 	mp_bar.value = hero.mp
 	mp_text.text = "%d / %d" % [int(hero.mp), int(state.max_mp())]
-	energy_gauge.update_energy(hero.energy, state.max_energy())
+	energy_bar.max_value = state.max_energy()
+	energy_bar.value = hero.energy
 	if hero.dodge_cooldown_left > 0.0:
-		energy_usage_text.text = "Esquiva · recarga %.1f s" % hero.dodge_cooldown_left
+		energy_bar.tooltip_text = "Esquiva · recarga %.1f s" % hero.dodge_cooldown_left
 	elif hero.energy < Balance.DODGE_COST:
-		energy_usage_text.text = "Esquiva · energia insuficiente (%d)" % int(Balance.DODGE_COST)
+		energy_bar.tooltip_text = "Esquiva · energia insuficiente (%d)" % int(Balance.DODGE_COST)
 	else:
-		energy_usage_text.text = "Esquiva pronta · custo %d" % int(Balance.DODGE_COST)
-	energy_usage_text.add_theme_color_override("font_color", UiKit.BAD if hero.energy < Balance.DODGE_COST else UiKit.PARCHMENT)
+		energy_bar.tooltip_text = "Esquiva pronta · custo %d" % int(Balance.DODGE_COST)
 	if state.level >= 100:
 		xp_bar.max_value = 1
 		xp_bar.value = 1
-		xp_text.text = "XP · Nível máximo"
+		xp_text.text = "Nível máximo"
 	else:
 		xp_bar.max_value = GameData.xp_to_next(state.level)
 		xp_bar.value = state.xp
-		xp_text.text = "XP %d / %d" % [state.xp, int(xp_bar.max_value)]
+		xp_text.text = "%d / %d" % [state.xp, int(xp_bar.max_value)]
 	energy_text.text = "%d / %d" % [int(hero.energy), int(state.max_energy())]
 	state_label.text = "EXAUSTÃO" if hero.exhaust > 0.0 else ""
 	if hero.blocking:
@@ -1524,19 +1462,6 @@ func _developer_button(parent: Node, caption: String, action: String, payload: D
 func _developer_currency_buttons(parent: Node) -> void:
 	for currency: String in GameData.COIN_VALUES:
 		_developer_button(parent, "Receber 10 de %s" % currency, "dev_coins", {"currency": currency})
-
-
-func _status_value_label(bar: ProgressBar, initial_text: String) -> Label:
-	# O texto acompanha o tamanho real da barra, inclusive a energia variável.
-	var label := UiKit.label(initial_text, 12, Color.WHITE)
-	bar.add_child(label)
-	label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	label.add_theme_color_override("font_outline_color", Color(0.04, 0.04, 0.04, 0.95))
-	label.add_theme_constant_override("outline_size", 3)
-	return label
 
 
 func _item_art(item_id: String, side: int = 48) -> Control:

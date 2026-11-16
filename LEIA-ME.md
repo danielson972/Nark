@@ -54,6 +54,12 @@ A sala usa uma cópia temporária do personagem e mantém o mundo original pausa
 
 Validação automatizada: relatorios/verify_developer_room.gd; resultado em relatorios/developer-room-test.log.
 
+## HUD de status do herói
+
+O painel de status agora usa a cena `scenes/ui/hero_status.tscn`, editável no Godot. Mostra somente nome, nível e barras HP, MP, EP e XP, sem fundo de painel. O layout compacto tem 170 pixels de largura. Os números ficam dentro das barras; EP e XP têm 10 pixels de altura, enquanto HP e MP têm 12. As barras usam largura fixa e atualizam o preenchimento de acordo com o valor atual e o máximo. `scripts/ui/game_ui.gd` conecta os valores do personagem à cena. Os detalhes da esquiva aparecem na dica ao passar o mouse sobre EP.
+
+Validação: `relatorios/verify_hud_experience.gd`, `relatorios/verify_energy_hud.gd` e `relatorios/verify_dodge_potions.gd`.
+
 ## Equipamentos visíveis no personagem
 
 Novos personagens começam com Roupa Básica e Arma de Treino equipadas. Abra o

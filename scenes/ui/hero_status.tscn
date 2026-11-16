@@ -1,0 +1,247 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/Cinzel-SemiBold.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxEmpty" id="Panel"]
+
+[sub_resource type="StyleBoxFlat" id="Track"]
+content_margin_left = 0.0
+content_margin_top = 2.0
+content_margin_right = 0.0
+content_margin_bottom = 2.0
+bg_color = Color(0.188235, 0.160784, 0.137255, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.098039, 0.086275, 0.070588, 1)
+
+[sub_resource type="StyleBoxFlat" id="FillHP"]
+bg_color = Color(0.84, 0.27, 0.24, 1)
+border_width_top = 1
+border_color = Color(0.95, 0.40, 0.35, 1)
+
+[sub_resource type="StyleBoxFlat" id="FillMP"]
+bg_color = Color(0.25, 0.53, 0.83, 1)
+border_width_top = 1
+border_color = Color(0.38, 0.67, 0.95, 1)
+
+[sub_resource type="StyleBoxFlat" id="FillEP"]
+bg_color = Color(0.86, 0.68, 0.24, 1)
+border_width_top = 1
+border_color = Color(0.98, 0.81, 0.38, 1)
+
+[sub_resource type="StyleBoxFlat" id="FillXP"]
+bg_color = Color(0.65, 0.40, 0.80, 1)
+border_width_top = 1
+border_color = Color(0.79, 0.54, 0.94, 1)
+
+[node name="StatusHUD" type="PanelContainer"]
+offset_right = 170.0
+offset_bottom = 76.0
+custom_minimum_size = Vector2(170, 0)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Column" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="Header" type="HBoxContainer" parent="Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="HeroName" type="Label" parent="Column/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.956863, 0.890196, 0.729412, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.07, 0.05, 0.95)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 12
+text = "Herói"
+text_overrun_behavior = 3
+
+[node name="Level" type="Label" parent="Column/Header"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.898039, 0.772549, 0.501961, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.07, 0.05, 0.95)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 10
+text = "Nv. 1"
+vertical_alignment = 1
+
+[node name="Bars" type="VBoxContainer" parent="Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="HP" type="HBoxContainer" parent="Column/Bars"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Caption" type="Label" parent="Column/Bars/HP"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.956863, 0.890196, 0.729412, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.07, 0.05, 0.95)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 9
+text = "HP"
+vertical_alignment = 1
+
+[node name="Bar" type="ProgressBar" parent="Column/Bars/HP"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("Track")
+theme_override_styles/fill = SubResource("FillHP")
+value = 100.0
+show_percentage = false
+
+[node name="Value" type="Label" parent="Column/Bars/HP/Bar"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.913725, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.07, 0.05, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 9
+text = "100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MP" type="HBoxContainer" parent="Column/Bars"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Caption" type="Label" parent="Column/Bars/MP"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.956863, 0.890196, 0.729412, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.07, 0.05, 0.95)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 9
+text = "MP"
+vertical_alignment = 1
+
+[node name="Bar" type="ProgressBar" parent="Column/Bars/MP"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("Track")
+theme_override_styles/fill = SubResource("FillMP")
+value = 100.0
+show_percentage = false
+
+[node name="Value" type="Label" parent="Column/Bars/MP/Bar"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.913725, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.07, 0.05, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 9
+text = "40 / 40"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EP" type="HBoxContainer" parent="Column/Bars"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Caption" type="Label" parent="Column/Bars/EP"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.956863, 0.890196, 0.729412, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.07, 0.05, 0.95)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 9
+text = "EP"
+vertical_alignment = 1
+
+[node name="Bar" type="ProgressBar" parent="Column/Bars/EP"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/background = SubResource("Track")
+theme_override_styles/fill = SubResource("FillEP")
+value = 100.0
+show_percentage = false
+
+[node name="Value" type="Label" parent="Column/Bars/EP/Bar"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.913725, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.07, 0.05, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 9
+text = "50 / 50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XP" type="HBoxContainer" parent="Column/Bars"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Caption" type="Label" parent="Column/Bars/XP"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.956863, 0.890196, 0.729412, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.07, 0.05, 0.95)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 9
+text = "XP"
+vertical_alignment = 1
+
+[node name="Bar" type="ProgressBar" parent="Column/Bars/XP"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("Track")
+theme_override_styles/fill = SubResource("FillXP")
+value = 100.0
+show_percentage = false
+
+[node name="Value" type="Label" parent="Column/Bars/XP/Bar"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.913725, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.07, 0.05, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 9
+text = "0 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1

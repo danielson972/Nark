@@ -48,10 +48,10 @@ func _run() -> void:
 	hero.hp = 10.0
 	assert(game.world.use_consumable("pocao_cura") and hero.hp == 70.0)
 	game.ui.refresh(state, game.world, hero, {})
-	assert(game.ui.energy_usage_text.text.contains("pronta"))
+	assert(game.ui.energy_bar.tooltip_text.contains("pronta"))
 	hero.dodge_cooldown_left = 0.8
 	game.ui.refresh(state, game.world, hero, {})
-	assert(game.ui.energy_usage_text.text.contains("recarga"))
+	assert(game.ui.energy_bar.tooltip_text.contains("recarga"))
 	var cooldown_before: float = hero.dodge_cooldown_left
 	hero._process(0.5)
 	assert(hero.dodge_cooldown_left == cooldown_before)
