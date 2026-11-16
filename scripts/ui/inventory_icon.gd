@@ -18,6 +18,8 @@ var class_id: String = "guerreiro":
 		class_id = value
 		queue_redraw()
 var empty_slot: String = ""
+# Slots reserve a few pixels around the art; extend only the backdrop into them.
+var background_padding: Vector2 = Vector2.ZERO
 
 const GOLD = Color("e6b657")
 const LIGHT = Color("fff0b1")
@@ -30,6 +32,7 @@ func _ready() -> void:
 
 func _draw() -> void:
 	if not item_id.is_empty():
+		_draw_item_background()
 		var texture: Texture2D = Catalog.texture_for(item_id, class_id)
 		if texture != null:
 			var side: float = minf(size.x, size.y)
@@ -83,3 +86,43 @@ func _draw() -> void:
 			if item_id.is_empty():
 				ink = Color("65503a") if symbol != "e" else Color("30271e")
 			draw_rect(Rect2(origin + Vector2(x, y) * unit, Vector2.ONE * unit), ink)
+
+func _background_color() -> Color:
+	var data: Dictionary = GameData.item(item_id)
+	# Higher equipment grades share a palette across weapons, armor and jewelry.
+	match str(data.get("grade", "NG")):
+		"D": return Color("44566a")
+		"C": return Color("244f70")
+		"B": return Color("59355f")
+	match item_id:
+		"hero": return Color("73602b")
+		"pocao_cura": return Color("652f36")
+		"pocao_mana": return Color("284b76")
+		"pocao_energia": return Color("726024")
+		"gosma": return Color("355239")
+		"cristal_aurora", "essencia_errante": return Color("26585d")
+		"sucata_ferro", "carapaca_branca": return Color("49514c")
+	match str(data.get("type", "")):
+		"arma": return Color("614333")
+		"armadura": return Color("355044")
+		"joia", "chave": return Color("6a542c")
+		"livro": return Color("45365e")
+		"material": return Color("4e4936")
+	return Color("364c49")
+
+func _draw_item_background() -> void:
+	var area := Rect2(-background_padding, size + background_padding * 2.0)
+	if area.size.x < 2.0 or area.size.y < 2.0:
+		return
+	var base: Color = _background_color()
+	# Crisp horizontal bands avoid introducing a filtered texture or changing the art.
+	var rows: int = maxi(1, ceili(area.size.y))
+	for y in rows:
+		var t: float = float(y) / maxf(1.0, float(rows - 1))
+		var glow: float = 1.0 - absf(t - 0.38) / 0.62
+		var ink: Color = base.darkened(0.58).lerp(base, clampf(glow, 0.0, 1.0) * 0.78)
+		draw_rect(Rect2(area.position + Vector2(0, y), Vector2(area.size.x, minf(1.0, area.size.y - y))), ink)
+	draw_rect(area, base.darkened(0.72), false, 1.0)
+	var highlight: Color = base.lightened(0.25)
+	highlight.a = 0.45
+	draw_line(area.position + Vector2.ONE, area.position + Vector2(area.size.x - 2, 1), highlight, 1.0)

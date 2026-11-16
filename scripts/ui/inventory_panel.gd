@@ -291,6 +291,7 @@ func _slot(item_id: String, quantity: int, equip_slot: String, side: int) -> But
 	icon.item_id = item_id
 	icon.class_id = state.class_id
 	icon.empty_slot = equip_slot
+	icon.background_padding = Vector2(4, 3)
 	button.add_child(icon)
 	icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	icon.offset_left = 6
