@@ -2,6 +2,7 @@ extends Enemy
 ## Golem de Aurora: movimento e ataque herdados de Enemy, com caminhada própria.
 
 const CONFIG = {
+	"level": 2,
 	"name": "Golem de Pedra", "sprite": "res://assets/game/sprites/monstros/aurora/golem_pedra_walk_64.png", "height": 64.0,
 	"hp": 70.0, "damage": 7.0, "defense": 2.0, "speed": 66.0, "xp": 60, "tier": 0,
 	"coins": [3, 9], "aggro": 400.0, "attack_range": 56.0, "attack_cd": 1.7, "windup": 0.5,

@@ -3,11 +3,12 @@ extends Enemy
 
 # Atributos próprios; perseguição, colisões e golpes são tratados por Enemy.
 const CONFIG = {
+	"level": 20,
 	"name": "Árvore de Cipó",
 	"sprite": "res://assets/game/sprites/monstros/aurora/Sprite-0001.png",
 	"height": 186.0,
-	"hp": 180.0, "damage": 14.0, "defense": 8.0,
-	"speed": 58.0, "xp": 160, "tier": 1,
+	"hp": 480.0, "damage": 42.0, "defense": 28.0,
+	"speed": 58.0, "xp": 480, "tier": 1,
 	"coins": [12, 25], "drops": {},
 	"aggro": 340.0, "attack_range": 85.0,
 	"attack_cd": 2.0, "windup": 0.75,
@@ -19,7 +20,7 @@ const CONFIG = {
 @export var root_warning: float = 0.9
 @export var root_duration: float = 2.0
 @export var seed_cooldown: float = 4.5
-@export var seed_damage: float = 10.0
+@export var seed_damage: float = 30.0
 @export var weed_enemy_id: String = "mini_daninha"
 var root_timer: float = 1.0
 var seed_timer: float = 2.8

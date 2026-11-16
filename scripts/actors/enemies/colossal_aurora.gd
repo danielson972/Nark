@@ -3,6 +3,7 @@ extends Enemy
 
 # Agrupa os atributos usados pelo catálogo para configurar este Colossal.
 const CONFIG = {
+	"level": 25,
 	# Define o nome exibido, o arquivo da imagem e a altura de referência em pixels.
 	"name": "Colossal de Granito", "sprite": "res://assets/game/sprites/colossos/aurora/boss_colossal.png", "height": 196.0, 
 	# Define vida, dano, defesa, velocidade, experiência concedida e categoria de poder.

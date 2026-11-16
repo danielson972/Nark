@@ -53,7 +53,7 @@ func _run() -> void:
 		if seed.is_queued_for_deletion():
 			break
 		seed._process(0.016)
-	assert(seed.is_queued_for_deletion() and world.hero.hp == 190.0)
+	assert(seed.is_queued_for_deletion() and is_equal_approx(world.hero.hp, 200.0 - tree.seed_damage))
 	assert(world.enemies.size() == count)
 	assert(not Enemy.TYPES.has("mini_daninha"))
 	world.queue_free()

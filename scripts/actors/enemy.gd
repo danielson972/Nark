@@ -14,6 +14,7 @@ static var TYPES: Dictionary:
 @export_enum("gosma", "golem_pedra", "lobo", "arvore_cipo", "saqueador", "errante", "fera", "colossal", "rival")
 var type_id: String = "lobo"
 var definition: Dictionary = {}
+var level: int = 1
 var spawn_point: = Vector2.ZERO
 var ai_state: = "idle"
 var attack_timer: = 0.0
@@ -40,6 +41,7 @@ var nameplate_style_initialized: = false
 func setup_enemy(world_ref: Node, enemy_type: String, spawn: Vector2) -> void :
 	type_id = enemy_type
 	definition = TYPES.get(enemy_type, TYPES["lobo"])
+	level = maxi(1, int(definition.get("level", 1)))
 	spawn_point = spawn
 	kind = str(definition.get("kind", enemy_type))
 	var config: Dictionary = definition
@@ -65,7 +67,7 @@ func setup_enemy(world_ref: Node, enemy_type: String, spawn: Vector2) -> void :
 
 
 func display_name() -> String:
-	return str(definition.get("name", type_id))
+	return "%s · Nv. %d" % [str(definition.get("name", type_id)), level]
 
 
 func _create_nameplate(_target_height: float) -> void:
@@ -73,7 +75,7 @@ func _create_nameplate(_target_height: float) -> void:
 	nameplate.name = "NomeDoInimigo"
 	nameplate.set_as_top_level(true)
 	nameplate.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-	nameplate.size = Vector2(280.0, 24.0)
+	nameplate.size = Vector2(360.0, 24.0)
 	nameplate.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	nameplate.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	nameplate.mouse_filter = Control.MOUSE_FILTER_IGNORE
