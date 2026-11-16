@@ -5,7 +5,7 @@ extends Enemy
 const CONFIG = {
 	"level": 25,
 	# Define o nome exibido, o arquivo da imagem e a altura de referência em pixels.
-	"name": "Colossal de Granito", "sprite": "res://assets/game/sprites/colossos/aurora/boss_colossal.png", "height": 196.0, 
+	"name": "Colossal de Granito", "sprite": "res://assets/game/sprites/colossos/aurora/aurora_walk_8dir.png", "height": 196.0,
 	# Define vida, dano, defesa, velocidade, experiência concedida e categoria de poder.
 	"hp": 2600.0, "damage": 34.0, "defense": 24.0, "speed": 96.0, "xp": 3500, "tier": 4, 
 	# Define moedas mínimas/máximas, alcance de percepção, alcance de ataque, recarga e preparação em segundos.
@@ -25,11 +25,122 @@ var awakened: bool = false
 @export var obstacle_lookahead: float = 100.0
 # Guarda o lado preferido do desvio: 1 ou -1.
 var avoidance_side: float = 1.0
+# Conserva por pouco tempo um desvio livre, evitando decisões opostas a cada frame.
+var avoidance_direction: Vector2 = Vector2.ZERO
+var avoidance_target: Vector2 = Vector2.ZERO
+var avoidance_left: float = 0.0
+const AVOIDANCE_HOLD: float = 0.18
 
 # Nome exibido da habilidade que substitui a antiga invocação de gosmas.
 const SUMMON_SKILL_NAME: String = "Invocar"
 # Garante Invocar no primeiro ataque e após três outros ataques.
 var attacks_until_invocar: int = 0
+
+# Linhas: baixo, baixo-direita, direita, cima-direita, cima,
+# cima-esquerda, esquerda, baixo-esquerda. Doze poses por direção.
+const WALK_COLUMNS: int = 12
+const WALK_ROWS: int = 8
+const WALK_CELL_SIZE: int = 256
+const IDLE_PATH: String = "res://assets/game/sprites/colossos/aurora/aurora_idle.png"
+const IDLE_COLUMNS: int = 10
+# Doze poses em 1,5 segundo: ciclo mais lento com transições intermediárias.
+@export_range(1.0, 16.0, 0.5) var walk_fps: float = 8.0
+@export_range(1.0, 16.0, 0.5) var idle_fps: float = 8.0
+var walk_time: float = 0.0
+var idle_time: float = 0.0
+var walk_row: int = 0
+var animation_state: String = ""
+var stopped_time: float = 0.0
+const STOP_GRACE: float = 0.12
+var idle_texture: Texture2D
+var walk_texture: Texture2D
+
+
+func _ready() -> void:
+	# Impede que o antigo AnimationPlayer de idle sobrescreva os passos.
+	var old_animation := get_node_or_null("AnimationPlayer") as AnimationPlayer
+	if old_animation != null:
+		old_animation.stop()
+		old_animation.active = false
+	_set_motion(false)
+
+
+func setup(world_ref: Node, texture_path: String, target_height: float = 196.0) -> void:
+	walk_row = 0
+	walk_time = 0.0
+	idle_time = 0.0
+	stopped_time = 0.0
+	animation_state = ""
+	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_set_motion(false)
+	super.setup(world_ref, texture_path, target_height)
+
+
+static func direction_row(direction: Vector2) -> int:
+	# Setores de 45 graus; as diagonais são preservadas, sem espelhar o corpo.
+	return posmod(roundi((PI * 0.5 - direction.angle()) / (PI * 0.25)), WALK_ROWS)
+
+
+func _set_motion(moving: bool) -> void:
+	var next_state: String = "walk" if moving else "idle"
+	if animation_state == next_state:
+		return
+	# Zera o índice antes de trocar a grade para não usar um frame inválido.
+	frame = 0
+	hframes = 1
+	vframes = 1
+	if moving:
+		if walk_texture == null:
+			walk_texture = load(CONFIG["sprite"])
+		texture = walk_texture
+		hframes = WALK_COLUMNS
+		vframes = WALK_ROWS
+		offset = Vector2(0, WALK_CELL_SIZE * 0.5 - 240.0)
+	else:
+		if idle_texture == null:
+			idle_texture = load(IDLE_PATH)
+		texture = idle_texture
+		hframes = IDLE_COLUMNS
+		offset = Vector2(0, -texture.get_height() * 0.5)
+		idle_time = 0.0
+	animation_state = next_state
+	flip_h = false
+
+
+func _update_animation(displacement: Vector2, delta: float) -> void:
+	flip_h = false
+	var moving: bool = displacement.length_squared() > 0.000001
+	if moving:
+		stopped_time = 0.0
+		var next_row: int = direction_row(displacement)
+		var current_direction := Vector2.from_angle(PI * 0.5 - walk_row * PI * 0.25)
+		# Margem de 7,5 graus impede piscar entre dois sprites na borda do setor.
+		if animation_state != "walk" or absf(current_direction.angle_to(displacement)) > deg_to_rad(30.0):
+			walk_row = next_row
+	else:
+		stopped_time += delta
+	# Uma interrupção de um frame no desvio não reinicia os passos.
+	var keep_walking: bool = moving or (animation_state == "walk" and stopped_time < STOP_GRACE and not is_rooted() and windup_left <= 0.0 and action.is_empty())
+	_set_motion(keep_walking)
+	if keep_walking:
+		# Relógio contínuo: colisões parciais não deixam a animação presa no frame 0.
+		walk_time = fposmod(walk_time + delta, float(WALK_COLUMNS) / maxf(walk_fps, 0.1))
+		frame = walk_row * WALK_COLUMNS + int(walk_time * walk_fps) % WALK_COLUMNS
+		# Espelhar pixels em runtime mantém a mesma definição dos perfis direitos.
+		flip_h = walk_row >= 5
+	else:
+		idle_time = fposmod(idle_time + delta, float(IDLE_COLUMNS) / maxf(idle_fps, 0.1))
+		frame = int(idle_time * idle_fps) % IDLE_COLUMNS
+
+
+func _process(delta: float) -> void:
+	var previous_position: Vector2 = global_position
+	super._process(delta)
+	if world != null and not world.is_playing():
+		return
+	if dead:
+		return
+	_update_animation(global_position - previous_position, delta)
 
 
 func _summon_golems() -> void:
@@ -63,6 +174,9 @@ func setup_enemy(world_ref: Node, enemy_type: String, spawn: Vector2) -> void:
 	attacks_until_invocar = 0
 	# Reinicia a preferência pelo lado positivo de rotação.
 	avoidance_side = 1.0
+	avoidance_direction = Vector2.ZERO
+	avoidance_target = Vector2.ZERO
+	avoidance_left = 0.0
 	# Aplica a configuração geral do inimigo na classe base.
 	super.setup_enemy(world_ref, enemy_type, spawn)
 	# Zera a velocidade para manter o Colossal parado.
@@ -133,24 +247,56 @@ func _avoid_obstacles(desired: Vector2, delta: float) -> Vector2:
 	var direction: Vector2 = desired / speed
 	# Examina pelo menos o alcance configurado ou o deslocamento deste quadro.
 	var probe: float = maxf(obstacle_lookahead, speed * delta)
+	avoidance_left = maxf(0.0, avoidance_left - delta)
+	# Uma esquiva grande muda o alvo imediatamente; ajustes pequenos mantêm o desvio.
+	var target_turned: bool = avoidance_target != Vector2.ZERO and absf(avoidance_target.angle_to(direction)) > deg_to_rad(40.0)
+	if avoidance_left > 0.0 and not target_turned and _path_is_clear(avoidance_direction, minf(probe, 24.0)):
+		return avoidance_direction * speed
 	# Verifica se é possível seguir diretamente para o herói.
 	if _path_is_clear(direction, probe):
+		avoidance_left = 0.0
 		# Mantém a velocidade originalmente desejada.
 		return desired
 	# Testa primeiro o lado usado no último desvio e depois o lado oposto.
-	for side in [avoidance_side, -avoidance_side]:
-		# Testa desvios progressivos entre 25 e 180 graus em relação ao alvo.
-		for angle in [25.0, 50.0, 75.0, 100.0, 125.0, 150.0, 180.0]:
+	# Prioriza o menor ângulo nos DOIS lados antes de considerar dar meia-volta.
+	for angle in [25.0, 50.0, 75.0, 100.0, 125.0, 150.0, 180.0]:
+		for side in [avoidance_side, -avoidance_side]:
 			# Gira a direção desejada pelo ângulo e pelo lado que estão sendo testados.
 			var candidate: Vector2 = direction.rotated(deg_to_rad(angle) * side)
 			# Confirma que a direção alternativa está livre até o alcance examinado.
 			if _path_is_clear(candidate, probe):
 				# Memoriza o lado em que foi encontrado um caminho livre.
 				avoidance_side = side
+				avoidance_direction = candidate
+				avoidance_target = direction
+				avoidance_left = AVOIDANCE_HOLD
 				# Segue a direção alternativa preservando a velocidade de movimento.
 				return candidate * speed
-	# Para o Colossal quando nenhuma direção testada está livre.
+	# Um corredor curto pode estar livre para o próximo passo, sem 100px de folga.
+	# Usa esse avanço apenas depois de falharem todos os trajetos longos.
+	var short_probe: float = maxf(speed * delta, 12.0)
+	for angle in [0.0, 25.0, 50.0, 75.0, 100.0]:
+		for side in [avoidance_side, -avoidance_side]:
+			var candidate: Vector2 = direction.rotated(deg_to_rad(angle) * side)
+			if _path_is_clear(candidate, short_probe):
+				avoidance_direction = candidate
+				avoidance_target = direction
+				avoidance_left = 0.0
+				return candidate * speed
+	avoidance_left = 0.0
+	# Para somente quando nem o próximo trecho comporta seu corpo.
 	return Vector2.ZERO
+
+
+func _process_special_action(_delta: float, _hero, distance: float) -> bool:
+	# Não fica preparando um golpe curto quando uma esquiva já levou o alvo para longe.
+	# Mantém a recarga para não recomeçar outro ataque no mesmo frame.
+	if windup_left > 0.0 and action in ["slam", "sweep"] and distance > float(definition.get("attack_range", 170.0)) * 1.6:
+		windup_left = 0.0
+		action = ""
+		action_time = 0.0
+		avoidance_left = 0.0
+	return false
 
 
 # Controla as fases, a preparação dos ataques e a perseguição do chefe.

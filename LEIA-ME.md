@@ -78,3 +78,13 @@ Saves anteriores preservam os equipamentos que já estavam usando.
 Artes e prompt: `assets/game/sprites/herois/compartilhados/equipamentos/`. Detalhes técnicos no README
 dessa pasta. Validação em `relatorios/verify_equipment_visuals.gd`, com uma
 galeria renderizada em `relatorios/equipment-visual-gallery.png`.
+
+## Inventário em três colunas
+
+Abra com **I**. A interface adapta a referência com moldura escura/dourada, personagem e equipamentos à esquerda, mochila ao centro e detalhes do item à direita. As abas Todos, Equipamentos, Consumíveis, Materiais e Missão filtram a mochila sem alterar os itens. Missão reúne chaves e livros de progressão. A categoria e a rolagem são preservadas ao executar ações.
+
+O slot dourado **Hero**, ao lado do personagem, usa o equipamento cosmético existente (`aura` nos saves), sem criar um novo atributo ou alterar saves. Vazio, mostra uma estrela; equipado, mostra a arte do item Hero. O duplo clique e os botões Equipar/Desequipar funcionam nele, nas armas, armaduras e joias.
+
+Os detalhes mostram descrição, tipo, grau, peso unitário, valor nas moedas reais do jogo e bônus/durabilidade quando aplicáveis. Usar, Soltar e Guardar no baú mantêm as regras existentes. A interface se ajusta ao espaço da janela; somente a mochila rola. Não foram criados equipamentos de capacete, luvas, botas ou escudo: os quatro slots representam os tipos que o jogo já possui.
+
+Implementação: `scripts/ui/inventory_panel.gd`. Validação: `relatorios/verify_inventory_reference.gd` e `relatorios/verify_inventory_double_click.gd`.

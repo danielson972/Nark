@@ -1,0 +1,34 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-11-16",
+  "sources": [
+    "aurora_walk_front_refined.png",
+    "aurora_walk_front_inbetweens.png",
+    "aurora_walk_back_refined.png",
+    "aurora_walk_back_inbetweens.png"
+  ],
+  "output": "aurora_walk_8dir.png",
+  "export": {
+    "size": [
+      3072,
+      2048
+    ],
+    "cell_size": 256,
+    "columns": 12,
+    "rows": 8,
+    "native_pixels": true,
+    "horizontal_pivot": "preserve source cell pivot"
+  },
+  "runtime": {
+    "walk_fps": 8,
+    "cycle_seconds": 1.5,
+    "speed": 96,
+    "idle": "original unchanged"
+  },
+  "prompts": {
+    "refine_front": "Use case: precise-object-edit. Production pixel-art sprite sheet quality refinement. Image1 is the EXISTING sheet to edit, keep its EXACT six-column four-row layout 1536x1024 with 256px square cells. Image2 is the original 210px Aurora colossus, the character identity and crisp pixel-art rendering target. Improve clarity WITHOUT redesigning the creature or changing the poses: preserve exact limb positions, facing directions, scale and foot anchors in every cell, all24 sprites complete. Rework soft noisy/grainy painted surfaces into clean readable small hand-placed pixel clusters matching Image2, sharper narrow dark stone crevices, coherent grey granite planes with restrained highlight pixels, clear angular cyan rune lines, olive moss clusters in cracks. Crisp 1pixel contours, same face small recessed helmet, huge square shoulders/forearms, same blue diamond core. Do not add detail noise, excessive glow or thick black outlines, do not smooth/blur, do not change body proportions, no new ornaments. Preserve clean consistent silhouette across the loop. Keep body about210-225px tall inside each256cell. Full genuine ALPHA transparency including gaps between limbs, no opaque backdrop, no floor, no shadows, no grid lines, no labels. Do NOT upscale or pack more sprites. Exactly6columns4rows. Preserve rows: DOWN, DOWN-RIGHT, RIGHT profile, UP-RIGHT back3/4.",
+    "refine_back": "Use case: precise-object-edit. Production pixel-art sprite sheet quality refinement. Image1 is the EXISTING sheet to edit, keep its EXACT six-column four-row layout 1536x1024 with 256px square cells. Image2 is the original 210px Aurora colossus, the character identity and crisp pixel-art rendering target. Improve clarity WITHOUT redesigning the creature or changing the poses: preserve exact limb positions, facing directions, scale and foot anchors in every cell, all24 sprites complete. Rework soft noisy/grainy painted surfaces into clean readable small hand-placed pixel clusters matching Image2, sharper narrow dark stone crevices, coherent grey granite planes with restrained highlight pixels, clear angular cyan rune lines, olive moss clusters in cracks. Crisp 1pixel contours, same face small recessed helmet, huge square shoulders/forearms, same blue diamond core. Do not add detail noise, excessive glow or thick black outlines, do not smooth/blur, do not change body proportions, no new ornaments. Preserve clean consistent silhouette across the loop. Keep body about210-225px tall inside each256cell. Full genuine ALPHA transparency including gaps between limbs, no opaque backdrop, no floor, no shadows, no grid lines, no labels. Do NOT upscale or pack more sprites. Exactly6columns4rows. Preserve rows. The FIRST ROW is UP full back view, no face and no chest core visible; the other rows retain their existing orientations.",
+    "inbetween_front": "Use case: precise-object-edit. Sprite animation INBETWEEN drawing. The supplied sprite sheet has SIX key poses per direction. Produce a NEW six-column four-row 1536x1024 sprite sheet containing ONLY SIX NEW HALF-STEP poses per row to be interleaved between the existing poses. Do not reproduce the exact key poses. At output column1, draw the exact anatomical midpoint of source keyframe1 and keyframe2; output column2 midpoint keyframe2 and keyframe3; output col3 midpoint keyframe3 and keyframe4; output col4 midpoint keyframe4 and keyframe5; output col5 midpoint keyframe5 and keyframe6; output col6 midpoint keyframe6 and keyframe1 to close the walk loop. Draw SOLID coherent inbetween limbs and feet, never transparency blending, morphing double limbs, blur or ghosting. Keep head shoulders torso rune positions and stone slab design as close as possible to source, ONLY legs knees ankle/foot lift and counter swinging forearms move slightly toward their next pose. Same pixel style, palette, crisp stone edges, small clean hand-pixelled clusters, detailed cyan angular runes and olive moss. Each complete sprite stays in the exact same256x256cell at the same native210-225px body scale and foot anchor, no cropping or overlaps. Maintain all row facing directions EXACTLY. Output6columns4rows only24sprites, no extra keyframes mixed in. Genuine alpha transparent background incl between limbs, no ground, shadow, text, grid or labels. This should make a smooth slow heavy two-step stone golem walk when interleaved KEY1,new1,KEY2,new2,KEY3,new3,KEY4,new4,KEY5,new5,KEY6,new6. Row1DOWN/front; row2DOWN-RIGHT/front3/4; row3RIGHT/profile; row4UP-RIGHT/back3/4. Preserve the four directions.",
+    "inbetween_back": "Use case: precise-object-edit. Sprite animation INBETWEEN drawing. The supplied sprite sheet has SIX key poses per direction. Produce a NEW six-column four-row 1536x1024 sprite sheet containing ONLY SIX NEW HALF-STEP poses per row to be interleaved between the existing poses. Do not reproduce the exact key poses. At output column1, draw the exact anatomical midpoint of source keyframe1 and keyframe2; output column2 midpoint keyframe2 and keyframe3; output col3 midpoint keyframe3 and keyframe4; output col4 midpoint keyframe4 and keyframe5; output col5 midpoint keyframe5 and keyframe6; output col6 midpoint keyframe6 and keyframe1 to close the walk loop. Draw SOLID coherent inbetween limbs and feet, never transparency blending, morphing double limbs, blur or ghosting. Keep head shoulders torso rune positions and stone slab design as close as possible to source, ONLY legs knees ankle/foot lift and counter swinging forearms move slightly toward their next pose. Same pixel style, palette, crisp stone edges, small clean hand-pixelled clusters, detailed cyan angular runes and olive moss. Each complete sprite stays in the exact same256x256cell at the same native210-225px body scale and foot anchor, no cropping or overlaps. Maintain all row facing directions EXACTLY. Output6columns4rows only24sprites, no extra keyframes mixed in. Genuine alpha transparent background incl between limbs, no ground, shadow, text, grid or labels. This should make a smooth slow heavy two-step stone golem walk when interleaved KEY1,new1,KEY2,new2,KEY3,new3,KEY4,new4,KEY5,new5,KEY6,new6. FIRST ROW UP/fullBACK: no face no chest diamond, only the back stone plates. Preserve source orientations in the other three rows."
+  }
+}

@@ -46,11 +46,7 @@ static func atlas_rect(item_id: String, class_id: String, texture_size: Vector2)
 static func texture_for(item_id: String, class_id: String = "guerreiro") -> Texture2D:
 	if item_id == "hero":
 		if not textures.has(item_id):
-			var icon := AtlasTexture.new()
-			icon.atlas = load("res://assets/game/effects/hero_aura_sheet.png")
-			icon.region = Rect2(0, 0, 362, 362)
-			icon.filter_clip = true
-			textures[item_id] = icon
+			textures[item_id] = load("res://assets/game/ui/items/hero.png")
 		return textures[item_id]
 	# Frascos próprios baseados no mesmo design da poção de vida.
 	if item_id in ["pocao_mana", "pocao_energia"]:

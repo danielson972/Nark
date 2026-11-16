@@ -961,10 +961,12 @@ func show_inventory_panel() -> void:
 	var item_id: String = ""
 	var equip_slot: String = ""
 	var scroll_y: int = 0
+	var category: String = "all"
 	if is_instance_valid(inventory_view) and not inventory_view.is_queued_for_deletion():
 		item_id = inventory_view.selected_id
 		equip_slot = inventory_view.selected_slot
 		scroll_y = inventory_view.bag_scroll.scroll_vertical
+		category = inventory_view.filter_tab
 	current_panel = "inventory"
 	modal_layer.visible = true
 	for child in modal_layer.get_children():
@@ -975,7 +977,7 @@ func show_inventory_panel() -> void:
 	modal_layer.add_child(shade)
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	inventory_view = InventoryPanelView.new()
-	inventory_view.configure(state, item_id, equip_slot, scroll_y)
+	inventory_view.configure(state, item_id, equip_slot, scroll_y, category)
 	inventory_view.action_requested.connect(func(action: String, payload: Dictionary) -> void:
 		panel_action.emit(action, payload)
 	)

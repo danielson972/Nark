@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://ewhx85edeeyl"]
 
 [ext_resource type="Script" path="res://scripts/actors/enemies/colossal_aurora.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://cmyomblhtp6ct" path="res://assets/game/sprites/colossos/aurora/boss_colossal.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/colossos/aurora/aurora_idle.png" id="2"]
 
-[node name="Colossal" type="Node2D" unique_id=1918686389]
+[node name="Colossal" type="Sprite2D" unique_id=1918686389]
 script = ExtResource("1")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=774176657]
-scale = Vector2(0.93333334, 0.93333334)
 texture = ExtResource("2")
 offset = Vector2(0, -105)
+hframes = 10

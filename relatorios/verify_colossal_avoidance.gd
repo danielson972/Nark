@@ -28,6 +28,25 @@ func _run() -> void:
 		await physics_frame
 	assert(max_detour > 30.0)
 	assert(boss.global_position.distance_to(world.hero.global_position) < 140.0)
+	# O alvo esquiva para os lados e depois foge, com a tocha ainda no caminho.
+	boss.global_position = Vector2(300, 500)
+	boss.avoidance_left = 0.0
+	world.hero.global_position = Vector2(760, 500)
+	var stalled_run: int = 0
+	var longest_stall: int = 0
+	for index in 360:
+		if index == 90: world.hero.position.y -= 64.0
+		if index == 180: world.hero.position.y += 128.0
+		if index >= 240: world.hero.position.x += 2.4
+		var previous: Vector2 = boss.global_position
+		var distance: float = boss.global_position.distance_to(world.hero.global_position)
+		boss._boss_logic(1.0 / 60.0, world.hero, distance)
+		stalled_run = stalled_run + 1 if distance > 160.0 and boss.global_position.distance_to(previous) < 0.01 else 0
+		longest_stall = maxi(longest_stall, stalled_run)
+		assert(boss.global_position.distance_to(torch.get_node("Colisao").global_position) >= boss.radius + 12.0 * torch.scale.x - 1.0)
+		await physics_frame
+	assert(longest_stall < 8, "Moving-target chase must not stall near the torch")
+	assert(boss.global_position.x > 650.0, "Boss must continue pursuing after target dodges and retreats")
 	boss.global_position = Vector2(1100, 800)
 	world.hero.global_position = Vector2(1150, 800)
 	await physics_frame
@@ -36,5 +55,5 @@ func _run() -> void:
 	assert(not world.can_actor_stand(boss, world.hero.global_position, boss.radius))
 	world.queue_free()
 	await process_frame
-	print("COLOSSAL_AVOIDANCE_OK: torch detour, no overlap, reaches hero, hero ignored only for steering")
+	print("COLOSSAL_AVOIDANCE_OK: torch detour, no overlap, reaches hero, moving target dodge/retreat without stalls, hero ignored only for steering")
 	quit()

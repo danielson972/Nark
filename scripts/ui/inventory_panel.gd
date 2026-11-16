@@ -1,39 +1,50 @@
 extends PanelContainer
-## Inventory layout: equipment and attributes at left; only the bag scrolls.
-
+## Reference-inspired inventory: character, filtered backpack and item details.
 signal action_requested(action: String, payload: Dictionary)
 
 const PanelTheme = preload("res://scripts/ui/rpg_panel_theme.gd")
 const Icon = preload("res://scripts/ui/inventory_icon.gd")
-const INK = PanelTheme.INK
-const GOLD = PanelTheme.GOLD
-const BRIGHT = PanelTheme.BRIGHT
-const CREAM = PanelTheme.CREAM
-const MUTED = PanelTheme.MUTED
+const INK = Color("0c100f")
+const GOLD = Color("997440")
+const BRIGHT = Color("f0c76b")
+const CREAM = Color("efe2c5")
+const MUTED = Color("aaa596")
+const DESIGN_SIZE = Vector2(1160, 748)
+const FILTERS = [["all", "Todos"], ["equipment", "Equipamentos"], ["consumables", "Consumíveis"], ["materials", "Materiais"], ["quest", "Missão"]]
+const SLOT_NAMES = {"arma": "Arma", "armadura": "Armadura", "joia": "Joia", "aura": "Hero"}
+const TYPE_NAMES = {"arma": "Arma", "armadura": "Armadura", "joia": "Joia", "aura": "Visual Hero", "consumivel": "Consumível", "material": "Material", "chave": "Missão", "livro": "Livro"}
 
 var state: PlayerState
 var selected_id: String = ""
 var selected_slot: String = ""
+var filter_tab: String = "all"
 var scroll_position: int = 0
 var bag_scroll: ScrollContainer
 var slot_buttons: Dictionary = {}
 var action_buttons: Dictionary = {}
+var tab_buttons: Dictionary = {}
 var detail_icon: Control
 var detail_title: Label
 var detail_description: Label
+var detail_grade: Label
+var detail_type: Label
+var detail_weight: Label
+var detail_value: Label
+var detail_properties: Label
+var bag_grid: GridContainer
+var bag_count: Label
 
-func configure(player: PlayerState, item_id: String = "", equip_slot: String = "", scroll_y: int = 0) -> void:
+func configure(player: PlayerState, item_id: String = "", equip_slot: String = "", scroll_y: int = 0, category: String = "all") -> void:
 	state = player
 	selected_id = item_id
 	selected_slot = equip_slot
+	filter_tab = category if category in ["all", "equipment", "consumables", "materials", "quest"] else "all"
 	scroll_position = scroll_y
 	if not selected_slot.is_empty():
 		selected_id = str(state.equipment.get(selected_slot, {}).get("id", ""))
-		if selected_id.is_empty():
-			selected_slot = ""
 	elif state.count_item(selected_id) == 0:
 		selected_id = ""
-	if selected_id.is_empty() and not state.inventory.is_empty():
+	if selected_id.is_empty() and selected_slot.is_empty() and not state.inventory.is_empty():
 		selected_id = str(state.inventory[0]["id"])
 
 func _ready() -> void:
@@ -42,243 +53,381 @@ func _ready() -> void:
 	add_theme_stylebox_override("panel", _frame(INK, GOLD, 2, 12))
 	_build()
 	get_parent().resized.connect(_fit)
+	minimum_size_changed.connect(func() -> void: _fit.call_deferred())
 	_fit()
+	_fit.call_deferred()
 	_update_selection()
 	_restore_scroll.call_deferred()
 
 func _fit() -> void:
 	var available: Vector2 = get_parent().size
-	# A fixed compact footprint also prevents a huge panel in fullscreen.
-	size = Vector2(minf(460, available.x - 28), minf(480, available.y - 28))
-	position = (available - size) * 0.5
+	size = DESIGN_SIZE.max(get_combined_minimum_size())
+	var factor: float = minf(1.0, minf((available.x - 24.0) / size.x, (available.y - 24.0) / size.y))
+	scale = Vector2.ONE * maxf(0.1, factor)
+	position = ((available - size * scale) * 0.5).floor()
 	queue_redraw()
 
 func _draw() -> void:
+	draw_rect(Rect2(Vector2(5, 5), size - Vector2(10, 10)), Color("332c20"), false, 1.0)
 	PanelTheme.draw_corners(self)
 
-func _frame(fill: Color, border: Color, border_width: int = 2, padding: int = 8) -> StyleBoxFlat:
-	return PanelTheme.frame(fill, border, border_width, padding)
+func _frame(fill: Color, border: Color, width: int = 2, padding: int = 8) -> StyleBoxFlat:
+	var style: StyleBoxFlat = PanelTheme.frame(fill, border, width, padding)
+	style.corner_radius_top_left = 0
+	style.corner_radius_top_right = 0
+	style.corner_radius_bottom_left = 0
+	style.corner_radius_bottom_right = 0
+	return style
 
 func _text(caption: String, font_size: int = 13, color: Color = CREAM, heading: bool = false) -> Label:
 	return PanelTheme.text(caption, font_size, color, heading)
 
-func _line(vertical: bool = false) -> ColorRect:
-	return PanelTheme.line(vertical)
+func _line() -> ColorRect:
+	var line := ColorRect.new()
+	line.color = Color("514532")
+	line.custom_minimum_size.y = 1
+	line.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return line
+
+func _button(caption: String) -> Button:
+	var button: Button = PanelTheme.button(caption)
+	button.add_theme_stylebox_override("normal", _frame(Color("171c19"), Color("655b46"), 2, 7))
+	button.add_theme_stylebox_override("hover", _frame(Color("343223"), BRIGHT, 2, 7))
+	button.add_theme_stylebox_override("pressed", _frame(Color("40341d"), BRIGHT, 2, 7))
+	button.add_theme_stylebox_override("disabled", _frame(Color("101411"), Color("383c32"), 2, 7))
+	button.add_theme_color_override("font_color", CREAM)
+	return button
+
+func _section(parent: Control, heading: String) -> VBoxContainer:
+	var panel := PanelContainer.new()
+	panel.add_theme_stylebox_override("panel", _frame(Color("101512"), Color("544a36"), 2, 10))
+	panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	parent.add_child(panel)
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override("separation", 6)
+	panel.add_child(column)
+	column.add_child(_text(heading, 18, CREAM, true))
+	column.add_child(_line())
+	return column
 
 func _build() -> void:
-	var column: VBoxContainer = VBoxContainer.new()
-	column.add_theme_constant_override("separation", 6)
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override("separation", 9)
 	add_child(column)
-	var header: HBoxContainer = HBoxContainer.new()
-	header.add_theme_constant_override("separation", 8)
+	var header := HBoxContainer.new()
+	header.custom_minimum_size.y = 44
+	header.add_theme_constant_override("separation", 10)
 	column.add_child(header)
-	var title: Label = _text("Inventário", 22, CREAM, true)
+	var chest := TextureRect.new()
+	chest.texture = load("res://assets/game/sprites/cenarios/aurora/prop_chest.png")
+	chest.custom_minimum_size = Vector2(42, 42)
+	chest.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	chest.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	header.add_child(chest)
+	var title := _text("INVENTÁRIO", 27, CREAM, true)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title)
-	var paused: Label = _text("Jogo pausado", 11, BRIGHT)
-	header.add_child(paused)
-	var close: Button = _button("[%s] Fechar" % Controls.describe("inventory", SaveGame.bindings))
+	for entry: Array in FILTERS:
+		var tab := _button(str(entry[1]).to_upper())
+		tab.name = "Filter_" + str(entry[0])
+		tab.toggle_mode = true
+		tab.button_pressed = filter_tab == str(entry[0])
+		tab.add_theme_font_size_override("font_size", 12)
+		tab.pressed.connect(_change_filter.bind(str(entry[0])))
+		header.add_child(tab)
+		tab_buttons[str(entry[0])] = tab
+	var close := _button("×")
 	close.name = "CloseInventory"
+	close.custom_minimum_size = Vector2(42, 42)
+	close.add_theme_font_size_override("font_size", 28)
+	close.add_theme_stylebox_override("normal", _frame(Color("44221b"), GOLD, 2, 4))
+	close.tooltip_text = "[%s] Fechar inventário" % Controls.describe("inventory", SaveGame.bindings)
 	close.pressed.connect(func() -> void: action_requested.emit("close_panel", {}))
 	header.add_child(close)
 	column.add_child(_line())
-	var body: HBoxContainer = HBoxContainer.new()
+	var body := HBoxContainer.new()
+	body.name = "InventoryColumns"
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	body.add_theme_constant_override("separation", 10)
 	column.add_child(body)
 	_build_character(body)
-	body.add_child(_line(true))
 	_build_bag(body)
+	_build_details(body)
 	column.add_child(_line())
-	var actions: HBoxContainer = HBoxContainer.new()
-	actions.add_theme_constant_override("separation", 4)
-	column.add_child(actions)
-	for entry in [["equip", "Equipar"], ["unequip", "Desequipar"], ["use_item", "Usar"], ["store", "Guardar no baú"], ["drop_item", "Soltar"]]:
-		var action: String = entry[0]
-		var button: Button = _button(entry[1])
-		button.name = "Action_" + action
-		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		button.size_flags_stretch_ratio = 1.3 if action == "store" else 1.0
-		button.pressed.connect(_perform.bind(action))
-		actions.add_child(button)
-		action_buttons[action] = button
+	_build_footer(column)
 
 func _build_character(parent: HBoxContainer) -> void:
-	var left: VBoxContainer = VBoxContainer.new()
+	var left := VBoxContainer.new()
 	left.name = "CharacterColumn"
-	left.custom_minimum_size.x = 170
-	left.add_theme_constant_override("separation", 4)
+	left.custom_minimum_size.x = 300
+	left.add_theme_constant_override("separation", 10)
 	parent.add_child(left)
-	left.add_child(_text("Personagem", 17, CREAM, true))
-	var portrait: HBoxContainer = HBoxContainer.new()
-	portrait.add_theme_constant_override("separation", 8)
-	left.add_child(portrait)
-	var texture = preload("res://scripts/ui/hero_preview.gd").new()
-	texture.state = state
-	texture.custom_minimum_size = Vector2(52, 64)
-	portrait.add_child(texture)
-	var identity: VBoxContainer = VBoxContainer.new()
-	identity.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	identity.alignment = BoxContainer.ALIGNMENT_CENTER
-	portrait.add_child(identity)
-	var hero_name: Label = _text(state.hero_name, 14, BRIGHT, true)
-	hero_name.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	identity.add_child(hero_name)
-	identity.add_child(_text("%s · Nv. %d" % [state.class_data()["name"], state.level], 11, MUTED))
-	identity.add_child(_text(str(state.race()["name"]), 11, MUTED))
-	left.add_child(_line())
-	for slot: String in PlayerState.EQUIP_SLOTS:
-		var entry: Dictionary = state.equipment.get(slot, {})
-		var item_id: String = str(entry.get("id", ""))
-		var row: HBoxContainer = HBoxContainer.new()
-		row.add_theme_constant_override("separation", 6)
-		left.add_child(row)
-		var slot_button: Button = _slot(item_id, 0, slot, 38)
-		slot_button.name = "Equipment_" + slot
-		slot_button.pressed.connect(_select.bind(item_id, slot))
-		row.add_child(slot_button)
-		slot_buttons["equip:" + slot] = slot_button
-		var info: VBoxContainer = VBoxContainer.new()
-		info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		info.add_theme_constant_override("separation", 1)
-		row.add_child(info)
-		info.add_child(_text(str({"arma": "Arma", "armadura": "Armadura", "joia": "Joia", "aura": "Visual" }[slot]), 12, BRIGHT, true))
-		var item_name: Label = _text("Vazio" if item_id.is_empty() else str(GameData.item(item_id)["name"]), 12, MUTED if item_id.is_empty() else CREAM)
-		item_name.tooltip_text = item_name.text
-		item_name.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-		var item_line: HBoxContainer = HBoxContainer.new()
-		info.add_child(item_line)
-		item_name.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		item_line.add_child(item_name)
-		if not entry.is_empty() and slot != "aura":
-			item_line.add_child(_text("%d%%" % int(100 * float(entry["durability"]) / maxf(1, float(entry["max"]))), 11, BRIGHT))
-		if not entry.is_empty() and slot != "aura":
-			var durability: ProgressBar = UiKit.bar(BRIGHT, 7)
-			durability.value = 100.0 * float(entry["durability"]) / maxf(1, float(entry["max"]))
-			durability.tooltip_text = "Durabilidade: %d%%" % int(durability.value)
-			info.add_child(durability)
-	var spacer: Control = Control.new()
-	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	left.add_child(spacer)
-	var statistics: PanelContainer = PanelContainer.new()
-	statistics.add_theme_stylebox_override("panel", _frame(Color("21180f"), GOLD.darkened(0.2), 1, 6))
-	left.add_child(statistics)
-	var stats: VBoxContainer = VBoxContainer.new()
-	stats.add_theme_constant_override("separation", 3)
-	statistics.add_child(stats)
-	stats.add_child(_text("Estatísticas", 14, CREAM, true))
-	stats.add_child(_line())
-	_stat(stats, "Ouro", str(state.coins / 10000))
-	_stat(stats, "Prata", str((state.coins / 100) % 100))
-	_stat(stats, "Bronze", str(state.coins % 100))
-	_stat(stats, "Fama", "%d / %d" % [int(state.fame), int(state.fame_cap())])
-	var grid: GridContainer = GridContainer.new()
-	grid.columns = 2
-	grid.add_theme_constant_override("h_separation", 10)
-	stats.add_child(grid)
-	for caption in ["Dano  %d" % int(state.damage_power()), "Defesa  %d" % int(state.defense_power()), "Crítico  %d%%" % int(state.crit_physical() * 100), "Veloc.  %d" % int(state.move_speed())]:
-		grid.add_child(_text(caption, 12, MUTED))
+	var character := _section(left, "PERSONAGEM")
+	character.get_parent().size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	var equipment_row := HBoxContainer.new()
+	equipment_row.add_theme_constant_override("separation", 6)
+	character.add_child(equipment_row)
+	var left_slots := VBoxContainer.new()
+	left_slots.add_theme_constant_override("separation", 10)
+	equipment_row.add_child(left_slots)
+	_equipment_slot(left_slots, "armadura")
+	_equipment_slot(left_slots, "joia")
+	var portrait_frame := PanelContainer.new()
+	portrait_frame.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	portrait_frame.add_theme_stylebox_override("panel", _frame(Color("0b100e"), Color("2b3027"), 1, 2))
+	equipment_row.add_child(portrait_frame)
+	var portrait = preload("res://scripts/ui/hero_preview.gd").new()
+	portrait.state = state
+	portrait.custom_minimum_size = Vector2(118, 174)
+	portrait_frame.add_child(portrait)
+	var right_slots := VBoxContainer.new()
+	right_slots.add_theme_constant_override("separation", 10)
+	equipment_row.add_child(right_slots)
+	_equipment_slot(right_slots, "arma")
+	_equipment_slot(right_slots, "aura")
+	var identity := _text(state.hero_name, 21, BRIGHT, true)
+	identity.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	identity.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	character.add_child(identity)
+	var origin := _text("%s · Nível %d · %s" % [state.class_data()["name"], state.level, state.race()["name"]], 12, CREAM)
+	origin.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	origin.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	character.add_child(origin)
+	var stats := _section(left, "ESTATÍSTICAS")
+	stats.add_theme_constant_override("separation", 5)
+	_stat(stats, "Vida (PV)", "%d / %d" % [state.hp, state.max_hp()], Color("df8074"))
+	_stat(stats, "Mana (PM)", "%d / %d" % [state.mp, state.max_mp()], Color("84acdc"))
+	_stat(stats, "Energia", "%d / %d" % [state.energy, state.max_energy()], BRIGHT)
+	_stat(stats, "Ataque", "%d" % state.damage_power())
+	_stat(stats, "Defesa", "%d" % state.defense_power())
+	_stat(stats, "Velocidade", "%d" % state.move_speed())
+	_stat(stats, "Crítico", "%d%%" % (state.crit_physical() * 100.0))
+	_stat(stats, "Fama", "%d / %d" % [state.fame, state.fame_cap()])
 
-func _stat(parent: Control, caption: String, value: String) -> void:
-	var row: HBoxContainer = HBoxContainer.new()
+func _equipment_slot(parent: VBoxContainer, slot: String) -> void:
+	var id: String = str(state.equipment.get(slot, {}).get("id", ""))
+	var button := _slot(id, 0, slot, 62)
+	button.name = "Equipment_" + slot
+	button.tooltip_text = str(SLOT_NAMES[slot]) + (" · Vazio" if id.is_empty() else "\n" + button.tooltip_text)
+	button.pressed.connect(_select.bind(id, slot))
+	parent.add_child(button)
+	slot_buttons["equip:" + slot] = button
+	if slot == "aura":
+		button.name = "Equipment_aura"
+		button.set_meta("item_slot", "hero")
+		if id.is_empty():
+			var star := _text("✦", 30, GOLD)
+			star.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			star.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			star.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			button.add_child(star)
+			star.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var label := _text(str(SLOT_NAMES[slot]), 11, BRIGHT if slot == "aura" else MUTED, slot == "aura")
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	parent.add_child(label)
+	if not id.is_empty() and slot != "aura":
+		var entry: Dictionary = state.equipment[slot]
+		var durability: ProgressBar = UiKit.bar(GOLD, 3)
+		durability.custom_minimum_size.y = 3
+		durability.value = 100.0 * float(entry.get("durability", 0)) / maxf(1.0, float(entry.get("max", 100)))
+		durability.tooltip_text = "Durabilidade: %d%%" % durability.value
+		parent.add_child(durability)
+
+func _stat(parent: Control, caption: String, value: String, color: Color = MUTED) -> Label:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
 	parent.add_child(row)
-	var label: Label = _text(caption, 12, MUTED)
+	var label := _text(caption, 13, color)
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(label)
-	row.add_child(_text(value, 12))
+	var number := _text(value, 13, CREAM)
+	row.add_child(number)
+	return number
 
 func _build_bag(parent: HBoxContainer) -> void:
-	var right: VBoxContainer = VBoxContainer.new()
-	right.name = "BackpackColumn"
-	right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	right.add_theme_constant_override("separation", 6)
-	parent.add_child(right)
-	var heading: HBoxContainer = HBoxContainer.new()
-	right.add_child(heading)
-	var title: Label = _text("Mochila", 17, CREAM, true)
+	var panel := PanelContainer.new()
+	panel.name = "BackpackColumn"
+	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	panel.add_theme_stylebox_override("panel", _frame(Color("101512"), Color("544a36"), 2, 10))
+	parent.add_child(panel)
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override("separation", 8)
+	panel.add_child(column)
+	var heading := HBoxContainer.new()
+	column.add_child(heading)
+	var title := _text("MOCHILA", 18, CREAM, true)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	heading.add_child(title)
-	heading.add_child(_text("%d %s" % [state.inventory.size(), "tipo" if state.inventory.size() == 1 else "tipos"], 12, MUTED))
+	heading.add_child(_text("Peso  %s / %s kg" % [_decimal(state.carried_weight()), _decimal(state.weight_capacity())], 11, MUTED))
+	var weight: ProgressBar = UiKit.bar(GOLD, 3)
+	weight.value = 100.0 * state.carried_weight() / maxf(1.0, state.weight_capacity())
+	column.add_child(weight)
 	bag_scroll = ScrollContainer.new()
 	bag_scroll.name = "ItemsScroll"
-	bag_scroll.custom_minimum_size.y = 72
 	bag_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	bag_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	bag_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	bag_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_ALWAYS
 	bag_scroll.follow_focus = true
-	right.add_child(bag_scroll)
+	column.add_child(bag_scroll)
 	var scrollbar: VScrollBar = bag_scroll.get_v_scroll_bar()
 	scrollbar.custom_minimum_size.x = 10
-	scrollbar.add_theme_stylebox_override("scroll", _frame(Color("100c09"), Color("493520"), 1, 2))
-	scrollbar.add_theme_stylebox_override("grabber", _frame(Color("98703b"), BRIGHT, 1, 3))
-	scrollbar.add_theme_stylebox_override("grabber_highlight", _frame(BRIGHT, CREAM, 1, 3))
-	scrollbar.add_theme_stylebox_override("grabber_pressed", _frame(BRIGHT, CREAM, 1, 3))
-	var grid: GridContainer = GridContainer.new()
-	grid.name = "ItemsGrid"
-	grid.columns = 5
-	grid.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	grid.add_theme_constant_override("h_separation", 6)
-	grid.add_theme_constant_override("v_separation", 6)
-	var inset: MarginContainer = MarginContainer.new()
+	scrollbar.add_theme_stylebox_override("scroll", _frame(Color("0a0e0b"), Color("36372b"), 1, 1))
+	for style_name: String in ["grabber", "grabber_highlight", "grabber_pressed"]:
+		scrollbar.add_theme_stylebox_override(style_name, _frame(GOLD if style_name == "grabber" else BRIGHT, Color("443c28"), 1, 1))
+	var inset := MarginContainer.new()
 	inset.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	inset.add_theme_constant_override("margin_right", 16)
+	inset.add_theme_constant_override("margin_right", 8)
 	bag_scroll.add_child(inset)
-	inset.add_child(grid)
-	var slot_count: int = maxi(30, ceili(float(state.inventory.size()) / 5.0) * 5)
+	bag_grid = GridContainer.new()
+	bag_grid.name = "ItemsGrid"
+	bag_grid.columns = 5
+	bag_grid.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	bag_grid.add_theme_constant_override("h_separation", 6)
+	bag_grid.add_theme_constant_override("v_separation", 6)
+	inset.add_child(bag_grid)
+	bag_count = _text("", 11, MUTED)
+	column.add_child(bag_count)
+	_populate_bag()
+
+func _matches_filter(item_id: String) -> bool:
+	var kind: String = str(GameData.item(item_id).get("type", ""))
+	match filter_tab:
+		"equipment": return kind in PlayerState.EQUIP_SLOTS
+		"consumables": return kind == "consumivel"
+		"materials": return kind == "material"
+		"quest": return kind in ["chave", "livro"]
+	return true
+
+func _change_filter(category: String) -> void:
+	filter_tab = category
+	scroll_position = 0
+	selected_slot = ""
+	selected_id = ""
+	_populate_bag()
+	_update_selection()
+	bag_scroll.scroll_vertical = 0
+
+func _populate_bag() -> void:
+	for key: String in slot_buttons.keys():
+		if key.begins_with("bag:"):
+			slot_buttons.erase(key)
+	for child in bag_grid.get_children():
+		bag_grid.remove_child(child)
+		child.queue_free()
+	var entries: Array = state.inventory.filter(func(entry: Dictionary) -> bool: return _matches_filter(str(entry["id"])))
+	if selected_slot.is_empty() and (selected_id.is_empty() or not _matches_filter(selected_id)):
+		selected_id = str(entries[0]["id"]) if not entries.is_empty() else ""
+	var slot_count: int = maxi(35, ceili(float(entries.size()) / 5.0) * 5)
 	for index in slot_count:
-		var entry: Dictionary = state.inventory[index] if index < state.inventory.size() else {}
-		var item_id: String = str(entry.get("id", ""))
-		var button: Button = _slot(item_id, int(entry.get("qty", 0)), "", 38)
-		button.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		var entry: Dictionary = entries[index] if index < entries.size() else {}
+		var id: String = str(entry.get("id", ""))
+		var button := _slot(id, int(entry.get("qty", 0)), "", 76)
 		button.name = "BagSlot_%d" % index
-		if not item_id.is_empty():
-			button.pressed.connect(_select.bind(item_id, ""))
-			slot_buttons["bag:" + item_id] = button
+		button.set_meta("item_id", id)
+		if not id.is_empty():
+			button.pressed.connect(_select.bind(id, ""))
+			slot_buttons["bag:" + id] = button
 		else:
 			button.disabled = true
 			button.focus_mode = Control.FOCUS_NONE
-		grid.add_child(button)
-	right.add_child(_line())
-	var details: HBoxContainer = HBoxContainer.new()
-	details.name = "SelectedItem"
-	details.custom_minimum_size.y = 60
-	details.add_theme_constant_override("separation", 10)
-	right.add_child(details)
+		bag_grid.add_child(button)
+	bag_count.text = "%d tipos · Equipados não contam no peso" % entries.size() if not entries.is_empty() else "Nenhum item nesta categoria"
+	for key: String in tab_buttons:
+		tab_buttons[key].set_pressed_no_signal(key == filter_tab)
+
+func _build_details(parent: HBoxContainer) -> void:
+	var column := _section(parent, "DETALHES DO ITEM")
+	column.get_parent().name = "ItemDetailsColumn"
+	column.get_parent().custom_minimum_size.x = 320
+	var art_center := CenterContainer.new()
+	art_center.custom_minimum_size.y = 120
+	column.add_child(art_center)
+	var art_frame := PanelContainer.new()
+	art_frame.add_theme_stylebox_override("panel", _frame(Color("0a0e0c"), Color("665a43"), 2, 5))
+	art_center.add_child(art_frame)
 	detail_icon = Icon.new()
+	detail_icon.name = "SelectedItemArt"
 	detail_icon.class_id = state.class_id
-	detail_icon.custom_minimum_size = Vector2(40, 40)
-	details.add_child(detail_icon)
-	var text: VBoxContainer = VBoxContainer.new()
-	text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	text.alignment = BoxContainer.ALIGNMENT_CENTER
-	text.add_theme_constant_override("separation", 4)
-	details.add_child(text)
-	detail_title = _text("", 14, CREAM, true)
-	detail_title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	text.add_child(detail_title)
-	detail_description = _text("", 12, MUTED)
+	detail_icon.custom_minimum_size = Vector2(106, 106)
+	art_frame.add_child(detail_icon)
+	detail_title = _text("", 21, CREAM, true)
+	detail_title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	detail_title.max_lines_visible = 2
+	column.add_child(detail_title)
+	detail_grade = _text("", 12, BRIGHT)
+	column.add_child(detail_grade)
+	detail_description = _text("", 13, CREAM)
 	detail_description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	detail_description.max_lines_visible = 2
-	text.add_child(detail_description)
-	right.add_child(_line())
-	var weight: Label = _text("Peso  %s / %s kg" % [_decimal(state.carried_weight()), _decimal(state.weight_capacity())], 14, BRIGHT, true)
-	right.add_child(weight)
-	var bar: ProgressBar = UiKit.bar(GOLD, 5)
-	bar.value = 100 * state.carried_weight() / maxf(1, state.weight_capacity())
-	right.add_child(bar)
-	right.add_child(_text("Equipados não contam no peso.", 11, MUTED))
+	detail_description.max_lines_visible = 4
+	detail_description.custom_minimum_size.y = 48
+	column.add_child(detail_description)
+	column.add_child(_line())
+	detail_type = _stat(column, "Tipo", "")
+	detail_weight = _stat(column, "Peso unitário", "")
+	detail_value = _stat(column, "Valor", "")
+	detail_value.add_theme_color_override("font_color", BRIGHT)
+	column.add_child(_line())
+	detail_properties = _text("", 12, MUTED)
+	detail_properties.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	detail_properties.max_lines_visible = 3
+	column.add_child(detail_properties)
+	var spacer := Control.new()
+	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	column.add_child(spacer)
+	var primary := VBoxContainer.new()
+	column.add_child(primary)
+	for entry: Array in [["equip", "EQUIPAR"], ["unequip", "DESEQUIPAR"], ["use_item", "USAR"]]:
+		var action: String = str(entry[0])
+		var button := _button(str(entry[1]))
+		button.name = "Action_" + action
+		button.custom_minimum_size.y = 38
+		button.add_theme_stylebox_override("normal", _frame(Color("244b2c"), Color("7a9e45"), 2, 8))
+		button.add_theme_stylebox_override("hover", _frame(Color("356538"), Color("b5cf73"), 2, 8))
+		button.pressed.connect(_perform.bind(action))
+		primary.add_child(button)
+		action_buttons[action] = button
+	var secondary := HBoxContainer.new()
+	secondary.add_theme_constant_override("separation", 6)
+	column.add_child(secondary)
+	for entry: Array in [["store", "GUARDAR NO BAÚ"], ["drop_item", "SOLTAR"]]:
+		var action: String = str(entry[0])
+		var button := _button(str(entry[1]))
+		button.name = "Action_" + action
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.add_theme_font_size_override("font_size", 11)
+		button.pressed.connect(_perform.bind(action))
+		secondary.add_child(button)
+		action_buttons[action] = button
+	column.add_child(_text("Duplo clique para equipar ou desequipar.", 10, MUTED))
+
+func _build_footer(parent: VBoxContainer) -> void:
+	var footer := HBoxContainer.new()
+	footer.custom_minimum_size.y = 28
+	footer.add_theme_constant_override("separation", 12)
+	parent.add_child(footer)
+	var motto := _text("Grandes jornadas começam com pequenos itens.", 12, MUTED)
+	motto.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	footer.add_child(motto)
+	for entry: Array in [[state.coins / 10000, Color("e8b653"), "Ouro"], [(state.coins / 100) % 100, Color("c4ced0"), "Prata"], [state.coins % 100, Color("bb7946"), "Bronze"]]:
+		var coin := _text("●", 23, entry[1])
+		coin.tooltip_text = str(entry[2])
+		footer.add_child(coin)
+		var value := _text(str(entry[0]), 17, CREAM)
+		value.tooltip_text = str(entry[2])
+		footer.add_child(value)
 
 func _slot(item_id: String, quantity: int, equip_slot: String, side: int) -> Button:
-	var button: Button = Button.new()
+	var button := Button.new()
 	button.custom_minimum_size = Vector2(side, side)
 	button.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	button.clip_contents = true
-	button.add_theme_stylebox_override("normal", _frame(Color("251a11"), Color("8c6b43")))
-	button.add_theme_stylebox_override("hover", _frame(Color("392916"), BRIGHT))
-	button.add_theme_stylebox_override("pressed", _frame(Color("453116"), BRIGHT, 3))
-	button.add_theme_stylebox_override("focus", _frame(Color(0, 0, 0, 0), BRIGHT, 2))
-	button.add_theme_stylebox_override("disabled", _frame(Color("1c1510"), Color("5f4931")))
+	button.add_theme_stylebox_override("normal", _frame(Color("151b17"), Color("665d49"), 2, 0))
+	button.add_theme_stylebox_override("hover", _frame(Color("303126"), BRIGHT, 2, 0))
+	button.add_theme_stylebox_override("pressed", _frame(Color("393723"), BRIGHT, 3, 0))
+	button.add_theme_stylebox_override("focus", _frame(Color.TRANSPARENT, BRIGHT, 2, 0))
+	button.add_theme_stylebox_override("disabled", _frame(Color("101611"), Color("3d4337"), 2, 0))
 	if not item_id.is_empty():
 		var data: Dictionary = GameData.item(item_id)
 		button.tooltip_text = "%s\n%s\nPeso: %s kg" % [data.get("name", item_id), data.get("desc", ""), _decimal(float(data.get("weight", 0)))]
@@ -290,16 +439,16 @@ func _slot(item_id: String, quantity: int, equip_slot: String, side: int) -> But
 	var icon: Control = Icon.new()
 	icon.item_id = item_id
 	icon.class_id = state.class_id
-	icon.empty_slot = equip_slot
-	icon.background_padding = Vector2(4, 3)
+	icon.empty_slot = "" if equip_slot == "aura" else equip_slot
+	icon.background_padding = Vector2(3, 3)
 	button.add_child(icon)
 	icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	icon.offset_left = 6
+	icon.offset_left = 5
 	icon.offset_top = 5
-	icon.offset_right = -6
+	icon.offset_right = -5
 	icon.offset_bottom = -5
 	if quantity > 0:
-		var count: Label = _text("×%d" % quantity, 11, CREAM)
+		var count := _text(str(quantity), 15, CREAM)
 		count.add_theme_color_override("font_shadow_color", Color.BLACK)
 		count.add_theme_constant_override("shadow_offset_x", 2)
 		count.add_theme_constant_override("shadow_offset_y", 2)
@@ -308,7 +457,7 @@ func _slot(item_id: String, quantity: int, equip_slot: String, side: int) -> But
 		count.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		button.add_child(count)
 		count.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		count.offset_right = -4
+		count.offset_right = -5
 		count.offset_bottom = -2
 	return button
 
@@ -321,9 +470,7 @@ func _on_slot_gui_input(event: InputEvent, item_id: String, equip_slot: String, 
 		return
 	button.accept_event()
 	_select(item_id, equip_slot)
-	# Aguarda o fim do evento: equipar reconstrói o painel e libera o botão atual.
 	_activate_equipment_slot.call_deferred(item_id, equip_slot)
-
 
 func _activate_equipment_slot(item_id: String, equip_slot: String) -> void:
 	if equip_slot.is_empty():
@@ -331,10 +478,6 @@ func _activate_equipment_slot(item_id: String, equip_slot: String) -> void:
 			action_requested.emit("equip", {"id": item_id})
 	elif str(state.equipment.get(equip_slot, {}).get("id", "")) == item_id:
 		action_requested.emit("unequip", {"slot": equip_slot})
-
-
-func _button(caption: String) -> Button:
-	return PanelTheme.button(caption)
 
 func _select(item_id: String, equip_slot: String) -> void:
 	selected_id = item_id
@@ -345,48 +488,64 @@ func _update_selection() -> void:
 	for key: String in slot_buttons:
 		var button: Button = slot_buttons[key]
 		var selected: bool = key == ("bag:" + selected_id if selected_slot.is_empty() else "equip:" + selected_slot)
-		button.add_theme_stylebox_override("normal", _frame(Color("443017") if selected else Color("251a11"), BRIGHT if selected else Color("8c6b43"), 3 if selected else 2))
+		var hero_slot: bool = key == "equip:aura"
+		button.add_theme_stylebox_override("normal", _frame(Color("44391f") if selected else (Color("292519") if hero_slot else Color("151b17")), BRIGHT if selected else (GOLD if hero_slot else Color("665d49")), 3 if selected else 2, 0))
 	var item: Dictionary = GameData.item(selected_id) if not selected_id.is_empty() else {}
 	var in_bag: bool = selected_slot.is_empty() and state.count_item(selected_id) > 0
-	var item_type: String = str(item.get("type", ""))
-	action_buttons["equip"].disabled = not (in_bag and item_type in PlayerState.EQUIP_SLOTS)
+	var kind: String = str(item.get("type", ""))
+	action_buttons["equip"].disabled = not (in_bag and kind in PlayerState.EQUIP_SLOTS)
 	action_buttons["unequip"].disabled = selected_slot.is_empty() or selected_id.is_empty()
-	action_buttons["use_item"].disabled = not (in_bag and item_type == "consumivel")
+	action_buttons["use_item"].disabled = not (in_bag and kind == "consumivel")
 	action_buttons["store"].disabled = not in_bag
 	action_buttons["drop_item"].disabled = not in_bag
+	action_buttons["equip"].visible = kind in PlayerState.EQUIP_SLOTS and selected_slot.is_empty()
+	action_buttons["unequip"].visible = not selected_slot.is_empty() and not selected_id.is_empty()
+	action_buttons["use_item"].visible = kind == "consumivel"
 	detail_icon.item_id = selected_id
-	detail_icon.empty_slot = selected_slot
-	detail_icon.queue_redraw()
+	detail_icon.empty_slot = ""
 	if item.is_empty():
-		detail_title.text = "Selecione um item"
-		detail_description.text = "Escolha um espaço na mochila ou um equipamento."
+		detail_title.text = "Slot Hero" if selected_slot == "aura" else "Selecione um item"
+		detail_description.text = "Equipe o item Hero aqui para ativar seu visual cosmético." if selected_slot == "aura" else "Escolha um item da mochila ou um equipamento para ver seus detalhes."
+		detail_grade.text = "Visual cosmético" if selected_slot == "aura" else ""
+		detail_type.text = "Visual Hero" if selected_slot == "aura" else "—"
+		detail_weight.text = "—"
+		detail_value.text = "—"
+		detail_properties.text = "Sem bônus de atributos." if selected_slot == "aura" else ""
 		return
-	var quantity: String = " ×%d" % state.count_item(selected_id) if in_bag else ""
-	detail_title.text = str(item.get("name", selected_id)) + quantity
+	detail_title.text = str(item.get("name", selected_id))
 	detail_title.tooltip_text = detail_title.text
+	detail_grade.text = ("Visual cosmético" if kind == "aura" else "Grau " + str(item.get("grade", "NG"))) + (" · %d na mochila" % state.count_item(selected_id) if in_bag else " · Equipado")
+	detail_description.text = str(item.get("desc", ""))
+	detail_description.tooltip_text = detail_description.text
+	detail_type.text = str(TYPE_NAMES.get(kind, kind.capitalize()))
+	detail_weight.text = _decimal(float(item.get("weight", 0))) + " kg"
+	detail_value.text = _money(int(item.get("value", 0)))
 	var properties: Array[String] = []
-	for property in [["damage", "+%d dano"], ["defense", "+%d defesa"], ["hp", "+%d HP"]]:
+	for property: Array in [["damage", "+%d ataque"], ["defense", "+%d defesa"], ["hp", "+%d vida"]]:
 		if item.has(property[0]):
 			properties.append(property[1] % int(item[property[0]]))
 	if item.has("crit"):
 		properties.append("+%d%% crítico" % int(float(item["crit"]) * 100))
-	var suffix: String = " · ".join(properties)
-	detail_description.text = str(item.get("desc", "")) + ("\n" + suffix if not suffix.is_empty() else "")
-	if not selected_slot.is_empty():
+	if not selected_slot.is_empty() and selected_slot != "aura":
 		var entry: Dictionary = state.equipment[selected_slot]
-		detail_description.text += "\nDurabilidade: %d%%" % int(100 * float(entry["durability"]) / maxf(1, float(entry["max"])))
-	detail_description.tooltip_text = detail_description.text
+		properties.append("Durabilidade: %d%%" % int(100 * float(entry.get("durability", 0)) / maxf(1, float(entry.get("max", 100)))))
+	detail_properties.text = " · ".join(properties) if not properties.is_empty() else ("Sem bônus de atributos." if kind == "aura" else "Cada item conta na sua jornada.")
+	detail_properties.tooltip_text = detail_properties.text
 
 func _perform(action: String) -> void:
 	if action_buttons[action].disabled:
 		return
-	if action == "unequip":
-		action_requested.emit(action, {"slot": selected_slot})
-	else:
-		action_requested.emit(action, {"id": selected_id})
+	action_requested.emit(action, {"slot": selected_slot} if action == "unequip" else {"id": selected_id})
 
 func _restore_scroll() -> void:
 	bag_scroll.scroll_vertical = scroll_position
 
 func _decimal(value: float) -> String:
 	return ("%.1f" % value).replace(".", ",")
+
+func _money(value: int) -> String:
+	var parts: Array[String] = []
+	if value >= 10000: parts.append("%d ouro" % (value / 10000))
+	if value >= 100 and (value / 100) % 100 > 0: parts.append("%d prata" % ((value / 100) % 100))
+	if value % 100 > 0 or parts.is_empty(): parts.append("%d bronze" % (value % 100))
+	return " · ".join(parts)

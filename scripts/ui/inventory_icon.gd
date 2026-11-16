@@ -6,12 +6,6 @@ const Catalog = preload("res://scripts/ui/item_catalog.gd")
 var item_id: String = "":
 	set(value):
 		item_id = value
-		if item_id == "hero":
-			var glow := ShaderMaterial.new()
-			glow.shader = preload("res://shaders/hero_aura.gdshader")
-			material = glow
-		else:
-			material = null
 		queue_redraw()
 var class_id: String = "guerreiro":
 	set(value):
