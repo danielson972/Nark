@@ -9,6 +9,15 @@ const EQUIP_SLOTS: = ["arma", "armadura", "joia", "aura"]
 var hero_name: = "Herói"
 var race_id: = "humano"
 var class_id: = "guerreiro"
+var hair_style: int = 0
+var hair_color: String = "castanho"
+var gender_id: String = "masculino"
+
+func set_hair(style: int, color_id: String, notify: bool = true) -> void:
+	hair_style = clampi(style, 0, 16)
+	hair_color = color_id if color_id in ["castanho", "preto", "ruivo", "loiro", "branco", "azul", "roxo"] else "castanho"
+	if notify:
+		equipment_changed.emit()
 var level: = 1
 var xp: = 0
 var fame: = 0.0
@@ -425,6 +434,8 @@ func accepts_contract(contract_id: String) -> bool:
 func to_dict() -> Dictionary:
 	return {
 		"hero_name": hero_name, "race_id": race_id, "class_id": class_id, 
+		"hair_style": hair_style, "hair_color": hair_color,
+		"gender_id": gender_id,
 		"level": level, "xp": xp, "fame": fame, "coins": coins, 
 		"hp": hp, "mp": mp, "energy": energy, 
 		"skill_levels": skill_levels.duplicate(true), "evolutions": evolutions.duplicate(true), 
@@ -440,6 +451,8 @@ func from_dict(data: Dictionary) -> void :
 	hero_name = str(data.get("hero_name", "Herói"))
 	race_id = str(data.get("race_id", "humano"))
 	class_id = str(data.get("class_id", "guerreiro"))
+	set_hair(int(data.get("hair_style", 0)), str(data.get("hair_color", "castanho")), false)
+	gender_id = "feminino" if str(data.get("gender_id", "masculino")) == "feminino" else "masculino"
 	level = int(data.get("level", 1))
 	xp = int(data.get("xp", 0))
 	fame = float(data.get("fame", 0.0))

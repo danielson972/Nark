@@ -30,7 +30,7 @@ func _run() -> void:
 				_wear(game.state, "arma", weapon)
 				# Changing equipment updates visuals immediately via the state signal.
 				var frame: AtlasTexture = hero.sprite.texture
-				assert(frame == Appearance.frame(class_id, Appearance.outfit_column(armor)))
+				assert(frame == Appearance.body_texture(game.state))
 				assert(hero.weapon_sprite.visible == not weapon.is_empty())
 				assert(hero.grip_hand_sprite.visible == (not weapon.is_empty()))
 				if hero.grip_hand_sprite.visible:
@@ -63,11 +63,11 @@ func _run() -> void:
 		game._on_panel_action("unequip", {"slot": "arma"})
 		assert(not hero.weapon_sprite.visible)
 		game._on_panel_action("unequip", {"slot": "armadura"})
-		assert(hero.sprite.texture == Appearance.frame(class_id, 0))
+		assert(hero.sprite.texture == Appearance.Custom.bald_body("humano"))
 		game._on_panel_action("equip", {"id": "roupa_basica"})
 		game._on_panel_action("equip", {"id": "arma_basica"})
 		assert(hero.weapon_sprite.visible)
-		assert(hero.sprite.texture == Appearance.frame(class_id, 1))
+		assert(hero.sprite.texture == Appearance.Custom.bald_body("humano"))
 		await process_frame
 	# An old save with the old starter IDs retains its equipment and renders it.
 	_wear(game.state, "armadura", "armadura_ng")
@@ -75,7 +75,7 @@ func _run() -> void:
 	var legacy: PlayerState = PlayerState.new()
 	legacy.from_dict(game.state.to_dict())
 	assert(legacy.equipment["armadura"]["id"] == "armadura_ng")
-	assert(Appearance.body_texture(legacy) == Appearance.frame(legacy.class_id, 2))
+	assert(Appearance.body_texture(legacy) == Appearance.human_frame(legacy.class_id, 2))
 	game.state.class_id = "guerreiro"
 	_wear(game.state, "armadura", "roupa_basica")
 	_wear(game.state, "arma", "arma_basica")

@@ -60,6 +60,8 @@ func _ready() -> void:
 	_restore_scroll.call_deferred()
 
 func _fit() -> void:
+	if not is_inside_tree() or is_queued_for_deletion() or get_parent() == null:
+		return
 	var available: Vector2 = get_parent().size
 	size = DESIGN_SIZE.max(get_combined_minimum_size())
 	var factor: float = minf(1.0, minf((available.x - 24.0) / size.x, (available.y - 24.0) / size.y))

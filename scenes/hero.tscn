@@ -1,24 +1,24 @@
 [gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/actors/hero.gd" id="1_hero"]
-[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/compartilhados/equipamentos/hero_equipment_atlas.png" id="2_atlas"]
+[ext_resource type="Texture2D" path="res://assets/game/character_builder/bald_races.png" id="2_atlas"]
 [ext_resource type="Script" path="res://scripts/actors/colossal_weapon_effect.gd" id="3_effect"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_preview"]
 atlas = ExtResource("2_atlas")
-region = Rect2(181, 362, 181, 181)
+region = Rect2(0, 0, 256, 512)
 
 [node name="Hero" type="Sprite2D"]
 script = ExtResource("1_hero")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 2
-scale = Vector2(0.5407194, 0.5407194)
+texture_filter = 1
+scale = Vector2(0.19115692, 0.19115692)
 texture = SubResource("AtlasTexture_preview")
-offset = Vector2(0, -86.88)
+offset = Vector2(0, -245.76)
 
 [node name="ArmaEquipada" type="Sprite2D" parent="Sprite2D"]
-texture_filter = 2
+texture_filter = 1
 z_index = 1
 
 [node name="EnergiaDoColosso" type="Node2D" parent="Sprite2D/ArmaEquipada"]
@@ -26,10 +26,10 @@ visible = false
 script = ExtResource("3_effect")
 
 [node name="MaoSobreEmpunhadura" type="Sprite2D" parent="Sprite2D"]
-texture_filter = 2
+texture_filter = 1
 z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.65, 0.65)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0

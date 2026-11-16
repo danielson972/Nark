@@ -114,6 +114,8 @@ func _unhandled_input(event: InputEvent) -> void :
 
 func _on_new_game(race_id: String, class_id: String, hero_name: String) -> void :
 	state = PlayerState.create(hero_name, race_id, class_id)
+	state.gender_id = ui.creation_gender_id
+	state.set_hair(ui.creation_hair_style, ui.creation_hair_color)
 	world_flags = {}
 	_start_world()
 	ui.toast("Bem-vindo, %s. A estÃ¡tua guarda seu progresso." % state.hero_name, UiKit.GOLD)

@@ -9,6 +9,7 @@ var colossal_effect: Node2D
 var aura_effect: Sprite2D
 var appearance_key: String = ""
 var visual_height: float = 92.0
+var character_parts: Node2D
 var walk_phase: float = 0.0
 var animation_clock: float = 0.0
 
@@ -77,22 +78,26 @@ func setup(world_ref: Node, _texture_path: String, target_height: float = 92.0) 
 	# The old sprites contain baked-in weapons/armor and must never be the base.
 	super.setup(world_ref, "", target_height)
 	visual_height = target_height
+	if character_parts == null:
+		character_parts = preload("res://scripts/actors/character_parts.gd").new()
+		character_parts.name = "AparenciaModular"
+		sprite.add_child(character_parts)
 	weapon_sprite = sprite.get_node_or_null("ArmaEquipada") as Sprite2D
 	if weapon_sprite == null:
 		weapon_sprite = Sprite2D.new()
 		weapon_sprite.name = "ArmaEquipada"
 		sprite.add_child(weapon_sprite)
 	weapon_sprite.z_index = 1
-	weapon_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	weapon_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	weapon_sprite.material = Appearance.cutout_material()
-	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	grip_hand_sprite = sprite.get_node_or_null("MaoSobreEmpunhadura") as Sprite2D
 	if grip_hand_sprite == null:
 		grip_hand_sprite = Sprite2D.new()
 		grip_hand_sprite.name = "MaoSobreEmpunhadura"
 		sprite.add_child(grip_hand_sprite)
 	grip_hand_sprite.z_index = 2
-	grip_hand_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	grip_hand_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	colossal_effect = weapon_sprite.get_node_or_null("EnergiaDoColosso") as Node2D
 	if colossal_effect == null:
 		colossal_effect = preload("res://scripts/actors/colossal_weapon_effect.gd").new()
@@ -111,17 +116,20 @@ func refresh_appearance() -> void:
 		return
 	var armor_id: String = str(state.equipment.get("armadura", {}).get("id", ""))
 	var weapon_id: String = str(state.equipment.get("arma", {}).get("id", ""))
-	appearance_key = "%s:%s:%s" % [state.class_id, armor_id, weapon_id]
+	appearance_key = "%s:%s:%s:%s" % [state.race_id, state.class_id, armor_id, weapon_id]
 	sprite.texture = Appearance.body_texture(state)
+	sprite.material = Appearance.body_material(state)
+	grip_hand_sprite.material = sprite.material
 	var body_size: Vector2 = sprite.texture.get_size()
 	# O brilho acompanha o torso e os movimentos do corpo em todas as classes e raças.
 	if aura_effect != null:
 		aura_effect.visible = str(state.equipment.get("aura", {}).get("id", "")) == "hero"
 		aura_effect.scale = Vector2.ONE * body_size.y * 0.95 / 362.0
 		aura_effect._sync_layers()
-	base_scale = visual_height / (body_size.y * (Appearance.FOOT_Y - Appearance.HEAD_Y))
+	base_scale = visual_height * (0.85 if state.race_id == "anao" else 1.0) / (body_size.y * (Appearance.FOOT_Y - Appearance.HEAD_Y))
 	sprite.scale = Vector2.ONE * base_scale
 	sprite.offset = Vector2(0, (0.5 - Appearance.FOOT_Y) * body_size.y)
+	_update_character_parts()
 	weapon_sprite.visible = not weapon_id.is_empty()
 	weapon_sprite.texture = null if weapon_id.is_empty() else ItemArt.texture_for(weapon_id, state.class_id)
 	grip_hand_sprite.visible = not weapon_id.is_empty()
@@ -135,6 +143,7 @@ func refresh_appearance() -> void:
 
 
 func _update_equipment_pose() -> void:
+	_update_character_parts()
 	if weapon_sprite == null or weapon_sprite.texture == null:
 		return
 	var mirror: float = -1.0 if sprite.flip_h else 1.0
@@ -203,7 +212,8 @@ func _update_hero_animation(delta: float) -> void:
 		walk_phase = fposmod(walk_phase + delta * cadence, TAU)
 	var direction: Vector2 = facing.normalized() if facing.length_squared() > 0.001 else Vector2.DOWN
 	if absf(direction.x) > 0.12:
-		sprite.flip_h = direction.x < 0.0
+		# A arte humana enviada olha à esquerda; as artes antigas olham à direita.
+		sprite.flip_h = direction.x > 0.0
 	else:
 		sprite.flip_h = false
 	var step_wave: float = sin(walk_phase)
@@ -220,6 +230,11 @@ func _update_hero_animation(delta: float) -> void:
 	var squash: float = absf(step_wave) * 0.018 if moving else 0.0
 	squash += attack_amount * 0.008
 	sprite.scale = Vector2(base_scale * (1.0 + squash), base_scale * (1.0 - squash))
+	_update_character_parts()
+
+func _update_character_parts() -> void:
+	if character_parts != null and state != null and sprite.texture != null:
+		character_parts.configure(state, Vector2(-128, -512 * Appearance.FOOT_Y), Vector2.ONE, sprite.flip_h)
 
 
 func _tick_timers(delta: float) -> void :

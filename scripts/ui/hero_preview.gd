@@ -6,10 +6,11 @@ const ItemArt = preload("res://scripts/ui/item_catalog.gd")
 var state: PlayerState
 var held_weapon: Sprite2D
 var held_hand: Sprite2D
+var character_parts: Node2D
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	material = Appearance.cutout_material()
 	held_weapon = Sprite2D.new()
 	held_weapon.centered = false
@@ -19,6 +20,8 @@ func _ready() -> void:
 	held_hand.centered = false
 	held_hand.z_index = 2
 	add_child(held_hand)
+	character_parts = preload("res://scripts/actors/character_parts.gd").new()
+	add_child(character_parts)
 	resized.connect(queue_redraw)
 	if state != null:
 		state.equipment_changed.connect(queue_redraw)
@@ -27,11 +30,17 @@ func _draw() -> void:
 	if state == null:
 		return
 	var body: Texture2D = Appearance.body_texture(state)
+	var body_material: ShaderMaterial = Appearance.body_material(state)
+	if material != body_material:
+		material = body_material
+	held_hand.material = body_material
 	var source_size: Vector2 = body.get_size()
 	var factor: float = minf(size.x / (source_size.x * 1.15), size.y / source_size.y)
+	factor *= 0.85 if state.race_id == "anao" else 1.0
 	var destination_size: Vector2 = source_size * factor
 	var origin: Vector2 = (size - destination_size) * 0.5
 	draw_texture_rect(body, Rect2(origin, destination_size), false)
+	character_parts.configure(state, origin, Vector2.ONE * factor)
 	var weapon_id: String = str(state.equipment.get("arma", {}).get("id", ""))
 	held_weapon.visible = not weapon_id.is_empty()
 	held_hand.visible = not weapon_id.is_empty()

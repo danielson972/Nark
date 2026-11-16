@@ -20,7 +20,7 @@ func setup(hero_ref: Hero) -> void:
 	hframes = 6
 	vframes = 2
 	z_index = 4
-	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	var glow := ShaderMaterial.new()
 	glow.shader = preload("res://shaders/hero_aura_orbit.gdshader")
 	material = glow
@@ -49,6 +49,8 @@ func _sync_layers() -> void:
 	if hero != null and hero.sprite != null and hero.sprite.texture != null and hero.state != null:
 		var body_size: Vector2 = hero.sprite.texture.get_size()
 		var torso: Vector2 = TORSO_CENTERS.get(hero.state.class_id, Vector2(0.52, 0.41))
+		if hero.state.race_id == "humano":
+			torso = Vector2(0.5, 0.32)
 		var mirror: float = -1.0 if hero.sprite.flip_h else 1.0
 		position = Vector2((torso.x - 0.5) * body_size.x * mirror, (torso.y - hero.Appearance.FOOT_Y) * body_size.y)
 	back_sprite.visible = visible

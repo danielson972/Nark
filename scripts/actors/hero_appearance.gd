@@ -2,6 +2,9 @@ extends RefCounted
 ## Full-body outfit frames and independent hand-held equipment.
 
 const ATLAS_PATH = "res://assets/game/sprites/herois/compartilhados/equipamentos/hero_equipment_atlas.png"
+const HUMAN_ATLAS_PATH = "res://assets/game/sprites/herois/humano/human_equipment_atlas_vibrant.png"
+const Custom = preload("res://scripts/actors/character_customization.gd")
+const HUMAN_GRID = Vector2i(6, 6)
 const GRID = Vector2i(8, 6)
 const CUTOUT_SHADER = preload("res://shaders/equipment_cutout.gdshader")
 const CLASS_ROWS = {
@@ -47,16 +50,32 @@ const CLASS_WEAPON_HEIGHTS = {
 	"assassino": 0.42, "tank": 0.52, "cavaleiro": 0.54,
 }
 static var atlas: Texture2D
+static var human_atlas: Texture2D
+static var human_frames: Dictionary = {}
 static var frames: Dictionary = {}
 static var hand_frames: Dictionary = {}
 static var cutout: ShaderMaterial
 static var weapon_materials: Dictionary = {}
+static var body_materials: Dictionary = {}
 
 static func cutout_material() -> ShaderMaterial:
 	if cutout == null:
 		cutout = ShaderMaterial.new()
 		cutout.shader = CUTOUT_SHADER
 	return cutout
+
+static func body_material(state: PlayerState) -> ShaderMaterial:
+	var key: String = "%s:%s:%s:%s" % [state.race_id, state.gender_id, state.class_id, state.equipment.get("armadura", {}).get("id", "")]
+	if not body_materials.has(key):
+		var result := ShaderMaterial.new()
+		result.shader = CUTOUT_SHADER
+		var body := body_texture(state)
+		var texture_size: Vector2 = body.atlas.get_size()
+		result.set_shader_parameter("texture_region", Vector4(body.region.position.x / texture_size.x, body.region.position.y / texture_size.y, body.region.size.x / texture_size.x, body.region.size.y / texture_size.y))
+		result.set_shader_parameter("head_cutoff", 0.22 if Custom.armored(state) else 0.0)
+		result.set_shader_parameter("orc_skin", state.race_id == "orc" and Custom.armored(state))
+		body_materials[key] = result
+	return body_materials[key]
 
 static func weapon_material(state: PlayerState, texture: AtlasTexture) -> ShaderMaterial:
 	var item_id: String = str(state.equipment.get("arma", {}).get("id", ""))
@@ -95,25 +114,43 @@ static func frame(class_id: String, column: int) -> AtlasTexture:
 
 static func body_texture(state: PlayerState) -> AtlasTexture:
 	var armor_id: String = str(state.equipment.get("armadura", {}).get("id", ""))
-	return frame(state.class_id, outfit_column(armor_id))
+	if not Custom.armored(state):
+		return Custom.bald_body(state.race_id, state.gender_id)
+	return human_frame(state.class_id, outfit_column(armor_id))
+
+static func human_frame(class_id: String, column: int) -> AtlasTexture:
+	var key := Vector2i(clampi(column, 0, 5), int(CLASS_ROWS.get(class_id, 2)))
+	if not human_frames.has(key):
+		if human_atlas == null:
+			human_atlas = load(HUMAN_ATLAS_PATH)
+		var texture := AtlasTexture.new()
+		texture.atlas = human_atlas
+		var cell_size: Vector2 = human_atlas.get_size() / Vector2(HUMAN_GRID)
+		texture.region = Rect2(Vector2(key) * cell_size, cell_size)
+		texture.filter_clip = true
+		human_frames[key] = texture
+	return human_frames[key]
 
 static func hand_position(state: PlayerState) -> Vector2:
-	if state.class_id == "guerreiro":
-		var armor_id: String = str(state.equipment.get("armadura", {}).get("id", ""))
-		return SWORD_HANDS[outfit_column(armor_id)]
-	return CLASS_HANDS.get(state.class_id, HAND)
+	if not Custom.armored(state):
+		if state.gender_id == "feminino":
+			return {"humano": Vector2(0.17, 0.55), "elfo": Vector2(0.20, 0.55), "orc": Vector2(0.13, 0.55), "anao": Vector2(0.14, 0.56)}.get(state.race_id, Vector2(0.20, 0.535))
+		return {"humano": Vector2(0.17, 0.55), "elfo": Vector2(0.19, 0.55), "orc": Vector2(0.12, 0.57), "anao": Vector2(0.13, 0.65)}.get(state.race_id, Vector2(0.20, 0.535))
+	return {"atirador": Vector2(0.23, 0.54), "mago": Vector2(0.23, 0.55), "guerreiro": Vector2(0.23, 0.53), "assassino": Vector2(0.23, 0.54), "tank": Vector2(0.235, 0.535), "cavaleiro": Vector2(0.235, 0.55)}.get(state.class_id, Vector2(0.23, 0.54))
 
 static func hand_rect(state: PlayerState) -> Rect2:
 	# Reuse only the existing fingers/wrist, with their original transparency.
+	if state.race_id == "humano":
+		return Rect2(hand_position(state) - Vector2(0.04, 0.027), Vector2(0.08, 0.054))
 	return Rect2(hand_position(state) - Vector2(0.038, 0.043), Vector2(0.076, 0.086))
 
 static func hand_texture(state: PlayerState) -> AtlasTexture:
 	var body: AtlasTexture = body_texture(state)
-	var key: Rect2 = body.region
+	var rect: Rect2 = hand_rect(state)
+	var key: String = body.atlas.resource_path + ":" + str(body.region) + ":" + str(rect)
 	if not hand_frames.has(key):
 		var patch: AtlasTexture = AtlasTexture.new()
 		patch.atlas = body.atlas
-		var rect: Rect2 = hand_rect(state)
 		patch.region = Rect2(body.region.position + rect.position * body.region.size, rect.size * body.region.size)
 		patch.filter_clip = true
 		hand_frames[key] = patch

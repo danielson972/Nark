@@ -39,6 +39,9 @@ var hotbar_slots: Array = []
 var minimap: Control
 var creation_race: = "humano"
 var creation_class: = "guerreiro"
+var creation_hair_style: int = 0
+var creation_hair_color: String = "castanho"
+var creation_gender_id: String = "masculino"
 var creation_preview: VBoxContainer
 var name_input: LineEdit
 var rebind_action: = ""
@@ -445,183 +448,24 @@ func show_title(has_save: bool) -> void :
 
 
 
-func show_creation() -> void :
+func show_creation() -> void:
 	_clear_overlay()
 	hud.visible = false
-	var background: = ColorRect.new()
-	background.color = Color(0.04, 0.04, 0.055, 1.0)
-	background.set_anchors_preset(Control.PRESET_FULL_RECT)
-	overlay.add_child(background)
+	var assembly = preload("res://scenes/character_creation.tscn").instantiate()
+	assembly.race_id = creation_race
+	assembly.class_id = creation_class
+	assembly.submitted.connect(_submit_assembled_character)
+	assembly.back_requested.connect(func(): show_title(SaveGame.has_save()))
+	overlay.add_child(assembly)
 
-	var margin: = MarginContainer.new()
-	margin.set_anchors_preset(Control.PRESET_FULL_RECT)
-	margin.add_theme_constant_override("margin_left", 40)
-	margin.add_theme_constant_override("margin_right", 40)
-	margin.add_theme_constant_override("margin_top", 26)
-	margin.add_theme_constant_override("margin_bottom", 26)
-	overlay.add_child(margin)
-
-	var column: = VBoxContainer.new()
-	column.add_theme_constant_override("separation", 12)
-	margin.add_child(column)
-
-	var header: = HBoxContainer.new()
-	header.add_theme_constant_override("separation", 20)
-	column.add_child(header)
-	header.add_child(UiKit.title("Criação de Personagem", 38))
-	var back: = UiKit.button("Voltar", Vector2(120, 34))
-	back.pressed.connect(show_title.bind(SaveGame.has_save()))
-	header.add_child(back)
-
-	var body: = HBoxContainer.new()
-	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	body.add_theme_constant_override("separation", 18)
-	column.add_child(body)
-
-
-	var race_panel: = UiKit.panel()
-	race_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	body.add_child(race_panel)
-	var race_box: = VBoxContainer.new()
-	race_box.add_theme_constant_override("separation", 8)
-	race_panel.add_child(race_box)
-	race_box.add_child(UiKit.title("Raça", 24))
-	for race_id: String in GameData.RACE_ORDER:
-		var race: Dictionary = GameData.RACES[race_id]
-		var button: = UiKit.button(str(race["name"]), Vector2(0, 38), race_id == creation_race)
-		button.pressed.connect(_select_race.bind(race_id))
-		race_box.add_child(button)
-		var info: = UiKit.label(str(race["bonus"]), 12, UiKit.MUTED)
-		info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		race_box.add_child(info)
-	race_box.add_child(UiKit.spacer(6))
-	var name_caption: = UiKit.label("Nome do herói", 14, UiKit.GOLD)
-	race_box.add_child(name_caption)
-	name_input = LineEdit.new()
-	name_input.text = "Aurora" if name_input == null else name_input.text
-	name_input.max_length = 14
-	name_input.custom_minimum_size = Vector2(0, 40)
-	name_input.add_theme_font_size_override("font_size", 16)
-	name_input.add_theme_color_override("font_color", UiKit.PARCHMENT)
-	name_input.add_theme_color_override("font_placeholder_color", Color(0.55, 0.5, 0.42))
-	name_input.add_theme_color_override("caret_color", UiKit.GOLD)
-	name_input.placeholder_text = "Aurora"
-	var field: = StyleBoxFlat.new()
-	field.bg_color = Color(0.08, 0.07, 0.06, 0.95)
-	field.border_color = UiKit.GOLD_SOFT
-	field.set_border_width_all(1)
-	field.set_corner_radius_all(4)
-	field.content_margin_left = 10
-	field.content_margin_right = 10
-	name_input.add_theme_stylebox_override("normal", field)
-	var field_focus: = field.duplicate() as StyleBoxFlat
-	field_focus.border_color = UiKit.GOLD
-	name_input.add_theme_stylebox_override("focus", field_focus)
-	race_box.add_child(name_input)
-
-
-	var class_panel: = UiKit.panel()
-	class_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	class_panel.size_flags_stretch_ratio = 1.6
-	body.add_child(class_panel)
-	var class_box: = VBoxContainer.new()
-	class_box.add_theme_constant_override("separation", 6)
-	class_panel.add_child(class_box)
-	class_box.add_child(UiKit.title("Classe", 24))
-	var grid: = GridContainer.new()
-	grid.columns = 2
-	grid.add_theme_constant_override("h_separation", 8)
-	grid.add_theme_constant_override("v_separation", 6)
-	class_box.add_child(grid)
-	for class_id: String in GameData.CLASS_ORDER:
-		var data: Dictionary = GameData.CLASSES[class_id]
-		var button: = UiKit.button(str(data["name"]), Vector2(0, 36), class_id == creation_class)
-		button.pressed.connect(_select_class.bind(class_id))
-		grid.add_child(button)
-
-	creation_preview = VBoxContainer.new()
-	creation_preview.add_theme_constant_override("separation", 4)
-	class_box.add_child(creation_preview)
-
-
-	var start_row: = HBoxContainer.new()
-	start_row.add_theme_constant_override("separation", 16)
-	column.add_child(start_row)
-	var start_button: = UiKit.button("Entrar no Reino", Vector2(280, 48), true)
-	start_button.pressed.connect(_submit_creation)
-	start_row.add_child(start_button)
-	var hint: = UiKit.label("Dica: atacar pelas costas aumenta o dano. Use esquiva e dash para flanquear.", 13, UiKit.MUTED)
-	start_row.add_child(hint)
-	_refresh_creation_preview()
-
-
-func _select_race(race_id: String) -> void :
+func _submit_assembled_character(race_id: String, class_id: String, hero_name: String, hair_style: int, hair_color: String, gender_id: String) -> void:
 	creation_race = race_id
-	show_creation()
-
-
-func _select_class(class_id: String) -> void :
 	creation_class = class_id
-	show_creation()
-
-
-func _refresh_creation_preview() -> void :
-	for child in creation_preview.get_children():
-		child.queue_free()
-	var data: Dictionary = GameData.CLASSES[creation_class]
-	var race: Dictionary = GameData.RACES[creation_race]
-	creation_preview.add_child(UiKit.divider())
-	var preview_row: = HBoxContainer.new()
-	preview_row.add_theme_constant_override("separation", 14)
-	creation_preview.add_child(preview_row)
-	var portrait = preload("res://scripts/ui/hero_preview.gd").new()
-	portrait.state = PlayerState.create("Aprendiz", creation_race, creation_class)
-	portrait.custom_minimum_size = Vector2(104, 132)
-	preview_row.add_child(portrait)
-	var text_column: = VBoxContainer.new()
-	text_column.add_theme_constant_override("separation", 3)
-	preview_row.add_child(text_column)
-	text_column.add_child(UiKit.label("%s — %s" % [str(data["name"]), str(data["role"])], 15, UiKit.GOLD))
-	var description: = UiKit.label(str(data["desc"]), 13, UiKit.MUTED)
-	description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	description.custom_minimum_size = Vector2(420, 0)
-	text_column.add_child(description)
-	var base: Dictionary = data["base"]
-	var hp_value: = float(base["hp"]) + float(race["hp"])
-	text_column.add_child(UiKit.label(
-		"HP %d   Mana %d   Energia %d   Dano %d   Defesa %d   Crítico %d%%" % [
-			int(hp_value), int(base["mp"]), int(round(float(base["energy"]) * Balance.ENERGY_BASE_MULTIPLIER)), int(base["damage"]), 
-			int(base["defense"]), int(float(base["crit_phys"]) * 100.0)], 13))
-	var skill_names: Array = []
-	for skill: Dictionary in data["ativas"]:
-		if int(skill["unlock"]) <= 1:
-			skill_names.append(str(skill["name"]))
-	for skill: Dictionary in data["passivas"]:
-		if int(skill["unlock"]) <= 1:
-			skill_names.append("(passiva) " + str(skill["name"]))
-	var starts: = UiKit.label("Começa com: " + ", ".join(skill_names), 13, UiKit.PARCHMENT)
-	starts.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	starts.custom_minimum_size = Vector2(420, 0)
-	text_column.add_child(starts)
-
-
-func _class_sprite_path(class_id: String) -> String:
-	match class_id:
-		"atirador": return "res://assets/game/sprites/herois/compartilhados/hero_archer.png"
-		"mago": return "res://assets/game/sprites/herois/compartilhados/hero_mage.png"
-		"assassino": return "res://assets/game/sprites/herois/compartilhados/hero_rogue.png"
-		"tank": return "res://assets/game/sprites/herois/compartilhados/hero_tank.png"
-		"cavaleiro": return "res://assets/game/sprites/herois/compartilhados/hero_knight.png"
-		_: return "res://assets/game/sprites/herois/compartilhados/hero_warrior.png"
-
-
-func _submit_creation() -> void :
-	var hero_name: = name_input.text if name_input != null else "Herói"
+	creation_hair_style = hair_style
+	creation_hair_color = hair_color
+	creation_gender_id = gender_id
 	AudioDirector.unlock_audio()
-	new_game_requested.emit(creation_race, creation_class, hero_name)
-
-
-
+	new_game_requested.emit(race_id, class_id, hero_name)
 
 func show_options() -> void :
 	_clear_overlay()

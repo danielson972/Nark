@@ -1,0 +1,48 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "human_reference.png",
+  "reference_sha256": "501449e95a600902239d912c23138abf35fb3535dbe8018c304f9aa7b279817a",
+  "reference_role": "Exact supplied base image; used directly for unarmored/basic human, not regenerated",
+  "scope": "race_id humano only, all six classes",
+  "outfit_sources": [
+    "outfits_ranged_mage.png",
+    "outfits_warrior_assassin.png",
+    "outfits_tank_knight.png"
+  ],
+  "atlas": {
+    "file": "human_equipment_atlas.png",
+    "size": [
+      1536,
+      3072
+    ],
+    "grid": [
+      6,
+      6
+    ],
+    "cell": [
+      256,
+      512
+    ],
+    "columns": [
+      "base",
+      "roupa_basica",
+      "armadura_ng",
+      "armadura_d",
+      "armadura_c",
+      "armadura_b"
+    ],
+    "rows": [
+      "atirador",
+      "mago",
+      "guerreiro",
+      "assassino",
+      "tank",
+      "cavaleiro"
+    ]
+  },
+  "prompts": {
+    "ranged_mage": "Use case: identity-preserve. Production game sprite wardrobe adaptation. Image1 is the USER'S EXACT replacement human hero; preserve his identity precisely: young adult man, tousled chestnut brown hair, same serious face and fair/tan skin, SAME realistic tall slim-athletic proportions, same small head relative to body, same hands/feet, same relaxed standing pose with arms down and hands empty, facing toward screen-left in three-quarter top-down RPG view. NOT chibi, NOT big-head, NOT cartoon redesign. Detailed crisp pixel art matching this input's palette, hard pixel clusters and outlines. Create an outfit variant sheet for this SAME man, ONLY changing worn armor/clothing, never his identity or physique. No baked weapons, no shield, no staff, no jewelry props, no held items; the game attaches weapons independently. Brown hair and face must stay fully visible in ALL8 sprites; no helmets, no raised hoods. Hands stay at same height and side positions as reference, fingers exposed for weapon attachment. Same boots footprint and resting stance every cell. Keep the full body from hair to boot soles.\nEXACT sheet layout: FOUR COLUMNS, TWO ROWS, 8 sprites in 1536x1024 landscape canvas, uniform384x512cells. Each full human body about470px tall and180-220px wide, centered within each cell, with transparent space around all edges. Narrow portrait-body proportions (height about2.5times overall shoulder width), not square-body proportions. Foot soles baseline y492 inside every cell, head near y20. Every cell has ONE complete man at identical scale/pose/camera. Columns left to right are armor grades NG, D, C, B. NG is grounded leather/cloth, D is refined practical silver/steel or dark fabric, C has restrained cyan-blue rune accents on dark blue/silver armor, B has purple/gold accents but the same silhouette, no floating aura or giant spikes. True transparent alpha everywhere behind and between body parts, no scenery, no floor, no shadow, no text, no labels, no grid. NO hands lifted, no combat stance, no gender change, no glossy smooth 3D rendering. Preserve the user's face and hair. ROW1 ARCHER: NG fitted forest-green leather tunic and brown bracers; D practical green-brown scout armor with silver shoulder trims; C blue/cyan runic archer leather; B purple/gold ornate archer leather. ROW2 MAGE: NG dark blue simple long robe with brown belt; D charcoal/navy robe with silver shoulder trim; C blue/cyan runic robe; B deep purple/gold mage robe. Keep all faces/hair identical to reference, preserve stance, do not use staves or bows.",
+    "warrior_assassin": "Use case: identity-preserve. Production game sprite wardrobe adaptation. Image1 is the USER'S EXACT replacement human hero; preserve his identity precisely: young adult man, tousled chestnut brown hair, same serious face and fair/tan skin, SAME realistic tall slim-athletic proportions, same small head relative to body, same hands/feet, same relaxed standing pose with arms down and hands empty, facing toward screen-left in three-quarter top-down RPG view. NOT chibi, NOT big-head, NOT cartoon redesign. Detailed crisp pixel art matching this input's palette, hard pixel clusters and outlines. Create an outfit variant sheet for this SAME man, ONLY changing worn armor/clothing, never his identity or physique. No baked weapons, no shield, no staff, no jewelry props, no held items; the game attaches weapons independently. Brown hair and face must stay fully visible in ALL8 sprites; no helmets, no raised hoods. Hands stay at same height and side positions as reference, fingers exposed for weapon attachment. Same boots footprint and resting stance every cell. Keep the full body from hair to boot soles.\nEXACT sheet layout: FOUR COLUMNS, TWO ROWS, 8 sprites in 1536x1024 landscape canvas, uniform384x512cells. Each full human body about470px tall and180-220px wide, centered within each cell, with transparent space around all edges. Narrow portrait-body proportions (height about2.5times overall shoulder width), not square-body proportions. Foot soles baseline y492 inside every cell, head near y20. Every cell has ONE complete man at identical scale/pose/camera. Columns left to right are armor grades NG, D, C, B. NG is grounded leather/cloth, D is refined practical silver/steel or dark fabric, C has restrained cyan-blue rune accents on dark blue/silver armor, B has purple/gold accents but the same silhouette, no floating aura or giant spikes. True transparent alpha everywhere behind and between body parts, no scenery, no floor, no shadow, no text, no labels, no grid. NO hands lifted, no combat stance, no gender change, no glossy smooth 3D rendering. Preserve the user's face and hair. ROW1 WARRIOR: NG fitted brown leather cuirass over linen; D silver chainmail chest with small steel pauldrons; C fitted dark blue and silver runic plate; B dark purple/gold strong warrior plate. ROW2 ASSASSIN: NG dark brown fitted leather vest and bracers; D charcoal/brown reinforced stealth leather; C navy/cyan stealth leather with hood DOWN behind neck; B purple/gold stealth leather with hood DOWN. Face and brown hair visible and SAME as the supplied human in all8. No swords or daggers.",
+    "tank_knight": "Use case: identity-preserve. Production game sprite wardrobe adaptation. Image1 is the USER'S EXACT replacement human hero; preserve his identity precisely: young adult man, tousled chestnut brown hair, same serious face and fair/tan skin, SAME realistic tall slim-athletic proportions, same small head relative to body, same hands/feet, same relaxed standing pose with arms down and hands empty, facing toward screen-left in three-quarter top-down RPG view. NOT chibi, NOT big-head, NOT cartoon redesign. Detailed crisp pixel art matching this input's palette, hard pixel clusters and outlines. Create an outfit variant sheet for this SAME man, ONLY changing worn armor/clothing, never his identity or physique. No baked weapons, no shield, no staff, no jewelry props, no held items; the game attaches weapons independently. Brown hair and face must stay fully visible in ALL8 sprites; no helmets, no raised hoods. Hands stay at same height and side positions as reference, fingers exposed for weapon attachment. Same boots footprint and resting stance every cell. Keep the full body from hair to boot soles.\nEXACT sheet layout: FOUR COLUMNS, TWO ROWS, 8 sprites in 1536x1024 landscape canvas, uniform384x512cells. Each full human body about470px tall and180-220px wide, centered within each cell, with transparent space around all edges. Narrow portrait-body proportions (height about2.5times overall shoulder width), not square-body proportions. Foot soles baseline y492 inside every cell, head near y20. Every cell has ONE complete man at identical scale/pose/camera. Columns left to right are armor grades NG, D, C, B. NG is grounded leather/cloth, D is refined practical silver/steel or dark fabric, C has restrained cyan-blue rune accents on dark blue/silver armor, B has purple/gold accents but the same silhouette, no floating aura or giant spikes. True transparent alpha everywhere behind and between body parts, no scenery, no floor, no shadow, no text, no labels, no grid. NO hands lifted, no combat stance, no gender change, no glossy smooth 3D rendering. Preserve the user's face and hair. ROW1 TANK: NG thick brown leather cuirass and bracers; D practical heavy silver plate chest/pauldrons; C blue/silver defensive plate with restrained cyan runes; B purple/gold heavy plate. ROW2 KNIGHT: NG leather vest over linen shirt with a short red shoulder mantle BEHIND arms, no huge cloak; D silver knight breastplate and brass edging; C dark blue/silver knight plate with cyan runes; B purple/gold knight plate. No helmets; SAME visible brown hair and supplied face in every sprite. No maces, spears, shields or swords. Armor must fit the same human anatomy and relaxed arms-down stance."
+  }
+}

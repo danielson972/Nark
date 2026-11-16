@@ -88,3 +88,19 @@ O slot dourado **Hero**, ao lado do personagem, usa o equipamento cosmético exi
 Os detalhes mostram descrição, tipo, grau, peso unitário, valor nas moedas reais do jogo e bônus/durabilidade quando aplicáveis. Usar, Soltar e Guardar no baú mantêm as regras existentes. A interface se ajusta ao espaço da janela; somente a mochila rola. Não foram criados equipamentos de capacete, luvas, botas ou escudo: os quatro slots representam os tipos que o jogo já possui.
 
 Implementação: `scripts/ui/inventory_panel.gd`. Validação: `relatorios/verify_inventory_reference.gd` e `relatorios/verify_inventory_double_click.gd`.
+
+## Novo humano
+
+A raça Humano agora usa a imagem enviada como aparência de base, com camisa de linho, calças e botas. Ela aparece no mundo, na criação do personagem e no inventário. As seis classes também têm versões com armaduras NG, D, C e B que mantêm o novo rosto e as proporções. Armas continuam independentes e o brilho Hero acompanha o peito. Elfo, Orc e Anão mantêm suas artes anteriores; saves existentes recebem a nova aparência humana ao carregar, sem alterar equipamentos ou atributos.
+
+Fontes, atlas e prompts em `assets/game/sprites/herois/humano/`. Regeneração pelo script `scripts/tools/prepare_human_appearance.gd`. Validação em `relatorios/verify_human_appearance.gd`.
+
+A revisão de cor usa `human_equipment_atlas_vibrant.png`: roupas mais claras e um pouco mais vivas, em tons de fantasia natural, sem o tratamento sombrio. As fontes originais permanecem preservadas, e os prompts dessa edição estão em `assets/game/sprites/herois/humano/color_generation.json`.
+
+## Acabamento pixel art
+
+A revisão pixelada foi desativada. Colossal Aurora, cenários, itens e efeitos voltaram à renderização com detalhe nativo, sem ampliação de pixels ou redução de tons. A câmera permanece mais próxima, com zoom 0,65. As fontes da revisão ficam preservadas em `assets/game/pixel_art/` como histórico.
+
+## Montagem do personagem
+
+**Iniciar** abre a cena `scenes/character_creation.tscn`, com Humano, Elfo, Orc e Anão em modelos masculino e feminino. Todos começam carecas; escolha entre 16 cabelos e sete cores, além de nome e classe. A prévia acompanha as escolhas, que aparecem no mundo e no inventário e são gravadas com o save. As armaduras usam peças compartilhadas e mantêm a cabeça racial e o cabelo escolhidos. Saves antigos usam a opção Careca como padrão. Fontes, prompts e detalhes em `assets/game/character_builder/README.md`. Validações em `relatorios/verify_character_assembly.gd` e `relatorios/verify_original_art_quality.gd`.
