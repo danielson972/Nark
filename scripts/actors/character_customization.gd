@@ -39,7 +39,8 @@ static func bald_body(race_id: String, gender_id: String = "masculino") -> Atlas
 	return frames[key]
 
 static func armored(state: PlayerState) -> bool:
-	return str(state.equipment.get("armadura", {}).get("id", "")) in ["armadura_ng", "armadura_d", "armadura_c", "armadura_b"]
+	var armor_id := str(state.equipment.get("armadura", {}).get("id", ""))
+	return str(GameData.item(armor_id).get("type", "")) == "armadura"
 
 static func head_rect(state: PlayerState) -> Rect2:
 	if state.gender_id == "feminino" and state.race_id == "anao":

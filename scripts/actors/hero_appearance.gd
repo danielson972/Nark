@@ -93,6 +93,9 @@ static func weapon_material(state: PlayerState, texture: AtlasTexture) -> Shader
 	return weapon_materials[key]
 
 static func outfit_column(item_id: String) -> int:
+	if item_id.begins_with("armadura_catalogo_"):
+		var grade := str(GameData.item(item_id).get("grade", "NG"))
+		return {"NG": 2, "D": 3, "C": 4, "B": 5, "A": 5, "S": 5}.get(grade, 2)
 	return int(OUTFIT_COLUMNS.get(item_id, 0))
 
 static func frame(class_id: String, column: int) -> AtlasTexture:
@@ -156,19 +159,57 @@ static func hand_texture(state: PlayerState) -> AtlasTexture:
 		hand_frames[key] = patch
 	return hand_frames[key]
 
+static func _catalog_weapon_group(item_id: String) -> String:
+	var art_id := str(GameData.item(item_id).get("catalog_art", ""))
+	if not art_id.begins_with("arma_"):
+		return ""
+	var number := int(art_id.trim_prefix("arma_"))
+	if number <= 15: return "sword"
+	if number <= 30: return "heavy"
+	if number <= 45: return "dagger"
+	if number <= 60: return "bow"
+	if number <= 75: return "staff"
+	if number <= 88: return "spear"
+	return "shield"
+
 static func weapon_pivot(class_id: String, item_id: String = "") -> Vector2:
+	var group := _catalog_weapon_group(item_id)
+	if not group.is_empty():
+		return {
+			"sword": Vector2(0.20, 0.78),
+			"heavy": Vector2(0.18, 0.80),
+			"dagger": Vector2(0.24, 0.76),
+			"bow": Vector2(0.50, 0.54),
+			"staff": Vector2(0.46, 0.78),
+			"spear": Vector2(0.20, 0.77),
+			"shield": Vector2(0.23, 0.60),
+		}.get(group, Vector2(0.28, 0.76))
 	if class_id == "guerreiro":
 		return SWORD_GRIPS.get(item_id, SWORD_GRIPS["arma_ng"])
 	var grips: Array = CLASS_GRIPS.get(class_id, [])
 	var index: int = WEAPON_IDS.find(item_id)
 	return Vector2(0.28, 0.76) if grips.is_empty() else grips[maxi(index, 0)]
 
-static func weapon_height(class_id: String) -> float:
-	return CLASS_WEAPON_HEIGHTS.get(class_id, 0.48)
+static func weapon_height(class_id: String, item_id: String = "") -> float:
+	var base: float = CLASS_WEAPON_HEIGHTS.get(class_id, 0.48)
+	match _catalog_weapon_group(item_id):
+		"heavy", "spear": return base * 1.08
+		"dagger": return base * 0.82
+		"bow": return base * 0.92
+		"staff": return base * 1.06
+		"shield": return base * 0.86
+		"sword": return base * 1.02
+	return base
 
 # Rest pose follows the reference: bow across the waist, staff upward-left,
 # blades and heavy weapons downward-left, spear across the body.
-static func weapon_rotation(class_id: String) -> float:
+static func weapon_rotation(class_id: String, item_id: String = "") -> float:
+	match _catalog_weapon_group(item_id):
+		"bow": return deg_to_rad(-115.0)
+		"staff": return deg_to_rad(-47.0)
+		"shield": return deg_to_rad(-165.0)
+		"spear": return deg_to_rad(-160.0)
+		"sword", "heavy", "dagger": return 0.0
 	match class_id:
 		"atirador": return deg_to_rad(-115.0)
 		"mago": return deg_to_rad(-47.0)

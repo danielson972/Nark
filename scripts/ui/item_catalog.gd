@@ -6,6 +6,29 @@ const GRID = Vector2i(8, 8)
 const Appearance = preload("res://scripts/actors/hero_appearance.gd")
 static var source_atlas: Texture2D
 static var textures: Dictionary = {}
+static var catalog_atlases: Dictionary = {}
+
+const WEAPON_SHEETS = [
+	[1, 15, "res://assets/game/sprites/Arsenal_RPG/pranchas/001-015.png"],
+	[16, 30, "res://assets/game/sprites/Arsenal_RPG/pranchas/016-030.png"],
+	[31, 45, "res://assets/game/sprites/Arsenal_RPG/pranchas/031-045.png"],
+	[46, 60, "res://assets/game/sprites/Arsenal_RPG/pranchas/046-060.png"],
+	[61, 75, "res://assets/game/sprites/Arsenal_RPG/pranchas/061-075.png"],
+	[76, 88, "res://assets/game/sprites/Arsenal_RPG/pranchas/076-088.png", 5, 1],
+	[89, 100, "res://assets/game/sprites/Arsenal_RPG/pranchas/089-100.png", 4],
+]
+const ARMOR_SHEETS = [
+	[1, 10, "res://assets/game/sprites/Armaduras/001-010.png"],
+	[11, 20, "res://assets/game/sprites/Armaduras/011-020.png"],
+	[21, 30, "res://assets/game/sprites/Armaduras/021-030.png"],
+	[31, 40, "res://assets/game/sprites/Armaduras/031-040.png"],
+	[41, 50, "res://assets/game/sprites/Armaduras/041-050.png"],
+	[51, 60, "res://assets/game/sprites/Armaduras/051-060.png"],
+	[61, 70, "res://assets/game/sprites/Armaduras/061-070.png"],
+	[71, 80, "res://assets/game/sprites/Armaduras/071-080.png"],
+	[81, 90, "res://assets/game/sprites/Armaduras/081-090.png"],
+	[91, 100, "res://assets/game/sprites/Armaduras/091-100.png"],
+]
 const CLASS_ROWS = {
 	"atirador": 0, "mago": 1, "guerreiro": 2,
 	"assassino": 3, "tank": 4, "cavaleiro": 5,
@@ -44,6 +67,9 @@ static func atlas_rect(item_id: String, class_id: String, texture_size: Vector2)
 	return Rect2(start + Vector2.ONE * 2, finish - start - Vector2.ONE * 4)
 
 static func texture_for(item_id: String, class_id: String = "guerreiro") -> Texture2D:
+	var catalog_texture := _catalog_texture(item_id, class_id)
+	if catalog_texture != null:
+		return catalog_texture
 	if item_id == "hero":
 		if not textures.has(item_id):
 			textures[item_id] = load("res://assets/game/ui/items/hero.png")
@@ -71,6 +97,54 @@ static func texture_for(item_id: String, class_id: String = "guerreiro") -> Text
 	if class_id == "assassino" and item_id in ["arma_ng", "arma_d", "arma_c", "arma_b"]:
 		texture = _single_dagger(item_id, texture)
 	textures[key] = texture
+	return texture
+
+## Recorta a arte das pranchas de apresentação sem a faixa de legenda.
+static func _catalog_texture(item_id: String, class_id: String = "guerreiro") -> Texture2D:
+	var data: Dictionary = GameData.item(item_id)
+	var art_id := str(data.get("catalog_art", ""))
+	if art_id.is_empty():
+		return null
+	var cache_key := "catalog:" + art_id
+	if textures.has(cache_key):
+		return textures[cache_key]
+	var is_weapon := art_id.begins_with("arma_")
+	var numeric := int(art_id.trim_prefix("arma_").trim_prefix("armadura_"))
+	var sheets: Array = WEAPON_SHEETS if is_weapon else ARMOR_SHEETS
+	var sheet: Array = []
+	for candidate: Array in sheets:
+		if numeric >= int(candidate[0]) and numeric <= int(candidate[1]):
+			sheet = candidate
+			break
+	if sheet.is_empty():
+		return null
+	var sheet_path := str(sheet[2])
+	if not catalog_atlases.has(sheet_path):
+		catalog_atlases[sheet_path] = load(sheet_path) if ResourceLoader.exists(sheet_path) else null
+	var atlas: Texture2D = catalog_atlases[sheet_path]
+	if atlas == null:
+		# As pranchas de armaduras são opcionais durante a recuperação dos assets.
+		# Enquanto ausentes, mantém o equipamento visível usando a arte do grau.
+		if not is_weapon:
+			var grade := str(data.get("grade", "NG")).to_lower()
+			var fallback_id := "armadura_" + grade if grade in ["ng", "d", "c", "b"] else "armadura_b"
+			return texture_for(fallback_id, class_id)
+		return null
+	var local_index := numeric - int(sheet[0])
+	var columns := int(sheet[3]) if sheet.size() > 3 else 5
+	var rows := ceili(float(int(sheet[1]) - int(sheet[0]) + 1) / float(columns))
+	var cell := atlas.get_size() / Vector2(columns, rows)
+	var column := local_index % columns
+	var row := int(local_index / columns)
+	if sheet.size() > 4 and row == rows - 1:
+		column += int(sheet[4])
+	var region_height := 0.80 if is_weapon else 0.83
+	var region := Rect2(Vector2(column, row) * cell + Vector2(8, 8), Vector2(cell.x - 16, cell.y * region_height - 16))
+	var texture := AtlasTexture.new()
+	texture.atlas = atlas
+	texture.region = region
+	texture.filter_clip = true
+	textures[cache_key] = texture
 	return texture
 
 # The source icons contain two parallel daggers. Keep the first complete blade

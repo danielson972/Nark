@@ -137,7 +137,7 @@ func refresh_appearance() -> void:
 	if weapon_sprite.texture != null:
 		weapon_sprite.material = Appearance.weapon_material(state, weapon_sprite.texture)
 		var weapon_size: Vector2 = weapon_sprite.texture.get_size()
-		weapon_sprite.scale = Vector2.ONE * (body_size.y * Appearance.weapon_height(state.class_id) / weapon_size.y)
+		weapon_sprite.scale = Vector2.ONE * (body_size.y * Appearance.weapon_height(state.class_id, weapon_id) / weapon_size.y)
 	colossal_effect.visible = weapon_id == "arma_b"
 	_update_equipment_pose()
 
@@ -161,7 +161,7 @@ func _update_equipment_pose() -> void:
 	var swing_rotation: float = sin((1.0 - attack_swing / 0.18) * PI) * 0.8 if attack_swing > 0.0 else 0.0
 	var vertical_turn: float = -PI * 0.5 if absf(direction.y) > absf(direction.x) and direction.y < 0.0 else (PI * 0.5 if absf(direction.y) > absf(direction.x) else 0.0)
 	var walk_sway: float = sin(walk_phase) * 0.055 if velocity.length() > 24.0 else 0.0
-	weapon_sprite.rotation = (Appearance.weapon_rotation(state.class_id) + vertical_turn + swing_rotation + walk_sway) * mirror
+	weapon_sprite.rotation = (Appearance.weapon_rotation(state.class_id, weapon_id) + vertical_turn + swing_rotation + walk_sway) * mirror
 	if absf(direction.y) > absf(direction.x) and direction.y < 0.0:
 		weapon_sprite.z_index = -1
 		grip_hand_sprite.z_index = -2

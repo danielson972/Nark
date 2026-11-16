@@ -1,0 +1,118 @@
+ARSENAL RPG — 100 ITENS
+88 armas e 12 escudos. Todas as adagas são individuais, de uma mão.
+IDs correspondem à numeração das pranchas. Grades preservadas da lista fornecida.
+Imagens ampliadas; não são sprites nativos 64×64. Algumas pranchas possuem fundo.
+
+ESPADAS DE UMA MÃO
+001 | Espada Curta Enferrujada | Grade: No-Grade
+002 | Sabre de Ferro Velho | Grade: No-Grade
+003 | Espada de Treino da Guarda | Grade: No-Grade
+004 | Espada Larga de Bronze | Grade: D
+005 | Lâmina Polida de Aço | Grade: D
+006 | Espada Longa do Cavaleiro | Grade: C
+007 | Gládio de Aço Temperado | Grade: C
+008 | Lâmina de Carapaça Branca | Grade: C
+009 | Espada de Mithril | Grade: B
+010 | Sabre Rúnico de Safira | Grade: B
+011 | Lâmina do Guardião do Santuário | Grade: B
+012 | Espada de Obsidiana | Grade: A
+013 | Lâmina Arcana do Duelo | Grade: A
+014 | Espada Real Celestial | Grade: S
+015 | Soberana das Marés | Grade: S
+
+ARMAS PESADAS
+016 | Machado de Lenhador | Grade: No-Grade
+017 | Montante de Ferro Bruto | Grade: No-Grade
+018 | Clava Reforçada | Grade: No-Grade
+019 | Machado de Batalha de Bronze | Grade: D
+020 | Espadão de Aço Simples | Grade: D
+021 | Alabarda de Aço Azul | Grade: C
+022 | Machado Duplo Temperado | Grade: C
+023 | Quebra-Rochas da Pedreira | Grade: C
+024 | Montante de Mithril | Grade: B
+025 | Machado de Esmeralda Bruta | Grade: B
+026 | Destruidora de Colossos | Grade: B
+027 | Espadão de Obsidiana | Grade: A
+028 | Machado Carmesim do Abismo | Grade: A
+029 | Montante do Rei Antigo | Grade: S
+030 | Fúria do Leviatã | Grade: S
+
+ADAGAS DE UMA MÃO
+031 | Faca de Caça Enferrujada | Grade: No-Grade
+032 | Punhal de Couro e Ferro | Grade: No-Grade
+033 | Estilete dos Subúrbios | Grade: No-Grade
+034 | Adaga de Bronze Polido | Grade: D
+035 | Adaga de Aço | Grade: D
+036 | Punhal de Aço Azulado | Grade: C
+037 | Adaga Prateada da Sombra | Grade: C
+038 | Presa da Fera Branca | Grade: C
+039 | Adaga de Mithril | Grade: B
+040 | Adaga de Safira Sombria | Grade: B
+041 | Lâmina do Nêmesis | Grade: B
+042 | Adaga de Obsidiana | Grade: A
+043 | Garra do Crepúsculo | Grade: A
+044 | Adaga Celestial do Silêncio | Grade: S
+045 | Presa Abissal | Grade: S
+
+ARCOS
+046 | Arco Curto de Madeira Seca | Grade: No-Grade
+047 | Arco de Caça Rústico | Grade: No-Grade
+048 | Arco Improvisado de Cipó | Grade: No-Grade
+049 | Arco Longo de Freixo | Grade: D
+050 | Arco Reforçado de Bronze | Grade: D
+051 | Arco Composto de Aço | Grade: C
+052 | Arco Prateado da Patrulha | Grade: C
+053 | Arco de Osso da Pedreira | Grade: C
+054 | Arco Élfico de Mithril | Grade: B
+055 | Arco de Esmeralda do Bosque | Grade: B
+056 | Arco dos Ventos do Santuário | Grade: B
+057 | Arco de Obsidiana | Grade: A
+058 | Arco Rúnico do Horizonte | Grade: A
+059 | Arco Celestial do Reino | Grade: S
+060 | Arco das Tormentas Marinhas | Grade: S
+
+CAJADOS E CETROS
+061 | Cajado de Carvalho Velho | Grade: No-Grade
+062 | Varinha de Aprendiz | Grade: No-Grade
+063 | Bastão de Cristal Opaco | Grade: No-Grade
+064 | Cajado de Bronze e Âmbar | Grade: D
+065 | Cetro de Aço Polido | Grade: D
+066 | Cajado de Aço Azulado | Grade: C
+067 | Bastão Prateado de Gelo | Grade: C
+068 | Cajado de Quartzo Branco | Grade: C
+069 | Cajado de Mithril | Grade: B
+070 | Cetro de Safira Arcana | Grade: B
+071 | Cajado do Oráculo Antigo | Grade: B
+072 | Cajado de Obsidiana | Grade: A
+073 | Bastão Astral de Filigrana | Grade: A
+074 | Cajado Celestial Supremo | Grade: S
+075 | Cetro do Abismo Oceânico | Grade: S
+
+LANÇAS
+076 | Lança de Madeira e Ferro | Grade: No-Grade
+077 | Pique de Milícia | Grade: No-Grade
+078 | Lança Curta de Bronze | Grade: D
+079 | Partasana de Aço | Grade: D
+080 | Lança de Cavalaria Azul | Grade: C
+081 | Alabarda Prateada Real | Grade: C
+082 | Lança de Carapaça Branca | Grade: C
+083 | Lança de Mithril | Grade: B
+084 | Pique Rúnico de Esmeralda | Grade: B
+085 | Lança do Guardião da Região | Grade: B
+086 | Lança de Obsidiana | Grade: A
+087 | Lança Dourada da Ordem | Grade: S
+088 | Tridente do Colossal do Mar | Grade: S
+
+ESCUDOS
+089 | Escudo Redondo de Madeira | Grade: No-Grade
+090 | Broquel de Ferro Velho | Grade: No-Grade
+091 | Escudo de Bronze Reforçado | Grade: D
+092 | Escudo Torre de Aço | Grade: D
+093 | Escudo de Aço Temperado | Grade: C
+094 | Escudo Prateado do Guarda | Grade: C
+095 | Égide de Carapaça Branca | Grade: C
+096 | Escudo de Mithril | Grade: B
+097 | Escudo Rúnico de Safira | Grade: B
+098 | Escudo de Obsidiana | Grade: A
+099 | Baluarte Celestial do Reino | Grade: S
+100 | Égide das Profundezas | Grade: S

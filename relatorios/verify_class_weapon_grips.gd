@@ -1,7 +1,7 @@
-extends SceneTree
+﻿extends SceneTree
 
 const Appearance = preload("res://scripts/actors/hero_appearance.gd")
-const WEAPONS = ["arma_basica", "arma_ng", "arma_d", "arma_c", "arma_b"]
+const WEAPONS = ["arma_basica", "arma_ng", "arma_d", "arma_c", "arma_b", "arsenal_001", "arsenal_016", "arsenal_031", "arsenal_046", "arsenal_061", "arsenal_076", "arsenal_089"]
 const ARMORS = ["", "roupa_basica", "armadura_ng", "armadura_d", "armadura_c", "armadura_b"]
 
 func _initialize() -> void:
@@ -45,3 +45,4 @@ func _run() -> void:
 	await process_frame
 	print("CLASS_WEAPON_GRIPS_OK: %d poses, 6 classes, 5 weapons, 6 outfits, both directions and 5 attack phases" % checks)
 	quit()
+
