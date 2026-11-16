@@ -1,6 +1,17 @@
 class_name Hero
 extends Actor
 
+const Appearance = preload("res://scripts/actors/hero_appearance.gd")
+const ItemArt = preload("res://scripts/ui/item_catalog.gd")
+var weapon_sprite: Sprite2D
+var grip_hand_sprite: Sprite2D
+var colossal_effect: Node2D
+var aura_effect: Sprite2D
+var appearance_key: String = ""
+var visual_height: float = 92.0
+var walk_phase: float = 0.0
+var animation_clock: float = 0.0
+
 
 
 signal leveled_up(new_level: int)
@@ -20,6 +31,7 @@ var casting_aim: = Vector2.ZERO
 var attack_cooldown: = 0.0
 var attack_swing: = 0.0
 var dodge_time: = 0.0
+var dodge_cooldown_left: float = 0.0
 var dash_time: = 0.0
 var dodge_dir: = Vector2.ZERO
 var blocking: = false
@@ -48,11 +60,108 @@ var last_hit_time: = -100.0
 
 
 func bind_state(player_state: PlayerState) -> void :
+	if state != null and state.equipment_changed.is_connected(sync_from_state):
+		state.equipment_changed.disconnect(sync_from_state)
 	state = player_state
+	state.equipment_changed.connect(sync_from_state)
 	max_hp = state.max_hp()
 	hp = state.hp
 	radius = 17.0
 	kind = "hero"
+	# Respeita a reserva atual e o limite de energia da classe e do nível.
+	energy = clampf(state.energy, 0.0, state.max_energy())
+	mp = clampf(state.mp, 0.0, state.max_mp())
+
+
+func setup(world_ref: Node, _texture_path: String, target_height: float = 92.0) -> void:
+	# The old sprites contain baked-in weapons/armor and must never be the base.
+	super.setup(world_ref, "", target_height)
+	visual_height = target_height
+	weapon_sprite = sprite.get_node_or_null("ArmaEquipada") as Sprite2D
+	if weapon_sprite == null:
+		weapon_sprite = Sprite2D.new()
+		weapon_sprite.name = "ArmaEquipada"
+		sprite.add_child(weapon_sprite)
+	weapon_sprite.z_index = 1
+	weapon_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	weapon_sprite.material = Appearance.cutout_material()
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	grip_hand_sprite = sprite.get_node_or_null("MaoSobreEmpunhadura") as Sprite2D
+	if grip_hand_sprite == null:
+		grip_hand_sprite = Sprite2D.new()
+		grip_hand_sprite.name = "MaoSobreEmpunhadura"
+		sprite.add_child(grip_hand_sprite)
+	grip_hand_sprite.z_index = 2
+	grip_hand_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	colossal_effect = weapon_sprite.get_node_or_null("EnergiaDoColosso") as Node2D
+	if colossal_effect == null:
+		colossal_effect = preload("res://scripts/actors/colossal_weapon_effect.gd").new()
+		colossal_effect.name = "EnergiaDoColosso"
+		weapon_sprite.add_child(colossal_effect)
+	colossal_effect.hero = self
+	aura_effect = preload("res://scripts/actors/hero_aura_effect.gd").new()
+	aura_effect.name = "BrilhoHero"
+	sprite.add_child(aura_effect)
+	aura_effect.setup(self)
+	refresh_appearance()
+
+
+func refresh_appearance() -> void:
+	if state == null or sprite == null or weapon_sprite == null:
+		return
+	var armor_id: String = str(state.equipment.get("armadura", {}).get("id", ""))
+	var weapon_id: String = str(state.equipment.get("arma", {}).get("id", ""))
+	appearance_key = "%s:%s:%s" % [state.class_id, armor_id, weapon_id]
+	sprite.texture = Appearance.body_texture(state)
+	var body_size: Vector2 = sprite.texture.get_size()
+	# O brilho acompanha o torso e os movimentos do corpo em todas as classes e raças.
+	if aura_effect != null:
+		aura_effect.visible = str(state.equipment.get("aura", {}).get("id", "")) == "hero"
+		aura_effect.scale = Vector2.ONE * body_size.y * 0.95 / 362.0
+		aura_effect._sync_layers()
+	base_scale = visual_height / (body_size.y * (Appearance.FOOT_Y - Appearance.HEAD_Y))
+	sprite.scale = Vector2.ONE * base_scale
+	sprite.offset = Vector2(0, (0.5 - Appearance.FOOT_Y) * body_size.y)
+	weapon_sprite.visible = not weapon_id.is_empty()
+	weapon_sprite.texture = null if weapon_id.is_empty() else ItemArt.texture_for(weapon_id, state.class_id)
+	grip_hand_sprite.visible = not weapon_id.is_empty()
+	grip_hand_sprite.texture = Appearance.hand_texture(state) if grip_hand_sprite.visible else null
+	if weapon_sprite.texture != null:
+		weapon_sprite.material = Appearance.weapon_material(state, weapon_sprite.texture)
+		var weapon_size: Vector2 = weapon_sprite.texture.get_size()
+		weapon_sprite.scale = Vector2.ONE * (body_size.y * Appearance.weapon_height(state.class_id) / weapon_size.y)
+	colossal_effect.visible = weapon_id == "arma_b"
+	_update_equipment_pose()
+
+
+func _update_equipment_pose() -> void:
+	if weapon_sprite == null or weapon_sprite.texture == null:
+		return
+	var mirror: float = -1.0 if sprite.flip_h else 1.0
+	var direction: Vector2 = facing.normalized() if facing.length_squared() > 0.001 else Vector2.DOWN
+	var body_size: Vector2 = sprite.texture.get_size()
+	var hand: Vector2 = Appearance.hand_position(state)
+	weapon_sprite.position = Vector2((hand.x - 0.5) * body_size.x * mirror, (hand.y - Appearance.FOOT_Y) * body_size.y)
+	grip_hand_sprite.position = weapon_sprite.position
+	grip_hand_sprite.flip_h = sprite.flip_h
+	var weapon_id: String = str(state.equipment.get("arma", {}).get("id", ""))
+	var pivot: Vector2 = Appearance.weapon_pivot(state.class_id, weapon_id)
+	weapon_sprite.offset = (Vector2(0.5, 0.5) - pivot) * weapon_sprite.texture.get_size()
+	weapon_sprite.offset.x *= mirror
+	weapon_sprite.flip_h = sprite.flip_h
+	var swing_rotation: float = sin((1.0 - attack_swing / 0.18) * PI) * 0.8 if attack_swing > 0.0 else 0.0
+	var vertical_turn: float = -PI * 0.5 if absf(direction.y) > absf(direction.x) and direction.y < 0.0 else (PI * 0.5 if absf(direction.y) > absf(direction.x) else 0.0)
+	var walk_sway: float = sin(walk_phase) * 0.055 if velocity.length() > 24.0 else 0.0
+	weapon_sprite.rotation = (Appearance.weapon_rotation(state.class_id) + vertical_turn + swing_rotation + walk_sway) * mirror
+	if absf(direction.y) > absf(direction.x) and direction.y < 0.0:
+		weapon_sprite.z_index = -1
+		grip_hand_sprite.z_index = -2
+	elif absf(direction.y) > absf(direction.x) and direction.y > 0.0:
+		weapon_sprite.z_index = 2
+		grip_hand_sprite.z_index = 3
+	else:
+		weapon_sprite.z_index = Appearance.weapon_layer(state.class_id)
+		grip_hand_sprite.z_index = 2
 
 
 func has_passive(skill_id: String) -> bool:
@@ -64,20 +173,53 @@ func is_busy() -> bool:
 
 
 func can_act() -> bool:
-	return not dead and not is_busy()
+	return not dead and not is_stunned() and not is_busy()
 
 
 func _process(delta: float) -> void :
 	super._process(delta)
 	if state == null or dead:
 		return
+	# A recarga e a regeneração ficam congeladas enquanto o mundo está pausado.
+	if world != null and world.has_method("is_playing") and not world.is_playing():
+		_update_equipment_pose()
+		return
 	elapsed += delta
 	state.play_seconds += delta
 	_tick_timers(delta)
 	_regen(delta)
-	if world != null and world.has_method("is_playing") and not world.is_playing():
-		return
 	_handle_input(delta)
+	_update_hero_animation(delta)
+	_update_equipment_pose()
+
+
+func _update_hero_animation(delta: float) -> void:
+	if sprite == null:
+		return
+	animation_clock += delta
+	var moving: bool = velocity.length() > 24.0
+	if moving:
+		var cadence: float = 13.0 if dodge_time > 0.0 or dash_time > 0.0 else (10.5 if sprinting else 8.5)
+		walk_phase = fposmod(walk_phase + delta * cadence, TAU)
+	var direction: Vector2 = facing.normalized() if facing.length_squared() > 0.001 else Vector2.DOWN
+	if absf(direction.x) > 0.12:
+		sprite.flip_h = direction.x < 0.0
+	else:
+		sprite.flip_h = false
+	var step_wave: float = sin(walk_phase)
+	var bob: float = -absf(step_wave) * 2.4 if moving else sin(animation_clock * 1.8) * 0.55
+	var side_step: float = cos(walk_phase) * 1.1 if moving else 0.0
+	var attack_amount: float = 0.0
+	if attack_swing > 0.0:
+		var progress: float = clampf(1.0 - attack_swing / 0.18, 0.0, 1.0)
+		attack_amount = sin(progress * PI)
+	sprite.position = Vector2(side_step, bob) + direction * attack_amount * 3.2
+	var lean: float = direction.x * step_wave * 0.025 if moving else 0.0
+	lean += (direction.x * 0.04 - direction.y * 0.015) * attack_amount
+	sprite.rotation = lean
+	var squash: float = absf(step_wave) * 0.018 if moving else 0.0
+	squash += attack_amount * 0.008
+	sprite.scale = Vector2(base_scale * (1.0 + squash), base_scale * (1.0 - squash))
 
 
 func _tick_timers(delta: float) -> void :
@@ -86,6 +228,7 @@ func _tick_timers(delta: float) -> void :
 	attack_cooldown = maxf(0.0, attack_cooldown - delta)
 	attack_swing = maxf(0.0, attack_swing - delta)
 	dodge_time = maxf(0.0, dodge_time - delta)
+	dodge_cooldown_left = maxf(0.0, dodge_cooldown_left - delta)
 	dash_time = maxf(0.0, dash_time - delta)
 	exhaust = maxf(0.0, exhaust - delta)
 	bastiao_time = maxf(0.0, bastiao_time - delta)
@@ -113,6 +256,15 @@ func _regen(delta: float) -> void :
 
 
 func _handle_input(delta: float) -> void :
+	# Atordoado não pode andar, atacar, bloquear, esquivar ou usar dash.
+	if is_stunned():
+		velocity = Vector2.ZERO
+		blocking = false
+		sprinting = false
+		dodge_time = 0.0
+		dash_time = 0.0
+		attack_queued = false
+		return
 	var input_vector: = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var moving: = input_vector.length() > 0.12
 	if moving:
@@ -176,7 +328,7 @@ func _handle_input(delta: float) -> void :
 
 
 func _input(event: InputEvent) -> void :
-	if event.is_action_pressed("attack"):
+	if not is_stunned() and event.is_action_pressed("attack"):
 		attack_queued = true
 
 
@@ -201,17 +353,20 @@ func _enter_exhaustion() -> void :
 
 
 func _try_dodge(input_vector: Vector2) -> void :
-	if exhaust > 0.0 or dodge_time > 0.0 or energy < Balance.DODGE_COST:
+	if is_rooted() or exhaust > 0.0 or dodge_time > 0.0 or dodge_cooldown_left > 0.0 or energy < Balance.DODGE_COST:
 		return
 	dodge_dir = input_vector.normalized() if input_vector.length() > 0.12 else facing
 	energy = maxf(0.0, energy - Balance.DODGE_COST)
 	dodge_time = Balance.DODGE_TIME
+	dodge_cooldown_left = Balance.DODGE_COOLDOWN
 	invulnerable = maxf(invulnerable, Balance.DODGE_TIME)
 	world.play_cue("combat.dodge")
 	Vfx.burst(world, global_position + Vector2(0, -20), Color(0.8, 0.9, 1.0), 6, 90.0)
 
 
 func _try_dash(input_vector: Vector2) -> void :
+	if is_rooted():
+		return
 	if exhaust > 0.0 or dash_time > 0.0 or energy < Balance.DASH_COST:
 		return
 	dodge_dir = input_vector.normalized() if input_vector.length() > 0.12 else facing
@@ -227,6 +382,7 @@ func spawn_afterimage() -> void :
 
 
 func _basic_attack() -> void :
+	aim_point = world.aim_target(global_position)
 	var dir: = (aim_point - global_position)
 	if dir.length() < 4.0:
 		dir = facing
@@ -239,6 +395,7 @@ func _basic_attack() -> void :
 		var projectile: = Projectile.new()
 		projectile.world = world
 		projectile.hero_owner = self
+		projectile.homing_target = world.locked_enemy()
 		projectile.direction = dir
 		projectile.speed = 900.0
 		projectile.damage = state.damage_power() * 1.0 * (1.0 + buff_damage)
@@ -257,6 +414,8 @@ func _basic_attack() -> void :
 
 
 func cast_slot(index: int) -> void :
+	if is_stunned():
+		return
 	if index < 0 or index >= state.hotbar.size():
 		return
 	var skill_id: = str(state.hotbar[index])
@@ -271,6 +430,9 @@ func cast_slot(index: int) -> void :
 	if not casting_skill.is_empty():
 		return
 	var definition: = _definition_for(skill_id)
+	# Continua podendo atacar preso, mas não escapa por skills de deslocamento.
+	if has_status("root") and str(definition.get("handler", "")) in ["dash_strike", "shield_advance", "blink_behind", "blink"]:
+		return
 	if definition.is_empty():
 		return
 	var cost: Dictionary = definition.get("cost", {})
@@ -312,6 +474,10 @@ func _finish_cast() -> void :
 	casting_time = 0.0
 	var definition: = _definition_for(skill_id)
 	if definition.is_empty():
+		return
+	# A raiz também cancela o deslocamento de uma skill preparada antes de prender.
+	if has_status("root") and str(definition.get("handler", "")) in ["dash_strike", "shield_advance", "blink_behind", "blink"]:
+		world.hide_cast_bar()
 		return
 	SkillEngine.execute(world, self, definition, casting_aim)
 	world.flash_skill(skill_id)
@@ -365,12 +531,14 @@ func take_damage(amount: float, opts: Dictionary = {}) -> Dictionary:
 		var perfect: bool = elapsed - block_press <= Balance.PERFECT_BLOCK_WINDOW
 		var cost: = Balance.BLOCK_COST_PER_HIT
 		if perfect and has_passive("guarda_firme"):
+			world.play_skill_animation("guarda_firme")
 			cost = 0.0
 		if energy >= cost:
 			energy = maxf(0.0, energy - cost)
 			damage *= 1.0 - Balance.BLOCK_REDUCTION
 			blocks_recent += 1.0
 			if perfect and has_passive("retaliacao"):
+				world.play_skill_animation("retaliacao")
 				retaliacao_ready = true
 			world.play_cue("combat.block")
 			world.show_notice("Bloqueio!", Color(0.8, 0.9, 1.0))
@@ -378,6 +546,7 @@ func take_damage(amount: float, opts: Dictionary = {}) -> Dictionary:
 			world.show_notice("Guarda rompida!", Color(0.95, 0.6, 0.4))
 	if marked_enemy != null and is_instance_valid(marked_enemy) and source.distance_to(marked_enemy.global_position) < 40.0:
 		if has_passive("juramento"):
+			world.play_skill_animation("juramento")
 			damage *= 0.75
 	if str(opts.get("type", "")) in ["errante", "dungeon"]:
 		damage *= 1.0 - state.resist_wanderers()
@@ -421,6 +590,8 @@ func sync_from_state() -> void :
 	hp = minf(hp, max_hp)
 	mp = minf(mp, state.max_mp())
 	energy = minf(energy, state.max_energy())
+	state.hp = hp
+	refresh_appearance()
 
 
 func _draw() -> void :

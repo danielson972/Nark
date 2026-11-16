@@ -1,6 +1,7 @@
 extends Node
 
 const BrowserBgmPlayer = preload("res://scripts/manus/browser_bgm_player.gd")
+const ProceduralSfx = preload("res://scripts/manus/procedural_sfx.gd")
 
 const MAX_SFX_VOICES: = 8
 const MAX_UI_VOICES: = 2
@@ -191,6 +192,41 @@ func play_cue(cue_id: String, pitch_scale: float = 1.0) -> bool:
 	player.pitch_scale = clampf(pitch_scale, 0.75, 1.35)
 	player.play()
 	return true
+
+
+func play_skill_sfx(skill_id: String, pitch_scale: float = 1.0) -> bool:
+	var profile := _skill_sfx_profile(skill_id)
+	if profile.is_empty():
+		return false
+	if not _unlocked and not _headless:
+		return false
+	if _headless:
+		return true
+	var stream := ProceduralSfx.tone(float(profile[0]), float(profile[1]), float(profile[2]), float(profile[3]))
+	var player := _claim_voice(_sfx_players)
+	player.stream = stream
+	player.pitch_scale = clampf(pitch_scale, 0.75, 1.35)
+	player.play()
+	return true
+
+
+func _skill_sfx_profile(skill_id: String) -> Array:
+	var profiles := {
+		"tiro_preciso": [740.0, 0.11, 0.22, 360.0], "disparo_leque": [560.0, 0.18, 0.24, 280.0],
+		"flecha_contencao": [410.0, 0.2, 0.24, 170.0], "chuva_flechas": [520.0, 0.3, 0.2, 900.0],
+		"projetil_arcano": [360.0, 0.22, 0.22, 920.0], "campo_gelido": [980.0, 0.34, 0.2, 390.0],
+		"passo_arcano": [260.0, 0.19, 0.2, 1150.0], "cometa_arcano": [180.0, 0.42, 0.28, 760.0],
+		"talho_circular": [300.0, 0.16, 0.2, 110.0], "quebra_guarda": [180.0, 0.22, 0.28, 85.0],
+		"investida": [150.0, 0.25, 0.26, 420.0], "golpe_ruptura": [120.0, 0.4, 0.3, 55.0],
+		"corte_duplo": [390.0, 0.16, 0.2, 150.0], "adaga_arremesso": [820.0, 0.12, 0.18, 490.0],
+		"passo_sombrio": [220.0, 0.23, 0.22, 680.0], "execucao": [170.0, 0.3, 0.28, 65.0],
+		"pancada_escudo": [145.0, 0.2, 0.28, 70.0], "abalo_sismico": [110.0, 0.34, 0.28, 42.0],
+		"bastiao": [200.0, 0.25, 0.23, 280.0], "revanche_ferro": [130.0, 0.38, 0.28, 48.0],
+		"estocada": [470.0, 0.14, 0.2, 170.0], "selo_desafio": [620.0, 0.25, 0.22, 1040.0],
+		"carga_real": [160.0, 0.28, 0.27, 390.0], "estandarte_real": [420.0, 0.36, 0.2, 850.0],
+		"explosao_aura": [220.0, 0.38, 0.28, 680.0], "despertar_heroico": [330.0, 0.45, 0.22, 990.0]
+	}
+	return profiles.get(skill_id, [])
 
 
 func register_button(button: Button, cancel_cue: bool = false) -> void :

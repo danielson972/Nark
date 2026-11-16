@@ -9,22 +9,25 @@ const MAP_H: = 42
 const HP_PER_LEVEL: = 9.0
 const MP_PER_LEVEL: = 4.0
 const ENERGY_PER_LEVEL: = 2.0
+# Reserva inicial menor; o crescimento por nível continua somando energia.
+const ENERGY_BASE_MULTIPLIER: = 0.5
 const DAMAGE_PER_LEVEL: = 1.6
 const DEFENSE_PER_LEVEL: = 0.9
 const CRIT_PER_LEVEL: = 0.002
 
-const ENERGY_REGEN: = 16.0
+const ENERGY_REGEN: = 2.5
 const MANA_REGEN: = 3.2
 const HP_REGEN_OUT_OF_COMBAT: = 1.4
 
 const SPRINT_COST: = 9.0
 const DODGE_COST: = 18.0
+const DODGE_COOLDOWN: = 1.0
 const DASH_COST: = 22.0
 const BLOCK_COST_PER_HIT: = 14.0
 
 const SPRINT_MULT: = 1.42
-const DODGE_TIME: = 0.3
-const DODGE_SPEED: = 560.0
+const DODGE_TIME: = 0.2
+const DODGE_SPEED: = 320.0
 const DASH_TIME: = 0.18
 const DASH_SPEED: = 760.0
 const EXHAUSTION_TIME: = 2.0

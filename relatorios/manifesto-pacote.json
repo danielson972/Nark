@@ -320,109 +320,109 @@
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/boss_beast.png.import",
+      "path": "assets/game/sprites/miniboss/aurora/boss_beast.png.import",
       "size": 199,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/boss_colossal.png.import",
+      "path": "assets/game/sprites/colossos/aurora/boss_colossal.png.import",
       "size": 202,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/hero_archer.png.import",
+      "path": "assets/game/sprites/herois/compartilhados/hero_archer.png.import",
       "size": 199,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/hero_knight.png.import",
+      "path": "assets/game/sprites/herois/compartilhados/hero_knight.png.import",
       "size": 199,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/hero_mage.png.import",
+      "path": "assets/game/sprites/herois/compartilhados/hero_mage.png.import",
       "size": 198,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/hero_rogue.png.import",
+      "path": "assets/game/sprites/herois/compartilhados/hero_rogue.png.import",
       "size": 198,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/hero_tank.png.import",
+      "path": "assets/game/sprites/herois/compartilhados/hero_tank.png.import",
       "size": 197,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/hero_warrior.png.import",
+      "path": "assets/game/sprites/herois/compartilhados/hero_warrior.png.import",
       "size": 200,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/monster_bandit.png.import",
+      "path": "assets/game/sprites/monstros/aurora/monster_bandit.png.import",
       "size": 203,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/monster_slime.png.import",
+      "path": "assets/game/sprites/monstros/aurora/monster_slime.png.import",
       "size": 202,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/monster_wolf.png.import",
+      "path": "assets/game/sprites/monstros/aurora/monster_wolf.png.import",
       "size": 201,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/prop_board.png.import",
+      "path": "assets/game/sprites/cenarios/aurora/prop_board.png.import",
       "size": 199,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/prop_chest.png.import",
+      "path": "assets/game/sprites/cenarios/aurora/prop_chest.png.import",
       "size": 199,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/prop_forge.png.import",
+      "path": "assets/game/sprites/cenarios/aurora/prop_forge.png.import",
       "size": 198,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/prop_gate.png.import",
+      "path": "assets/game/sprites/cenarios/aurora/prop_gate.png.import",
       "size": 198,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/prop_statue.png.import",
+      "path": "assets/game/sprites/cenarios/aurora/prop_statue.png.import",
       "size": 200,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/title_keyart.png.import",
+      "path": "assets/game/sprites/interface/title_keyart.png.import",
       "size": 201,
       "flags": 0,
       "header": "5b72656d"
     },
     {
-      "path": "assets/game/sprites/title_keyart_small.png.import",
+      "path": "assets/game/sprites/interface/title_keyart_small.png.import",
       "size": 207,
       "flags": 0,
       "header": "5b72656d"

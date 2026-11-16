@@ -168,7 +168,7 @@
       "groupId": "game",
       "used": false
     },
-    "assets/game/sprites/boss_beast.png": {
+    "assets/game/sprites/miniboss/aurora/boss_beast.png": {
       "path": "/manus-storage/game/sha256/3a6b97e0ff52346856f378a234ea07ddc00f354df1d2b39afb59de0deae2f24e.png",
       "sha256": "sha256:3a6b97e0ff52346856f378a234ea07ddc00f354df1d2b39afb59de0deae2f24e",
       "size": 33696,
@@ -176,7 +176,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/boss_colossal.png": {
+    "assets/game/sprites/colossos/aurora/boss_colossal.png": {
       "path": "/manus-storage/game/sha256/f1d8effdf73bc7b0e9836619c8ec1a0aaa0c4139ab5e066eed42d06a83bac6b7.png",
       "sha256": "sha256:f1d8effdf73bc7b0e9836619c8ec1a0aaa0c4139ab5e066eed42d06a83bac6b7",
       "size": 70868,
@@ -184,7 +184,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/hero_archer.png": {
+    "assets/game/sprites/herois/compartilhados/hero_archer.png": {
       "path": "/manus-storage/game/sha256/fd972155ea9665a5ccc0176675dbea6601a5bb4b098abad2a2e570fc18ac74df.png",
       "sha256": "sha256:fd972155ea9665a5ccc0176675dbea6601a5bb4b098abad2a2e570fc18ac74df",
       "size": 11937,
@@ -192,7 +192,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/hero_knight.png": {
+    "assets/game/sprites/herois/compartilhados/hero_knight.png": {
       "path": "/manus-storage/game/sha256/6fa2a83de5eb7a2b8457d0c9d441cdad6f125aeea639b85cdbbbf89e989dc08d.png",
       "sha256": "sha256:6fa2a83de5eb7a2b8457d0c9d441cdad6f125aeea639b85cdbbbf89e989dc08d",
       "size": 10608,
@@ -200,7 +200,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/hero_mage.png": {
+    "assets/game/sprites/herois/compartilhados/hero_mage.png": {
       "path": "/manus-storage/game/sha256/39d89edbfbbfef91596705f27f1e856c925344adb8a08138dc66ecd13d949e66.png",
       "sha256": "sha256:39d89edbfbbfef91596705f27f1e856c925344adb8a08138dc66ecd13d949e66",
       "size": 11675,
@@ -208,7 +208,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/hero_rogue.png": {
+    "assets/game/sprites/herois/compartilhados/hero_rogue.png": {
       "path": "/manus-storage/game/sha256/16969ae5c2002ec470b1684b6c814ef7d1f43e040992f986cf37e64cde8607db.png",
       "sha256": "sha256:16969ae5c2002ec470b1684b6c814ef7d1f43e040992f986cf37e64cde8607db",
       "size": 10185,
@@ -216,7 +216,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/hero_tank.png": {
+    "assets/game/sprites/herois/compartilhados/hero_tank.png": {
       "path": "/manus-storage/game/sha256/df4f49d0f6da32e0196ccf7256a9e24ed00d1883ee8bd0ab4486f524375e4997.png",
       "sha256": "sha256:df4f49d0f6da32e0196ccf7256a9e24ed00d1883ee8bd0ab4486f524375e4997",
       "size": 15110,
@@ -224,7 +224,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/hero_warrior.png": {
+    "assets/game/sprites/herois/compartilhados/hero_warrior.png": {
       "path": "/manus-storage/game/sha256/9a28557b759e8529752e632b909095a264f7304230009b57ebec87989fce705f.png",
       "sha256": "sha256:9a28557b759e8529752e632b909095a264f7304230009b57ebec87989fce705f",
       "size": 11991,
@@ -232,7 +232,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/monster_bandit.png": {
+    "assets/game/sprites/monstros/aurora/monster_bandit.png": {
       "path": "/manus-storage/game/sha256/ccc20c10100edc9ed88ad3979c755f867cfd6bad085f16d095cfd61c54e18335.png",
       "sha256": "sha256:ccc20c10100edc9ed88ad3979c755f867cfd6bad085f16d095cfd61c54e18335",
       "size": 11792,
@@ -240,7 +240,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/monster_slime.png": {
+    "assets/game/sprites/monstros/aurora/monster_slime.png": {
       "path": "/manus-storage/game/sha256/6e4c64788f890e447bfd9a28e3e9a5d2b5962b1edec2b6669092e43b9568921e.png",
       "sha256": "sha256:6e4c64788f890e447bfd9a28e3e9a5d2b5962b1edec2b6669092e43b9568921e",
       "size": 12171,
@@ -248,7 +248,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/monster_wolf.png": {
+    "assets/game/sprites/monstros/aurora/monster_wolf.png": {
       "path": "/manus-storage/game/sha256/e5d3e91bea19526645f05fa96a932e59a36c938100b1976d8200f384811dc007.png",
       "sha256": "sha256:e5d3e91bea19526645f05fa96a932e59a36c938100b1976d8200f384811dc007",
       "size": 16683,
@@ -256,7 +256,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/prop_board.png": {
+    "assets/game/sprites/cenarios/aurora/prop_board.png": {
       "path": "/manus-storage/game/sha256/c6e253891f58ef426919d6e7ee7fc98e6f95feef21d32a5075c44b11ac243c20.png",
       "sha256": "sha256:c6e253891f58ef426919d6e7ee7fc98e6f95feef21d32a5075c44b11ac243c20",
       "size": 14211,
@@ -264,7 +264,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/prop_chest.png": {
+    "assets/game/sprites/cenarios/aurora/prop_chest.png": {
       "path": "/manus-storage/game/sha256/b5f2cc555a106e52fc48fe31c7aaaf886ccf63284ff219376b03539387c37611.png",
       "sha256": "sha256:b5f2cc555a106e52fc48fe31c7aaaf886ccf63284ff219376b03539387c37611",
       "size": 11498,
@@ -272,7 +272,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/prop_forge.png": {
+    "assets/game/sprites/cenarios/aurora/prop_forge.png": {
       "path": "/manus-storage/game/sha256/c93efcabf859f37f0fe5cb17025985599b83744f642cdd9ecadd00a5c5c08ce9.png",
       "sha256": "sha256:c93efcabf859f37f0fe5cb17025985599b83744f642cdd9ecadd00a5c5c08ce9",
       "size": 18359,
@@ -280,7 +280,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/prop_gate.png": {
+    "assets/game/sprites/cenarios/aurora/prop_gate.png": {
       "path": "/manus-storage/game/sha256/596e8cc8589a731e1e58ecdd2051ab3bd6031ca6d5a5b8e432082e0d9d15f788.png",
       "sha256": "sha256:596e8cc8589a731e1e58ecdd2051ab3bd6031ca6d5a5b8e432082e0d9d15f788",
       "size": 45572,
@@ -288,7 +288,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/prop_statue.png": {
+    "assets/game/sprites/cenarios/aurora/prop_statue.png": {
       "path": "/manus-storage/game/sha256/66f439da2392a953097226db8390efdf12d7cf3f7540aeeb4bb6f3d3e6e67ddd.png",
       "sha256": "sha256:66f439da2392a953097226db8390efdf12d7cf3f7540aeeb4bb6f3d3e6e67ddd",
       "size": 16528,
@@ -296,7 +296,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/title_keyart.png": {
+    "assets/game/sprites/interface/title_keyart.png": {
       "path": "/manus-storage/game/sha256/d24c411645adf751d999381a9707ddade5a2e5144568fd6212a366e5fe06316f.png",
       "sha256": "sha256:d24c411645adf751d999381a9707ddade5a2e5144568fd6212a366e5fe06316f",
       "size": 2172568,
@@ -304,7 +304,7 @@
       "groupId": "game",
       "used": true
     },
-    "assets/game/sprites/title_keyart_small.png": {
+    "assets/game/sprites/interface/title_keyart_small.png": {
       "path": "/manus-storage/game/sha256/2bf14f4467ba18e4bb0e117722c2e7a470926a9a6f9c6c10536dcbc36354b5df.png",
       "sha256": "sha256:2bf14f4467ba18e4bb0e117722c2e7a470926a9a6f9c6c10536dcbc36354b5df",
       "size": 642219,

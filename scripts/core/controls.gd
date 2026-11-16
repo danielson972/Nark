@@ -8,13 +8,13 @@ const ACTIONS: = [
 	"attack", "block", "dodge", "dash", "sprint", "interact", 
 	"inventory", "skill_menu", "map_region", "map_world", "pause", 
 	"hotbar_1", "hotbar_2", "hotbar_3", "hotbar_4", "hotbar_5", 
-	"hotbar_6", "hotbar_7", "hotbar_8", "hotbar_9", "hotbar_10", 
+	"hotbar_6", "hotbar_7", "hotbar_8", "hotbar_9", "hotbar_10", "target_lock", 
 ]
 
 const REBINDABLE: = [
 	"move_up", "move_down", "move_left", "move_right", 
 	"attack", "block", "dodge", "dash", "sprint", "interact", 
-	"inventory", "skill_menu", "map_region", "map_world", "pause", "potion", 
+	"inventory", "skill_menu", "map_region", "map_world", "pause", "potion", "target_lock", 
 ]
 
 const LABELS: = {
@@ -33,7 +33,8 @@ const LABELS: = {
 	"map_region": "Mapa da região", 
 	"map_world": "Mapa do reino", 
 	"pause": "Pausa", 
-"potion": "Poção de cura", 
+	"potion": "Poção de cura", 
+	"target_lock": "Fixar alvo", 
 }
 
 const DEFAULT_BINDINGS: = {
@@ -57,6 +58,7 @@ const DEFAULT_BINDINGS: = {
 	"hotbar_4": ["key:52"], "hotbar_5": ["key:53"], "hotbar_6": ["key:54"], 
 	"hotbar_7": ["key:55"], "hotbar_8": ["key:56"], "hotbar_9": ["key:57"], 
 	"hotbar_10": ["key:48"], 
+	"target_lock": ["key:4194308"], 
 }
 
 

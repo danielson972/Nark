@@ -11,12 +11,16 @@ signal skill_cast(skill_id: String)
 signal level_gained(new_level: int)
 signal state_dirty
 
-const TILE_TEXTURE: = "res://assets/game/tiles/terrain.png"
+const MAP_SCENE = preload("res://scenes/map.tscn")
+const HERO_SCENE = preload("res://scenes/hero.tscn")
 const RESPAWN_TIME: = 26.0
+const TARGET_LOCK_RANGE: float = 720.0
 
 var region: RegionMap
 var state: PlayerState
 var hero: Hero
+var locked_target: Node2D = null
+var target_lock_enabled: bool = false
 var enemies: Array = []
 var respawn_queue: Array = []
 var tile_layer: TileMapLayer
@@ -37,40 +41,48 @@ var interact_prop: Dictionary = {}
 var collect_radius: = 46.0
 
 
-func build(player_state: PlayerState, state_flags: Dictionary = {}) -> void :
+func build(player_state: PlayerState, _state_flags: Dictionary = {}, developer_room: bool = false) -> void:
 	state = player_state
 	rng.randomize()
 	region = RegionMap.new()
-	_build_terrain()
+	region.developer_room = developer_room
 	_build_layers()
-	_build_props()
-	_build_decor()
-	_spawn_initial_enemies()
-	_spawn_hero()
-	_apply_world_flags(state_flags)
+	if developer_room:
+		region.generate_developer_room()
+		_build_developer_room()
+		_spawn_hero()
+	else:
+		var map_scene: Node2D = MAP_SCENE.instantiate()
+		props_layer.add_child(map_scene)
+		_spawn_hero()
+		var spawn: Marker2D = map_scene.get_node("InicioJogador")
+		hero.global_position = spawn.global_position
+		_register_map_enemies(map_scene)
+	camera.global_position = hero.global_position
 	_update_day_night(0.0)
 
 
-func _build_terrain() -> void :
-	tile_layer = TileMapLayer.new()
-	tile_layer.name = "Terreno"
-	var tile_set: = TileSet.new()
-	tile_set.tile_size = Vector2i(Balance.TILE, Balance.TILE)
-	var source: = TileSetAtlasSource.new()
-	var texture: Texture2D = load(TILE_TEXTURE)
-	source.texture = texture
-	source.texture_region_size = Vector2i(Balance.TILE, Balance.TILE)
-	for index in 8:
-		source.create_tile(Vector2i(index, 0))
-	tile_set.add_source(source, 0)
-	tile_layer.tile_set = tile_set
-	tile_layer.z_index = -100
-	add_child(tile_layer)
-	for y in RegionMap.H:
-		for x in RegionMap.W:
-			var value: = region.tile_at(x, y)
-			tile_layer.set_cell(Vector2i(x, y), 0, Vector2i(value, 0))
-
+func _build_developer_room() -> void:
+	var floor_node := Polygon2D.new()
+	floor_node.polygon = PackedVector2Array([Vector2(96, 160), Vector2(2160, 160), Vector2(2160, 1000), Vector2(96, 1000)])
+	floor_node.color = Color(0.12, 0.16, 0.22)
+	floor_node.z_index = -100
+	props_layer.add_child(floor_node)
+	for prop: Dictionary in region.props:
+		var station := Node2D.new()
+		station.position = region.world_position(prop["tile"])
+		var base := Polygon2D.new()
+		base.polygon = PackedVector2Array([Vector2(-24, -16), Vector2(24, -16), Vector2(24, 16), Vector2(-24, 16)])
+		base.color = Color(0.7, 0.48, 0.22)
+		station.add_child(base)
+		var label := Label.new()
+		label.text = str(prop["name"])
+		label.position = Vector2(-90, -46)
+		label.size.x = 180
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		station.add_child(label)
+		props_layer.add_child(station)
+		prop_nodes[str(prop["id"])] = station
 
 func _build_layers() -> void :
 	effects_layer = Node2D.new()
@@ -92,196 +104,47 @@ func _build_layers() -> void :
 	night_tint.color = Color(1, 1, 1)
 	add_child(night_tint)
 
-	camera = Camera2D.new()
-	camera.position_smoothing_enabled = true
-	camera.position_smoothing_speed = 6.0
+
+
+func _attach_hero_camera() -> void:
+	# Reutiliza a câmera da cena do personagem em todos os mapas.
+	camera = hero.get_node_or_null("Camera2D") as Camera2D
+	if camera == null:
+		camera = Camera2D.new()
+		camera.name = "Camera2D"
+		camera.zoom = Vector2(0.5, 0.5)
+		camera.position_smoothing_enabled = true
+		camera.position_smoothing_speed = 6.0
+		hero.add_child(camera)
 	camera.limit_left = 0
 	camera.limit_top = 0
 	camera.limit_right = RegionMap.W * Balance.TILE
 	camera.limit_bottom = RegionMap.H * Balance.TILE
-	add_child(camera)
-
-
-func _build_props() -> void :
-	for prop: Dictionary in region.props:
-		var node: = Node2D.new()
-		var tile: Vector2i = prop["tile"]
-		node.position = region.world_position(tile)
-		node.name = str(prop["id"])
-		if str(prop["sprite"]).is_empty():
-			_add_crystal_visual(node)
-		else:
-			var sprite: = Sprite2D.new()
-			sprite.texture = load(str(prop["sprite"]))
-			var height: = float(prop["height"])
-			var texture: = sprite.texture
-			if texture != null and texture.get_height() > 0:
-				var factor: = height / float(texture.get_height())
-				sprite.scale = Vector2(factor, factor)
-			sprite.offset = Vector2(0, - float(texture.get_height() if texture else 64) * 0.5)
-			node.add_child(sprite)
-		props_layer.add_child(node)
-		prop_nodes[str(prop["id"])] = node
-
-
-func _add_crystal_visual(node: Node2D) -> void :
-	var glow: = Polygon2D.new()
-	var glow_points: = PackedVector2Array()
-	for index in 14:
-		var angle: = TAU * float(index) / 14.0
-		glow_points.append(Vector2(cos(angle) * 20.0, sin(angle) * 20.0 - 16.0))
-	glow.polygon = glow_points
-	glow.color = Color(0.45, 0.8, 1.0, 0.22)
-	node.add_child(glow)
-	var shard: = Polygon2D.new()
-	shard.polygon = PackedVector2Array([
-		Vector2(0, -46), Vector2(9, -22), Vector2(0, -4), Vector2(-9, -22), 
-	])
-	shard.color = Color(0.55, 0.85, 1.0)
-	node.add_child(shard)
-	var core: = Polygon2D.new()
-	core.polygon = PackedVector2Array([
-		Vector2(0, -40), Vector2(4, -24), Vector2(0, -10), Vector2(-4, -24), 
-	])
-	core.color = Color(0.9, 0.98, 1.0)
-	node.add_child(core)
-
-
-func _build_decor() -> void :
-	var decor: = Node2D.new()
-	decor.name = "Vegetacao"
-	decor.y_sort_enabled = true
-	props_layer.add_child(decor)
-	var local_rng: = RandomNumberGenerator.new()
-	local_rng.seed = 90210
-	for y in range(3, RegionMap.H - 3):
-		for x in range(3, RegionMap.W - 3):
-			var value: = region.tile_at(x, y)
-			var point: = region.world_position(Vector2i(x, y))
-			if value == RegionMap.DARK and local_rng.randf() < 0.32:
-				_add_tree(decor, point, local_rng)
-			elif value == RegionMap.GRASS and local_rng.randf() < 0.07:
-				_add_tuft(decor, point, local_rng)
-			elif value == RegionMap.STONE and local_rng.randf() < 0.03:
-				_add_tuft(decor, point, local_rng, true)
-	_add_banner(decor, region.world_position(Vector2i(10, 8)))
-	_add_banner(decor, region.world_position(Vector2i(14, 8)))
-	_add_banner(decor, region.world_position(Vector2i(9, 11)))
-	_add_banner(decor, region.world_position(Vector2i(15, 11)))
-
-
-func _add_tree(parent: Node2D, point: Vector2, local_rng: RandomNumberGenerator) -> void :
-	var tree: = Node2D.new()
-	tree.position = point + Vector2(local_rng.randf_range(-16, 16), local_rng.randf_range(-10, 10))
-	var scale_factor: = local_rng.randf_range(0.82, 1.24)
-	var trunk: = Polygon2D.new()
-	trunk.polygon = PackedVector2Array([
-		Vector2(-5, 0), Vector2(5, 0), Vector2(4, -40), Vector2(-4, -40), 
-	])
-	trunk.color = Color(0.28, 0.2, 0.14)
-	tree.add_child(trunk)
-	var canopy_colors: = [Color(0.16, 0.29, 0.16), Color(0.2, 0.34, 0.18), Color(0.24, 0.38, 0.2)]
-	for index in 4:
-		var blob: = Polygon2D.new()
-		var radius: = local_rng.randf_range(20.0, 30.0) * scale_factor
-		var points: = PackedVector2Array()
-		for step in 12:
-			var angle: = TAU * float(step) / 12.0
-			var wobble: = radius * local_rng.randf_range(0.82, 1.05)
-			points.append(Vector2(cos(angle) * wobble, sin(angle) * wobble * 0.86))
-		blob.polygon = points
-		blob.color = canopy_colors[index % canopy_colors.size()]
-		blob.position = Vector2(local_rng.randf_range(-13, 13), -58.0 - local_rng.randf_range(0, 16)) * scale_factor
-		tree.add_child(blob)
-	var highlight: = Polygon2D.new()
-	highlight.polygon = PackedVector2Array([
-		Vector2(-10, -76), Vector2(4, -82), Vector2(2, -62), Vector2(-12, -58), 
-	])
-	highlight.color = Color(0.34, 0.48, 0.26, 0.75)
-	tree.add_child(highlight)
-	parent.add_child(tree)
-
-
-func _add_tuft(parent: Node2D, point: Vector2, local_rng: RandomNumberGenerator, stone: bool = false) -> void :
-	var tuft: = Polygon2D.new()
-	if stone:
-		tuft.polygon = PackedVector2Array([
-			Vector2(-6, 0), Vector2(6, 0), Vector2(4, -7), Vector2(-4, -7), 
-		])
-		tuft.color = Color(0.42, 0.41, 0.38)
-	else:
-		tuft.polygon = PackedVector2Array([
-			Vector2(-7, 0), Vector2(-3, -12), Vector2(0, -3), Vector2(3, -14), 
-			Vector2(7, 0), 
-		])
-		tuft.color = Color(0.26, 0.42, 0.22) if local_rng.randf() < 0.75 else Color(0.5, 0.52, 0.26)
-	tuft.position = point + Vector2(local_rng.randf_range(-20, 20), local_rng.randf_range(-14, 14))
-	parent.add_child(tuft)
-
-
-func _add_banner(parent: Node2D, point: Vector2) -> void :
-	var banner: = Node2D.new()
-	banner.position = point
-	var pole: = Polygon2D.new()
-	pole.polygon = PackedVector2Array([
-		Vector2(-2, 0), Vector2(2, 0), Vector2(2, -96), Vector2(-2, -96), 
-	])
-	pole.color = Color(0.3, 0.24, 0.16)
-	banner.add_child(pole)
-	var flag: = Polygon2D.new()
-	flag.polygon = PackedVector2Array([
-		Vector2(2, -96), Vector2(34, -88), Vector2(2, -68), 
-	])
-	flag.color = Color(0.24, 0.34, 0.62)
-	banner.add_child(flag)
-	var trim: = Polygon2D.new()
-	trim.polygon = PackedVector2Array([
-		Vector2(2, -96), Vector2(10, -94), Vector2(4, -72), 
-	])
-	trim.color = Color(0.85, 0.72, 0.35)
-	banner.add_child(trim)
-	parent.add_child(banner)
-
-
-func _spawn_initial_enemies() -> void :
-	for spawn: Dictionary in region.monster_spawns:
-		var kind: = str(spawn["kind"])
-		if kind == "colossal":
-			continue
-		var position_point: Vector2 = region.world_position(spawn["tile"])
-		spawn_enemy(kind, position_point)
+	camera.position = Vector2.ZERO
+	camera.make_current()
+	camera.reset_smoothing()
 
 
 func _spawn_hero() -> void :
-	hero = Hero.new()
+	hero = HERO_SCENE.instantiate()
 	hero.bind_state(state)
-	hero.setup(self, _hero_sprite(), 92.0)
+	hero.setup(self, "", 92.0)
 	hero.global_position = region.hero_spawn_position()
 	hero.died_hero.connect(_on_hero_died)
 	actors_layer.add_child(hero)
+	_attach_hero_camera()
 	camera.global_position = hero.global_position
 	hero.hp = state.hp
 
 
 func _hero_sprite() -> String:
 	match state.class_id:
-		"atirador": return "res://assets/game/sprites/hero_archer.png"
-		"mago": return "res://assets/game/sprites/hero_mage.png"
-		"assassino": return "res://assets/game/sprites/hero_rogue.png"
-		"tank": return "res://assets/game/sprites/hero_tank.png"
-		"cavaleiro": return "res://assets/game/sprites/hero_knight.png"
-		_: return "res://assets/game/sprites/hero_warrior.png"
-
-
-func _apply_world_flags(flags: Dictionary) -> void :
-	if int(flags.get("errantes_alive", 0)) > 0:
-		for index in int(flags.get("errantes_alive", 0)):
-			spawn_errant()
-	if bool(state.flags.get("colossal_defeated", false)):
-		for node in enemies.duplicate():
-			if node != null and is_instance_valid(node) and node.kind == "colossal":
-				node.queue_free()
-				enemies.erase(node)
+		"atirador": return "res://assets/game/sprites/herois/compartilhados/hero_archer.png"
+		"mago": return "res://assets/game/sprites/herois/compartilhados/hero_mage.png"
+		"assassino": return "res://assets/game/sprites/herois/compartilhados/hero_rogue.png"
+		"tank": return "res://assets/game/sprites/herois/compartilhados/hero_tank.png"
+		"cavaleiro": return "res://assets/game/sprites/herois/compartilhados/hero_knight.png"
+		_: return "res://assets/game/sprites/herois/compartilhados/hero_warrior.png"
 
 
 func start() -> void :
@@ -306,7 +169,6 @@ func _process(delta: float) -> void :
 	_update_day_night(delta)
 	_update_camera(delta)
 	_update_respawns(delta)
-	_update_rival(delta)
 	_update_interaction()
 	_apply_shake(delta)
 	state.time_of_day = fmod(state.time_of_day + delta / Balance.DAY_LENGTH, 1.0)
@@ -318,7 +180,11 @@ func _process(delta: float) -> void :
 func _update_camera(delta: float) -> void :
 	if hero == null:
 		return
-	camera.global_position = camera.global_position.lerp(hero.global_position, clampf(delta * 6.0, 0.0, 1.0))
+	if camera.get_parent() == hero:
+		# A hierarquia acompanha a posição; a suavização fica por conta da Camera2D.
+		camera.position = Vector2.ZERO
+	else:
+		camera.global_position = camera.global_position.lerp(hero.global_position, clampf(delta * 6.0, 0.0, 1.0))
 
 
 func _apply_shake(delta: float) -> void :
@@ -371,6 +237,31 @@ func can_stand(point: Vector2, body_radius: float) -> bool:
 	return true
 
 
+func can_actor_stand(actor: Node2D, point: Vector2, body_radius: float, ignore_hero: bool = false) -> bool:
+	# Layer 8 holds solid props authored in the scene (including moving bosses).
+	var shape := CircleShape2D.new()
+	shape.radius = body_radius
+	var query := PhysicsShapeQueryParameters2D.new()
+	query.shape = shape
+	query.transform = Transform2D(0.0, point)
+	query.collision_mask = 128
+	var excluded: Array[RID] = []
+	for body in actor.find_children("*", "CollisionObject2D", true, false):
+		excluded.append(body.get_rid())
+	query.exclude = excluded
+	if not get_world_2d().direct_space_state.intersect_shape(query, 1).is_empty():
+		return false
+	if not ignore_hero and hero != null and not hero.dead and actor != hero:
+		if point.distance_to(hero.global_position) < body_radius + hero.radius:
+			return false
+	for enemy in enemies_alive():
+		if enemy == actor:
+			continue
+		if point.distance_to(enemy.global_position) < body_radius + enemy.radius:
+			return false
+	return true
+
+
 func enemies_alive() -> Array:
 	var result: Array = []
 	for node in enemies:
@@ -382,7 +273,8 @@ func enemies_alive() -> Array:
 func enemies_in_radius(center: Vector2, radius_value: float) -> Array:
 	var result: Array = []
 	for enemy in enemies_alive():
-		if center.distance_to(enemy.global_position) <= radius_value + enemy.radius * 0.5:
+		var body: Rect2 = enemy.combat_hitbox() if enemy.has_method("combat_hitbox") else Rect2(enemy.global_position - Vector2(enemy.radius, enemy.radius), Vector2(enemy.radius * 2.0, enemy.radius * 2.0))
+		if body.grow(radius_value).has_point(center):
 			result.append(enemy)
 	return result
 
@@ -429,7 +321,70 @@ func marked_enemy_for(_hero_ref: Node) -> Node:
 	return null
 
 
+func locked_enemy() -> Node2D:
+	if not target_lock_enabled or hero == null:
+		return null
+	if locked_target != null and is_instance_valid(locked_target) and not bool(locked_target.get("dead")):
+		if hero.global_position.distance_to(locked_target.global_position) <= TARGET_LOCK_RANGE:
+			return locked_target
+	var previous_target := locked_target
+	locked_target = _nearest_enemy_excluding(hero.global_position, TARGET_LOCK_RANGE, previous_target)
+	if locked_target != null:
+		var target_name := str(locked_target.call("display_name")) if locked_target.has_method("display_name") else "inimigo"
+		show_notice("Alvo trocado automaticamente: %s." % target_name, Color(0.55, 0.85, 1.0))
+	return locked_target
+
+
+func _nearest_enemy_excluding(point: Vector2, max_range: float, excluded: Node) -> Node2D:
+	var best: Node2D = null
+	var best_distance := max_range
+	for enemy in enemies_alive():
+		if enemy == excluded:
+			continue
+		var distance := point.distance_to(enemy.global_position)
+		if distance < best_distance:
+			best_distance = distance
+			best = enemy
+	return best
+
+
+func lock_target(target: Node2D, notify_player: bool = true) -> bool:
+	if target == null or not is_instance_valid(target) or bool(target.get("dead")):
+		return false
+	if hero == null or hero.global_position.distance_to(target.global_position) > TARGET_LOCK_RANGE:
+		return false
+	target_lock_enabled = true
+	locked_target = target
+	if notify_player:
+		var target_name := str(target.call("display_name")) if target.has_method("display_name") else "inimigo"
+		show_notice("Alvo fixado: %s. Tab para soltar." % target_name, Color(0.55, 0.85, 1.0))
+	return true
+
+
+func toggle_target_lock() -> void:
+	if target_lock_enabled:
+		locked_enemy()
+		target_lock_enabled = false
+		locked_target = null
+		show_notice("Mira livre.", Color(0.8, 0.85, 0.9))
+		return
+	if hero == null:
+		return
+	var candidate: Node2D = nearest_enemy(get_global_mouse_position(), 140.0) as Node2D
+	if candidate != null and hero.global_position.distance_to(candidate.global_position) > TARGET_LOCK_RANGE:
+		candidate = null
+	if candidate == null:
+		candidate = _nearest_enemy_excluding(hero.global_position, TARGET_LOCK_RANGE, null)
+	if candidate == null:
+		show_notice("Nenhum inimigo por perto para fixar.", Color(0.9, 0.7, 0.5))
+		return
+	lock_target(candidate)
+
+
 func aim_target(from: Vector2) -> Vector2:
+	var target := locked_enemy()
+	if target != null:
+		return target.global_position
 	var point: = get_global_mouse_position()
 	if point.distance_to(from) < 30.0:
 		return from + (hero.facing if hero != null else Vector2.DOWN) * 120.0
@@ -447,6 +402,7 @@ func hit_enemy(enemy: Node, raw_damage: float, crit_chance: float, payload: Dict
 		damage *= 1.0 + Balance.BACKSTAB_DAMAGE
 		crit += Balance.BACKSTAB_CRIT
 		if state.is_skill_learned("oportunismo"):
+			play_skill_animation("oportunismo")
 			damage *= 1.3
 		if rng.randf() < 0.4:
 			show_notice("Golpe pelas costas!", Color(0.95, 0.85, 0.5))
@@ -464,6 +420,7 @@ func hit_enemy(enemy: Node, raw_damage: float, crit_chance: float, payload: Dict
 		enemy.apply_status("bleed", float(payload.get("bleed_time", 4.0)), {"dps": float(payload["bleed"])})
 	if bool(payload.get("flow", false)) and state.is_skill_learned("fluxo_arcano"):
 		if _inside_ice(enemy.global_position):
+			play_skill_animation("fluxo_arcano")
 			hero.mp = minf(state.max_mp(), hero.mp + 8.0)
 			show_notice("Fluxo Arcano +8 mana", Color(0.6, 0.85, 1.0))
 	enemy.take_damage(result["amount"], {"crit": result["crit"]})
@@ -491,7 +448,7 @@ func knockback(actor: Node, direction: Vector2, amount: float) -> void :
 		return
 	var step: = direction.normalized() * amount
 	var target: Vector2 = actor.global_position + step
-	if can_stand(target, actor.radius):
+	if can_stand(target, actor.radius) and can_actor_stand(actor, target, actor.radius):
 		actor.global_position = target
 
 
@@ -504,7 +461,7 @@ func add_area_effect(effect: GroundEffect) -> void :
 
 
 func spawn_enemy(kind: String, position_point: Vector2) -> Node:
-	var enemy: = Enemy.new()
+	var enemy: Enemy = preload("res://scripts/actors/enemy_catalog.gd").create(kind)
 	enemy.setup_enemy(self, kind, position_point)
 	actors_layer.add_child(enemy)
 	enemies.append(enemy)
@@ -616,6 +573,9 @@ func _grant_xp(amount: int) -> void :
 		play_cue("progress.level")
 		var grade: = GameData.grade_for_level(new_level)
 		if int(grade["min"]) == new_level:
+			for bonus: Dictionary in preload("res://scripts/ui/skill_catalog.gd").GRADE_BONUSES:
+				if int(bonus["unlock"]) == new_level:
+					play_skill_animation(str(bonus["id"]))
 			show_notice("Promoção de grade: %s" % str(grade["name"]), Color(1.0, 0.85, 0.4))
 			state_dirty.emit()
 
@@ -635,23 +595,6 @@ func _update_respawns(delta: float) -> void :
 		else:
 			still_pending.append(entry)
 	respawn_queue = still_pending
-
-
-func _update_rival(delta: float) -> void :
-	if state.level < 4 or state.rival_pending or bool(state.flags.get("colossal_defeated", false)):
-		return
-	rivals_timer += delta
-	if rivals_timer < 95.0:
-		return
-	rivals_timer = 0.0
-	for enemy in enemies_alive():
-		if enemy.kind == "rival":
-			return
-	var spawn_point: = region.random_open_tile(RegionMap.FARM_RECT, rng)
-	spawn_enemy("rival", spawn_point)
-	state.rival_pending = true
-	show_notice("Sombra de Kael surgiu nos campos!", Color(0.95, 0.65, 0.65))
-
 
 
 func show_notice(text: String, color: Color = Color(0.95, 0.92, 0.85)) -> void :
@@ -715,7 +658,15 @@ func play_cue(cue_id: String, pitch: float = 1.0) -> void :
 
 
 func flash_skill(skill_id: String) -> void :
+	play_skill_animation(skill_id)
 	skill_cast.emit(skill_id)
+
+
+func play_skill_animation(skill_id: String) -> void:
+	var effect := preload("res://scripts/combat/skill_animation.gd").new()
+	effect.configure(self, skill_id)
+	add_child(effect)
+	effect.global_position = hero.global_position + Vector2(0, -32)
 
 
 func show_cast_bar(_duration: float) -> void :
@@ -764,20 +715,42 @@ func use_interaction() -> void :
 	prop_used.emit(prop)
 
 
-func use_potion() -> void :
-	if hero == null or hero.dead or not playing:
-		return
-	if state.count_item("pocao_cura") <= 0:
-		show_notice("Sem poções de cura. Compre no baú da praça.", Color(0.92, 0.72, 0.5))
-		return
-	if hero.hp >= hero.max_hp - 0.5:
-		show_notice("Sua vida já está cheia.", Color(0.8, 0.86, 0.92))
-		return
-	state.remove_item("pocao_cura", 1)
-	hero.heal(60.0)
-	spawn_vfx(hero.global_position + Vector2(0, -36), Color(0.45, 0.95, 0.55), 12, 120.0)
+func use_potion() -> void:
+	# O atalho existente continua usando a poção de vida.
+	if playing:
+		use_consumable("pocao_cura")
+
+
+func use_consumable(item_id: String) -> bool:
+	# Inventário e atalho compartilham a mesma validação e consumo da pilha.
+	if hero == null or hero.dead or item_id not in ["pocao_cura", "pocao_mana", "pocao_energia"]:
+		return false
+	var item: Dictionary = GameData.item(item_id)
+	if state.count_item(item_id) <= 0:
+		show_notice("Sem %s no inventário." % str(item["name"]), UiKit.BAD)
+		return false
+	var current: float = hero.hp if item_id == "pocao_cura" else (hero.mp if item_id == "pocao_mana" else hero.energy)
+	var maximum: float = hero.max_hp if item_id == "pocao_cura" else (state.max_mp() if item_id == "pocao_mana" else state.max_energy())
+	if current >= maximum:
+		show_notice("O recurso já está cheio. Poção preservada.", UiKit.PARCHMENT)
+		return false
+	if not state.remove_item(item_id, 1):
+		return false
+	var amount: float = float(item.get("heal", item.get("mana", item.get("energy", 0))))
+	var restored: float = minf(amount, maximum - current)
+	var color: Color = UiKit.HP if item_id == "pocao_cura" else (UiKit.MP if item_id == "pocao_mana" else UiKit.ENERGY)
+	match item_id:
+		"pocao_cura": hero.heal(amount)
+		"pocao_mana": hero.mp = minf(maximum, hero.mp + amount)
+		"pocao_energia": hero.energy = minf(maximum, hero.energy + amount)
+	state.hp = hero.hp
+	state.mp = hero.mp
+	state.energy = hero.energy
+	spawn_vfx(hero.global_position + Vector2(0, -36), color, 12, 120.0)
 	play_cue("ui.confirm", 1.0)
-	show_notice("Poção de cura: +60 HP (%d restantes)" % state.count_item("pocao_cura"), Color(0.62, 0.95, 0.62))
+	show_notice("%s: +%d (%d restantes)" % [item["name"], int(restored), state.count_item(item_id)], color)
+	state_dirty.emit()
+	return true
 
 
 func enter_arena() -> void :
@@ -840,3 +813,14 @@ func _format_coins(value: int) -> String:
 
 func boss_node() -> Node:
 	return boss
+
+
+# Initialize only enemies explicitly placed in the authored map scene.
+func _register_map_enemies(map_scene: Node) -> void:
+	for node in map_scene.find_children("*", "", true, false):
+		if node is Enemy and not enemies.has(node):
+			var enemy: Enemy = node
+			enemy.setup_enemy(self, enemy.type_id, enemy.global_position)
+			enemies.append(enemy)
+			if enemy.is_boss():
+				boss = enemy

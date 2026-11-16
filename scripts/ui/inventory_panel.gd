@@ -113,12 +113,9 @@ func _build_character(parent: HBoxContainer) -> void:
 	var portrait: HBoxContainer = HBoxContainer.new()
 	portrait.add_theme_constant_override("separation", 8)
 	left.add_child(portrait)
-	var texture: TextureRect = TextureRect.new()
-	var sprites: Dictionary = {"guerreiro": "warrior", "mago": "mage", "atirador": "archer", "assassino": "rogue", "tank": "tank", "cavaleiro": "knight"}
-	texture.texture = load("res://assets/game/sprites/hero_%s.png" % sprites.get(state.class_id, "warrior"))
-	texture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	texture.custom_minimum_size = Vector2(44, 46)
+	var texture = preload("res://scripts/ui/hero_preview.gd").new()
+	texture.state = state
+	texture.custom_minimum_size = Vector2(52, 64)
 	portrait.add_child(texture)
 	var identity: VBoxContainer = VBoxContainer.new()
 	identity.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -145,7 +142,7 @@ func _build_character(parent: HBoxContainer) -> void:
 		info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		info.add_theme_constant_override("separation", 1)
 		row.add_child(info)
-		info.add_child(_text(str({"arma": "Arma", "armadura": "Armadura", "joia": "Joia" }[slot]), 12, BRIGHT, true))
+		info.add_child(_text(str({"arma": "Arma", "armadura": "Armadura", "joia": "Joia", "aura": "Visual" }[slot]), 12, BRIGHT, true))
 		var item_name: Label = _text("Vazio" if item_id.is_empty() else str(GameData.item(item_id)["name"]), 12, MUTED if item_id.is_empty() else CREAM)
 		item_name.tooltip_text = item_name.text
 		item_name.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -153,9 +150,9 @@ func _build_character(parent: HBoxContainer) -> void:
 		info.add_child(item_line)
 		item_name.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		item_line.add_child(item_name)
-		if not entry.is_empty():
+		if not entry.is_empty() and slot != "aura":
 			item_line.add_child(_text("%d%%" % int(100 * float(entry["durability"]) / maxf(1, float(entry["max"]))), 11, BRIGHT))
-		if not entry.is_empty():
+		if not entry.is_empty() and slot != "aura":
 			var durability: ProgressBar = UiKit.bar(BRIGHT, 7)
 			durability.value = 100.0 * float(entry["durability"]) / maxf(1, float(entry["max"]))
 			durability.tooltip_text = "Durabilidade: %d%%" % int(durability.value)
@@ -171,7 +168,9 @@ func _build_character(parent: HBoxContainer) -> void:
 	statistics.add_child(stats)
 	stats.add_child(_text("Estatísticas", 14, CREAM, true))
 	stats.add_child(_line())
-	_stat(stats, "Moedas", UiKit.money_text(state.coins))
+	_stat(stats, "Ouro", str(state.coins / 10000))
+	_stat(stats, "Prata", str((state.coins / 100) % 100))
+	_stat(stats, "Bronze", str(state.coins % 100))
 	_stat(stats, "Fama", "%d / %d" % [int(state.fame), int(state.fame_cap())])
 	var grid: GridContainer = GridContainer.new()
 	grid.columns = 2
@@ -246,6 +245,7 @@ func _build_bag(parent: HBoxContainer) -> void:
 	details.add_theme_constant_override("separation", 10)
 	right.add_child(details)
 	detail_icon = Icon.new()
+	detail_icon.class_id = state.class_id
 	detail_icon.custom_minimum_size = Vector2(40, 40)
 	details.add_child(detail_icon)
 	var text: VBoxContainer = VBoxContainer.new()
@@ -282,8 +282,14 @@ func _slot(item_id: String, quantity: int, equip_slot: String, side: int) -> But
 	if not item_id.is_empty():
 		var data: Dictionary = GameData.item(item_id)
 		button.tooltip_text = "%s\n%s\nPeso: %s kg" % [data.get("name", item_id), data.get("desc", ""), _decimal(float(data.get("weight", 0)))]
+		if not equip_slot.is_empty():
+			button.tooltip_text += "\nDuplo clique para desequipar."
+		elif str(data.get("type", "")) in PlayerState.EQUIP_SLOTS:
+			button.tooltip_text += "\nDuplo clique para equipar."
+	button.gui_input.connect(_on_slot_gui_input.bind(item_id, equip_slot, button))
 	var icon: Control = Icon.new()
 	icon.item_id = item_id
+	icon.class_id = state.class_id
 	icon.empty_slot = equip_slot
 	button.add_child(icon)
 	icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -304,6 +310,27 @@ func _slot(item_id: String, quantity: int, equip_slot: String, side: int) -> But
 		count.offset_right = -4
 		count.offset_bottom = -2
 	return button
+
+func _on_slot_gui_input(event: InputEvent, item_id: String, equip_slot: String, button: Button) -> void:
+	if not event is InputEventMouseButton:
+		return
+	if event.button_index != MOUSE_BUTTON_LEFT or not event.pressed or not event.double_click or item_id.is_empty():
+		return
+	if equip_slot.is_empty() and str(GameData.item(item_id).get("type", "")) not in PlayerState.EQUIP_SLOTS:
+		return
+	button.accept_event()
+	_select(item_id, equip_slot)
+	# Aguarda o fim do evento: equipar reconstrói o painel e libera o botão atual.
+	_activate_equipment_slot.call_deferred(item_id, equip_slot)
+
+
+func _activate_equipment_slot(item_id: String, equip_slot: String) -> void:
+	if equip_slot.is_empty():
+		if state.count_item(item_id) > 0:
+			action_requested.emit("equip", {"id": item_id})
+	elif str(state.equipment.get(equip_slot, {}).get("id", "")) == item_id:
+		action_requested.emit("unequip", {"slot": equip_slot})
+
 
 func _button(caption: String) -> Button:
 	return PanelTheme.button(caption)

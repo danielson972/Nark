@@ -1,5 +1,5 @@
 class_name Actor
-extends Node2D
+extends Sprite2D
 
 
 signal died(actor: Actor)
@@ -38,12 +38,15 @@ func setup(world_ref: Node, texture_path: String, target_height: float = 96.0) -
 func _build_nodes() -> void :
 	if sprite != null:
 		return
-	sprite = Sprite2D.new()
+	sprite = get_node_or_null("Sprite2D") as Sprite2D
+	if sprite == null:
+		sprite = Sprite2D.new()
 	if not sprite_path.is_empty() and ResourceLoader.exists(sprite_path):
 		sprite.texture = load(sprite_path)
 	sprite.scale = Vector2(base_scale, base_scale)
 	sprite.offset = Vector2(0, - float(sprite.texture.get_height() if sprite.texture else 64) * 0.5)
-	add_child(sprite)
+	if sprite.get_parent() == null:
+		add_child(sprite)
 	z_index = 1
 
 
@@ -111,6 +114,10 @@ func clear_status(key: String) -> void :
 
 
 func move_desired(desired: Vector2, delta: float) -> void :
+	# Raízes e atordoamento impedem o deslocamento de heróis e inimigos.
+	if is_rooted():
+		velocity = Vector2.ZERO
+		return
 	if desired.length_squared() > 1.0:
 		if absf(desired.x) > absf(desired.y):
 			facing = Vector2(signf(desired.x), 0)
@@ -125,14 +132,14 @@ func move_desired(desired: Vector2, delta: float) -> void :
 	if world == null:
 		position += step
 		return
-	var try_x: = position + Vector2(step.x, 0.0)
-	if world.can_stand(try_x, radius):
-		position = try_x
-	var try_y: = position + Vector2(0.0, step.y)
-	if world.can_stand(try_y, radius):
-		position = try_y
-	position.x = clampf(position.x, radius, float(Balance.MAP_W * Balance.TILE) - radius)
-	position.y = clampf(position.y, radius, float(Balance.MAP_H * Balance.TILE) - radius)
+	var try_x: = global_position + Vector2(step.x, 0.0)
+	if world.can_stand(try_x, radius) and (not world.has_method("can_actor_stand") or world.can_actor_stand(self, try_x, radius)):
+		global_position = try_x
+	var try_y: = global_position + Vector2(0.0, step.y)
+	if world.can_stand(try_y, radius) and (not world.has_method("can_actor_stand") or world.can_actor_stand(self, try_y, radius)):
+		global_position = try_y
+	global_position.x = clampf(global_position.x, radius, float(Balance.MAP_W * Balance.TILE) - radius)
+	global_position.y = clampf(global_position.y, radius, float(Balance.MAP_H * Balance.TILE) - radius)
 
 
 func take_damage(amount: float, opts: Dictionary = {}) -> Dictionary:

@@ -72,7 +72,7 @@ func _build() -> void:
 	column.add_child(identity)
 	var portrait: TextureRect = TextureRect.new()
 	var sprites: Dictionary = {"guerreiro": "warrior", "mago": "mage", "atirador": "archer", "assassino": "rogue", "tank": "tank", "cavaleiro": "knight"}
-	portrait.texture = load("res://assets/game/sprites/hero_%s.png" % sprites.get(state.class_id, "warrior"))
+	portrait.texture = load("res://assets/game/sprites/herois/compartilhados/hero_%s.png" % sprites.get(state.class_id, "warrior"))
 	portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	portrait.custom_minimum_size = Vector2(28, 28)

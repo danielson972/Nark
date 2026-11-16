@@ -140,7 +140,7 @@ static func money_text(coins: int) -> String:
 	var silver: = (coins / 100) % 100
 	var bronze: = coins % 100
 	if gold > 0:
-		return "%d ouro %d prata" % [gold, silver]
+		return "%d ouro %d prata %d bronze" % [gold, silver, bronze]
 	if silver > 0:
 		return "%d prata %d bronze" % [silver, bronze]
 	return "%d bronze" % bronze

@@ -1,6 +1,9 @@
 class_name GameData
 extends RefCounted
 
+const COIN_VALUES = {"ouro": 10000, "prata": 100, "bronze": 1}
+const TELEPORT_GOLD_COST = 2
+
 
 
 const TITLE: = "RPG do Reino"
@@ -368,6 +371,12 @@ const GRADES: = [
 
 
 const ITEMS: = {
+	"hero": {"name": "Hero", "type": "aura", "grade": "NG", "value": 0,
+		"weight": 0.0, "desc": "Visual cosmético: brilho dourado animado no torso. Sem bônus de atributos."},
+	"roupa_basica": {"name": "Roupa Básica", "type": "armadura", "grade": "NG", "value": 5,
+		"weight": 1.0, "desc": "Túnica de tecido, calças e sapatos simples. Pode ser equipada e removida.", "defense": 1.0, "durability": 60},
+	"arma_basica": {"name": "Arma de Treino", "type": "arma", "grade": "NG", "value": 5,
+		"weight": 1.0, "desc": "Arma simples de aprendiz, adaptada à sua classe. Pode ser equipada e removida.", "damage": 1.0, "durability": 60},
 	"presa_lobo": {"name": "Presa de Lobo", "type": "material", "grade": "NG", "value": 12, 
 		"weight": 0.2, "desc": "Presa afiada arrancada de um lobo do vale."}, 
 	"gosma": {"name": "Gosma Espessa", "type": "material", "grade": "NG", "value": 9, 
@@ -386,6 +395,10 @@ const ITEMS: = {
 		"weight": 0.5, "desc": "Aumenta em um nível uma skill própria já aprendida, até o teto da grade."}, 
 	"pocao_cura": {"name": "Poção de Cura", "type": "consumivel", "grade": "NG", "value": 40, 
 		"weight": 0.4, "desc": "Recupera 60 de HP.", "heal": 60}, 
+	"pocao_mana": {"name": "Poção de Mana", "type": "consumivel", "grade": "NG", "value": 40,
+		"weight": 0.4, "desc": "Recupera 50 de mana. Acumula no inventário.", "mana": 50},
+	"pocao_energia": {"name": "Poção de Energia", "type": "consumivel", "grade": "NG", "value": 40,
+		"weight": 0.4, "desc": "Recupera 30 de energia. Acumula no inventário.", "energy": 30},
 	"arma_ng": {"name": "Espada de Bronze", "type": "arma", "grade": "NG", "value": 120, 
 		"weight": 4.0, "desc": "Arma simples de bronze.", "damage": 4.0, "durability": 100}, 
 	"armadura_ng": {"name": "Armadura de Couro", "type": "armadura", "grade": "NG", "value": 110, 
@@ -427,6 +440,12 @@ const RECIPES: = [
 	{"id": "pocao_cura", "name": "Poção de Cura", "output": "pocao_cura", "qty": 1, 
 		"materials": {"gosma": 2}, "cost": 20, "chance": 0.95, 
 		"desc": "Recupera 60 de HP."}, 
+	{"id": "pocao_mana", "name": "Poção de Mana", "output": "pocao_mana", "qty": 1,
+		"materials": {"gosma": 2, "cristal_aurora": 1}, "cost": 20, "chance": 0.95,
+		"desc": "Recupera 50 de mana."},
+	{"id": "pocao_energia", "name": "Poção de Energia", "output": "pocao_energia", "qty": 1,
+		"materials": {"gosma": 2, "presa_lobo": 1}, "cost": 20, "chance": 0.95,
+		"desc": "Recupera 30 de energia."},
 	{"id": "armadura_carapaca", "name": "Peitoral de Carapaça", "output": "armadura_c", "qty": 1, 
 		"materials": {"carapaca_branca": 2, "sucata_ferro": 10}, "cost": 400, "chance": 0.8, 
 		"desc": "Armadura da Grade C feita com a fera da pedreira.", "grade": "C"}, 

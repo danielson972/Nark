@@ -58,8 +58,11 @@ static func _projectile(world: Node, hero: Node, definition: Dictionary, params:
 	var aim_charge: = float(hero.aim_charge)
 	if skill_id == "tiro_preciso":
 		if hero.has_passive("mira_firme") and aim_charge >= 1.0:
+			world.play_skill_animation("mira_firme")
 			crit += 0.3
 			world.show_notice("Mira Firme!", Color(0.95, 0.85, 0.45))
+		if hero.has_passive("ponto_fraco"):
+			world.play_skill_animation("ponto_fraco")
 		payload["ignore_defense"] = 0.5 if hero.has_passive("ponto_fraco") else 0.0
 		hero.aim_charge = 0.0
 	var spread: = 0.0
@@ -72,6 +75,7 @@ static func _projectile(world: Node, hero: Node, definition: Dictionary, params:
 		var projectile: = Projectile.new()
 		projectile.world = world
 		projectile.hero_owner = hero
+		projectile.homing_target = world.locked_enemy()
 		projectile.direction = base_dir.rotated(offset)
 		projectile.speed = float(params.get("speed", 800.0))
 		projectile.damage = power * mult
@@ -79,6 +83,7 @@ static func _projectile(world: Node, hero: Node, definition: Dictionary, params:
 		projectile.crit_chance = crit
 		projectile.life = float(params.get("range", 500.0)) / maxf(1.0, projectile.speed)
 		projectile.kind = str(params.get("kind", "arrow"))
+		projectile.use_arcane_gif = skill_id == "projetil_arcano"
 		projectile.color = Color(0.55, 0.75, 1.0) if magic else Color(0.95, 0.86, 0.55)
 		projectile.size = 11.0 if magic else 7.0
 		projectile.payload = payload.duplicate()
@@ -117,6 +122,7 @@ static func _spin_hit(world: Node, hero: Node, definition: Dictionary, params: D
 		if params.has("knockback"):
 			world.knockback(enemy, (enemy.global_position - hero.global_position).normalized(), float(params["knockback"]))
 		if skill_id == "corte_duplo" and hero.has_passive("emboscada") and hero.emboscada_ready:
+			world.play_skill_animation("emboscada")
 			payload["bleed"] = 6.0
 			payload["bleed_time"] = 4.0
 			hero.emboscada_ready = false
@@ -136,6 +142,7 @@ static func _bash(world: Node, hero: Node, definition: Dictionary, params: Dicti
 	var skill_id: = str(definition.get("id", ""))
 	if skill_id == "quebra_guarda" and hero.has_passive("brecha_tatica"):
 		if hero.last_investida >= 0.0 and hero.elapsed - hero.last_investida <= 2.5:
+			world.play_skill_animation("brecha_tatica")
 			mult *= 1.6
 			world.show_notice("Brecha Tática!", Color(0.95, 0.8, 0.4))
 	if skill_id == "pancada_escudo" and hero.retaliacao_ready:
@@ -153,6 +160,7 @@ static func _bash(world: Node, hero: Node, definition: Dictionary, params: Dicti
 			enemy.apply_status("guard_broken", float(params["break"]))
 			hero.blocks_recent = hero.blocks_recent
 			if hero.has_passive("impeto"):
+				world.play_skill_animation("impeto")
 				hero.energy = minf(hero.state.max_energy(), hero.energy + 25.0)
 		world.hit_enemy(enemy, power * mult, _crit_for(hero, false), payload)
 
@@ -182,6 +190,7 @@ static func _dash_strike(world: Node, hero: Node, definition: Dictionary, params
 				if enemy.has_method("interrupt_cast"):
 					enemy.interrupt_cast()
 				enemy.apply_status("stun", 0.6)
+				world.play_skill_animation("cerco")
 				hero.estocada_bonus = 1.8
 			if bool(params.get("push_all", false)):
 				world.knockback(enemy, direction, float(params.get("knockback", 90.0)))
@@ -225,6 +234,7 @@ static func _blink(world: Node, hero: Node, definition: Dictionary, params: Dict
 	hero.global_position = target
 	world.spawn_vfx(target, Color(0.55, 0.75, 1.0), 14, 200.0)
 	if hero.has_passive("rastro_gelido"):
+		world.play_skill_animation("rastro_gelido")
 		_spawn_trail(world, hero, start, target)
 
 
@@ -284,6 +294,8 @@ static func _delayed_aoe(world: Node, hero: Node, _definition: Dictionary, param
 	effect.damage = _hero_power(hero) * float(params.get("mult", 3.0))
 	effect.color = Color(1.0, 0.6, 0.3, 0.45)
 	effect.edge = Color(1.0, 0.85, 0.5, 0.95)
+	if str(_definition.get("id", "")) == "cometa_arcano":
+		effect.payload["comet"] = true
 	effect.position = aim
 	world.add_area_effect(effect)
 

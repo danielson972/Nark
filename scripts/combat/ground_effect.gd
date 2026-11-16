@@ -1,6 +1,8 @@
 class_name GroundEffect
 extends Node2D
 
+const ICE_FIELD_SPRITE: Texture2D = preload("res://assets/game/effects/ice_field_64.png")
+
 
 var world: Node = null
 var radius: = 100.0
@@ -92,9 +94,16 @@ func _apply_damage() -> void :
 func _draw() -> void :
 	if delay > 0.0 and elapsed < delay:
 		var progress: = clampf(elapsed / maxf(0.01, delay), 0.0, 1.0)
-		draw_circle(Vector2.ZERO, radius, Color(0.85, 0.2, 0.15, 0.18 + 0.12 * progress))
-		draw_arc(Vector2.ZERO, radius, 0.0, TAU, 40, Color(1.0, 0.45, 0.3, 0.9), 3.0)
-		draw_circle(Vector2.ZERO, radius * progress, Color(1.0, 0.35, 0.2, 0.22))
+		var warning := Color(0.85, 0.2, 0.15, 1.0)
+		if payload.has("comet"):
+			warning = Color(1.0, 0.48, 0.18, 1.0)
+		draw_circle(Vector2.ZERO, radius, Color(warning.r, warning.g, warning.b, 0.14 + 0.1 * progress))
+		draw_arc(Vector2.ZERO, radius, 0.0, TAU, 40, Color(warning.r, warning.g, warning.b, 0.55 + 0.4 * progress), 3.0)
+		draw_circle(Vector2.ZERO, radius * progress, Color(warning.r, warning.g, warning.b, 0.18))
+		if payload.has("comet"):
+			var comet_pos := Vector2(-radius * 0.55, -radius * (1.0 - progress) * 1.3)
+			draw_circle(comet_pos, lerpf(7.0, 20.0, progress), Color(1.0, 0.83, 0.43, 0.95))
+			draw_line(comet_pos + Vector2(-8, -22), comet_pos + Vector2(8, 5), Color(1.0, 0.4, 0.14, 0.75), 7.0, true)
 		return
 	match mode:
 		"burst":
@@ -103,10 +112,11 @@ func _draw() -> void :
 		"rain":
 			draw_circle(Vector2.ZERO, radius, Color(color.r, color.g, color.b, 0.2))
 			draw_arc(Vector2.ZERO, radius, 0.0, TAU, 40, Color(edge.r, edge.g, edge.b, 0.55), 2.0)
-			for index in 7:
-				var angle: = float(index) * 1.34 + elapsed * 2.0
-				var point: = Vector2(cos(angle), sin(angle)) * radius * 0.75
-				draw_line(point + Vector2(6, -30), point, Color(0.95, 0.85, 0.55, 0.8), 2.0)
+			for index in 12:
+				var angle: = float(index) * 2.4 + elapsed * 1.2
+				var point: = Vector2(cos(angle), sin(angle)) * radius * (0.2 + 0.7 * fposmod(float(index) * 0.37 + elapsed * 0.8, 1.0))
+				var fall := fposmod(float(index) * 29.0 + elapsed * 115.0, 46.0)
+				draw_line(point + Vector2(5, -fall), point + Vector2.ZERO, Color(1.0, 0.87, 0.57, 0.8), 2.0, true)
 		"banner":
 			draw_circle(Vector2.ZERO, radius, Color(0.95, 0.8, 0.35, 0.14))
 			draw_arc(Vector2.ZERO, radius, 0.0, TAU, 44, Color(1.0, 0.85, 0.4, 0.75), 3.0)
@@ -114,6 +124,14 @@ func _draw() -> void :
 			draw_colored_polygon(PackedVector2Array([
 				Vector2(0, -74), Vector2(30, -64), Vector2(0, -48)
 			]), Color(0.2, 0.35, 0.75, 0.9))
+		"field":
+			var pulse := 0.5 + 0.5 * sin(elapsed * 4.0)
+			draw_circle(Vector2.ZERO, radius * 0.88, Color(0.22, 0.55, 0.95, 0.12 + pulse * 0.08))
+			var ring_size := Vector2.ONE * radius * 2.28 * (0.98 + pulse * 0.035)
+			var ring_rect := Rect2(-ring_size * 0.5, ring_size)
+			draw_set_transform(Vector2.ZERO, sin(elapsed * 0.35) * 0.025, Vector2.ONE)
+			draw_texture_rect(ICE_FIELD_SPRITE, ring_rect, false, Color(1.0, 1.0, 1.0, 0.88 + pulse * 0.12))
+			draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 		_:
 			draw_circle(Vector2.ZERO, radius, color)
 			draw_arc(Vector2.ZERO, radius, 0.0, TAU, 44, edge, 2.0)

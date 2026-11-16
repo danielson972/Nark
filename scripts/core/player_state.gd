@@ -1,8 +1,10 @@
 class_name PlayerState
 extends RefCounted
 
+signal equipment_changed
 
-const EQUIP_SLOTS: = ["arma", "armadura", "joia"]
+
+const EQUIP_SLOTS: = ["arma", "armadura", "joia", "aura"]
 
 var hero_name: = "Herói"
 var race_id: = "humano"
@@ -53,11 +55,13 @@ static func create(p_name: String, p_race: String, p_class: String) -> PlayerSta
 		if int(passive["unlock"]) <= 1:
 			state.skill_levels[str(passive["id"])] = 1
 	state.hotbar = [str(start_actives[0]["id"]), str(start_actives[1]["id"]), "", "", "", "", "", "", "", ""]
-	state.add_item("arma_ng", 1, true)
-	state.add_item("armadura_ng", 1, true)
+	state.add_item("arma_basica", 1, true)
+	state.add_item("roupa_basica", 1, true)
 	state.add_item("pocao_cura", 2, true)
-	state.equip("arma_ng")
-	state.equip("armadura_ng")
+	state.add_item("pocao_mana", 2, true)
+	state.add_item("pocao_energia", 2, true)
+	state.equip("arma_basica")
+	state.equip("roupa_basica")
 	state.contracts = [
 		{"id": "contrato_lobos", "progress": 0, "claimed": false, "done": false}, 
 		{"id": "contrato_gosmas", "progress": 0, "claimed": false, "done": false}, 
@@ -118,7 +122,7 @@ func max_mp() -> float:
 
 func max_energy() -> float:
 	var base: Dictionary = class_data()["base"]
-	return round(float(base["energy"]) + (level - 1) * Balance.ENERGY_PER_LEVEL)
+	return round(float(base["energy"]) * Balance.ENERGY_BASE_MULTIPLIER + (level - 1) * Balance.ENERGY_PER_LEVEL)
 
 func damage_power() -> float:
 	var base: Dictionary = class_data()["base"]
@@ -152,6 +156,8 @@ func weight_capacity() -> float:
 	return Balance.WEIGHT_BASE + strength() * Balance.WEIGHT_PER_STRENGTH
 
 func attack_range() -> float:
+	if equipment.get("arma", {}).is_empty():
+		return 52.0
 	return float(class_data()["range"])
 
 func fame_cap() -> float:
@@ -316,6 +322,7 @@ func equip(item_id: String) -> String:
 	if not previous.is_empty():
 		add_item(str(previous["id"]), 1, true)
 	equipment[slot] = {"id": item_id, "durability": float(item.get("durability", 100.0)), "max": float(item.get("durability", 100.0))}
+	equipment_changed.emit()
 	return ""
 
 func unequip(slot: String) -> void :
@@ -324,9 +331,12 @@ func unequip(slot: String) -> void :
 		return
 	if add_item(str(entry["id"]), 1, true):
 		equipment[slot] = {}
+		equipment_changed.emit()
 
 func wear_equipment(amount: float) -> void :
 	for slot: String in EQUIP_SLOTS:
+		if slot == "aura":
+			continue
 		var entry: Dictionary = equipment.get(slot, {})
 		if entry.is_empty():
 			continue
@@ -336,6 +346,8 @@ func durability_ratio() -> float:
 	var total: = 0.0
 	var count: = 0
 	for slot: String in EQUIP_SLOTS:
+		if slot == "aura":
+			continue
 		var entry: Dictionary = equipment.get(slot, {})
 		if entry.is_empty():
 			continue
@@ -434,7 +446,7 @@ func from_dict(data: Dictionary) -> void :
 	coins = int(data.get("coins", 0))
 	hp = float(data.get("hp", max_hp()))
 	mp = float(data.get("mp", max_mp()))
-	energy = float(data.get("energy", max_energy()))
+	energy = clampf(float(data.get("energy", max_energy())), 0.0, max_energy())
 	skill_levels = (data.get("skill_levels", {}) as Dictionary).duplicate(true)
 	evolutions = (data.get("evolutions", []) as Array).duplicate(true)
 	hotbar = (data.get("hotbar", []) as Array).duplicate(true)

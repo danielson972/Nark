@@ -40,3 +40,35 @@ O progresso salvo no navegador não foi transferido. Nenhum arquivo de áudio es
 O teste que alterna imediatamente entre 24 partidas registrou callbacks de interface referenciando objetos já liberados. Esse comportamento foi preservado; o projeto não recebeu mudanças na lógica do jogo. O editor também registrou um erro de gravação segura no ambiente restrito de validação, sem impedir a importação nem os testes de execução. Consulte os logs em `relatorios/`.
 
 O ZIP contém os arquivos editáveis e dispensa caches `.godot` e cópias intermediárias `.autoconverted`; o Godot gera os caches ao importar.
+
+## Sala secreta do desenvolvedor
+
+Durante uma partida, pressione **Ctrl + Shift + F12** para entrar ou sair. A sala não aparece no menu de teleporte. Aproxime-se das bancadas e use **E** (ou a tecla de interação configurada).
+
+- **Arsenal:** todos os itens cadastrados em GameData.ITEMS, grátis, em quantidades de 1 ou 10.
+- **Biblioteca:** teste qualquer uma das seis classes no nível 100, com todas as habilidades da classe e as universais liberadas. As skills entram na hotbar; o menu de skills permite consultá-las e aprimorá-las com livros do arsenal.
+- **Bancada:** restaurar HP, mana, energia, recargas e durabilidade, receber moedas, invocar qualquer inimigo cadastrado (até oito simultâneos) e limpar inimigos.
+- **Portal:** sair e restaurar o personagem original. O atalho também funciona com painéis abertos ou após morrer.
+
+A sala usa uma cópia temporária do personagem e mantém o mundo original pausado. Salvamento manual e automático ficam desativados durante os testes. Ao sair, personagem, posição, inventário e progresso originais são restaurados.
+
+Validação automatizada: relatorios/verify_developer_room.gd; resultado em relatorios/developer-room-test.log.
+
+## Equipamentos visíveis no personagem
+
+Novos personagens começam com Roupa Básica e Arma de Treino equipadas. Abra o
+inventário com **I**, selecione o slot equipado e use **Desequipar** para retirar;
+selecione o item na mochila e use **Equipar** para colocá-lo novamente.
+
+Armas e armaduras aparecem no personagem e no retrato do inventário. Cada classe
+tem sua aparência de armadura NG, D, C e B. A arma é independente da roupa e
+acompanha o personagem ao virar e atacar. Sem armadura, o personagem usa roupa
+de baixo simples; sem arma, o ataque básico passa a ter alcance curto, sem
+disparar flechas ou projéteis. As habilidades de classe mantêm suas regras.
+
+Os novos itens básicos também estão disponíveis no arsenal da sala secreta.
+Saves anteriores preservam os equipamentos que já estavam usando.
+
+Artes e prompt: `assets/game/sprites/herois/compartilhados/equipamentos/`. Detalhes técnicos no README
+dessa pasta. Validação em `relatorios/verify_equipment_visuals.gd`, com uma
+galeria renderizada em `relatorios/equipment-visual-gallery.png`.

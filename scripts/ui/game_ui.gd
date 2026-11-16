@@ -26,7 +26,11 @@ var clock_label: Label
 var region_label: Label
 var hp_bar: ProgressBar
 var mp_bar: ProgressBar
+var xp_bar: ProgressBar
+var xp_text: Label
 var energy_bar: ProgressBar
+var energy_gauge: Control
+var energy_usage_text: Label
 var hp_text: Label
 var mp_text: Label
 var energy_text: Label
@@ -91,11 +95,17 @@ func _ready() -> void :
 func _build_hud() -> void :
 	var status_panel: = PanelContainer.new()
 	status_panel.position = Vector2(16, 14)
-	status_panel.size = Vector2(346, 132)
-	status_panel.custom_minimum_size = Vector2(346, 132)
+	status_panel.size = Vector2(346, 156)
+	status_panel.custom_minimum_size = Vector2(346, 156)
 	status_panel.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	status_panel.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-	UiKit.apply_panel(status_panel, Color(0.09, 0.07, 0.06, 0.9))
+	status_panel.name = "StatusHUD"
+	var transparent_panel := StyleBoxEmpty.new()
+	transparent_panel.content_margin_left = 18
+	transparent_panel.content_margin_right = 18
+	transparent_panel.content_margin_top = 14
+	transparent_panel.content_margin_bottom = 14
+	status_panel.add_theme_stylebox_override("panel", transparent_panel)
 	hud.add_child(status_panel)
 	var column: = VBoxContainer.new()
 	column.add_theme_constant_override("separation", 4)
@@ -112,25 +122,38 @@ func _build_hud() -> void :
 	header.add_child(grade_label)
 
 	var bars: = GridContainer.new()
-	bars.columns = 2
+	bars.columns = 1
 	bars.add_theme_constant_override("h_separation", 6)
 	bars.add_theme_constant_override("v_separation", 3)
 	column.add_child(bars)
 	hp_bar = UiKit.bar(UiKit.HP)
-	hp_bar.custom_minimum_size = Vector2(210, 16)
+	hp_bar.custom_minimum_size = Vector2(210, 22)
+	hp_bar.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	bars.add_child(hp_bar)
-	hp_text = UiKit.label("100 / 100", 13, UiKit.PARCHMENT)
-	bars.add_child(hp_text)
+	hp_text = _status_value_label(hp_bar, "100 / 100")
 	mp_bar = UiKit.bar(UiKit.MP)
-	mp_bar.custom_minimum_size = Vector2(210, 12)
+	mp_bar.custom_minimum_size = Vector2(210, 22)
+	mp_bar.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	bars.add_child(mp_bar)
-	mp_text = UiKit.label("40 / 40", 12, UiKit.PARCHMENT)
-	bars.add_child(mp_text)
-	energy_bar = UiKit.bar(UiKit.ENERGY)
-	energy_bar.custom_minimum_size = Vector2(210, 12)
-	bars.add_child(energy_bar)
-	energy_text = UiKit.label("100 / 100", 12, UiKit.PARCHMENT)
-	bars.add_child(energy_text)
+	mp_text = _status_value_label(mp_bar, "40 / 40")
+	energy_gauge = preload("res://scripts/ui/energy_gauge.gd").new()
+	energy_bar = energy_gauge.bar
+	bars.add_child(energy_gauge)
+	energy_text = _status_value_label(energy_bar, "50 / 50")
+	var xp_row := HBoxContainer.new()
+	xp_row.add_theme_constant_override("separation", 6)
+	bars.add_child(xp_row)
+	xp_bar = UiKit.bar(Color(0.55, 0.38, 0.85))
+	xp_bar.name = "Experiencia"
+	xp_bar.custom_minimum_size = Vector2(210, 10)
+	xp_bar.tooltip_text = "Experiência para o próximo nível"
+	xp_row.add_child(xp_bar)
+	xp_text = UiKit.label("XP 0 / 100", 12, UiKit.PARCHMENT)
+	xp_row.add_child(xp_text)
+	energy_usage_text = UiKit.label("Esquiva pronta · custo 18", 12, UiKit.PARCHMENT)
+	energy_usage_text.add_theme_color_override("font_outline_color", Color(0.04, 0.04, 0.03, 0.95))
+	energy_usage_text.add_theme_constant_override("outline_size", 3)
+	column.add_child(energy_usage_text)
 
 	var footer: = HBoxContainer.new()
 	footer.add_theme_constant_override("separation", 12)
@@ -141,7 +164,7 @@ func _build_hud() -> void :
 	footer.add_child(coins_label)
 
 	state_label = UiKit.label("", 13, UiKit.BAD)
-	state_label.position = Vector2(20, 132)
+	state_label.position = Vector2(20, 176)
 	hud.add_child(state_label)
 
 
@@ -294,12 +317,30 @@ func refresh(state: PlayerState, world: WorldView, hero: Hero, interaction: Dict
 	mp_bar.max_value = state.max_mp()
 	mp_bar.value = hero.mp
 	mp_text.text = "%d / %d" % [int(hero.mp), int(state.max_mp())]
-	energy_bar.max_value = state.max_energy()
-	energy_bar.value = hero.energy
+	energy_gauge.update_energy(hero.energy, state.max_energy())
+	if hero.dodge_cooldown_left > 0.0:
+		energy_usage_text.text = "Esquiva · recarga %.1f s" % hero.dodge_cooldown_left
+	elif hero.energy < Balance.DODGE_COST:
+		energy_usage_text.text = "Esquiva · energia insuficiente (%d)" % int(Balance.DODGE_COST)
+	else:
+		energy_usage_text.text = "Esquiva pronta · custo %d" % int(Balance.DODGE_COST)
+	energy_usage_text.add_theme_color_override("font_color", UiKit.BAD if hero.energy < Balance.DODGE_COST else UiKit.PARCHMENT)
+	if state.level >= 100:
+		xp_bar.max_value = 1
+		xp_bar.value = 1
+		xp_text.text = "XP · Nível máximo"
+	else:
+		xp_bar.max_value = GameData.xp_to_next(state.level)
+		xp_bar.value = state.xp
+		xp_text.text = "XP %d / %d" % [state.xp, int(xp_bar.max_value)]
 	energy_text.text = "%d / %d" % [int(hero.energy), int(state.max_energy())]
 	state_label.text = "EXAUSTÃO" if hero.exhaust > 0.0 else ""
 	if hero.blocking:
 		state_label.text = "GUARDA"
+	if hero.has_status("root"):
+		state_label.text = "ENRAIZADO"
+	if hero.is_stunned():
+		state_label.text = "ATORDOADO"
 	if world != null:
 		region_label.text = world.region.zone_name(world.region.zone_at(hero.global_position))
 		clock_label.text = _clock_text(world)
@@ -406,8 +447,8 @@ func show_title(has_save: bool) -> void :
 	_clear_overlay()
 	hud.visible = false
 	var background: = TextureRect.new()
-	if ResourceLoader.exists("res://assets/game/sprites/title_keyart.png"):
-		background.texture = load("res://assets/game/sprites/title_keyart.png")
+	if ResourceLoader.exists("res://assets/game/sprites/interface/title_keyart.png"):
+		background.texture = load("res://assets/game/sprites/interface/title_keyart.png")
 	background.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	background.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -595,13 +636,9 @@ func _refresh_creation_preview() -> void :
 	var preview_row: = HBoxContainer.new()
 	preview_row.add_theme_constant_override("separation", 14)
 	creation_preview.add_child(preview_row)
-	var portrait: = TextureRect.new()
-	var portrait_path: = _class_sprite_path(creation_class)
-	if ResourceLoader.exists(portrait_path):
-		portrait.texture = load(portrait_path)
+	var portrait = preload("res://scripts/ui/hero_preview.gd").new()
+	portrait.state = PlayerState.create("Aprendiz", creation_race, creation_class)
 	portrait.custom_minimum_size = Vector2(104, 132)
-	portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	preview_row.add_child(portrait)
 	var text_column: = VBoxContainer.new()
 	text_column.add_theme_constant_override("separation", 3)
@@ -615,7 +652,7 @@ func _refresh_creation_preview() -> void :
 	var hp_value: = float(base["hp"]) + float(race["hp"])
 	text_column.add_child(UiKit.label(
 		"HP %d   Mana %d   Energia %d   Dano %d   Defesa %d   Crítico %d%%" % [
-			int(hp_value), int(base["mp"]), int(base["energy"]), int(base["damage"]), 
+			int(hp_value), int(base["mp"]), int(round(float(base["energy"]) * Balance.ENERGY_BASE_MULTIPLIER)), int(base["damage"]), 
 			int(base["defense"]), int(float(base["crit_phys"]) * 100.0)], 13))
 	var skill_names: Array = []
 	for skill: Dictionary in data["ativas"]:
@@ -632,12 +669,12 @@ func _refresh_creation_preview() -> void :
 
 func _class_sprite_path(class_id: String) -> String:
 	match class_id:
-		"atirador": return "res://assets/game/sprites/hero_archer.png"
-		"mago": return "res://assets/game/sprites/hero_mage.png"
-		"assassino": return "res://assets/game/sprites/hero_rogue.png"
-		"tank": return "res://assets/game/sprites/hero_tank.png"
-		"cavaleiro": return "res://assets/game/sprites/hero_knight.png"
-		_: return "res://assets/game/sprites/hero_warrior.png"
+		"atirador": return "res://assets/game/sprites/herois/compartilhados/hero_archer.png"
+		"mago": return "res://assets/game/sprites/herois/compartilhados/hero_mage.png"
+		"assassino": return "res://assets/game/sprites/herois/compartilhados/hero_rogue.png"
+		"tank": return "res://assets/game/sprites/herois/compartilhados/hero_tank.png"
+		"cavaleiro": return "res://assets/game/sprites/herois/compartilhados/hero_knight.png"
+		_: return "res://assets/game/sprites/herois/compartilhados/hero_warrior.png"
 
 
 func _submit_creation() -> void :
@@ -1073,9 +1110,21 @@ func show_world_map() -> void :
 			box.add_child(UiKit.label("Selo não descoberto", 12, UiKit.BAD))
 
 
+func _npc_list(caption: String) -> VBoxContainer:
+	var list := open_modal(caption, Vector2(560, 480))
+	list.add_theme_constant_override("separation", 4)
+	return list
+
+
+func _npc_button(caption: String, minimum: Vector2, _accent: bool = false) -> Button:
+	var button := preload("res://scripts/ui/rpg_panel_theme.gd").button(caption)
+	button.custom_minimum_size = Vector2(minf(minimum.x, 104), 28)
+	return button
+
+
 func show_forge_panel() -> void :
 	current_panel = "forge"
-	var content: = open_modal("Forja da Cidade", Vector2(900, 600))
+	var content: = _npc_list("Forja da Cidade")
 	content.add_child(UiKit.label("O ferreiro cobra moedas pelo trabalho. Forjar pode falhar; anões têm mais sorte.", 13, UiKit.MUTED))
 	content.add_child(UiKit.divider())
 	content.add_child(UiKit.label("Reparo", 17, UiKit.GOLD))
@@ -1083,7 +1132,7 @@ func show_forge_panel() -> void :
 	var durability_text: = "Durabilidade média: %d%%" % int(state.durability_ratio() * 100.0)
 	content.add_child(UiKit.label(durability_text, 14))
 	if cost > 0:
-		var repair: = UiKit.button("Reparar equipamento — %s" % UiKit.money_text(cost), Vector2(0, 34))
+		var repair: = _npc_button("Reparar equipamento — %s" % UiKit.money_text(cost), Vector2(0, 34))
 		repair.pressed.connect( func() -> void : panel_action.emit("repair", {}))
 		content.add_child(repair)
 	else:
@@ -1096,14 +1145,15 @@ func show_forge_panel() -> void :
 
 func _recipe_row(recipe: Dictionary) -> Control:
 	var panel: = PanelContainer.new()
-	UiKit.apply_panel(panel, Color(0.13, 0.11, 0.085, 0.9), Color(0.3, 0.26, 0.19))
+	panel.add_theme_stylebox_override("panel", preload("res://scripts/ui/rpg_panel_theme.gd").frame(Color("21180f"), UiKit.GOLD.darkened(0.4), 1, 4))
 	var row: = HBoxContainer.new()
 	row.add_theme_constant_override("separation", 12)
 	panel.add_child(row)
+	row.add_child(_item_art(str(recipe.get("output", "")), 28))
 	var info: = VBoxContainer.new()
 	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(info)
-	info.add_child(UiKit.label(str(recipe["name"]), 16, UiKit.GOLD))
+	info.add_child(UiKit.label(str(recipe["name"]), 13, UiKit.GOLD))
 	var materials: Dictionary = recipe["materials"]
 	var parts: Array = []
 	var affordable: = true
@@ -1114,10 +1164,11 @@ func _recipe_row(recipe: Dictionary) -> Control:
 			affordable = false
 		parts.append("%s %d/%d" % [GameData.item_short_name(item_id), owned, needed])
 	var line: = UiKit.label(" · ".join(parts), 13, UiKit.PARCHMENT if affordable else UiKit.BAD)
+	line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	info.add_child(line)
 	var chance: = int(round(float(recipe.get("chance", 0.9)) * 100.0 + float(state.race()["craft_bonus"]) * 100.0))
 	info.add_child(UiKit.label("Custo %s · chance de sucesso %d%%" % [UiKit.money_text(state.price(int(recipe.get("cost", 0)))), mini(100, chance)], 12, UiKit.MUTED))
-	var craft: = UiKit.button("Forjar", Vector2(120, 32), affordable and state.coins >= state.price(int(recipe.get("cost", 0))))
+	var craft: = _npc_button("Forjar", Vector2(120, 32), affordable and state.coins >= state.price(int(recipe.get("cost", 0))))
 	craft.pressed.connect( func() -> void : panel_action.emit("craft", {"id": str(recipe["id"])}))
 	row.add_child(craft)
 	return panel
@@ -1125,24 +1176,24 @@ func _recipe_row(recipe: Dictionary) -> Control:
 
 func show_board_panel() -> void :
 	current_panel = "board"
-	var content: = open_modal("Mural de Contratos", Vector2(920, 600))
+	var content: = _npc_list("Mural de Contratos")
 	content.add_child(UiKit.label("Contratos elevam a fama. Habilidades de classe exigem a missão do mestre.", 13, UiKit.MUTED))
 	content.add_child(UiKit.divider())
 	for contract: Dictionary in GameData.CONTRACTS:
 		var contract_id: = str(contract["id"])
 		var entry: Dictionary = state.contract_state(contract_id)
 		var panel: = PanelContainer.new()
-		UiKit.apply_panel(panel, Color(0.13, 0.11, 0.085, 0.9), Color(0.3, 0.26, 0.19))
+		panel.add_theme_stylebox_override("panel", preload("res://scripts/ui/rpg_panel_theme.gd").frame(Color("21180f"), UiKit.GOLD.darkened(0.4), 1, 4))
 		var row: = HBoxContainer.new()
 		row.add_theme_constant_override("separation", 12)
 		panel.add_child(row)
 		var info: = VBoxContainer.new()
 		info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(info)
-		info.add_child(UiKit.label("%s — %s" % [str(contract["name"]), str(contract["difficulty"])], 16, UiKit.GOLD))
+		info.add_child(UiKit.label("%s — %s" % [str(contract["name"]), str(contract["difficulty"])], 13, UiKit.GOLD))
 		var description: = UiKit.label(str(contract["desc"]), 13, UiKit.PARCHMENT)
 		description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		description.custom_minimum_size = Vector2(520, 0)
+		description.custom_minimum_size = Vector2(200, 0)
 		info.add_child(description)
 		info.add_child(UiKit.label("Recompensa: %.1f de fama · %s · %d XP" % [
 			float(contract["fame"]), UiKit.money_text(int(contract["coins"])), int(contract["xp"])], 12, UiKit.MUTED))
@@ -1152,17 +1203,17 @@ func show_board_panel() -> void :
 		var action: Button
 		if entry.is_empty():
 			var available: = state.accepts_contract(contract_id)
-			action = UiKit.button("Aceitar" if available else "Indisponível", Vector2(140, 32), available)
+			action = _npc_button("Aceitar" if available else "Indisponível", Vector2(140, 32), available)
 			action.disabled = not available
 			action.pressed.connect( func() -> void : panel_action.emit("accept_contract", {"id": contract_id}))
 		elif bool(entry.get("done", false)) and not bool(entry.get("claimed", false)):
-			action = UiKit.button("Entregar", Vector2(140, 32), true)
+			action = _npc_button("Entregar", Vector2(140, 32), true)
 			action.pressed.connect( func() -> void : panel_action.emit("claim_contract", {"id": contract_id}))
 		elif bool(entry.get("claimed", false)):
-			action = UiKit.button("Concluído", Vector2(140, 32))
+			action = _npc_button("Concluído", Vector2(140, 32))
 			action.disabled = true
 		else:
-			action = UiKit.button("Em andamento", Vector2(140, 32))
+			action = _npc_button("Em andamento", Vector2(140, 32))
 			action.disabled = true
 		row.add_child(action)
 		content.add_child(panel)
@@ -1170,8 +1221,8 @@ func show_board_panel() -> void :
 
 func show_chest_panel() -> void :
 	current_panel = "chest"
-	var content: = open_modal("Baú da Cidade", Vector2(900, 600))
-	var columns: = HBoxContainer.new()
+	var content: = _npc_list("Baú da Cidade")
+	var columns: = VBoxContainer.new()
 	columns.add_theme_constant_override("separation", 20)
 	content.add_child(columns)
 	var left: = VBoxContainer.new()
@@ -1185,10 +1236,11 @@ func show_chest_panel() -> void :
 		var row: = HBoxContainer.new()
 		row.add_theme_constant_override("separation", 8)
 		left.add_child(row)
+		row.add_child(_item_art(item_id, 28))
 		var caption: = UiKit.label("%s x%d" % [GameData.item_short_name(item_id), int(entry.get("qty", 1))], 14)
 		caption.custom_minimum_size = Vector2(220, 0)
 		row.add_child(caption)
-		var store: = UiKit.button("Guardar", Vector2(96, 26))
+		var store: = _npc_button("Guardar", Vector2(96, 26))
 		store.pressed.connect( func() -> void : panel_action.emit("store", {"id": item_id}))
 		row.add_child(store)
 	var right: = VBoxContainer.new()
@@ -1202,34 +1254,35 @@ func show_chest_panel() -> void :
 		var row: = HBoxContainer.new()
 		row.add_theme_constant_override("separation", 8)
 		right.add_child(row)
+		row.add_child(_item_art(item_id, 28))
 		var caption: = UiKit.label("%s x%d" % [GameData.item_short_name(item_id), int(entry.get("qty", 1))], 14)
 		caption.custom_minimum_size = Vector2(220, 0)
 		row.add_child(caption)
-		var retrieve: = UiKit.button("Retirar", Vector2(96, 26))
+		var retrieve: = _npc_button("Retirar", Vector2(96, 26))
 		retrieve.pressed.connect( func() -> void : panel_action.emit("retrieve", {"id": item_id}))
 		row.add_child(retrieve)
 
 
 func show_statue_panel() -> void :
 	current_panel = "statue"
-	var content: = open_modal("Estátua de Save", Vector2(620, 470))
+	var content: = _npc_list("Estátua de Save")
 	content.add_child(UiKit.label("O cristal guarda sua história. Aqui você salva manualmente e descansa.", 14, UiKit.MUTED))
 	content.add_child(UiKit.label("Nível %d · %s · Fama %d/%d" % [state.level, UiKit.grade_name(state.level), int(state.fame), int(state.fame_cap())], 15))
 	content.add_child(UiKit.spacer(6))
-	var save: = UiKit.button("Salvar o jogo", Vector2(0, 44), true)
+	var save: = _npc_button("Salvar o jogo", Vector2(0, 44), true)
 	save.pressed.connect( func() -> void : panel_action.emit("save", {}))
 	content.add_child(save)
-	var rest: = UiKit.button("Descansar (recupera HP, mana e energia)", Vector2(0, 40))
+	var rest: = _npc_button("Descansar (recupera HP, mana e energia)", Vector2(0, 40))
 	rest.pressed.connect( func() -> void : panel_action.emit("rest", {}))
 	content.add_child(rest)
-	var title_button: = UiKit.button("Voltar ao menu principal", Vector2(0, 36))
+	var title_button: = _npc_button("Voltar ao menu principal", Vector2(0, 36))
 	title_button.pressed.connect( func() -> void : panel_action.emit("to_title", {}))
 	content.add_child(title_button)
 
 
 func show_blessings_panel() -> void :
 	current_panel = "blessings"
-	var content: = open_modal("Bênçãos", Vector2(680, 520))
+	var content: = _npc_list("Bênçãos")
 	content.add_child(UiKit.label("O sacerdote cobra moedas pela bênção do santuário.", 14, UiKit.MUTED))
 	var blessings: = [
 		{"kind": "vigor", "name": "Bênção do Vigor", "desc": "Cura totalmente e restaura mana e energia.", "cost": 90}, 
@@ -1238,18 +1291,19 @@ func show_blessings_panel() -> void :
 	]
 	for blessing: Dictionary in blessings:
 		var panel: = PanelContainer.new()
-		UiKit.apply_panel(panel, Color(0.13, 0.11, 0.085, 0.9), Color(0.3, 0.26, 0.19))
+		panel.add_theme_stylebox_override("panel", preload("res://scripts/ui/rpg_panel_theme.gd").frame(Color("21180f"), UiKit.GOLD.darkened(0.4), 1, 4))
 		var row: = HBoxContainer.new()
 		row.add_theme_constant_override("separation", 12)
 		panel.add_child(row)
 		var info: = VBoxContainer.new()
 		info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(_item_art({"vigor": "pocao_cura", "furia": "arma_ng", "fortuna": "bolsa_moedas"}[blessing["kind"]], 28))
 		row.add_child(info)
-		info.add_child(UiKit.label(str(blessing["name"]), 16, UiKit.GOLD))
+		info.add_child(UiKit.label(str(blessing["name"]), 13, UiKit.GOLD))
 		info.add_child(UiKit.label(str(blessing["desc"]), 13, UiKit.PARCHMENT))
 		var cost: = state.price(int(blessing["cost"]))
 		info.add_child(UiKit.label("Custo: %s" % UiKit.money_text(cost), 12, UiKit.MUTED))
-		var buy: = UiKit.button("Receber", Vector2(120, 32), state.coins >= cost)
+		var buy: = _npc_button("Receber", Vector2(120, 32), state.coins >= cost)
 		buy.pressed.connect( func() -> void : panel_action.emit("bless", {"kind": str(blessing["kind"])}))
 		row.add_child(buy)
 		content.add_child(panel)
@@ -1257,12 +1311,12 @@ func show_blessings_panel() -> void :
 
 func show_teleport_panel() -> void :
 	current_panel = "teleport"
-	var content: = open_modal("Círculo de Teleporte", Vector2(660, 460))
+	var content: = _npc_list("Círculo de Teleporte")
+	content.add_child(UiKit.label("Saldo disponível: %d bronze (inclui ouro e prata)" % state.coins, 13, UiKit.GOLD))
 	var unlocked: = bool(state.flags.get("teleport_unlocked", false))
 	if not unlocked:
-		content.add_child(UiKit.label("O mestre exige uma missão especial antes de abrir o círculo.", 14, UiKit.MUTED))
 		var cost: = state.price(400)
-		var button: = UiKit.button("Pagar a liberação — %s" % UiKit.money_text(cost), Vector2(0, 40), true)
+		var button: = _npc_button("Liberar por %d bronze" % cost, Vector2(0, 40), true)
 		button.pressed.connect( func() -> void : panel_action.emit("unlock_teleport", {}))
 		content.add_child(button)
 		return
@@ -1270,15 +1324,15 @@ func show_teleport_panel() -> void :
 		content.add_child(UiKit.label("Serviço suspenso: a região está hostil.", 15, UiKit.BAD))
 		content.add_child(UiKit.label("Cace os monstros errantes para reduzir a hostilidade.", 13, UiKit.MUTED))
 		return
-	content.add_child(UiKit.label("Hostilidade: %d%% · Custo por salto: %s" % [int(state.hostility), UiKit.money_text(state.price(30))], 14, UiKit.MUTED))
-	var city: = UiKit.button("Viajar para a estátua de Aurora", Vector2(0, 42), true)
+	content.add_child(UiKit.label("Hostilidade: %d%% · Custo por salto: %d moedas de ouro" % [int(state.hostility), GameData.TELEPORT_GOLD_COST], 14, UiKit.MUTED))
+	var city: = _npc_button("Viajar para a estátua de Aurora", Vector2(0, 42), true)
 	city.pressed.connect( func() -> void : panel_action.emit("teleport_city", {}))
 	content.add_child(city)
 
 
 func show_master_panel() -> void :
 	current_panel = "master"
-	var content: = open_modal("Mestra da Guilda", Vector2(720, 540))
+	var content: = _npc_list("Mestra da Guilda")
 	var class_name_text: = str(state.class_data()["name"])
 	content.add_child(UiKit.label("Classe: %s · Nível %d · %s" % [class_name_text, state.level, UiKit.grade_name(state.level)], 15, UiKit.GOLD))
 	content.add_child(UiKit.label(str(GameData.CLASS_QUEST["desc"]), 14))
@@ -1300,7 +1354,7 @@ func show_master_panel() -> void :
 		if not unlocked:
 			content.add_child(UiKit.label("Requer: %s" % str(row_data["requirement"]), 12, UiKit.MUTED))
 	if state.level >= 20 and bool(state.flags.get("class_quest_done", false)):
-		var claim: = UiKit.button("Receber a terceira skill da classe", Vector2(0, 40), true)
+		var claim: = _npc_button("Receber a terceira skill da classe", Vector2(0, 40), true)
 		claim.pressed.connect( func() -> void : panel_action.emit("claim_class_skill", {}))
 		content.add_child(claim)
 
@@ -1347,3 +1401,148 @@ class RegionMapView extends Control:
 			var marker: = Vector2(world.hero.global_position.x / Balance.TILE * scale_x, world.hero.global_position.y / Balance.TILE * scale_y)
 			draw_circle(marker, 6.0, Color(0.95, 0.92, 0.8))
 			draw_circle(marker, 4.0, Color(0.35, 0.6, 0.95))
+
+
+func show_developer_shop(kind: String) -> void:
+	current_panel = kind
+	var titles := {"dev_items": "Arsenal", "dev_skills": "Biblioteca", "dev_tools": "Bancada de testes", "dev_quests": "Quadro de missões", "dev_arena": "Arena de monstros"}
+	var content := _npc_list(str(titles.get(kind, "Sala Secreta")))
+	content.add_child(UiKit.label("Tudo grátis · Progresso temporário", 12, UiKit.GOLD))
+	match kind:
+		"dev_items":
+			content.add_theme_constant_override("separation", 4)
+			_developer_currency_buttons(content)
+			for id: String in GameData.ITEMS:
+				content.add_child(_developer_item_row(id))
+		"dev_skills":
+			content.add_child(UiKit.label("Escolha uma classe para testar todas as skills no nível 100.", 14))
+			for id: String in GameData.CLASS_ORDER:
+				var names: PackedStringArray = []
+				for skill: Dictionary in GameData.all_skills(id):
+					names.append(str(skill["name"]))
+				_developer_button(content, "Testar %s — grátis" % GameData.character_class(id)["name"], "dev_class", {"id": id})
+				var description: = UiKit.label(", ".join(names), 13)
+				description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+				content.add_child(description)
+		"dev_quests":
+			var finish := _npc_button("Concluir todas as missões", Vector2(0, 28))
+			finish.pressed.connect(func() -> void: panel_action.emit("dev_complete_quests", {}))
+			content.add_child(finish)
+			var complete := true
+			for definition: Dictionary in GameData.CONTRACTS:
+				var done := bool(state.contract_state(str(definition["id"])).get("claimed", false))
+				complete = complete and done
+				_quest_status_row(content, str(definition["name"]), done)
+			for quest: Array in [[GameData.QUEST_COLOSSAL, "colossal_defeated"], [GameData.CLASS_QUEST, "class_quest_done"]]:
+				var done := bool(state.flags.get(quest[1], false))
+				complete = complete and done
+				_quest_status_row(content, str(quest[0]["name"]), done)
+			finish.disabled = complete
+		"dev_tools":
+			_developer_button(content, "Restaurar HP, mana, energia, recargas e equipamento", "dev_restore")
+			_developer_currency_buttons(content)
+			_developer_button(content, "Escolher adversário na arena", "dev_open_arena")
+		"dev_arena":
+			var instructions := UiKit.label("Escolha um adversário. Use E no quadro da arena para repetir ou voltar.", 13)
+			instructions.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			content.add_child(instructions)
+			_developer_button(content, "Encerrar treino e voltar aos NPCs", "dev_arena_return")
+			_developer_button(content, "Remover inimigos de teste", "dev_clear")
+			content.add_child(UiKit.label("Todos os adversários cadastrados: %d" % Enemy.TYPES.size(), 14, UiKit.GOLD))
+			for category: String in ["Monstros", "Minibosses", "Colossais", "Rivais"]:
+				var ids: Array[String] = []
+				for id: String in Enemy.TYPES:
+					var enemy: Dictionary = Enemy.TYPES[id]
+					var group: String = "Monstros"
+					if bool(enemy.get("boss", false)):
+						group = "Colossais"
+					elif bool(enemy.get("miniboss", false)):
+						group = "Minibosses"
+					elif bool(enemy.get("rival", false)):
+						group = "Rivais"
+					if group == category:
+						ids.append(id)
+				if ids.is_empty():
+					continue
+				content.add_child(UiKit.label("%s (%d)" % [category, ids.size()], 16, UiKit.GOLD))
+				for id: String in ids:
+					_developer_button(content, "Invocar %s" % Enemy.TYPES[id]["name"], "dev_enemy", {"id": id})
+	_developer_button(content, "Sair da sala e restaurar personagem", "dev_exit")
+
+
+
+func _developer_item_row(item_id: String) -> Control:
+	var theme_kit = preload("res://scripts/ui/rpg_panel_theme.gd")
+	var item: Dictionary = GameData.item(item_id)
+	var panel: PanelContainer = PanelContainer.new()
+	panel.name = "ShopItem_" + item_id
+	panel.add_theme_stylebox_override("panel", theme_kit.frame(Color("21180f"), theme_kit.GOLD.darkened(0.3), 1, 4))
+	var row: HBoxContainer = HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+	panel.add_child(row)
+	var slot: PanelContainer = PanelContainer.new()
+	slot.custom_minimum_size = Vector2(38, 38)
+	slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	slot.add_theme_stylebox_override("panel", theme_kit.frame(Color("251a11"), theme_kit.GOLD, 1, 4))
+	slot.add_child(_item_art(item_id, 28))
+	row.add_child(slot)
+	var info: VBoxContainer = VBoxContainer.new()
+	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	info.add_theme_constant_override("separation", 1)
+	row.add_child(info)
+	var title: Label = theme_kit.text(str(item.get("name", item_id)), 13, theme_kit.CREAM, true)
+	title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	title.tooltip_text = "%s\n%s" % [item.get("name", item_id), item.get("desc", "")]
+	info.add_child(title)
+	var kind: String = str({"arma": "Arma", "armadura": "Armadura", "joia": "Joia", "material": "Material", "livro": "Livro", "chave": "Chave", "consumivel": "Consumível"}.get(str(item.get("type", "")), "Item"))
+	info.add_child(theme_kit.text("%s · %s · Grátis" % [kind, item.get("grade", "NG")], 11, theme_kit.MUTED))
+	for qty: int in [1, 10]:
+		var receive: Button = theme_kit.button("×%d" % qty)
+		receive.custom_minimum_size = Vector2(44, 28)
+		receive.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		receive.tooltip_text = "Receber %d × %s gratuitamente" % [qty, item.get("name", item_id)]
+		receive.pressed.connect(func() -> void: panel_action.emit("dev_item", {"id": item_id, "qty": qty}))
+		row.add_child(receive)
+	return panel
+
+func _quest_status_row(parent: Control, title: String, done: bool) -> void:
+	var row := HBoxContainer.new()
+	parent.add_child(row)
+	var label := UiKit.label(title, 13, UiKit.PARCHMENT)
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(label)
+	row.add_child(UiKit.label("Concluída" if done else "Pendente", 12, UiKit.GOOD if done else UiKit.MUTED))
+
+
+func _developer_button(parent: Node, caption: String, action: String, payload: Dictionary = {}) -> void:
+	var button := _npc_button(caption, Vector2(0, 28))
+	button.pressed.connect(func() -> void: panel_action.emit(action, payload))
+	parent.add_child(button)
+
+
+func _developer_currency_buttons(parent: Node) -> void:
+	for currency: String in GameData.COIN_VALUES:
+		_developer_button(parent, "Receber 10 de %s" % currency, "dev_coins", {"currency": currency})
+
+
+func _status_value_label(bar: ProgressBar, initial_text: String) -> Label:
+	# O texto acompanha o tamanho real da barra, inclusive a energia variável.
+	var label := UiKit.label(initial_text, 12, Color.WHITE)
+	bar.add_child(label)
+	label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.add_theme_color_override("font_outline_color", Color(0.04, 0.04, 0.04, 0.95))
+	label.add_theme_constant_override("outline_size", 3)
+	return label
+
+
+func _item_art(item_id: String, side: int = 48) -> Control:
+	var icon = preload("res://scripts/ui/inventory_icon.gd").new()
+	icon.item_id = item_id
+	icon.class_id = state.class_id
+	icon.custom_minimum_size = Vector2(side, side)
+	icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	return icon

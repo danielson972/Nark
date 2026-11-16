@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://xail3fv7acev"]
 
 [ext_resource type="Script" uid="uid://cp64gspjlrpmq" path="res://scripts/main.gd" id="1"]
 

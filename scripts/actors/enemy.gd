@@ -2,56 +2,17 @@ class_name Enemy
 extends Actor
 
 
-const TYPES: = {
-	"gosma": {
-		"name": "Gosma do Vale", "sprite": "res://assets/game/sprites/monster_slime.png", "height": 84.0, 
-		"hp": 70.0, "damage": 7.0, "defense": 2.0, "speed": 66.0, "xp": 60, "tier": 0, 
-		"coins": [3, 9], "aggro": 190.0, "attack_range": 56.0, "attack_cd": 1.7, "windup": 0.5, 
-		"drops": {"gosma": 0.9}, "radius": 18.0, "kind": "gosma", 
-	}, 
-	"lobo": {
-		"name": "Lobo Cinzento", "sprite": "res://assets/game/sprites/monster_wolf.png", "height": 92.0, 
-		"hp": 96.0, "damage": 9.0, "defense": 4.0, "speed": 134.0, "xp": 85, "tier": 0, 
-		"coins": [5, 13], "aggro": 300.0, "attack_range": 64.0, "attack_cd": 1.35, "windup": 0.42, 
-		"drops": {"presa_lobo": 0.85, "sucata_ferro": 0.15}, "radius": 18.0, "kind": "lobo", 
-	}, 
-	"saqueador": {
-		"name": "Saqueador", "sprite": "res://assets/game/sprites/monster_bandit.png", "height": 96.0, 
-		"hp": 120.0, "damage": 12.0, "defense": 7.0, "speed": 108.0, "xp": 120, "tier": 1, 
-		"coins": [14, 32], "aggro": 330.0, "attack_range": 72.0, "attack_cd": 1.6, "windup": 0.55, 
-		"drops": {"sucata_ferro": 0.9, "presa_lobo": 0.2}, "radius": 19.0, "kind": "saqueador", 
-		"guard": 0.35, 
-	}, 
-	"errante": {
-		"name": "Monstro Errante", "sprite": "res://assets/game/sprites/monster_wolf.png", "height": 100.0, 
-		"hp": 190.0, "damage": 18.0, "defense": 8.0, "speed": 152.0, "xp": 190, "tier": 2, 
-		"coins": [18, 40], "aggro": 380.0, "attack_range": 66.0, "attack_cd": 1.25, "windup": 0.38, 
-		"drops": {"essencia_errante": 0.85, "presa_lobo": 0.3}, "radius": 20.0, "kind": "errante", 
-		"errant": true, 
-	}, 
-	"fera": {
-		"name": "Fera de Carapaça Branca", "sprite": "res://assets/game/sprites/boss_beast.png", "height": 138.0, 
-		"hp": 900.0, "damage": 26.0, "defense": 16.0, "speed": 120.0, "xp": 900, "tier": 3, 
-		"coins": [120, 220], "aggro": 460.0, "attack_range": 96.0, "attack_cd": 1.9, "windup": 0.7, 
-		"drops": {"carapaca_branca": 1.0, "sucata_ferro": 0.6}, "radius": 40.0, "kind": "fera", 
-		"miniboss": true, 
-	}, 
-	"colossal": {
-		"name": "Colossal de Granito", "sprite": "res://assets/game/sprites/boss_colossal.png", "height": 196.0, 
-		"hp": 2600.0, "damage": 34.0, "defense": 24.0, "speed": 96.0, "xp": 3500, "tier": 4, 
-		"coins": [700, 1100], "aggro": 900.0, "attack_range": 170.0, "attack_cd": 2.4, "windup": 0.9, 
-		"drops": {"cristal_aurora": 1.0, "carapaca_branca": 0.5}, "radius": 62.0, "kind": "colossal", 
-		"miniboss": true, "boss": true, 
-	}, 
-	"rival": {
-		"name": "Sombra de Kael", "sprite": "res://assets/game/sprites/hero_rogue.png", "height": 96.0, 
-		"hp": 340.0, "damage": 18.0, "defense": 9.0, "speed": 196.0, "xp": 420, "tier": 2, 
-		"coins": [0, 0], "aggro": 460.0, "attack_range": 74.0, "attack_cd": 1.1, "windup": 0.35, 
-		"drops": {}, "radius": 18.0, "kind": "rival", "rival": true, 
-	}, 
-}
+const NAME_FONT_NORMAL: Font = preload("res://assets/fonts/Cinzel-SemiBold.ttf")
+const NAME_FONT_MARKED: Font = preload("res://assets/fonts/Cinzel-Bold.ttf")
 
-var type_id: = "lobo"
+
+# Resolve concrete scripts lazily to avoid a base/subclass preload cycle.
+static var TYPES: Dictionary:
+	get:
+		return load("res://scripts/actors/enemy_catalog.gd").definitions()
+
+@export_enum("gosma", "golem_pedra", "lobo", "arvore_cipo", "saqueador", "errante", "fera", "colossal", "rival")
+var type_id: String = "lobo"
 var definition: Dictionary = {}
 var spawn_point: = Vector2.ZERO
 var ai_state: = "idle"
@@ -70,6 +31,10 @@ var exposed: = 0.0
 var marked_by_hero: = false
 var summoned: = false
 var night_bonus: = 0.0
+var nameplate: Label
+var health_bar: ProgressBar
+var nameplate_style_marked: = false
+var nameplate_style_initialized: = false
 
 
 func setup_enemy(world_ref: Node, enemy_type: String, spawn: Vector2) -> void :
@@ -79,8 +44,10 @@ func setup_enemy(world_ref: Node, enemy_type: String, spawn: Vector2) -> void :
 	kind = str(definition.get("kind", enemy_type))
 	var config: Dictionary = definition
 	setup(world_ref, str(config["sprite"]), float(config["height"]))
+	_create_nameplate(float(config["height"]))
 	max_hp = float(config["hp"])
 	hp = max_hp
+	_create_health_bar()
 	defense = float(config["defense"])
 	radius = float(config.get("radius", 18.0))
 	global_position = spawn
@@ -94,10 +61,75 @@ func setup_enemy(world_ref: Node, enemy_type: String, spawn: Vector2) -> void :
 		modulate = Color(1.1, 1.1, 1.05)
 	attack_timer = randf_range(0.2, 1.0)
 	ai_state = "idle"
+	_update_nameplate()
 
 
 func display_name() -> String:
 	return str(definition.get("name", type_id))
+
+
+func _create_nameplate(_target_height: float) -> void:
+	nameplate = Label.new()
+	nameplate.name = "NomeDoInimigo"
+	nameplate.set_as_top_level(true)
+	nameplate.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	nameplate.size = Vector2(280.0, 24.0)
+	nameplate.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	nameplate.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	nameplate.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	nameplate.add_theme_font_size_override("font_size", 14)
+	nameplate.add_theme_color_override("font_outline_color", Color(0.035, 0.045, 0.07, 0.95))
+	nameplate.add_theme_constant_override("outline_size", 4)
+	add_child(nameplate)
+	_update_nameplate()
+
+
+func _update_nameplate() -> void:
+	if nameplate == null:
+		return
+	_update_nameplate_position()
+	if health_bar != null:
+		health_bar.max_value = max_hp
+		health_bar.value = hp
+		health_bar.visible = not dead
+	nameplate.text = display_name()
+	var marked: bool = marked_by_hero or has_status("mark") or has_status("duel_mark") or (world != null and world.locked_enemy() == self)
+	if not nameplate_style_initialized or marked != nameplate_style_marked:
+		nameplate_style_initialized = true
+		nameplate_style_marked = marked
+		nameplate.add_theme_font_override("font", NAME_FONT_MARKED if marked else NAME_FONT_NORMAL)
+		nameplate.add_theme_color_override("font_color", Color(1.0, 0.83, 0.36) if marked else Color(0.95, 0.95, 0.91))
+
+
+func _create_health_bar() -> void:
+	# Colossais utilizam somente a barra grande do HUD.
+	if is_boss():
+		return
+	if health_bar == null:
+		health_bar = UiKit.bar(Color(0.85, 0.22, 0.19), 10.0)
+		health_bar.name = "VidaDoInimigo"
+		health_bar.set_as_top_level(true)
+		health_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		health_bar.custom_minimum_size = Vector2(116.0 if is_miniboss() else 96.0, 10.0)
+		health_bar.size = health_bar.custom_minimum_size
+		health_bar.z_as_relative = false
+		health_bar.z_index = 50
+		add_child(health_bar)
+	# O nome também deve ficar legível acima da vegetação.
+	nameplate.z_as_relative = false
+	nameplate.z_index = 50
+	_update_nameplate()
+
+
+func combat_hitbox(extra_radius: float = 0.0) -> Rect2:
+	var body_height := maxf(float(definition.get("height", 96.0)), radius * 2.0)
+	var half_width := maxf(radius, body_height * 0.34)
+	var top := global_position.y - body_height - extra_radius
+	var bottom := global_position.y + radius * 0.35 + extra_radius
+	return Rect2(
+		Vector2(global_position.x - half_width - extra_radius, top),
+		Vector2((half_width + extra_radius) * 2.0, bottom - top)
+	)
 
 
 func is_boss() -> bool:
@@ -110,6 +142,7 @@ func is_miniboss() -> bool:
 
 func _process(delta: float) -> void :
 	super._process(delta)
+	_update_nameplate()
 	if dead or world == null:
 		return
 	if not world.is_playing():
@@ -132,12 +165,14 @@ func _process(delta: float) -> void :
 		if global_position.distance_to(spawn_point) > 520.0:
 			ai_state = "idle"
 			return
-	if ai_state == "idle" and distance < aggro:
+	if ai_state == "idle" and _can_aggro(distance, aggro):
 		ai_state = "chase"
 		if bool(definition.get("boss", false)):
 			world.begin_boss_fight(self)
 	if ai_state != "chase":
 		_wander(delta)
+		return
+	if _process_special_action(delta, hero, distance):
 		return
 	if windup_left > 0.0:
 		windup_left -= delta
@@ -175,6 +210,14 @@ func _process(delta: float) -> void :
 		move_desired(direction * speed, delta)
 	else:
 		move_desired(Vector2.ZERO, delta)
+
+
+func _process_special_action(_delta: float, _hero, _distance: float) -> bool:
+	return false
+
+
+func _can_aggro(distance: float, aggro: float) -> bool:
+	return distance < aggro
 
 
 func _wander(delta: float) -> void :
@@ -268,100 +311,13 @@ func _run_charge(delta: float, hero) -> void :
 		action_time = 0.0
 
 
-func _boss_logic(delta: float, hero, distance: float) -> void :
-	var phase_two: = hp < max_hp * 0.5
-	if phase_two and phase == 1:
-		phase = 2
-		world.show_notice("O Colossal desperta seu núcleo!", Color(0.6, 0.85, 1.0))
-		world.shake(10.0)
-		for index in 2:
-			world.spawn_enemy("gosma", global_position + Vector2(randf_range(-160, 160), randf_range(60, 140)))
-	var speed: = float(definition.get("speed", 96.0)) * (1.25 if phase_two else 1.0)
-	if action == "sweep_recover":
-		velocity = Vector2.ZERO
-		if action_time > 1.5:
-			action = ""
-			action_time = 0.0
-			exposed = 0.0
-		queue_redraw()
-		return
-	if attack_timer <= 0.0 and distance < 720.0:
-		var pattern: = randi() % (4 if phase_two else 3)
-		if distance > 260.0 and pattern != 3:
-			pattern = 2
-		attack_timer = float(definition.get("attack_cd", 2.4)) * (0.8 if phase_two else 1.0)
-		match pattern:
-			0:
-				action = "slam"
-				action_time = 0.0
-				action_total = 1.3
-				windup_left = 1.1
-			1:
-				action = "sweep"
-				action_time = 0.0
-				action_total = 1.25
-				windup_left = 0.95
-				facing = (hero.global_position - global_position).normalized()
-			2:
-				action = "rocks"
-				action_time = 0.0
-				action_total = 1.4
-				windup_left = 0.7
-			_:
-				action = "summon"
-				action_time = 0.0
-				action_total = 1.6
-				windup_left = 1.2
-		queue_redraw()
-		return
-	if distance > float(definition.get("attack_range", 170.0)) * 0.8:
-		move_desired((hero.global_position - global_position).normalized() * speed, delta)
-	else:
-		move_desired(Vector2.ZERO, delta)
+# Concrete boss scripts provide their own attack patterns and release behavior.
+func _boss_logic(delta: float, hero, _distance: float) -> void:
+	move_desired((hero.global_position - global_position).normalized() * float(definition.get("speed", 96.0)), delta)
 
 
-func _boss_release(hero) -> void :
-	match action:
-		"slam":
-			var target: Vector2 = hero.global_position
-			world.spawn_area_burst(target, 165.0, 42.0, Color(0.85, 0.55, 0.3), self)
-			action = "recover"
-			action_time = 0.0
-			action_total = 0.9
-			world.shake(12.0)
-		"sweep":
-			var reach: = 235.0
-			if global_position.distance_to(hero.global_position) < reach:
-				var dir: Vector2 = (hero.global_position - global_position).normalized()
-				if dir.dot(facing) > 0.2:
-					hero.take_damage(float(definition.get("damage", 34.0)) * 1.4, {"from": global_position, "crit": true, "type": type_id})
-			world.spawn_cone_telegraph(global_position, facing, reach, 100.0, Color(0.95, 0.4, 0.25), 0.6)
-			action = "sweep_recover"
-			action_time = 0.0
-			action_total = 1.5
-		"rocks":
-			for index in 3:
-				var projectile: = Projectile.new()
-				projectile.world = world
-				projectile.hostile = true
-				projectile.direction = (hero.global_position - global_position + Vector2(randf_range(-80, 80), randf_range(-80, 80))).normalized()
-				projectile.speed = 420.0
-				projectile.damage = float(definition.get("damage", 34.0)) * 0.6
-				projectile.life = 2.4
-				projectile.size = 13.0
-				projectile.color = Color(0.7, 0.65, 0.55)
-				projectile.position = global_position + Vector2(0, -90)
-				world.add_projectile(projectile)
-			action = ""
-			action_time = 0.0
-		"summon":
-			for index in 2:
-				world.spawn_enemy("gosma", global_position + Vector2(randf_range(-180, 180), randf_range(80, 180)))
-			action = ""
-			action_time = 0.0
-		_:
-			action = ""
-	action_time = 0.0
+func _boss_release(hero) -> void:
+	_release_attack(hero)
 
 
 func take_damage(amount: float, opts: Dictionary = {}) -> Dictionary:
@@ -371,6 +327,7 @@ func take_damage(amount: float, opts: Dictionary = {}) -> Dictionary:
 	if bool(definition.get("rival", false)) and has_status("guard_broken"):
 		damage *= 1.2
 	var result: = super.take_damage(damage, opts)
+	_update_nameplate()
 	if world != null:
 		world.play_cue("combat.hit", randf_range(0.9, 1.1) if not bool(result.get("crit", false)) else 0.8)
 	queue_redraw()
@@ -381,6 +338,14 @@ func _draw() -> void :
 	super._draw()
 	if world == null:
 		return
+	if world.locked_enemy() == self:
+		var lock_pulse := 0.5 + 0.5 * sin(action_time * 7.0)
+		var lock_color := Color(0.35, 0.88, 1.0, 0.72 + lock_pulse * 0.25)
+		draw_arc(Vector2(0, 4), radius + 12.0 + lock_pulse * 2.0, 0.0, TAU, 32, lock_color, 2.5, true)
+		var marker_y := -float(definition.get("height", 96.0)) - 18.0
+		draw_colored_polygon(PackedVector2Array([
+			Vector2(-6, marker_y - 8), Vector2(6, marker_y - 8), Vector2(0, marker_y + 2)
+		]), Color(0.5, 0.92, 1.0, 0.9))
 	if windup_left > 0.0:
 		var progress: float = 1.0 - windup_left / maxf(0.01, float(definition.get("windup", 0.5)))
 		var reach: = float(definition.get("attack_range", 60.0)) + 18.0
@@ -397,8 +362,39 @@ func _draw() -> void :
 		draw_arc(Vector2.ZERO, radius + 16.0, 0.0, TAU, 28, Color(1.0, 0.9, 0.4, 0.9), 3.0)
 		var label_pos: = Vector2(-40, - float(definition.get("height", 96.0)) - 14.0)
 		draw_line(label_pos, label_pos + Vector2(80, 0), Color(1.0, 0.9, 0.4, 0.7), 2.0)
-	if is_miniboss() and hp < max_hp:
-		var width: = 90.0 if not is_boss() else 150.0
-		var top: = - float(definition.get("height", 96.0)) - 18.0
-		draw_rect(Rect2( - width * 0.5, top, width, 6), Color(0.1, 0.08, 0.08, 0.85))
-		draw_rect(Rect2( - width * 0.5, top, width * (hp / max_hp), 6), Color(0.85, 0.3, 0.25))
+
+
+# Enemies use the Sprite2D itself. Authored textures and transforms are preserved.
+func setup(world_ref: Node, texture_path: String, target_height: float = 96.0) -> void:
+	world = world_ref
+	sprite_path = texture_path
+	sprite = self
+	if texture == null and not texture_path.is_empty():
+		texture = load(texture_path)
+		if texture != null and texture.get_height() > 0:
+			scale = Vector2.ONE * target_height / texture.get_height()
+			offset = Vector2(0, -texture.get_height() * 0.5)
+
+
+# Text follows the visible sprite without inheriting its size or rotation.
+func _update_nameplate_position() -> void:
+	var bounds: Rect2 = get_rect()
+	var corners: Array[Vector2] = [
+		to_global(bounds.position),
+		to_global(Vector2(bounds.end.x, bounds.position.y)),
+		to_global(bounds.end),
+		to_global(Vector2(bounds.position.x, bounds.end.y)),
+	]
+	var left: float = corners[0].x
+	var right: float = corners[0].x
+	var top: float = corners[0].y
+	for corner: Vector2 in corners:
+		left = minf(left, corner.x)
+		right = maxf(right, corner.x)
+		top = minf(top, corner.y)
+	var center_x: float = (left + right) * 0.5
+	if health_bar != null:
+		health_bar.global_position = Vector2(center_x - health_bar.size.x * 0.5, top - health_bar.size.y - 6.0)
+		nameplate.global_position = Vector2(center_x - nameplate.size.x * 0.5, health_bar.global_position.y - nameplate.size.y - 3.0)
+	else:
+		nameplate.global_position = Vector2(center_x - nameplate.size.x * 0.5, top - nameplate.size.y - 8.0)

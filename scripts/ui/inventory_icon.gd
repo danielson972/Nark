@@ -1,7 +1,22 @@
 extends Control
-## Small pixel icons drawn in Godot so the inventory stays sharp at every scale.
+## Illustrated item atlas, with the original pixel art for empty/unknown slots.
 
-var item_id: String = ""
+const Catalog = preload("res://scripts/ui/item_catalog.gd")
+
+var item_id: String = "":
+	set(value):
+		item_id = value
+		if item_id == "hero":
+			var glow := ShaderMaterial.new()
+			glow.shader = preload("res://shaders/hero_aura.gdshader")
+			material = glow
+		else:
+			material = null
+		queue_redraw()
+var class_id: String = "guerreiro":
+	set(value):
+		class_id = value
+		queue_redraw()
 var empty_slot: String = ""
 
 const GOLD = Color("e6b657")
@@ -10,9 +25,17 @@ const EDGE = Color("392316")
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	resized.connect(queue_redraw)
 
 func _draw() -> void:
+	if not item_id.is_empty():
+		var texture: Texture2D = Catalog.texture_for(item_id, class_id)
+		if texture != null:
+			var side: float = minf(size.x, size.y)
+			var destination: Rect2 = Rect2(((size - Vector2.ONE * side) * 0.5).floor(), Vector2.ONE * side)
+			draw_texture_rect(texture, destination, false)
+			return
 	var kind: String = str(GameData.item(item_id).get("type", "")) if not item_id.is_empty() else empty_slot
 	var color: Color = GOLD
 	if item_id.ends_with("_d"):
@@ -32,7 +55,7 @@ func _draw() -> void:
 		"joia":
 			pixels = ["................", "......eeee......", ".....ecllce.....", "......ecce......", "....eeeeeeee....", "...ecllllllce...", "..eclceeecllce..", "..eclce..eclce..", "..eclce..eclce..", "..eclce..eclce..", "..eclceeecllce..", "...ecllllllce...", "....eeeeeeee....", "................", "................", "................"]
 		"consumivel":
-			color = Color("ca3150")
+			color = Color("509de8") if item_id == "pocao_mana" else (Color("e9c34e") if item_id == "pocao_energia" else Color("ca3150"))
 			pixels = ["......eeee......", ".....ecccce.....", ".....elllle.....", "......ecce......", "......elle......", ".....el..le.....", "....el....le....", "...elccccccle...", "..elclccccccle..", "..elclccccccce..", "..elclccccccce..", "..elccccccccce..", "...ecccccccce...", "....eeeeeeee....", "................", "................"]
 		"livro":
 			color = Color("81a1c2")
