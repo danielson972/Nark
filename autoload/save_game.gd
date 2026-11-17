@@ -92,6 +92,9 @@ func load_settings() -> void :
 	fullscreen = bool(data.get("fullscreen", false))
 	show_damage = bool(data.get("show_damage", true))
 	bindings = Controls.merged_bindings(data.get("bindings", {}) as Dictionary)
+	# Upgrade the former default once; later custom bindings remain editable.
+	if int(data.get("status_shortcut_version", 0)) < 1 and bindings.get("character_status", []) == ["key:67"]:
+		bindings["character_status"] = Controls.DEFAULT_BINDINGS["character_status"].duplicate()
 
 
 func save_settings() -> void :
@@ -100,7 +103,8 @@ func save_settings() -> void :
 		"resolution_index": resolution_index, 
 		"fullscreen": fullscreen, 
 		"show_damage": show_damage, 
-		"bindings": bindings, 
+		"bindings": bindings,
+		"status_shortcut_version": 1,
 	}
 	var file: = FileAccess.open(CONFIG_PATH, FileAccess.WRITE)
 	if file == null:

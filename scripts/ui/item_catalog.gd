@@ -4,6 +4,8 @@ extends RefCounted
 const ATLAS_PATH = "res://assets/game/ui/items/items_atlas.png"
 const GRID = Vector2i(8, 8)
 const Appearance = preload("res://scripts/actors/hero_appearance.gd")
+const ArmorIconLayout = preload("res://assets/game/ui/items/armor_icon_layout.gd")
+const ArmorPortraits = preload("res://scripts/ui/armor_portrait_catalog.gd")
 static var source_atlas: Texture2D
 static var textures: Dictionary = {}
 static var catalog_atlases: Dictionary = {}
@@ -67,6 +69,9 @@ static func atlas_rect(item_id: String, class_id: String, texture_size: Vector2)
 	return Rect2(start + Vector2.ONE * 2, finish - start - Vector2.ONE * 4)
 
 static func texture_for(item_id: String, class_id: String = "guerreiro") -> Texture2D:
+	var slot_art: String = str(GameData.item(item_id).get("slot_art", ""))
+	if slot_art in ["colar", "talisma"]:
+		return load("res://assets/game/ui/equipment_slots/%s.svg" % slot_art)
 	var catalog_texture := _catalog_texture(item_id, class_id)
 	if catalog_texture != null:
 		return catalog_texture
@@ -131,6 +136,14 @@ static func _catalog_texture(item_id: String, class_id: String = "guerreiro") ->
 			return texture_for(fallback_id, class_id)
 		return null
 	var local_index := numeric - int(sheet[0])
+	if not is_weapon:
+		var bounds: Array = ArmorIconLayout.RECTS[clampi(numeric-1,0,99)]
+		var armor_texture := AtlasTexture.new()
+		armor_texture.atlas = atlas
+		armor_texture.region = Rect2(bounds[0],bounds[1],bounds[2],bounds[3])
+		armor_texture.filter_clip = true
+		textures[cache_key] = armor_texture
+		return armor_texture
 	var columns := int(sheet[3]) if sheet.size() > 3 else 5
 	var rows := ceili(float(int(sheet[1]) - int(sheet[0]) + 1) / float(columns))
 	var cell := atlas.get_size() / Vector2(columns, rows)
@@ -146,6 +159,34 @@ static func _catalog_texture(item_id: String, class_id: String = "guerreiro") ->
 	texture.filter_clip = true
 	textures[cache_key] = texture
 	return texture
+
+static func icon_texture_for(item_id: String, class_id: String = "guerreiro") -> Texture2D:
+	var portrait: Texture2D = ArmorPortraits.texture_for(item_id, class_id)
+	if portrait != null:
+		return portrait
+	var source := texture_for(item_id,class_id)
+	if source == null or str(GameData.item(item_id).get("type","")) != "armadura":
+		return source
+	if str(GameData.item(item_id).get("catalog_art","")).begins_with("armadura_"):
+		return source
+	var key := "centered_armor:"+class_id+":"+item_id
+	if not textures.has(key):
+		var image := source.get_image()
+		var minimum := image.get_size()
+		var maximum := Vector2i.ZERO
+		for y in image.get_height():
+			for x in image.get_width():
+				if image.get_pixel(x,y).a >= 0.75:
+					minimum = Vector2i(mini(minimum.x,x),mini(minimum.y,y))
+					maximum = Vector2i(maxi(maximum.x,x),maxi(maximum.y,y))
+		if maximum.x <= minimum.x or maximum.y <= minimum.y: return source
+		var texture := AtlasTexture.new()
+		texture.atlas = source.atlas if source is AtlasTexture else source
+		var origin: Vector2 = source.region.position if source is AtlasTexture else Vector2.ZERO
+		texture.region = Rect2(origin+Vector2(minimum),Vector2(maximum-minimum+Vector2i.ONE))
+		texture.filter_clip = true
+		textures[key] = texture
+	return textures[key]
 
 # The source icons contain two parallel daggers. Keep the first complete blade
 # in the original square, so the existing grip and scale remain valid everywhere.

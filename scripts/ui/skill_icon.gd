@@ -14,6 +14,9 @@ var learned: bool = true:
         queue_redraw()
 
 func _ready() -> void:
+    var editor_art := get_node_or_null("EditorArt")
+    if editor_art != null:
+        editor_art.hide()
     mouse_filter = Control.MOUSE_FILTER_IGNORE
     texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
     resized.connect(queue_redraw)

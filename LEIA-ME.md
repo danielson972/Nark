@@ -79,15 +79,17 @@ Artes e prompt: `assets/game/sprites/herois/compartilhados/equipamentos/`. Detal
 dessa pasta. Validação em `relatorios/verify_equipment_visuals.gd`, com uma
 galeria renderizada em `relatorios/equipment-visual-gallery.png`.
 
-## Inventário em três colunas
+## Inventário e equipamento com o fundo da referência
 
-Abra com **I**. A interface adapta a referência com moldura escura/dourada, personagem e equipamentos à esquerda, mochila ao centro e detalhes do item à direita. As abas Todos, Equipamentos, Consumíveis, Materiais e Missão filtram a mochila sem alterar os itens. Missão reúne chaves e livros de progressão. A categoria e a rolagem são preservadas ao executar ações.
+Abra com **I** para exibir inventário e status lado a lado. **T** abre somente equipamento/status. Fechar o inventário fecha os dois painéis e retoma o jogo. O status também pode ser fechado por T ou por seu botão de fechar. Esc fecha a interface completa.
 
-O slot dourado **Hero**, ao lado do personagem, usa o equipamento cosmético existente (`aura` nos saves), sem criar um novo atributo ou alterar saves. Vazio, mostra uma estrela; equipado, mostra a arte do item Hero. O duplo clique e os botões Equipar/Desequipar funcionam nele, nas armas, armaduras e joias.
+O fundo usa a imagem enviada em `assets/game/ui/inventory/equipment_inventory_gold.png`, com os itens e números de exemplo cobertos pelos controles reais. As abas são Todos, Armas, Armaduras, Materiais, Consumíveis e Missões. Missões reúne chaves e livros de progressão. A mochila tem oito colunas e rolagem para o catálogo completo. Selecione um item e pressione **Detalhes** para consultar descrição, grau, peso, valor e bônus. Equipar, retirar, usar, guardar e soltar mantêm as regras existentes e preservam a aba e a rolagem.
 
-Os detalhes mostram descrição, tipo, grau, peso unitário, valor nas moedas reais do jogo e bônus/durabilidade quando aplicáveis. Usar, Soltar e Guardar no baú mantêm as regras existentes. A interface se ajusta ao espaço da janela; somente a mochila rola. Não foram criados equipamentos de capacete, luvas, botas ou escudo: os quatro slots representam os tipos que o jogo já possui.
+O slot **Hero** mantém o equipamento cosmético existente (`aura` nos saves). O duplo clique equipa e retira armas, trajes, escudos, anéis, colares, talismãs e Hero.
 
-Implementação: `scripts/ui/inventory_panel.gd`. Validação: `relatorios/verify_inventory_reference.gd` e `relatorios/verify_inventory_double_click.gd`.
+Para editar visualmente, abra `scenes/ui/equipment_panels.tscn` na aba **2D**. Os dois painéis também têm cenas próprias: `inventory_panel.tscn` e `equipment_status_panel.tscn`, na mesma pasta. Fundo, slots, abas, textos, botões e a área de prévia são nós editáveis. A montagem do personagem e seus sprites permanecem nas cenas existentes.
+
+Validações: `relatorios/verify_reference_panels.gd`, `verify_inventory_reference.gd` e `verify_inventory_double_click.gd`.
 
 ## Novo humano
 
@@ -103,4 +105,22 @@ A revisão pixelada foi desativada. Colossal Aurora, cenários, itens e efeitos 
 
 ## Montagem do personagem
 
+A tela foi adaptada para o pátio de ruínas, com identidade à esquerda, aparência à direita e personagem no pedestal central. As posições locais, escalas, rotações e offsets dos Sprite2D de personagens/cabelos/barbas foram preservados; o conjunto é apenas deslocado para o centro. A paleta muda a cor do cabelo, e a barba tem cor independente. Detalhes e prompt do fundo em `assets/game/ui/creation/README.md`.
+
+O anão masculino usa a nova base sem barba, mantendo exatamente o tamanho e as transformações da montagem. Escolha entre **Sem barba** e 20 modelos em Sprite2D, com cor independente. A seleção aparece no jogo/inventário e fica no save. A cena `scenes/character_beards.tscn` contém as peças editáveis. Os ícones das 100 armaduras foram recortados e centralizados nos slots, preservando suas proporções.
+
 **Iniciar** abre a cena `scenes/character_creation.tscn`, com Humano, Elfo, Orc e Anão em modelos masculino e feminino. Todos começam carecas; escolha entre 16 cabelos e sete cores, além de nome e classe. A prévia acompanha as escolhas, que aparecem no mundo e no inventário e são gravadas com o save. As armaduras usam peças compartilhadas e mantêm a cabeça racial e o cabelo escolhidos. Saves antigos usam a opção Careca como padrão. Fontes, prompts e detalhes em `assets/game/character_builder/README.md`. Validações em `relatorios/verify_character_assembly.gd` e `relatorios/verify_original_art_quality.gd`.
+
+## Slots de equipamento
+
+O painel tem **Traje, Arma, Escudo, Anel, Colar, Talismã e Hero**. Cada slot vazio exibe um ícone semitransparente do tipo aceito. O ícone desaparece enquanto o espaço estiver ocupado. Os indicadores são TextureRects `EmptyIcon`, editáveis na cena `scenes/ui/equipment_status_panel.tscn`; a opacidade fica em `modulate.a` e a arte em `assets/game/ui/equipment_slots/`.
+
+Os anéis existentes usam o slot Anel. Os doze escudos do Arsenal usam Escudo, permitindo equipar uma arma ao mesmo tempo. O escudo aparece no braço esquerdo no jogo e na prévia. Saves anteriores migram os anéis de `joia` para `anel` e os escudos antes equipados como arma para `escudo`, preservando durabilidade. Colar Simples e Talismã Simples são entradas básicas sem bônus de atributos.
+
+Validação: `relatorios/verify_equipment_slots.gd` e `relatorios/verify_reference_panels.gd`.
+
+## Ícones de peitorais
+
+As 100 armaduras do catálogo e as 30 variantes dos trajes de classe agora usam ícones de torso com fundo transparente, seguindo o peitoral de referência. Os ícones aparecem na mochila, detalhes e slots equipados, sobre as cores dinâmicas de raridade. As peças vestidas pelo personagem mantêm suas próprias imagens.
+
+Pranchas, recursos individuais e prompts: `assets/game/ui/items/armor_portraits/README.md`. Prévia: `relatorios/icones-armaduras-cores.png`. Validação: `relatorios/verify_armor_portraits.gd`.

@@ -65,6 +65,17 @@ func _input(event: InputEvent) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void :
+	if event.is_action_pressed("character_status"):
+		if mode == "playing":
+			_open_panel("status")
+		elif mode == "panel" and ui.current_panel in ["inventory", "status"]:
+			ui.toggle_status_panel()
+		get_viewport().set_input_as_handled()
+		return
+	if mode == "panel" and ui.current_panel == "status" and event.is_action_pressed("inventory"):
+		ui.show_inventory_panel()
+		get_viewport().set_input_as_handled()
+		return
 	if mode == "panel" and ui.current_panel == "skills" and event.is_action_pressed("skill_menu"):
 		_close_panel()
 		get_viewport().set_input_as_handled()
@@ -116,6 +127,7 @@ func _on_new_game(race_id: String, class_id: String, hero_name: String) -> void 
 	state = PlayerState.create(hero_name, race_id, class_id)
 	state.gender_id = ui.creation_gender_id
 	state.set_hair(ui.creation_hair_style, ui.creation_hair_color)
+	state.set_beard(ui.creation_beard_style,ui.creation_beard_color)
 	world_flags = {}
 	_start_world()
 	ui.toast("Bem-vindo, %s. A estÃ¡tua guarda seu progresso." % state.hero_name, UiKit.GOLD)
@@ -182,6 +194,7 @@ func _open_panel(kind: String) -> void :
 	mode = "panel"
 	match kind:
 		"inventory": ui.show_inventory_panel()
+		"status": ui.show_status_panel()
 		"skills": ui.show_skills_panel()
 		"map_region": ui.show_region_map()
 		"map_world": ui.show_world_map()
@@ -321,7 +334,7 @@ func _on_panel_action(action: String, payload: Dictionary) -> void :
 			_equip_item(str(payload.get("id", "")))
 		"unequip":
 			state.unequip(str(payload.get("slot", "")))
-			ui.show_inventory_panel()
+			ui.refresh_equipment_panels()
 		"use_item":
 			_use_item(str(payload.get("id", "")))
 		"drop_item":
@@ -366,7 +379,7 @@ func _equip_item(item_id: String) -> void :
 		ui.toast("Equipado.", UiKit.GOOD)
 	else:
 		ui.toast(error, UiKit.BAD)
-	ui.show_inventory_panel()
+	ui.refresh_equipment_panels()
 
 
 func _use_item(item_id: String) -> void:
@@ -376,12 +389,12 @@ func _use_item(item_id: String) -> void:
 		world.use_consumable(item_id)
 	else:
 		ui.toast("Esse item não pode ser usado agora.", UiKit.BAD)
-	ui.show_inventory_panel()
+	ui.refresh_equipment_panels()
 
 
 func _drop_item(item_id: String) -> void :
 	state.remove_item(item_id, 1)
-	ui.show_inventory_panel()
+	ui.refresh_equipment_panels()
 
 
 func _store_item(item_id: String) -> void :
@@ -397,8 +410,8 @@ func _store_item(item_id: String) -> void :
 
 
 func _refresh_storage_panel() -> void:
-	if ui.current_panel == "inventory":
-		ui.show_inventory_panel()
+	if ui.current_panel in ["inventory", "status"]:
+		ui.refresh_equipment_panels()
 	else:
 		ui.show_chest_panel()
 

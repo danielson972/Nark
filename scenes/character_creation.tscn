@@ -1,44 +1,67 @@
 [gd_scene format=3 uid="uid://jlda5kmspgis"]
 
-[ext_resource type="Script" uid="uid://c5j3ux5bl4wpn" path="res://scripts/ui/character_creation.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/ui/character_creation.gd" id="1"]
 [ext_resource type="FontVariation" path="res://assets/template/fonts/ui_medium.tres" id="1_ejawe"]
 [ext_resource type="FontVariation" path="res://assets/template/fonts/ui_bold.tres" id="2_h36os"]
 [ext_resource type="FontVariation" path="res://assets/template/fonts/ui_regular.tres" id="3_tq5bv"]
-[ext_resource type="FontFile" uid="uid://bgc58vpcn0oln" path="res://assets/fonts/Cinzel-SemiBold.ttf" id="5_itg48"]
-[ext_resource type="Shader" uid="uid://qhrf8hxkuaqq" path="res://shaders/equipment_cutout.gdshader" id="6_xbgf7"]
-[ext_resource type="Script" uid="uid://btdoh3ixljp76" path="res://scripts/ui/hero_preview.gd" id="7_grvxh"]
-[ext_resource type="Texture2D" uid="uid://btnuhxqfix4p0" path="res://assets/game/character_builder/bald_races_supplied.png" id="8_rcxrn"]
-[ext_resource type="Texture2D" uid="uid://wdac475l37c7" path="res://assets/game/sprites/herois/cabelos/Modelo1.png" id="9_h36os"]
-[ext_resource type="Texture2D" uid="uid://dnw4745ugs7gk" path="res://assets/game/sprites/herois/bases/anao_feminino.png" id="Base_AnaoFeminino"]
-[ext_resource type="Texture2D" uid="uid://vdyb432dijgn" path="res://assets/game/sprites/herois/bases/anao_masculino.png" id="Base_AnaoMasculino"]
-[ext_resource type="Texture2D" uid="uid://cclo73w03way3" path="res://assets/game/sprites/herois/bases/elfo_feminino.png" id="Base_ElfoFeminino"]
-[ext_resource type="Texture2D" uid="uid://mb2ebkvyfg52" path="res://assets/game/sprites/herois/bases/elfo_masculino.png" id="Base_ElfoMasculino"]
-[ext_resource type="Texture2D" uid="uid://785lun565apy" path="res://assets/game/sprites/herois/bases/humano_feminino.png" id="Base_HumanoFeminino"]
-[ext_resource type="Texture2D" uid="uid://ejjlyunm5f07" path="res://assets/game/sprites/herois/bases/humano_masculino.png" id="Base_HumanoMasculino"]
-[ext_resource type="Texture2D" uid="uid://c0ige2c57sw6t" path="res://assets/game/sprites/herois/bases/orc_feminino.png" id="Base_OrcFeminino"]
-[ext_resource type="Texture2D" uid="uid://dm22vehugbjgt" path="res://assets/game/sprites/herois/bases/orc_masculino.png" id="Base_OrcMasculino"]
-[ext_resource type="Texture2D" uid="uid://5abttj6lger2" path="res://assets/game/sprites/herois/bases/orelha_elfo_feminino.png" id="Ear_ElfoFeminino"]
-[ext_resource type="Texture2D" uid="uid://bese2uxlnqi7s" path="res://assets/game/sprites/herois/bases/orelha_elfo_masculino.png" id="Ear_ElfoMasculino"]
-[ext_resource type="Texture2D" uid="uid://d1jwwo6heqymn" path="res://assets/game/sprites/herois/cabelos/Modelo2.png" id="hair_2"]
-[ext_resource type="Texture2D" uid="uid://bvci017ukx3p4" path="res://assets/game/sprites/herois/cabelos/Modelo3.png" id="hair_3"]
-[ext_resource type="Texture2D" uid="uid://cavb8musur21c" path="res://assets/game/sprites/herois/cabelos/Modelo4.png" id="hair_4"]
-[ext_resource type="Texture2D" uid="uid://djhrl11fxpav0" path="res://assets/game/sprites/herois/cabelos/Modelo5.png" id="hair_5"]
-[ext_resource type="Texture2D" uid="uid://r6mcc7vr87xp" path="res://assets/game/sprites/herois/cabelos/Modelo6.png" id="hair_6"]
-[ext_resource type="Texture2D" uid="uid://cwla56ct1dm1p" path="res://assets/game/sprites/herois/cabelos/Modelo7.png" id="hair_7"]
-[ext_resource type="Texture2D" uid="uid://cm2g2vndfmwib" path="res://assets/game/sprites/herois/cabelos/Modelo8.png" id="hair_8"]
-[ext_resource type="Texture2D" uid="uid://sw6ef340shqx" path="res://assets/game/sprites/herois/cabelos/Modelo9.png" id="hair_9"]
-[ext_resource type="Texture2D" uid="uid://c58fwd6uyt0pl" path="res://assets/game/sprites/herois/cabelos/Modelo10.png" id="hair_10"]
-[ext_resource type="Texture2D" uid="uid://dftu5dqftre3h" path="res://assets/game/sprites/herois/cabelos/Modelo11.png" id="hair_11"]
-[ext_resource type="Texture2D" uid="uid://dpjd3vgabcnfl" path="res://assets/game/sprites/herois/cabelos/Modelo12.png" id="hair_12"]
-[ext_resource type="Texture2D" uid="uid://nsrqp01icl2p" path="res://assets/game/sprites/herois/cabelos/Modelo13.png" id="hair_13"]
-[ext_resource type="Texture2D" uid="uid://cq022trye5r5g" path="res://assets/game/sprites/herois/cabelos/Modelo14.png" id="hair_14"]
-[ext_resource type="Texture2D" uid="uid://devp6m1gbq8dc" path="res://assets/game/sprites/herois/cabelos/Modelo15.png" id="hair_15"]
-[ext_resource type="Texture2D" uid="uid://cfw1thkhujgjd" path="res://assets/game/sprites/herois/cabelos/Modelo16.png" id="hair_16"]
-
-[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/orelha_orc_masculino.png" id="OrelhaOrcMasculino"]
-[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/dente_esquerdo_orc_masculino.png" id="DenteEsquerdoOrcMasculino"]
-[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/orelha_orc_feminino.png" id="OrelhaOrcFeminino"]
+[ext_resource type="Texture2D" path="res://assets/game/ui/creation/ruins_background.png" id="5_8jiq2"]
+[ext_resource type="FontFile" path="res://assets/fonts/Cinzel-SemiBold.ttf" id="5_itg48"]
+[ext_resource type="Shader" path="res://shaders/equipment_cutout.gdshader" id="6_xbgf7"]
+[ext_resource type="Script" path="res://scripts/ui/hero_preview.gd" id="7_grvxh"]
+[ext_resource type="Script" path="res://scripts/ui/selection_frame.gd" id="7_m18j7"]
+[ext_resource type="Texture2D" path="res://assets/game/character_builder/bald_races_supplied.png" id="8_rcxrn"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo1.png" id="9_h36os"]
+[ext_resource type="Shader" path="res://shaders/character_beard.gdshader" id="42_t35ty"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo1.png" id="43_lvvmc"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo2.png" id="44_0uk7r"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo3.png" id="45_3ud5b"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo4.png" id="46_2lrl5"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo5.png" id="47_e4cav"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo6.png" id="48_lt853"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo7.png" id="49_i23y8"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo8.png" id="50_2tgyg"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo9.png" id="51_utany"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo10.png" id="52_5m1po"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo11.png" id="53_tqmt3"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo12.png" id="54_2dsgi"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo13.png" id="55_gx8d0"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo14.png" id="56_t3t8y"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo15.png" id="57_gvx4e"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo16.png" id="58_8vb1b"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo17.png" id="59_swwk1"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo18.png" id="60_p4rqu"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo19.png" id="61_r8ndn"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo20.png" id="62_3d7ef"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/anao_feminino.png" id="Base_AnaoFeminino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/anao_masculino_sem_barba.png" id="Base_AnaoMasculino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/elfo_feminino.png" id="Base_ElfoFeminino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/elfo_masculino.png" id="Base_ElfoMasculino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/humano_feminino.png" id="Base_HumanoFeminino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/humano_masculino.png" id="Base_HumanoMasculino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/orc_feminino.png" id="Base_OrcFeminino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/orc_masculino.png" id="Base_OrcMasculino"]
+[ext_resource type="PackedScene" path="res://scenes/character_beards.tscn" id="BeardScene"]
 [ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/dente_esquerdo_orc_feminino.png" id="DenteEsquerdoOrcFeminino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/dente_esquerdo_orc_masculino.png" id="DenteEsquerdoOrcMasculino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/orelha_elfo_feminino.png" id="Ear_ElfoFeminino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/orelha_elfo_masculino.png" id="Ear_ElfoMasculino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo2.png" id="hair_2"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo3.png" id="hair_3"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo4.png" id="hair_4"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo5.png" id="hair_5"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo6.png" id="hair_6"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo7.png" id="hair_7"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo8.png" id="hair_8"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo9.png" id="hair_9"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo10.png" id="hair_10"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo11.png" id="hair_11"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo12.png" id="hair_12"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo13.png" id="hair_13"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo14.png" id="hair_14"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo15.png" id="hair_15"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/cabelos/Modelo16.png" id="hair_16"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/orelha_orc_feminino.png" id="OrelhaOrcFeminino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/orelha_orc_masculino.png" id="OrelhaOrcMasculino"]
 
 [sub_resource type="Theme" id="Theme_e7rmw"]
 default_font = ExtResource("3_tq5bv")
@@ -50,743 +73,609 @@ OptionButton/fonts/font = ExtResource("1_ejawe")
 RichTextLabel/fonts/bold_font = ExtResource("2_h36os")
 RichTextLabel/fonts/normal_font = ExtResource("3_tq5bv")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3vo3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50cml"]
 content_margin_left = 18.0
-content_margin_top = 8.0
+content_margin_top = 22.0
 content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+content_margin_bottom = 20.0
+bg_color = Color(0.025, 0.035, 0.031, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5176471, 0.4509804, 0.29803923, 1)
+shadow_color = Color(0, 0, 0, 0.65)
+shadow_size = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4swy3"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7x8b"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2ju7"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3yrg"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngspo"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.11, 0.09, 0.07, 0.96)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5b5xr"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pllwc"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwq61"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyeim"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpfqw"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7j2r"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46i4r"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3q42y"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6alea"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pok4s"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynh61"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dn7f"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ead4l"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02vu4"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4624"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8gbw"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jbse"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34ufj"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ij5f"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xco0x"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8j4mj"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o44q3"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5l4p"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhvyv"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckq5f"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kuqu3"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0vco"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdqul"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rn6kl"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ueas"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iq20a"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tus7k"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chv7m"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qg6ca"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_643jf"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8h678"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11i26"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1ob1"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujrrq"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vajx"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sgsn"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84aa8"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb2ak"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43xlr"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iaod"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iik4o"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrlpd"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsuce"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogcho"]
 content_margin_left = 18.0
-content_margin_top = 14.0
+content_margin_top = 22.0
 content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+content_margin_bottom = 20.0
+bg_color = Color(0.025, 0.035, 0.031, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5176471, 0.4509804, 0.29803923, 1)
+shadow_color = Color(0, 0, 0, 0.65)
+shadow_size = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sasjs"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jik3"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6fsu"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6g3e4"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asje0"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vk5om"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jvir"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lu7o5"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80r1j"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qb3aq"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqqc8"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6g7yw"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uywmd"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n217k"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rshur"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bugmg"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wf65"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwgy6"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5647059, 0.4, 0.29411766, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrmmq"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.16, 0.13, 0.1, 0.98)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yn00l"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5647059, 0.4, 0.29411766, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+border_color = Color(0.94509804, 0.827451, 0.59607846, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t71sv"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.24, 0.19, 0.13, 0.98)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81430"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.21960784, 0.21176471, 0.25490198, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swrcr"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlhhl"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.21960784, 0.21176471, 0.25490198, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+border_color = Color(0.94509804, 0.827451, 0.59607846, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eur1e"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.11, 0.09, 0.07, 0.96)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pn412"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.7490196, 0.41568628, 0.25882354, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2bnb"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.7490196, 0.41568628, 0.25882354, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+border_color = Color(0.94509804, 0.827451, 0.59607846, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8snj"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.84313726, 0.7411765, 0.5137255, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvqx2"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.84313726, 0.7411765, 0.5137255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94509804, 0.827451, 0.59607846, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uo31x"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.8509804, 0.85882354, 0.8784314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lab0w"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.8509804, 0.85882354, 0.8784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94509804, 0.827451, 0.59607846, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljlsx"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.38039216, 0.49803922, 0.67058825, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwsbh"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.38039216, 0.49803922, 0.67058825, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94509804, 0.827451, 0.59607846, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmmy3"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5882353, 0.41568628, 0.62352943, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j00b"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5882353, 0.41568628, 0.62352943, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94509804, 0.827451, 0.59607846, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iv3nq"]
 shader = ExtResource("6_xbgf7")
@@ -813,59 +702,58 @@ atlas = ExtResource("8_rcxrn")
 region = Rect2(0, 0, 256, 512)
 filter_clip = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5pbs"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.85, 0.7, 0.31, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.62, 0.51, 0.26, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr6nc"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lku81"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
-bg_color = Color(0.95, 0.82, 0.45, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.7, 0.31, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3h3e"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jiq2"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.1, 0.09, 0.08, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.27, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.55)
-shadow_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yd5qt"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06666667, 0.08627451, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43137255, 0.3764706, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqfye"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.20392157, 0.1882353, 0.13725491, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7882353, 0.6784314, 0.4392157, 1)
+
+[sub_resource type="ShaderMaterial" id="BeardMaterial"]
+shader = ExtResource("42_t35ty")
+shader_parameter/original_color = null
+shader_parameter/beard_color = null
 
 [node name="MontagemPersonagem" type="Control" unique_id=632965288]
 layout_mode = 3
@@ -877,413 +765,392 @@ grow_vertical = 2
 theme = SubResource("Theme_e7rmw")
 script = ExtResource("1")
 
-[node name="Fundo" type="ColorRect" parent="." unique_id=1918041724]
+[node name="FundoRuinas" type="TextureRect" parent="." unique_id=1148686848]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.06666667, 0.09019608, 0.07450981, 1)
+mouse_filter = 2
+texture = ExtResource("5_8jiq2")
+expand_mode = 1
 
-[node name="Margens" type="MarginContainer" parent="." unique_id=275503630]
+[node name="TituloSelecao" type="Label" parent="." unique_id=1797929588]
 layout_mode = 0
 anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Layout" type="VBoxContainer" parent="Margens" unique_id=1513933840]
-layout_mode = 2
-theme_override_constants/separation = 14
-
-[node name="Cabecalho" type="HBoxContainer" parent="Margens/Layout" unique_id=448192577]
-layout_mode = 2
-
-[node name="Titulo" type="Label" parent="Margens/Layout/Cabecalho" unique_id=375931467]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
-theme_override_colors/font_outline_color = Color(0.03, 0.02, 0.02, 0.9)
-theme_override_constants/outline_size = 4
+offset_top = 16.0
+offset_bottom = 46.0
 theme_override_fonts/font = ExtResource("5_itg48")
-theme_override_font_sizes/font_size = 30
-text = "Monte seu personagem"
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "CRIAÇÃO DE PERSONAGEM"
+horizontal_alignment = 1
 
-[node name="Voltar" type="Button" parent="Margens/Layout/Cabecalho" unique_id=1005330648]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 42)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_d3vo3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4swy3")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4swy3")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_u2ju7")
-theme_override_styles/focus = SubResource("StyleBoxFlat_4swy3")
-text = "Voltar"
+[node name="PainelIdentidade" type="PanelContainer" parent="." unique_id=1992756469]
+layout_mode = 0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 46.0
+offset_right = 304.0
+offset_bottom = -113.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_50cml")
+script = ExtResource("7_m18j7")
 
-[node name="RolagemPrincipal" type="ScrollContainer" parent="Margens/Layout" unique_id=138226357]
+[node name="@ScrollContainer@48" type="ScrollContainer" parent="PainelIdentidade" unique_id=431475279]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Colunas" type="HBoxContainer" parent="Margens/Layout/RolagemPrincipal" unique_id=1893685752]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="PainelIdentidade" type="PanelContainer" parent="Margens/Layout/RolagemPrincipal/Colunas" unique_id=198418997]
-custom_minimum_size = Vector2(260, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_ngspo")
-
-[node name="RolagemIdentidade" type="ScrollContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade" unique_id=1385004321]
-layout_mode = 2
-size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="Identidade" type="VBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade" unique_id=808938214]
+[node name="@VBoxContainer@49" type="VBoxContainer" parent="PainelIdentidade/@ScrollContainer@48" unique_id=1731144787]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="TituloIdentidade" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=1039975442]
+[node name="@Label@50" type="Label" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49" unique_id=415588749]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
-theme_override_colors/font_outline_color = Color(0.03, 0.02, 0.02, 0.9)
-theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_itg48")
-theme_override_font_sizes/font_size = 22
-text = "Identidade"
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "IDENTIDADE"
 
-[node name="RotuloNome" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=984022115]
+[node name="@HSeparator@51" type="HSeparator" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49" unique_id=1449154688]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
-theme_override_font_sizes/font_size = 14
-text = "Nome do personagem"
 
-[node name="Nome" type="LineEdit" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=930029289]
+[node name="@Label@52" type="Label" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49" unique_id=668331625]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "NOME"
+
+[node name="Nome" type="LineEdit" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49" unique_id=930029289]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_c7x8b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_r3yrg")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
 text = "Aurora"
 max_length = 14
 
-[node name="RotuloModelo" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=136175469]
+[node name="@Label@53" type="Label" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49" unique_id=744843729]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
-theme_override_font_sizes/font_size = 16
-text = "Modelo"
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "MODELO"
 
-[node name="Modelos" type="HBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=1180744941]
+[node name="@HBoxContainer@54" type="HBoxContainer" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49" unique_id=1963486951]
 layout_mode = 2
+theme_override_constants/separation = 6
 
-[node name="Modelo_masculino" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Modelos" unique_id=1432290346]
+[node name="Modelo_masculino" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@HBoxContainer@54" unique_id=1432290346]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_pllwc")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_cyeim")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cyeim")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_u7j2r")
-theme_override_styles/focus = SubResource("StyleBoxFlat_cyeim")
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_5b5xr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwq61")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xwq61")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5b5xr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_xwq61")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 toggle_mode = true
 button_pressed = true
 text = "Masculino"
 
-[node name="Modelo_feminino" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Modelos" unique_id=2021558009]
+[node name="Modelo_feminino" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@HBoxContainer@54" unique_id=2021558009]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_3q42y")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pok4s")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pok4s")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_8dn7f")
-theme_override_styles/focus = SubResource("StyleBoxFlat_pok4s")
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_qpfqw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_46i4r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_46i4r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qpfqw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_46i4r")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 toggle_mode = true
 text = "Feminino"
 
-[node name="RotuloRaca" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=1529701058]
+[node name="@Label@55" type="Label" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49" unique_id=190077493]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
-theme_override_font_sizes/font_size = 16
-text = "Raça"
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "RAÇA"
 
-[node name="Racas" type="GridContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=2063532534]
+[node name="@GridContainer@56" type="GridContainer" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49" unique_id=1483604723]
 layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 5
 columns = 2
 
-[node name="Raca_humano" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Racas" unique_id=1712722548]
+[node name="Raca_humano" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@GridContainer@56" unique_id=1712722548]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_02vu4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_g8gbw")
-theme_override_styles/hover = SubResource("StyleBoxFlat_g8gbw")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_34ufj")
-theme_override_styles/focus = SubResource("StyleBoxFlat_g8gbw")
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_6alea")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ynh61")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ynh61")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_6alea")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ynh61")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 toggle_mode = true
 button_pressed = true
 text = "Humano"
 
-[node name="Raca_elfo" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Racas" unique_id=2017474502]
+[node name="Raca_elfo" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@GridContainer@56" unique_id=2017474502]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_xco0x")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o44q3")
-theme_override_styles/hover = SubResource("StyleBoxFlat_o44q3")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_dhvyv")
-theme_override_styles/focus = SubResource("StyleBoxFlat_o44q3")
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_ead4l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i4624")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i4624")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ead4l")
+theme_override_styles/focus = SubResource("StyleBoxFlat_i4624")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 toggle_mode = true
 text = "Elfo"
 
-[node name="Raca_orc" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Racas" unique_id=1915932787]
+[node name="Raca_orc" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@GridContainer@56" unique_id=1915932787]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_kuqu3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qdqul")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qdqul")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_5ueas")
-theme_override_styles/focus = SubResource("StyleBoxFlat_qdqul")
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_1jbse")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0ij5f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ij5f")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1jbse")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0ij5f")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 toggle_mode = true
 text = "Orc"
 
-[node name="Raca_anao" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Racas" unique_id=777608904]
+[node name="Raca_anao" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@GridContainer@56" unique_id=777608904]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_tus7k")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qg6ca")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qg6ca")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_8h678")
-theme_override_styles/focus = SubResource("StyleBoxFlat_qg6ca")
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_8j4mj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5l4p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i5l4p")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8j4mj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_i5l4p")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 toggle_mode = true
 text = "Anão"
 
-[node name="DescricaoRaca" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=1383307805]
-unique_name_in_owner = true
+[node name="@Label@57" type="Label" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49" unique_id=1229133343]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
-theme_override_font_sizes/font_size = 13
-text = "Ambicioso e sociável. O reino abre portas para quem sabe negociar."
-autowrap_mode = 3
-text_overrun_behavior = 3
-max_lines_visible = 2
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "CLASSE"
 
-[node name="RotuloClasse" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=1808403006]
+[node name="@GridContainer@58" type="GridContainer" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49" unique_id=215833013]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
-theme_override_font_sizes/font_size = 16
-text = "Classe"
-
-[node name="Classes" type="GridContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=12364952]
-layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 5
 columns = 2
 
-[node name="Classe_atirador" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=1022656002]
+[node name="Classe_guerreiro" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@GridContainer@58" unique_id=1957344933]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_u1ob1")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7vajx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7vajx")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_84aa8")
-theme_override_styles/focus = SubResource("StyleBoxFlat_7vajx")
-toggle_mode = true
-text = "Atirador"
-
-[node name="Classe_mago" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=640740384]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_43xlr")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_iik4o")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iik4o")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_fsuce")
-theme_override_styles/focus = SubResource("StyleBoxFlat_iik4o")
-toggle_mode = true
-text = "Mago"
-
-[node name="Classe_guerreiro" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=1957344933]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_sasjs")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_r6fsu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_r6fsu")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_asje0")
-theme_override_styles/focus = SubResource("StyleBoxFlat_r6fsu")
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_ckq5f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u0vco")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u0vco")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ckq5f")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u0vco")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 toggle_mode = true
 button_pressed = true
 text = "Guerreiro"
 
-[node name="Classe_assassino" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=1007560447]
+[node name="Classe_mago" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@GridContainer@58" unique_id=640740384]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_1jvir")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_80r1j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_80r1j")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_mqqc8")
-theme_override_styles/focus = SubResource("StyleBoxFlat_80r1j")
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_rn6kl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iq20a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iq20a")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rn6kl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_iq20a")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
+toggle_mode = true
+text = "Mago"
+
+[node name="Classe_atirador" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@GridContainer@58" unique_id=1022656002]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_chv7m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_643jf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_643jf")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_chv7m")
+theme_override_styles/focus = SubResource("StyleBoxFlat_643jf")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
+toggle_mode = true
+text = "Atirador"
+
+[node name="Classe_assassino" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@GridContainer@58" unique_id=1007560447]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_11i26")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ujrrq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ujrrq")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_11i26")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ujrrq")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 toggle_mode = true
 text = "Assassino"
 
-[node name="Classe_tank" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=62800301]
+[node name="Classe_tank" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@GridContainer@58" unique_id=62800301]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_uywmd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rshur")
-theme_override_styles/hover = SubResource("StyleBoxFlat_rshur")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_0wf65")
-theme_override_styles/focus = SubResource("StyleBoxFlat_rshur")
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_5sgsn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tb2ak")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tb2ak")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5sgsn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tb2ak")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 toggle_mode = true
 text = "Tank"
 
-[node name="Classe_cavaleiro" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=1782133000]
+[node name="Classe_cavaleiro" type="Button" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49/@GridContainer@58" unique_id=1782133000]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(112, 36)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_hrmmq")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t71sv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t71sv")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_swrcr")
-theme_override_styles/focus = SubResource("StyleBoxFlat_t71sv")
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_8iaod")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rrlpd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rrlpd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8iaod")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rrlpd")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 toggle_mode = true
 text = "Cavaleiro"
 
-[node name="DescricaoClasse" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=819305424]
-unique_name_in_owner = true
+[node name="@Label@59" type="Label" parent="PainelIdentidade/@ScrollContainer@48/@VBoxContainer@49" unique_id=231773130]
+modulate = Color(0.7058824, 0.6745098, 0.5882353, 1)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
-theme_override_font_sizes/font_size = 13
-text = "Rompe guardas e pune quem tenta se proteger."
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "A origem e a classe definem o início da sua jornada."
 autowrap_mode = 3
-text_overrun_behavior = 3
-max_lines_visible = 2
 
-[node name="PainelPersonagem" type="PanelContainer" parent="Margens/Layout/RolagemPrincipal/Colunas" unique_id=1578314420]
-custom_minimum_size = Vector2(270, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_eur1e")
-
-[node name="Previa" type="VBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem" unique_id=300796622]
-layout_mode = 2
-size_flags_stretch_ratio = 1.1
-theme_override_constants/separation = 8
-
-[node name="TituloPersonagem" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa" unique_id=274853183]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
-theme_override_colors/font_outline_color = Color(0.03, 0.02, 0.02, 0.9)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("5_itg48")
-theme_override_font_sizes/font_size = 22
-text = "Seu personagem"
-
-[node name="Personagem" type="Control" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa" unique_id=1968999995]
-unique_name_in_owner = true
-texture_filter = 1
-material = SubResource("ShaderMaterial_iv3nq")
-custom_minimum_size = Vector2(240, 300)
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-script = ExtResource("7_grvxh")
-
-[node name="BaseCarecaEditor" type="TextureRect" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Personagem" unique_id=1667839822]
-visible = false
-texture_filter = 1
-material = SubResource("ShaderMaterial_n5lcl")
+[node name="PainelAparencia" type="PanelContainer" parent="." unique_id=1969206682]
 layout_mode = 0
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
-texture = SubResource("AtlasTexture_y2j0r")
-expand_mode = 1
-stretch_mode = 5
+offset_left = -304.0
+offset_top = 46.0
+offset_right = -24.0
+offset_bottom = -113.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogcho")
+script = ExtResource("7_m18j7")
 
-[node name="Resumo" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa" unique_id=939892186]
-unique_name_in_owner = true
+[node name="@ScrollContainer@62" type="ScrollContainer" parent="PainelAparencia" unique_id=911868343]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
-theme_override_font_sizes/font_size = 16
-text = "Humano · Guerreiro"
-horizontal_alignment = 1
-autowrap_mode = 3
+horizontal_scroll_mode = 0
 
-[node name="Aparencia" type="HBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa" unique_id=402191819]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Penteado" type="VBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia" unique_id=1375121801]
+[node name="@VBoxContainer@63" type="VBoxContainer" parent="PainelAparencia/@ScrollContainer@62" unique_id=1320803806]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 8
 
-[node name="TituloCabelo" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia/Penteado" unique_id=1447054597]
+[node name="@Label@64" type="Label" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=1820928612]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
-text = "Cabelo"
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "APARÊNCIA"
 
-[node name="EscolhaCabelo" type="OptionButton" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia/Penteado" unique_id=2073805850]
+[node name="@HSeparator@65" type="HSeparator" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=1427784223]
+layout_mode = 2
+
+
+
+[node name="@Label@66" type="Label" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=284963541]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "CABELO"
+
+[node name="EscolhaCabelo" type="OptionButton" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=2073805850]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_5jik3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6g3e4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6g3e4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5jik3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6g3e4")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 selected = 1
 item_count = 17
 popup/item_0/text = "Careca"
@@ -1321,19 +1188,28 @@ popup/item_15/id = 15
 popup/item_16/text = "Picos"
 popup/item_16/id = 16
 
-[node name="Cor" type="VBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia" unique_id=1010167237]
+[node name="@Label@67" type="Label" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=409591142]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "COR DO CABELO"
+
+[node name="EscolhaCor" type="OptionButton" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=1062576891]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="TituloCor" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia/Cor" unique_id=526253098]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
-text = "Cor do cabelo"
-
-[node name="EscolhaCor" type="OptionButton" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia/Cor" unique_id=1062576891]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vk5om")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lu7o5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lu7o5")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vk5om")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lu7o5")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
 selected = 0
 item_count = 7
 popup/item_0/text = "Castanho"
@@ -1351,31 +1227,323 @@ popup/item_5/id = 5
 popup/item_6/text = "Roxo"
 popup/item_6/id = 6
 
-[node name="Rodape" type="HBoxContainer" parent="Margens/Layout" unique_id=146400070]
+[node name="@Label@68" type="Label" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=1264484490]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "BARBA"
 
-[node name="Aviso" type="Label" parent="Margens/Layout/Rodape" unique_id=791738314]
+[node name="EscolhaBarba" type="OptionButton" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=244916443]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
-theme_override_font_sizes/font_size = 13
-text = "Sua aparência acompanha o personagem e fica salva com a partida."
+theme_override_styles/normal = SubResource("StyleBoxFlat_qb3aq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6g7yw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6g7yw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qb3aq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6g7yw")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
+selected = 0
+item_count = 21
+popup/item_0/text = "Sem barba"
+popup/item_0/id = 0
+popup/item_1/text = "01 · Cheia"
+popup/item_1/id = 1
+popup/item_2/text = "02 · Pontuda"
+popup/item_2/id = 2
+popup/item_3/text = "03 · Arredondada"
+popup/item_3/id = 3
+popup/item_4/text = "04 · Longa pontuda"
+popup/item_4/id = 4
+popup/item_5/text = "05 · Curta"
+popup/item_5/id = 5
+popup/item_6/text = "06 · Cavanhaque fino"
+popup/item_6/id = 6
+popup/item_7/text = "07 · Bigode e cavanhaque"
+popup/item_7/id = 7
+popup/item_8/text = "08 · Aparada"
+popup/item_8/id = 8
+popup/item_9/text = "09 · Cavanhaque duplo"
+popup/item_9/id = 9
+popup/item_10/text = "10 · Cavanhaque longo"
+popup/item_10/id = 10
+popup/item_11/text = "11 · Volumosa"
+popup/item_11/id = 11
+popup/item_12/text = "12 · Trança única"
+popup/item_12/id = 12
+popup/item_13/text = "13 · Duas tranças"
+popup/item_13/id = 13
+popup/item_14/text = "14 · Três tranças"
+popup/item_14/id = 14
+popup/item_15/text = "15 · Selvagem"
+popup/item_15/id = 15
+popup/item_16/text = "16 · Contorno curto"
+popup/item_16/id = 16
+popup/item_17/text = "17 · Contorno pontudo"
+popup/item_17/id = 17
+popup/item_18/text = "18 · Trança no queixo"
+popup/item_18/id = 18
+popup/item_19/text = "19 · Costeletas"
+popup/item_19/id = 19
+popup/item_20/text = "20 · Contorno com tranças"
+popup/item_20/id = 20
+
+[node name="@Label@69" type="Label" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=1593992122]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "COR DA BARBA"
+
+[node name="CorBarba" type="OptionButton" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=419461740]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_n217k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bugmg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bugmg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_n217k")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bugmg")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 14
+selected = 0
+item_count = 8
+popup/item_0/text = "Original"
+popup/item_0/id = 0
+popup/item_1/text = "Castanho"
+popup/item_1/id = 1
+popup/item_2/text = "Preto"
+popup/item_2/id = 2
+popup/item_3/text = "Ruivo"
+popup/item_3/id = 3
+popup/item_4/text = "Loiro"
+popup/item_4/id = 4
+popup/item_5/text = "Branco"
+popup/item_5/id = 5
+popup/item_6/text = "Azul"
+popup/item_6/id = 6
+popup/item_7/text = "Roxo"
+popup/item_7/id = 7
+
+[node name="@Label@70" type="Label" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=196524711]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "PALETA DO CABELO"
+
+[node name="Paleta" type="HBoxContainer" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=192416772]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Cor_castanho" type="Button" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63/Paleta" unique_id=884136789]
+custom_minimum_size = Vector2(26, 28)
+layout_mode = 2
+tooltip_text = "Castanho"
+theme_override_styles/normal = SubResource("StyleBoxFlat_fwgy6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yn00l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yn00l")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yn00l")
+toggle_mode = true
+metadata/color_id = "castanho"
+
+[node name="Cor_preto" type="Button" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63/Paleta" unique_id=1370475762]
+custom_minimum_size = Vector2(26, 28)
+layout_mode = 2
+tooltip_text = "Preto"
+theme_override_styles/normal = SubResource("StyleBoxFlat_81430")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rlhhl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rlhhl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rlhhl")
+toggle_mode = true
+metadata/color_id = "preto"
+
+[node name="Cor_ruivo" type="Button" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63/Paleta" unique_id=1840112982]
+custom_minimum_size = Vector2(26, 28)
+layout_mode = 2
+tooltip_text = "Ruivo"
+theme_override_styles/normal = SubResource("StyleBoxFlat_pn412")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c2bnb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c2bnb")
+theme_override_styles/focus = SubResource("StyleBoxFlat_c2bnb")
+toggle_mode = true
+metadata/color_id = "ruivo"
+
+[node name="Cor_loiro" type="Button" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63/Paleta" unique_id=2054659324]
+custom_minimum_size = Vector2(26, 28)
+layout_mode = 2
+tooltip_text = "Loiro"
+theme_override_styles/normal = SubResource("StyleBoxFlat_l8snj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vvqx2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vvqx2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vvqx2")
+toggle_mode = true
+metadata/color_id = "loiro"
+
+[node name="Cor_branco" type="Button" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63/Paleta" unique_id=498869717]
+custom_minimum_size = Vector2(26, 28)
+layout_mode = 2
+tooltip_text = "Branco"
+theme_override_styles/normal = SubResource("StyleBoxFlat_uo31x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lab0w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lab0w")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lab0w")
+toggle_mode = true
+metadata/color_id = "branco"
+
+[node name="Cor_azul" type="Button" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63/Paleta" unique_id=227108970]
+custom_minimum_size = Vector2(26, 28)
+layout_mode = 2
+tooltip_text = "Azul"
+theme_override_styles/normal = SubResource("StyleBoxFlat_ljlsx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bwsbh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bwsbh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bwsbh")
+toggle_mode = true
+metadata/color_id = "azul"
+
+[node name="Cor_roxo" type="Button" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63/Paleta" unique_id=1183464204]
+custom_minimum_size = Vector2(26, 28)
+layout_mode = 2
+tooltip_text = "Roxo"
+theme_override_styles/normal = SubResource("StyleBoxFlat_dmmy3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4j00b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4j00b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4j00b")
+toggle_mode = true
+metadata/color_id = "roxo"
+
+[node name="@Label@71" type="Label" parent="PainelAparencia/@ScrollContainer@62/@VBoxContainer@63" unique_id=833252768]
+modulate = Color(0.7058824, 0.6745098, 0.5882353, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+text = "Cabelo e barba são escolhas independentes. Você também pode manter a opção sem."
 autowrap_mode = 3
 
-[node name="Concluir" type="Button" parent="Margens/Layout/Rodape" unique_id=1193529564]
+[node name="DescricaoRaca" type="Label" parent="." unique_id=1383307805]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(230, 46)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.12, 0.09, 0.05, 1)
-theme_override_colors/font_hover_color = Color(0.08, 0.06, 0.03, 1)
-theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_q5pbs")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_lku81")
-theme_override_styles/hover = SubResource("StyleBoxFlat_lku81")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_8jiq2")
-theme_override_styles/focus = SubResource("StyleBoxFlat_lku81")
-text = "Entrar no Reino"
+visible = false
+layout_mode = 0
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
+text = "Ambicioso e sociável. O reino abre portas para quem sabe negociar."
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="DescricaoClasse" type="Label" parent="." unique_id=819305424]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
+text = "Rompe guardas e pune quem tenta se proteger."
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Personagem" type="Control" parent="." unique_id=1968999995]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_iv3nq")
+custom_minimum_size = Vector2(240, 300)
+anchors_preset = 0
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("7_grvxh")
+
+[node name="BaseCarecaEditor" type="TextureRect" parent="Personagem" unique_id=1667839822]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_n5lcl")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_y2j0r")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Resumo" type="Label" parent="." unique_id=939892186]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -143.0
+offset_right = 230.0
+offset_bottom = -112.0
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.9490196, 0.8509804, 0.60784316, 1)
+theme_override_colors/font_outline_color = Color(0.078431375, 0.105882354, 0.08627451, 1)
+theme_override_constants/outline_size = 5
+text = "Humano · Guerreiro"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Concluir" type="Button" parent="." unique_id=1193529564]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(270, 44)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -135.0
+offset_top = -99.0
+offset_right = 135.0
+offset_bottom = -55.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_vr6nc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t3h3e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t3h3e")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vr6nc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_t3h3e")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 15
+text = "CRIAR PERSONAGEM"
+
+[node name="Voltar" type="Button" parent="." unique_id=1005330648]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(270, 34)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -135.0
+offset_top = -47.0
+offset_right = 135.0
+offset_bottom = -13.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_yd5qt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mqfye")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mqfye")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_yd5qt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mqfye")
+theme_override_colors/font_color = Color(0.7882353, 0.7019608, 0.52156866, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8901961, 0.6313726, 1)
+theme_override_colors/font_disabled_color = Color(0.4392157, 0.43529412, 0.3764706, 1)
+theme_override_font_sizes/font_size = 15
+text = "VOLTAR"
 
 [node name="Cabelos" type="Sprite2D" parent="." unique_id=136049397]
 z_index = 2
@@ -1798,6 +1966,20 @@ position = Vector2(959.99994, 333)
 scale = Vector2(0.7806286, 0.7806286)
 texture = ExtResource("Base_OrcMasculino")
 metadata/_edit_lock_ = true
+
+[node name="Orelha" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=798416629]
+z_index = 1
+texture_filter = 1
+position = Vector2(984.98004, 185.4612)
+scale = Vector2(0.7806286, 0.7806286)
+texture = ExtResource("OrelhaOrcMasculino")
+
+[node name="DenteEsquerdo" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=1432498117]
+z_index = 1
+texture_filter = 1
+position = Vector2(928.38446, 202.2447)
+scale = Vector2(0.7806286, 0.7806286)
+texture = ExtResource("DenteEsquerdoOrcMasculino")
 
 [node name="AnaoMasculino" type="Sprite2D" parent="Cabelos" unique_id=1325210953]
 visible = false
@@ -2323,6 +2505,20 @@ scale = Vector2(0.7650924, 0.7650924)
 texture = ExtResource("Base_OrcFeminino")
 metadata/_edit_lock_ = true
 
+[node name="Orelha" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=25253899]
+z_index = 1
+texture_filter = 1
+position = Vector2(972.5511, 177.26115)
+scale = Vector2(0.7650924, 0.7650924)
+texture = ExtResource("OrelhaOrcFeminino")
+
+[node name="DenteEsquerdo" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=1733971045]
+z_index = 1
+texture_filter = 1
+position = Vector2(927.41064, 189.88518)
+scale = Vector2(0.7650924, 0.7650924)
+texture = ExtResource("DenteEsquerdoOrcFeminino")
+
 [node name="AnaoFeminino" type="Sprite2D" parent="Cabelos" unique_id=404938686]
 visible = false
 
@@ -2462,30 +2658,1311 @@ scale = Vector2(0.6598013, 0.6598013)
 texture = ExtResource("Base_AnaoFeminino")
 metadata/_edit_lock_ = true
 
-[node name="Orelha" type="Sprite2D" parent="Cabelos/OrcMasculino"]
-z_index = 1
-texture_filter = 1
-position = Vector2(984.98004, 185.4612)
-scale = Vector2(0.7806286, 0.7806286)
-texture = ExtResource("OrelhaOrcMasculino")
+[node name="Barbas" parent="." unique_id=1140919590 instance=ExtResource("BeardScene")]
+z_index = 4
 
-[node name="DenteEsquerdo" type="Sprite2D" parent="Cabelos/OrcMasculino"]
-z_index = 1
-texture_filter = 1
-position = Vector2(928.38446, 202.2447)
-scale = Vector2(0.7806286, 0.7806286)
-texture = ExtResource("DenteEsquerdoOrcMasculino")
+[node name="HumanoMasculino" parent="Barbas" index="0"]
+visible = false
 
-[node name="Orelha" type="Sprite2D" parent="Cabelos/OrcFeminino"]
-z_index = 1
+[node name="Modelo1" parent="Barbas/HumanoMasculino" index="0"]
+visible = false
 texture_filter = 1
-position = Vector2(972.5511, 177.26115)
-scale = Vector2(0.7650924, 0.7650924)
-texture = ExtResource("OrelhaOrcFeminino")
+material = SubResource("BeardMaterial")
+position = Vector2(951.6171, 211.54292)
+scale = Vector2(0.33689368, 0.33689368)
+texture = ExtResource("43_lvvmc")
 
-[node name="DenteEsquerdo" type="Sprite2D" parent="Cabelos/OrcFeminino"]
-z_index = 1
+[node name="Modelo2" parent="Barbas/HumanoMasculino" index="1"]
+visible = false
 texture_filter = 1
-position = Vector2(927.41064, 189.88518)
-scale = Vector2(0.7650924, 0.7650924)
-texture = ExtResource("DenteEsquerdoOrcFeminino")
+material = SubResource("BeardMaterial")
+position = Vector2(954.6185, 215.56834)
+scale = Vector2(0.3783298, 0.37832984)
+texture = ExtResource("44_0uk7r")
+
+[node name="Modelo3" parent="Barbas/HumanoMasculino" index="2"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.6171, 212.64615)
+scale = Vector2(0.37021285, 0.37021282)
+texture = ExtResource("45_3ud5b")
+
+[node name="Modelo4" parent="Barbas/HumanoMasculino" index="3"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(953.6385, 215.93602)
+scale = Vector2(0.38502136, 0.38502136)
+texture = ExtResource("46_2lrl5")
+
+[node name="Modelo5" parent="Barbas/HumanoMasculino" index="4"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.6171, 219.04324)
+scale = Vector2(0.35462493, 0.35462496)
+texture = ExtResource("47_e4cav")
+
+[node name="Modelo6" parent="Barbas/HumanoMasculino" index="5"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.18835, 218.16797)
+scale = Vector2(0.4029829, 0.40298286)
+texture = ExtResource("48_lt853")
+
+[node name="Modelo7" parent="Barbas/HumanoMasculino" index="6"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.18835, 218.13943)
+scale = Vector2(0.39264998, 0.39264998)
+texture = ExtResource("49_i23y8")
+
+[node name="Modelo8" parent="Barbas/HumanoMasculino" index="7"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.6171, 212.52296)
+scale = Vector2(0.40835598, 0.408356)
+texture = ExtResource("50_2tgyg")
+
+[node name="Modelo9" parent="Barbas/HumanoMasculino" index="8"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.18835, 216.83125)
+scale = Vector2(0.38045588, 0.38045588)
+texture = ExtResource("51_utany")
+
+[node name="Modelo10" parent="Barbas/HumanoMasculino" index="9"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.18835, 217.25742)
+scale = Vector2(0.37349632, 0.37349632)
+texture = ExtResource("52_5m1po")
+
+[node name="Modelo11" parent="Barbas/HumanoMasculino" index="10"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.90344, 225.93526)
+scale = Vector2(0.34439662, 0.34439662)
+texture = ExtResource("53_tqmt3")
+
+[node name="Modelo12" parent="Barbas/HumanoMasculino" index="11"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.974, 239.16534)
+scale = Vector2(0.36369205, 0.36369205)
+texture = ExtResource("54_2dsgi")
+
+[node name="Modelo13" parent="Barbas/HumanoMasculino" index="12"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.4747, 232.77156)
+scale = Vector2(0.35234255, 0.35234258)
+texture = ExtResource("55_gx8d0")
+
+[node name="Modelo14" parent="Barbas/HumanoMasculino" index="13"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.6891, 235.00989)
+scale = Vector2(0.3518812, 0.35188124)
+texture = ExtResource("56_t3t8y")
+
+[node name="Modelo15" parent="Barbas/HumanoMasculino" index="14"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.6891, 227.69672)
+scale = Vector2(0.38461435, 0.38461438)
+texture = ExtResource("57_gvx4e")
+
+[node name="Modelo16" parent="Barbas/HumanoMasculino" index="15"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.18835, 221.03555)
+scale = Vector2(0.32755828, 0.32755828)
+texture = ExtResource("58_8vb1b")
+
+[node name="Modelo17" parent="Barbas/HumanoMasculino" index="16"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.6171, 224.20451)
+scale = Vector2(0.35093093, 0.3509309)
+texture = ExtResource("59_swwk1")
+
+[node name="Modelo18" parent="Barbas/HumanoMasculino" index="17"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.6171, 230.35587)
+scale = Vector2(0.33191496, 0.331915)
+texture = ExtResource("60_p4rqu")
+
+[node name="Modelo19" parent="Barbas/HumanoMasculino" index="18"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(959.3782, 205.45844)
+scale = Vector2(0.27223733, 0.27223733)
+texture = ExtResource("61_r8ndn")
+
+[node name="Modelo20" parent="Barbas/HumanoMasculino" index="19"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.6171, 226.96588)
+scale = Vector2(0.3223863, 0.3223863)
+texture = ExtResource("62_3d7ef")
+
+[node name="ElfoMasculino" parent="Barbas" index="1"]
+visible = false
+
+[node name="Modelo1" parent="Barbas/ElfoMasculino" index="0"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.7144, 210.80649)
+scale = Vector2(0.33289042, 0.33289042)
+texture = ExtResource("43_lvvmc")
+
+[node name="Modelo2" parent="Barbas/ElfoMasculino" index="1"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.6802, 214.78409)
+scale = Vector2(0.37383416, 0.37383416)
+texture = ExtResource("44_0uk7r")
+
+[node name="Modelo3" parent="Barbas/ElfoMasculino" index="2"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.7144, 211.8966)
+scale = Vector2(0.36581367, 0.36581364)
+texture = ExtResource("45_3ud5b")
+
+[node name="Modelo4" parent="Barbas/ElfoMasculino" index="3"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.7118, 215.1474)
+scale = Vector2(0.38044623, 0.3804462)
+texture = ExtResource("46_2lrl5")
+
+[node name="Modelo5" parent="Barbas/ElfoMasculino" index="4"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.7144, 218.21768)
+scale = Vector2(0.350411, 0.35041094)
+texture = ExtResource("47_e4cav")
+
+[node name="Modelo6" parent="Barbas/ElfoMasculino" index="5"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.2907, 217.35281)
+scale = Vector2(0.39819428, 0.39819428)
+texture = ExtResource("48_lt853")
+
+[node name="Modelo7" parent="Barbas/ElfoMasculino" index="6"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.2907, 217.32463)
+scale = Vector2(0.3879842, 0.38798416)
+texture = ExtResource("49_i23y8")
+
+[node name="Modelo8" parent="Barbas/ElfoMasculino" index="7"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.7144, 211.7749)
+scale = Vector2(0.40350357, 0.40350354)
+texture = ExtResource("50_2tgyg")
+
+[node name="Modelo9" parent="Barbas/ElfoMasculino" index="8"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.2907, 216.03198)
+scale = Vector2(0.375935, 0.37593496)
+texture = ExtResource("51_utany")
+
+[node name="Modelo10" parent="Barbas/ElfoMasculino" index="9"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.2907, 216.45308)
+scale = Vector2(0.36905813, 0.36905813)
+texture = ExtResource("52_5m1po")
+
+[node name="Modelo11" parent="Barbas/ElfoMasculino" index="10"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.9855, 225.02782)
+scale = Vector2(0.3403042, 0.3403042)
+texture = ExtResource("53_tqmt3")
+
+[node name="Modelo12" parent="Barbas/ElfoMasculino" index="11"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.0789, 238.10068)
+scale = Vector2(0.35937035, 0.35937035)
+texture = ExtResource("54_2dsgi")
+
+[node name="Modelo13" parent="Barbas/ElfoMasculino" index="12"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.56177, 231.78287)
+scale = Vector2(0.3481557, 0.3481557)
+texture = ExtResource("55_gx8d0")
+
+[node name="Modelo14" parent="Barbas/ElfoMasculino" index="13"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.7736, 233.9946)
+scale = Vector2(0.34769985, 0.34769985)
+texture = ExtResource("56_t3t8y")
+
+[node name="Modelo15" parent="Barbas/ElfoMasculino" index="14"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.7736, 226.76834)
+scale = Vector2(0.380044, 0.38004407)
+texture = ExtResource("57_gvx4e")
+
+[node name="Modelo16" parent="Barbas/ElfoMasculino" index="15"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.2907, 220.18634)
+scale = Vector2(0.32366595, 0.32366595)
+texture = ExtResource("58_8vb1b")
+
+[node name="Modelo17" parent="Barbas/ElfoMasculino" index="16"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.7144, 223.31763)
+scale = Vector2(0.34676087, 0.34676084)
+texture = ExtResource("59_swwk1")
+
+[node name="Modelo18" parent="Barbas/ElfoMasculino" index="17"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.7144, 229.39589)
+scale = Vector2(0.32797086, 0.32797086)
+texture = ExtResource("60_p4rqu")
+
+[node name="Modelo19" parent="Barbas/ElfoMasculino" index="18"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(957.15906, 204.79431)
+scale = Vector2(0.26900238, 0.26900238)
+texture = ExtResource("61_r8ndn")
+
+[node name="Modelo20" parent="Barbas/ElfoMasculino" index="19"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.7144, 226.04619)
+scale = Vector2(0.31855544, 0.3185554)
+texture = ExtResource("62_3d7ef")
+
+[node name="OrcMasculino" parent="Barbas" index="2"]
+visible = false
+
+[node name="Modelo1" parent="Barbas/OrcMasculino" index="0"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.05786, 208.09943)
+scale = Vector2(0.3649439, 0.3649439)
+texture = ExtResource("43_lvvmc")
+
+[node name="Modelo2" parent="Barbas/OrcMasculino" index="1"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(954.30914, 212.46002)
+scale = Vector2(0.40983003, 0.40983003)
+texture = ExtResource("44_0uk7r")
+
+[node name="Modelo3" parent="Barbas/OrcMasculino" index="2"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.05786, 209.29451)
+scale = Vector2(0.40103725, 0.40103722)
+texture = ExtResource("45_3ud5b")
+
+[node name="Modelo4" parent="Barbas/OrcMasculino" index="3"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(953.2475, 212.85828)
+scale = Vector2(0.41707873, 0.41707873)
+texture = ExtResource("46_2lrl5")
+
+[node name="Modelo5" parent="Barbas/OrcMasculino" index="4"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.05786, 216.22421)
+scale = Vector2(0.38415146, 0.38415146)
+texture = ExtResource("47_e4cav")
+
+[node name="Modelo6" parent="Barbas/OrcMasculino" index="5"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.5934, 215.27606)
+scale = Vector2(0.43653575, 0.43653572)
+texture = ExtResource("48_lt853")
+
+[node name="Modelo7" parent="Barbas/OrcMasculino" index="6"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.5934, 215.24518)
+scale = Vector2(0.4253425, 0.4253425)
+texture = ExtResource("49_i23y8")
+
+[node name="Modelo8" parent="Barbas/OrcMasculino" index="7"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.05786, 209.16107)
+scale = Vector2(0.44235623, 0.4423562)
+texture = ExtResource("50_2tgyg")
+
+[node name="Modelo9" parent="Barbas/OrcMasculino" index="8"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.5934, 213.82808)
+scale = Vector2(0.41213313, 0.41213313)
+texture = ExtResource("51_utany")
+
+[node name="Modelo10" parent="Barbas/OrcMasculino" index="9"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.5934, 214.2897)
+scale = Vector2(0.4045941, 0.40459412)
+texture = ExtResource("52_5m1po")
+
+[node name="Modelo11" parent="Barbas/OrcMasculino" index="10"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.45123, 223.69008)
+scale = Vector2(0.37307152, 0.3730715)
+texture = ExtResource("53_tqmt3")
+
+[node name="Modelo12" parent="Barbas/OrcMasculino" index="11"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.36115, 238.02171)
+scale = Vector2(0.39397353, 0.3939735)
+texture = ExtResource("54_2dsgi")
+
+[node name="Modelo13" parent="Barbas/OrcMasculino" index="12"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.9868, 231.09558)
+scale = Vector2(0.38167903, 0.38167906)
+texture = ExtResource("55_gx8d0")
+
+[node name="Modelo14" parent="Barbas/OrcMasculino" index="13"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.219, 233.52026)
+scale = Vector2(0.3811793, 0.38117927)
+texture = ExtResource("56_t3t8y")
+
+[node name="Modelo15" parent="Barbas/OrcMasculino" index="14"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.219, 225.59822)
+scale = Vector2(0.41663784, 0.41663784)
+texture = ExtResource("57_gvx4e")
+
+[node name="Modelo16" parent="Barbas/OrcMasculino" index="15"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.5934, 218.38243)
+scale = Vector2(0.3548312, 0.3548312)
+texture = ExtResource("58_8vb1b")
+
+[node name="Modelo17" parent="Barbas/OrcMasculino" index="16"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.05786, 221.81522)
+scale = Vector2(0.38014987, 0.3801499)
+texture = ExtResource("59_swwk1")
+
+[node name="Modelo18" parent="Barbas/OrcMasculino" index="17"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.05786, 228.47876)
+scale = Vector2(0.35955063, 0.35955063)
+texture = ExtResource("60_p4rqu")
+
+[node name="Modelo19" parent="Barbas/OrcMasculino" index="18"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.4871, 201.50832)
+scale = Vector2(0.29490414, 0.29490414)
+texture = ExtResource("61_r8ndn")
+
+[node name="Modelo20" parent="Barbas/OrcMasculino" index="19"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.05786, 224.80652)
+scale = Vector2(0.3492286, 0.3492286)
+texture = ExtResource("62_3d7ef")
+
+[node name="AnaoMasculino" parent="Barbas" index="3"]
+visible = false
+
+[node name="Modelo1" parent="Barbas/AnaoMasculino" index="0"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.3002, 261.6335)
+scale = Vector2(0.3581953, 0.35819533)
+texture = ExtResource("43_lvvmc")
+
+[node name="Modelo2" parent="Barbas/AnaoMasculino" index="1"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(959.4914, 265.91348)
+scale = Vector2(0.40225142, 0.40225145)
+texture = ExtResource("44_0uk7r")
+
+[node name="Modelo3" parent="Barbas/AnaoMasculino" index="2"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.3002, 262.80652)
+scale = Vector2(0.3936212, 0.39362124)
+texture = ExtResource("45_3ud5b")
+
+[node name="Modelo4" parent="Barbas/AnaoMasculino" index="3"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(958.44934, 266.30438)
+scale = Vector2(0.40936607, 0.40936607)
+texture = ExtResource("46_2lrl5")
+
+[node name="Modelo5" parent="Barbas/AnaoMasculino" index="4"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.3002, 269.6081)
+scale = Vector2(0.3770477, 0.3770477)
+texture = ExtResource("47_e4cav")
+
+[node name="Modelo6" parent="Barbas/AnaoMasculino" index="5"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.8443, 268.67746)
+scale = Vector2(0.42846328, 0.4284633)
+texture = ExtResource("48_lt853")
+
+[node name="Modelo7" parent="Barbas/AnaoMasculino" index="6"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.8443, 268.64713)
+scale = Vector2(0.41747704, 0.41747704)
+texture = ExtResource("49_i23y8")
+
+[node name="Modelo8" parent="Barbas/AnaoMasculino" index="7"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.3002, 262.67554)
+scale = Vector2(0.43417612, 0.43417612)
+texture = ExtResource("50_2tgyg")
+
+[node name="Modelo9" parent="Barbas/AnaoMasculino" index="8"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.8443, 267.25623)
+scale = Vector2(0.40451193, 0.40451193)
+texture = ExtResource("51_utany")
+
+[node name="Modelo10" parent="Barbas/AnaoMasculino" index="9"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.8443, 267.70935)
+scale = Vector2(0.3971123, 0.39711234)
+texture = ExtResource("52_5m1po")
+
+[node name="Modelo11" parent="Barbas/AnaoMasculino" index="10"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(957.66785, 276.93588)
+scale = Vector2(0.36617267, 0.36617267)
+texture = ExtResource("53_tqmt3")
+
+[node name="Modelo12" parent="Barbas/AnaoMasculino" index="11"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.61633, 291.00247)
+scale = Vector2(0.38668814, 0.38668814)
+texture = ExtResource("54_2dsgi")
+
+[node name="Modelo13" parent="Barbas/AnaoMasculino" index="12"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(957.212, 284.20444)
+scale = Vector2(0.374621, 0.374621)
+texture = ExtResource("55_gx8d0")
+
+[node name="Modelo14" parent="Barbas/AnaoMasculino" index="13"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(957.4399, 286.5843)
+scale = Vector2(0.37413052, 0.37413052)
+texture = ExtResource("56_t3t8y")
+
+[node name="Modelo15" parent="Barbas/AnaoMasculino" index="14"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(957.4399, 278.80872)
+scale = Vector2(0.40893334, 0.40893334)
+texture = ExtResource("57_gvx4e")
+
+[node name="Modelo16" parent="Barbas/AnaoMasculino" index="15"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.8443, 271.72638)
+scale = Vector2(0.3482696, 0.34826964)
+texture = ExtResource("58_8vb1b")
+
+[node name="Modelo17" parent="Barbas/AnaoMasculino" index="16"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.3002, 275.0957)
+scale = Vector2(0.3731201, 0.37312013)
+texture = ExtResource("59_swwk1")
+
+[node name="Modelo18" parent="Barbas/AnaoMasculino" index="17"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.3002, 281.636)
+scale = Vector2(0.3529018, 0.35290182)
+texture = ExtResource("60_p4rqu")
+
+[node name="Modelo19" parent="Barbas/AnaoMasculino" index="18"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(970.3742, 255.1643)
+scale = Vector2(0.28945076, 0.2894508)
+texture = ExtResource("61_r8ndn")
+
+[node name="Modelo20" parent="Barbas/AnaoMasculino" index="19"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.3002, 278.03168)
+scale = Vector2(0.34277064, 0.34277064)
+texture = ExtResource("62_3d7ef")
+
+[node name="HumanoFeminino" parent="Barbas" index="4"]
+visible = false
+
+[node name="Modelo1" parent="Barbas/HumanoFeminino" index="0"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.1605, 211.67966)
+scale = Vector2(0.30326384, 0.30326384)
+texture = ExtResource("43_lvvmc")
+
+[node name="Modelo2" parent="Barbas/HumanoFeminino" index="1"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.8623, 215.30325)
+scale = Vector2(0.34056368, 0.34056368)
+texture = ExtResource("44_0uk7r")
+
+[node name="Modelo3" parent="Barbas/HumanoFeminino" index="2"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.1605, 212.67276)
+scale = Vector2(0.33325696, 0.33325696)
+texture = ExtResource("45_3ud5b")
+
+[node name="Modelo4" parent="Barbas/HumanoFeminino" index="3"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(948.9801, 215.63422)
+scale = Vector2(0.34658724, 0.34658724)
+texture = ExtResource("46_2lrl5")
+
+[node name="Modelo5" parent="Barbas/HumanoFeminino" index="4"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.1605, 218.43127)
+scale = Vector2(0.3192251, 0.3192251)
+texture = ExtResource("47_e4cav")
+
+[node name="Modelo6" parent="Barbas/HumanoFeminino" index="5"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.77454, 217.64336)
+scale = Vector2(0.36275578, 0.36275578)
+texture = ExtResource("48_lt853")
+
+[node name="Modelo7" parent="Barbas/HumanoFeminino" index="6"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.77454, 217.61769)
+scale = Vector2(0.35345435, 0.35345435)
+texture = ExtResource("49_i23y8")
+
+[node name="Modelo8" parent="Barbas/HumanoFeminino" index="7"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.1605, 212.56187)
+scale = Vector2(0.3675925, 0.3675925)
+texture = ExtResource("50_2tgyg")
+
+[node name="Modelo9" parent="Barbas/HumanoFeminino" index="8"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.77454, 216.4401)
+scale = Vector2(0.3424775, 0.3424775)
+texture = ExtResource("51_utany")
+
+[node name="Modelo10" parent="Barbas/HumanoFeminino" index="9"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.77454, 216.8237)
+scale = Vector2(0.33621266, 0.3362127)
+texture = ExtResource("52_5m1po")
+
+[node name="Modelo11" parent="Barbas/HumanoFeminino" index="10"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(948.3184, 224.6353)
+scale = Vector2(0.3100178, 0.3100178)
+texture = ExtResource("53_tqmt3")
+
+[node name="Modelo12" parent="Barbas/HumanoFeminino" index="11"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.58154, 236.54471)
+scale = Vector2(0.3273871, 0.3273871)
+texture = ExtResource("54_2dsgi")
+
+[node name="Modelo13" parent="Barbas/HumanoFeminino" index="12"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.93243, 230.78918)
+scale = Vector2(0.31717053, 0.31717053)
+texture = ExtResource("55_gx8d0")
+
+[node name="Modelo14" parent="Barbas/HumanoFeminino" index="13"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(948.1254, 232.80406)
+scale = Vector2(0.31675526, 0.3167553)
+texture = ExtResource("56_t3t8y")
+
+[node name="Modelo15" parent="Barbas/HumanoFeminino" index="14"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(948.1254, 226.22095)
+scale = Vector2(0.34622085, 0.34622085)
+texture = ExtResource("57_gvx4e")
+
+[node name="Modelo16" parent="Barbas/HumanoFeminino" index="15"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.77454, 220.2247)
+scale = Vector2(0.2948603, 0.2948603)
+texture = ExtResource("58_8vb1b")
+
+[node name="Modelo17" parent="Barbas/HumanoFeminino" index="16"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.1605, 223.07733)
+scale = Vector2(0.31589982, 0.31589982)
+texture = ExtResource("59_swwk1")
+
+[node name="Modelo18" parent="Barbas/HumanoFeminino" index="17"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.1605, 228.61462)
+scale = Vector2(0.2987821, 0.2987821)
+texture = ExtResource("60_p4rqu")
+
+[node name="Modelo19" parent="Barbas/HumanoFeminino" index="18"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.13306, 206.20251)
+scale = Vector2(0.24506168, 0.24506168)
+texture = ExtResource("61_r8ndn")
+
+[node name="Modelo20" parent="Barbas/HumanoFeminino" index="19"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.1605, 225.56305)
+scale = Vector2(0.2902046, 0.2902046)
+texture = ExtResource("62_3d7ef")
+
+[node name="ElfoFeminino" parent="Barbas" index="5"]
+visible = false
+
+[node name="Modelo1" parent="Barbas/ElfoFeminino" index="0"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30225, 209.06247)
+scale = Vector2(0.31054693, 0.31054693)
+texture = ExtResource("43_lvvmc")
+
+[node name="Modelo2" parent="Barbas/ElfoFeminino" index="1"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.069, 212.7731)
+scale = Vector2(0.34874254, 0.34874257)
+texture = ExtResource("44_0uk7r")
+
+[node name="Modelo3" parent="Barbas/ElfoFeminino" index="2"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30225, 210.07944)
+scale = Vector2(0.34126037, 0.34126037)
+texture = ExtResource("45_3ud5b")
+
+[node name="Modelo4" parent="Barbas/ElfoFeminino" index="3"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(948.1655, 213.112)
+scale = Vector2(0.3549108, 0.35491076)
+texture = ExtResource("46_2lrl5")
+
+[node name="Modelo5" parent="Barbas/ElfoFeminino" index="4"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30225, 215.97623)
+scale = Vector2(0.3268915, 0.3268915)
+texture = ExtResource("47_e4cav")
+
+[node name="Modelo6" parent="Barbas/ElfoFeminino" index="5"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.90704, 215.1694)
+scale = Vector2(0.37146762, 0.37146765)
+texture = ExtResource("48_lt853")
+
+[node name="Modelo7" parent="Barbas/ElfoFeminino" index="6"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.90704, 215.14313)
+scale = Vector2(0.3619428, 0.3619428)
+texture = ExtResource("49_i23y8")
+
+[node name="Modelo8" parent="Barbas/ElfoFeminino" index="7"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30225, 209.96588)
+scale = Vector2(0.37642053, 0.37642053)
+texture = ExtResource("50_2tgyg")
+
+[node name="Modelo9" parent="Barbas/ElfoFeminino" index="8"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.90704, 213.93724)
+scale = Vector2(0.35070235, 0.35070238)
+texture = ExtResource("51_utany")
+
+[node name="Modelo10" parent="Barbas/ElfoFeminino" index="9"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.90704, 214.33008)
+scale = Vector2(0.34428707, 0.34428707)
+texture = ExtResource("52_5m1po")
+
+[node name="Modelo11" parent="Barbas/ElfoFeminino" index="10"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.488, 222.32925)
+scale = Vector2(0.3174631, 0.3174631)
+texture = ExtResource("53_tqmt3")
+
+[node name="Modelo12" parent="Barbas/ElfoFeminino" index="11"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.7094, 234.52469)
+scale = Vector2(0.33524954, 0.33524954)
+texture = ExtResource("54_2dsgi")
+
+[node name="Modelo13" parent="Barbas/ElfoFeminino" index="12"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.0927, 228.63092)
+scale = Vector2(0.32478762, 0.32478762)
+texture = ExtResource("55_gx8d0")
+
+[node name="Modelo14" parent="Barbas/ElfoFeminino" index="13"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.29034, 230.69421)
+scale = Vector2(0.32436237, 0.32436237)
+texture = ExtResource("56_t3t8y")
+
+[node name="Modelo15" parent="Barbas/ElfoFeminino" index="14"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.29034, 223.95297)
+scale = Vector2(0.3545356, 0.3545356)
+texture = ExtResource("57_gvx4e")
+
+[node name="Modelo16" parent="Barbas/ElfoFeminino" index="15"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.90704, 217.81274)
+scale = Vector2(0.3019416, 0.3019416)
+texture = ExtResource("58_8vb1b")
+
+[node name="Modelo17" parent="Barbas/ElfoFeminino" index="16"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30225, 220.73387)
+scale = Vector2(0.3234864, 0.3234864)
+texture = ExtResource("59_swwk1")
+
+[node name="Modelo18" parent="Barbas/ElfoFeminino" index="17"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30225, 226.40414)
+scale = Vector2(0.30595756, 0.3059576)
+texture = ExtResource("60_p4rqu")
+
+[node name="Modelo19" parent="Barbas/ElfoFeminino" index="18"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(954.37646, 203.45381)
+scale = Vector2(0.250947, 0.25094703)
+texture = ExtResource("61_r8ndn")
+
+[node name="Modelo20" parent="Barbas/ElfoFeminino" index="19"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30225, 223.27928)
+scale = Vector2(0.2971741, 0.2971741)
+texture = ExtResource("62_3d7ef")
+
+[node name="OrcFeminino" parent="Barbas" index="6"]
+visible = false
+
+[node name="Modelo1" parent="Barbas/OrcFeminino" index="0"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.4792, 199.44884)
+scale = Vector2(0.29876855, 0.29876858)
+texture = ExtResource("43_lvvmc")
+
+[node name="Modelo2" parent="Barbas/OrcFeminino" index="1"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(941.141, 203.01872)
+scale = Vector2(0.33551553, 0.3355155)
+texture = ExtResource("44_0uk7r")
+
+[node name="Modelo3" parent="Barbas/OrcFeminino" index="2"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.4792, 200.42722)
+scale = Vector2(0.3283171, 0.3283171)
+texture = ExtResource("45_3ud5b")
+
+[node name="Modelo4" parent="Barbas/OrcFeminino" index="3"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(940.27185, 203.34479)
+scale = Vector2(0.34144977, 0.3414498)
+texture = ExtResource("46_2lrl5")
+
+[node name="Modelo5" parent="Barbas/OrcFeminino" index="4"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.4792, 206.10037)
+scale = Vector2(0.3144932, 0.3144932)
+texture = ExtResource("47_e4cav")
+
+[node name="Modelo6" parent="Barbas/OrcFeminino" index="5"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.09894, 205.32414)
+scale = Vector2(0.3573787, 0.35737866)
+texture = ExtResource("48_lt853")
+
+[node name="Modelo7" parent="Barbas/OrcFeminino" index="6"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.09894, 205.29886)
+scale = Vector2(0.34821513, 0.34821513)
+texture = ExtResource("49_i23y8")
+
+[node name="Modelo8" parent="Barbas/OrcFeminino" index="7"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.4792, 200.318)
+scale = Vector2(0.3621437, 0.3621437)
+texture = ExtResource("50_2tgyg")
+
+[node name="Modelo9" parent="Barbas/OrcFeminino" index="8"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.09894, 204.13872)
+scale = Vector2(0.337401, 0.337401)
+texture = ExtResource("51_utany")
+
+[node name="Modelo10" parent="Barbas/OrcFeminino" index="9"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.09894, 204.51663)
+scale = Vector2(0.33122903, 0.33122903)
+texture = ExtResource("52_5m1po")
+
+[node name="Modelo11" parent="Barbas/OrcFeminino" index="10"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(939.61993, 212.21243)
+scale = Vector2(0.30542243, 0.30542243)
+texture = ExtResource("53_tqmt3")
+
+[node name="Modelo12" parent="Barbas/OrcFeminino" index="11"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(937.9088, 223.94531)
+scale = Vector2(0.32253423, 0.32253426)
+texture = ExtResource("54_2dsgi")
+
+[node name="Modelo13" parent="Barbas/OrcFeminino" index="12"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(939.2397, 218.2751)
+scale = Vector2(0.31246915, 0.31246915)
+texture = ExtResource("55_gx8d0")
+
+[node name="Modelo14" parent="Barbas/OrcFeminino" index="13"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(939.4299, 220.26012)
+scale = Vector2(0.31206003, 0.31206003)
+texture = ExtResource("56_t3t8y")
+
+[node name="Modelo15" parent="Barbas/OrcFeminino" index="14"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(939.4299, 213.77457)
+scale = Vector2(0.34108886, 0.34108883)
+texture = ExtResource("57_gvx4e")
+
+[node name="Modelo16" parent="Barbas/OrcFeminino" index="15"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.09894, 207.86722)
+scale = Vector2(0.2904896, 0.2904896)
+texture = ExtResource("58_8vb1b")
+
+[node name="Modelo17" parent="Barbas/OrcFeminino" index="16"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.4792, 210.67755)
+scale = Vector2(0.31121725, 0.31121725)
+texture = ExtResource("59_swwk1")
+
+[node name="Modelo18" parent="Barbas/OrcFeminino" index="17"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.4792, 216.13278)
+scale = Vector2(0.29435325, 0.29435328)
+texture = ExtResource("60_p4rqu")
+
+[node name="Modelo19" parent="Barbas/OrcFeminino" index="18"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.98083, 194.05289)
+scale = Vector2(0.24142915, 0.24142915)
+texture = ExtResource("61_r8ndn")
+
+[node name="Modelo20" parent="Barbas/OrcFeminino" index="19"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.4792, 213.12643)
+scale = Vector2(0.28590292, 0.28590295)
+texture = ExtResource("62_3d7ef")
+
+[node name="AnaoFeminino" parent="Barbas" index="7"]
+visible = false
+
+[node name="Modelo1" parent="Barbas/AnaoFeminino" index="0"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.2161, 251.29953)
+scale = Vector2(0.3084571, 0.3084571)
+texture = ExtResource("43_lvvmc")
+
+[node name="Modelo2" parent="Barbas/AnaoFeminino" index="1"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(965.9642, 254.98518)
+scale = Vector2(0.3463957, 0.3463957)
+texture = ExtResource("44_0uk7r")
+
+[node name="Modelo3" parent="Barbas/AnaoFeminino" index="2"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.2161, 252.30965)
+scale = Vector2(0.33896387, 0.33896384)
+texture = ExtResource("45_3ud5b")
+
+[node name="Modelo4" parent="Barbas/AnaoFeminino" index="3"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(965.06683, 255.32181)
+scale = Vector2(0.3525224, 0.3525224)
+texture = ExtResource("46_2lrl5")
+
+[node name="Modelo5" parent="Barbas/AnaoFeminino" index="4"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.2161, 258.16675)
+scale = Vector2(0.32469168, 0.32469168)
+texture = ExtResource("47_e4cav")
+
+[node name="Modelo6" parent="Barbas/AnaoFeminino" index="5"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.82355, 257.36536)
+scale = Vector2(0.36896783, 0.36896783)
+texture = ExtResource("48_lt853")
+
+[node name="Modelo7" parent="Barbas/AnaoFeminino" index="6"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.82355, 257.33923)
+scale = Vector2(0.3595071, 0.3595071)
+texture = ExtResource("49_i23y8")
+
+[node name="Modelo8" parent="Barbas/AnaoFeminino" index="7"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.2161, 252.19687)
+scale = Vector2(0.3738874, 0.37388742)
+texture = ExtResource("50_2tgyg")
+
+[node name="Modelo9" parent="Barbas/AnaoFeminino" index="8"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.82355, 256.14148)
+scale = Vector2(0.3483423, 0.34834233)
+texture = ExtResource("51_utany")
+
+[node name="Modelo10" parent="Barbas/AnaoFeminino" index="9"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.82355, 256.53168)
+scale = Vector2(0.34197018, 0.3419702)
+texture = ExtResource("52_5m1po")
+
+[node name="Modelo11" parent="Barbas/AnaoFeminino" index="10"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(964.39386, 264.47705)
+scale = Vector2(0.31532675, 0.31532672)
+texture = ExtResource("53_tqmt3")
+
+[node name="Modelo12" parent="Barbas/AnaoFeminino" index="11"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.62726, 276.5904)
+scale = Vector2(0.33299345, 0.33299345)
+texture = ExtResource("54_2dsgi")
+
+[node name="Modelo13" parent="Barbas/AnaoFeminino" index="12"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(964.0013, 270.7363)
+scale = Vector2(0.32260197, 0.32260194)
+texture = ExtResource("55_gx8d0")
+
+[node name="Modelo14" parent="Barbas/AnaoFeminino" index="13"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(964.1976, 272.78568)
+scale = Vector2(0.32217956, 0.32217956)
+texture = ExtResource("56_t3t8y")
+
+[node name="Modelo15" parent="Barbas/AnaoFeminino" index="14"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(964.1976, 266.08984)
+scale = Vector2(0.35214975, 0.35214978)
+texture = ExtResource("57_gvx4e")
+
+[node name="Modelo16" parent="Barbas/AnaoFeminino" index="15"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.82355, 259.9909)
+scale = Vector2(0.29990968, 0.29990968)
+texture = ExtResource("58_8vb1b")
+
+[node name="Modelo17" parent="Barbas/AnaoFeminino" index="16"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.2161, 262.8924)
+scale = Vector2(0.32130948, 0.3213095)
+texture = ExtResource("59_swwk1")
+
+[node name="Modelo18" parent="Barbas/AnaoFeminino" index="17"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.2161, 268.5245)
+scale = Vector2(0.30389863, 0.30389863)
+texture = ExtResource("60_p4rqu")
+
+[node name="Modelo19" parent="Barbas/AnaoFeminino" index="18"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(968.46484, 245.7286)
+scale = Vector2(0.24925826, 0.24925826)
+texture = ExtResource("61_r8ndn")
+
+[node name="Modelo20" parent="Barbas/AnaoFeminino" index="19"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.2161, 265.42065)
+scale = Vector2(0.29517427, 0.2951743)
+texture = ExtResource("62_3d7ef")
+
+[editable path="Barbas"]

@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/game/ui/items/armor_portraits/classes-atirador-mago.png" id="1_cp2ys"]
+
+[resource]
+atlas = ExtResource("1_cp2ys")
+region = Rect2(819, 215, 182, 180)
+filter_clip = true

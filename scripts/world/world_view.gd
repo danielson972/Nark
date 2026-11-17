@@ -112,7 +112,7 @@ func _attach_hero_camera() -> void:
 	if camera == null:
 		camera = Camera2D.new()
 		camera.name = "Camera2D"
-		camera.zoom = Vector2(0.65, 0.65)
+		camera.zoom = Vector2(1, 1)
 		camera.position_smoothing_enabled = true
 		camera.position_smoothing_speed = 6.0
 		hero.add_child(camera)

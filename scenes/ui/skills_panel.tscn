@@ -1,0 +1,3404 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/skills_panel.gd" id="1_tweku"]
+[ext_resource type="FontFile" path="res://assets/fonts/Cinzel-SemiBold.ttf" id="2_m0kcv"]
+[ext_resource type="Script" path="res://scripts/ui/skill_icon.gd" id="3_4jfhm"]
+[ext_resource type="Texture2D" path="res://assets/game/ui/skills/skills_atlas.png" id="4_mrwy5"]
+[ext_resource type="Script" path="res://scripts/ui/skill_hover.gd" id="5_6iay2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufoje"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.0627451, 0.07450981, 0.05882353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.60784316, 0.5137255, 0.32941177, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5euc"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.2, 0.14117648, 0.08627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7254902, 0.5411765, 0.27058825, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpngg"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.38431373, 0.2627451, 0.10980392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evkxe"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.3137255, 0.22352941, 0.105882354, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6cw6"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ytui"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ms0yf"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.2, 0.14117648, 0.08627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7254902, 0.5411765, 0.27058825, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wf606"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.38431373, 0.2627451, 0.10980392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibf0q"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.3137255, 0.22352941, 0.105882354, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvac0"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emw1i"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qojw3"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.2, 0.14117648, 0.08627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7254902, 0.5411765, 0.27058825, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5w38p"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.38431373, 0.2627451, 0.10980392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6be7a"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.3137255, 0.22352941, 0.105882354, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puyl6"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rby56"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsxpm"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6o2n"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fehrw"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3335"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yyts"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34ea3"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(2, 388, 189, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5rbh"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbxt6"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3uos3"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30agp"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyju2"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4ux6"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(195, 388, 190, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ai8jt"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dkib"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0g0f1"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twthy"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0miay"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5rpw"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(389, 388, 189, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ga1wg"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jxme"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cce8g"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u82w"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8ilh"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iqqg"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(582, 388, 190, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxjig"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4whvr"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npxw6"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tcvm"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56ywv"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t634"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(776, 388, 189, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fturv"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xg7v7"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acif8"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lly4"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7ct2"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkxyx"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(969, 388, 190, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w53o7"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2fxs"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mpsc"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxlnc"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ab4n0"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8t0x"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(2, 388, 189, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67wh1"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnaij"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3hub"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gsm6"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1hwo"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0v35"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(195, 388, 190, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxqhi"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1d4pu"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lha6y"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4c5n"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c18fs"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4pmf"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(389, 388, 189, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yfsru"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bx227"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivqtm"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0we77"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3h15"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4lnn"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(582, 388, 190, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obj6t"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukk5g"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8oev"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvutf"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5x6g"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eawr"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(776, 388, 189, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo8kn"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f30n3"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ia8we"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmw7s"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6gno"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hosbt"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(969, 388, 190, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2vsl"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsut1"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbhde"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3ik4"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2whxj"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg6k8"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(2, 388, 189, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktq1o"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j08mm"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rtuc"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07dak"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ghgx"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77tdo"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(195, 388, 190, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prs1c"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm8qv"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i86kc"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atakr"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hxdm"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftbt8"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(389, 388, 189, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmqek"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.10980392, 0.1254902, 0.09411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42745098, 0.39607844, 0.27450982, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsvkl"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.20784314, 0.20392157, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0g1pu"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1764706, 0.1882353, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57tmk"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwuvg"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1qb3"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(582, 388, 190, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n00s"]
+atlas = ExtResource("4_mrwy5")
+region = Rect2(2, 388, 189, 190)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqq0x"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.2, 0.14117648, 0.08627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7254902, 0.5411765, 0.27058825, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jr42c"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.38431373, 0.2627451, 0.10980392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f66hv"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.3137255, 0.22352941, 0.105882354, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhddx"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sq7d"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hopca"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.2, 0.14117648, 0.08627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7254902, 0.5411765, 0.27058825, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1opj"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.38431373, 0.2627451, 0.10980392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ed6gw"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.3137255, 0.22352941, 0.105882354, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rj0i"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12941177, 0.105882354, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33333334, 0.2627451, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6ias"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[node name="SkillsPanel" type="PanelContainer" unique_id=2573241]
+texture_filter = 1
+custom_minimum_size = Vector2(560, 620)
+offset_right = 560.0
+offset_bottom = 620.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ufoje")
+script = ExtResource("1_tweku")
+
+[node name="Ornaments" type="Control" parent="." unique_id=931336889]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Corner0" type="Control" parent="Ornaments" unique_id=1726058691]
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+mouse_filter = 2
+metadata/_edit_layout_mode = 0
+
+[node name="OuterGold" type="Line2D" parent="Ornaments/Corner0" unique_id=883655031]
+points = PackedVector2Array(26, 7, 7, 7, 7, 26)
+width = 2.0
+default_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+
+[node name="InnerGold" type="Line2D" parent="Ornaments/Corner0" unique_id=916908762]
+points = PackedVector2Array(12, 22, 12, 12, 22, 12, 22, 17, 17, 17)
+width = 2.0
+default_color = Color(0.7254902, 0.5411765, 0.27058825, 1)
+
+[node name="Corner1" type="Control" parent="Ornaments" unique_id=19679953]
+anchors_preset = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = -16.0
+mouse_filter = 2
+metadata/_edit_layout_mode = 0
+
+[node name="OuterGold" type="Line2D" parent="Ornaments/Corner1" unique_id=175861700]
+points = PackedVector2Array(-26, 7, -7, 7, -7, 26)
+width = 2.0
+default_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+
+[node name="InnerGold" type="Line2D" parent="Ornaments/Corner1" unique_id=49955777]
+points = PackedVector2Array(-12, 22, -12, 12, -22, 12, -22, 17, -17, 17)
+width = 2.0
+default_color = Color(0.7254902, 0.5411765, 0.27058825, 1)
+
+[node name="Corner2" type="Control" parent="Ornaments" unique_id=1203584275]
+anchors_preset = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 16.0
+mouse_filter = 2
+metadata/_edit_layout_mode = 0
+
+[node name="OuterGold" type="Line2D" parent="Ornaments/Corner2" unique_id=1227219533]
+points = PackedVector2Array(26, -7, 7, -7, 7, -26)
+width = 2.0
+default_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+
+[node name="InnerGold" type="Line2D" parent="Ornaments/Corner2" unique_id=282183206]
+points = PackedVector2Array(12, -22, 12, -12, 22, -12, 22, -17, 17, -17)
+width = 2.0
+default_color = Color(0.7254902, 0.5411765, 0.27058825, 1)
+
+[node name="Corner3" type="Control" parent="Ornaments" unique_id=1929520253]
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+metadata/_edit_layout_mode = 0
+
+[node name="OuterGold" type="Line2D" parent="Ornaments/Corner3" unique_id=780856415]
+points = PackedVector2Array(-26, -7, -7, -7, -7, -26)
+width = 2.0
+default_color = Color(0.9490196, 0.78039217, 0.40784314, 1)
+
+[node name="InnerGold" type="Line2D" parent="Ornaments/Corner3" unique_id=303551876]
+points = PackedVector2Array(-12, -22, -12, -12, -22, -12, -22, -17, -17, -17)
+width = 2.0
+default_color = Color(0.7254902, 0.5411765, 0.27058825, 1)
+
+[node name="Layout" type="VBoxContainer" parent="." unique_id=1811276393]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="Layout" unique_id=1872263075]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/Header" unique_id=395681086]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 23
+text = "HABILIDADES"
+horizontal_alignment = 1
+
+[node name="CloseSkills" type="Button" parent="Layout/Header" unique_id=1744498191]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+tooltip_text = "Fechar habilidades"
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_n5euc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dpngg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_evkxe")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_q6cw6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ytui")
+text = "×"
+
+[node name="HeaderDivider" type="ColorRect" parent="Layout" unique_id=712433324]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.5658823, 0.42211765, 0.21105883, 1)
+
+[node name="ClassIdentity" type="Label" parent="Layout" unique_id=39752134]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 12
+text = "Guerreiro · Nível 1"
+horizontal_alignment = 1
+
+[node name="Tabs" type="HBoxContainer" parent="Layout" unique_id=1129774358]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Tab_ativas" type="Button" parent="Layout/Tabs" unique_id=1071460231]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_ms0yf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wf606")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ibf0q")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_cvac0")
+theme_override_styles/focus = SubResource("StyleBoxFlat_emw1i")
+toggle_mode = true
+text = "ATIVAS"
+
+[node name="Tab_passivas" type="Button" parent="Layout/Tabs" unique_id=1341960689]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_qojw3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5w38p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6be7a")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_puyl6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rby56")
+toggle_mode = true
+text = "PASSIVAS"
+
+[node name="SkillsScroll" type="ScrollContainer" parent="Layout" unique_id=135897687]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="SkillsGrid" type="GridContainer" parent="Layout/SkillsScroll" unique_id=1948013219]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="SkillCard01" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=1971841209]
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_qsxpm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s6o2n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fehrw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_f3335")
+theme_override_styles/focus = SubResource("StyleBoxFlat_5yyts")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard01" unique_id=1630654290]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard01/Content" unique_id=685241083]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard01/Content/Icon" unique_id=707893378]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_34ea3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard01/Content" unique_id=1581146854]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard01/Content/Text" unique_id=2007595240]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Talho Circular"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard01/Content/Text" unique_id=1409282835]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard01/Content/Text" unique_id=1995242216]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard01" unique_id=122800222]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard02" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=1102556041]
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_q5rbh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xbxt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3uos3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_30agp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jyju2")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard02" unique_id=128306853]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard02/Content" unique_id=1339607825]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard02/Content/Icon" unique_id=1510677747]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_r4ux6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard02/Content" unique_id=1520972705]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard02/Content/Text" unique_id=76237827]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Quebra-Guarda"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard02/Content/Text" unique_id=1597736370]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard02/Content/Text" unique_id=1950129085]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard02" unique_id=1462710175]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard03" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=1583950127]
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_ai8jt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8dkib")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0g0f1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_twthy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0miay")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard03" unique_id=2128437995]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard03/Content" unique_id=570249489]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard03/Content/Icon" unique_id=543737143]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_m5rpw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard03/Content" unique_id=655774062]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard03/Content/Text" unique_id=484364146]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Ímpeto"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard03/Content/Text" unique_id=1615512076]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard03/Content/Text" unique_id=2026176200]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard03" unique_id=595754384]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard04" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=2035337284]
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_ga1wg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0jxme")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cce8g")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8u82w")
+theme_override_styles/focus = SubResource("StyleBoxFlat_m8ilh")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard04" unique_id=1266231753]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard04/Content" unique_id=367230257]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard04/Content/Icon" unique_id=469968900]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_7iqqg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard04/Content" unique_id=472063481]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard04/Content/Text" unique_id=1142348134]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Investida"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard04/Content/Text" unique_id=1952747322]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard04/Content/Text" unique_id=2146757833]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard04" unique_id=667328514]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard05" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=1930889705]
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_yxjig")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4whvr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_npxw6")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4tcvm")
+theme_override_styles/focus = SubResource("StyleBoxFlat_56ywv")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard05" unique_id=171762944]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard05/Content" unique_id=1694325285]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard05/Content/Icon" unique_id=1302840929]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_4t634")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard05/Content" unique_id=2009312070]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard05/Content/Text" unique_id=416992095]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Brecha Tática"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard05/Content/Text" unique_id=640775290]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard05/Content/Text" unique_id=1510518880]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard05" unique_id=1218784502]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard06" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=679499153]
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_fturv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xg7v7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_acif8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5lly4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_t7ct2")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard06" unique_id=1072259601]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard06/Content" unique_id=1932650112]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard06/Content/Icon" unique_id=767531376]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_mkxyx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard06/Content" unique_id=318423021]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard06/Content/Text" unique_id=1323699190]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Golpe de Ruptura"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard06/Content/Text" unique_id=287852058]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard06/Content/Text" unique_id=1154019624]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard06" unique_id=1235785644]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard07" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=1981482345]
+visible = false
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_w53o7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e2fxs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5mpsc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pxlnc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ab4n0")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard07" unique_id=451070912]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard07/Content" unique_id=946747871]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard07/Content/Icon" unique_id=1385982523]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_q8t0x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard07/Content" unique_id=2143820967]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard07/Content/Text" unique_id=1151461244]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Talho Circular"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard07/Content/Text" unique_id=1893880567]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard07/Content/Text" unique_id=1237479126]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard07" unique_id=1274029240]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard08" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=1484357781]
+visible = false
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_67wh1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hnaij")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w3hub")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2gsm6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_c1hwo")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard08" unique_id=2129794556]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard08/Content" unique_id=1695218635]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard08/Content/Icon" unique_id=483335479]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_b0v35")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard08/Content" unique_id=1091676046]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard08/Content/Text" unique_id=373412885]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Quebra-Guarda"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard08/Content/Text" unique_id=516182350]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard08/Content/Text" unique_id=68512248]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard08" unique_id=352629170]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard09" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=1755709655]
+visible = false
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_rxqhi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1d4pu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lha6y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_x4c5n")
+theme_override_styles/focus = SubResource("StyleBoxFlat_c18fs")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard09" unique_id=507792070]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard09/Content" unique_id=1707004458]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard09/Content/Icon" unique_id=1684084186]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_y4pmf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard09/Content" unique_id=1793093557]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard09/Content/Text" unique_id=797711689]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Ímpeto"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard09/Content/Text" unique_id=949013504]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard09/Content/Text" unique_id=2133341927]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard09" unique_id=2040964880]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard10" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=319071312]
+visible = false
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_yfsru")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bx227")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ivqtm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0we77")
+theme_override_styles/focus = SubResource("StyleBoxFlat_f3h15")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard10" unique_id=137205222]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard10/Content" unique_id=1803209226]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard10/Content/Icon" unique_id=714041122]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_s4lnn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard10/Content" unique_id=72897860]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard10/Content/Text" unique_id=1697589052]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Investida"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard10/Content/Text" unique_id=1300436565]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard10/Content/Text" unique_id=496098910]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard10" unique_id=2094432817]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard11" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=746129226]
+visible = false
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_obj6t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ukk5g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8oev")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wvutf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_w5x6g")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard11" unique_id=874674658]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard11/Content" unique_id=1867449791]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard11/Content/Icon" unique_id=965893791]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_4eawr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard11/Content" unique_id=2063482898]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard11/Content/Text" unique_id=746026586]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Brecha Tática"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard11/Content/Text" unique_id=288399014]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard11/Content/Text" unique_id=363986448]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard11" unique_id=351542029]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard12" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=794178009]
+visible = false
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_oo8kn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f30n3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ia8we")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lmw7s")
+theme_override_styles/focus = SubResource("StyleBoxFlat_r6gno")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard12" unique_id=1674959762]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard12/Content" unique_id=226527634]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard12/Content/Icon" unique_id=2022217814]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_hosbt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard12/Content" unique_id=743509792]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard12/Content/Text" unique_id=1992492636]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Golpe de Ruptura"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard12/Content/Text" unique_id=1528676259]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard12/Content/Text" unique_id=159956841]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard12" unique_id=1532384617]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard13" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=1811466632]
+visible = false
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_e2vsl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fsut1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cbhde")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_q3ik4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2whxj")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard13" unique_id=311288697]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard13/Content" unique_id=2018756922]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard13/Content/Icon" unique_id=1763176709]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_qg6k8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard13/Content" unique_id=1185302391]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard13/Content/Text" unique_id=1774684708]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Talho Circular"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard13/Content/Text" unique_id=1171725724]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard13/Content/Text" unique_id=1090389589]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard13" unique_id=1973621046]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard14" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=964251082]
+visible = false
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_ktq1o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j08mm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8rtuc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_07dak")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ghgx")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard14" unique_id=1406140984]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard14/Content" unique_id=1861091719]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard14/Content/Icon" unique_id=438482703]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_77tdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard14/Content" unique_id=294247060]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard14/Content/Text" unique_id=1512383879]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Quebra-Guarda"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard14/Content/Text" unique_id=1477897953]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard14/Content/Text" unique_id=2128321819]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard14" unique_id=768314113]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard15" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=2079377625]
+visible = false
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_prs1c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gm8qv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i86kc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_atakr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2hxdm")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard15" unique_id=448834698]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard15/Content" unique_id=1398052448]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard15/Content/Icon" unique_id=2099827321]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ftbt8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard15/Content" unique_id=64379655]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard15/Content/Text" unique_id=1416793457]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Ímpeto"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard15/Content/Text" unique_id=1423819977]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard15/Content/Text" unique_id=1556616719]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard15" unique_id=1846492392]
+script = ExtResource("5_6iay2")
+
+[node name="SkillCard16" type="Button" parent="Layout/SkillsScroll/SkillsGrid" unique_id=628906552]
+visible = false
+custom_minimum_size = Vector2(246, 82)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_vmqek")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wsvkl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0g1pu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_57tmk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_iwuvg")
+toggle_mode = true
+
+[node name="Content" type="HBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard16" unique_id=1825565927]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Icon" type="Control" parent="Layout/SkillsScroll/SkillsGrid/SkillCard16/Content" unique_id=1373404835]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SkillsScroll/SkillsGrid/SkillCard16/Content/Icon" unique_id=1538979618]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_a1qb3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Layout/SkillsScroll/SkillsGrid/SkillCard16/Content" unique_id=1982943539]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Name" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard16/Content/Text" unique_id=563089889]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Investida"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="Level" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard16/Content/Text" unique_id=1348772866]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 11
+text = "Nv. 1"
+
+[node name="Cost" type="Label" parent="Layout/SkillsScroll/SkillsGrid/SkillCard16/Content/Text" unique_id=1645663245]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 10
+text = "Energia: 12 · Recarga: 6 s"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="SkillHover" type="Node" parent="Layout/SkillsScroll/SkillsGrid/SkillCard16" unique_id=981355453]
+script = ExtResource("5_6iay2")
+
+[node name="DetailsDivider" type="ColorRect" parent="Layout" unique_id=995351624]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.5658823, 0.42211765, 0.21105883, 1)
+
+[node name="SelectedAbility" type="HBoxContainer" parent="Layout" unique_id=68557994]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SelectedIcon" type="Control" parent="Layout/SelectedAbility" unique_id=1270910955]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_vertical = 0
+script = ExtResource("3_4jfhm")
+
+[node name="EditorArt" type="TextureRect" parent="Layout/SelectedAbility/SelectedIcon" unique_id=827299773]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_4n00s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Summary" type="VBoxContainer" parent="Layout/SelectedAbility" unique_id=161148742]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SelectedName" type="Label" parent="Layout/SelectedAbility/Summary" unique_id=2102548150]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 17
+text = "Talho Circular"
+autowrap_mode = 3
+
+[node name="SelectedStatus" type="Label" parent="Layout/SelectedAbility/Summary" unique_id=539475152]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 12
+text = "Nível 1 / 5 · Ativa"
+
+[node name="SelectedDescription" type="Label" parent="Layout" unique_id=215254247]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Selecione uma habilidade para consultar seus efeitos."
+autowrap_mode = 3
+max_lines_visible = 3
+
+[node name="SelectedCost" type="Label" parent="Layout" unique_id=678399336]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63529414, 0.5529412, 0.4392157, 1)
+theme_override_font_sizes/font_size = 12
+text = "Energia: 12 · 6 s de recarga"
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="Actions" type="HBoxContainer" parent="Layout" unique_id=363435590]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AssignHotbar" type="Button" parent="Layout/Actions" unique_id=1696558766]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqq0x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jr42c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_f66hv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qhddx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7sq7d")
+text = "Para a hotbar"
+
+[node name="UpgradeSkill" type="Button" parent="Layout/Actions" unique_id=458284103]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95686275, 0.8901961, 0.7294118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45882353, 0.3882353, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("2_m0kcv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_hopca")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h1opj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ed6gw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5rj0i")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u6ias")
+text = "Usar livro (0)"

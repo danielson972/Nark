@@ -7,6 +7,7 @@ var state: PlayerState
 @export var show_hair: bool = true
 @export var draw_character: bool = true
 var held_weapon: Sprite2D
+var held_shield: Sprite2D
 var held_hand: Sprite2D
 var character_parts: Node2D
 
@@ -15,8 +16,12 @@ func _ready() -> void:
 	if editor_base != null:
 		editor_base.hide()
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	material = Appearance.cutout_material()
+	held_shield = Sprite2D.new()
+	held_shield.visible = false
+	held_shield.z_index = 2
+	add_child(held_shield)
 	held_weapon = Sprite2D.new()
 	held_weapon.centered = false
 	held_weapon.z_index = 1
@@ -34,6 +39,7 @@ func _ready() -> void:
 func _draw() -> void:
 	if not draw_character:
 		if is_instance_valid(character_parts): character_parts.hide()
+		if is_instance_valid(held_shield): held_shield.hide()
 		if is_instance_valid(held_weapon): held_weapon.hide()
 		if is_instance_valid(held_hand): held_hand.hide()
 		return
@@ -57,6 +63,13 @@ func _draw() -> void:
 	draw_texture_rect(body, Rect2(origin, destination_size), false)
 	character_parts.hair_enabled = show_hair
 	character_parts.configure(state, origin, Vector2.ONE * factor)
+	var shield_id: String = str(state.equipment.get("escudo", {}).get("id", ""))
+	held_shield.visible = not shield_id.is_empty()
+	if held_shield.visible:
+		held_shield.texture = ItemArt.texture_for(shield_id, state.class_id)
+		held_shield.material = Appearance.shield_material(shield_id, held_shield.texture)
+		held_shield.position = origin + destination_size * Appearance.shield_anchor(state)
+		held_shield.scale = Vector2.ONE * destination_size.y * 0.28 / held_shield.texture.get_height()
 	var weapon_id: String = str(state.equipment.get("arma", {}).get("id", ""))
 	held_weapon.visible = not weapon_id.is_empty()
 	held_hand.visible = not weapon_id.is_empty()

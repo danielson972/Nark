@@ -2,7 +2,23 @@
 
 Cena independente: `scenes/character_creation.tscn`. Também é aberta por **Iniciar** no menu principal.
 
-Inclui Humano, Elfo, Orc e Anão, em modelos masculino e feminino, seis classes, nome, opção Careca, 16 cabelos e sete cores. Todo personagem novo começa com a opção Careca selecionada. Trocar raça, modelo ou classe preserva o nome e as escolhas de cabelo. O cabelo é cosmético e não altera atributos. O anão masculino conserva a barba da referência; careca descreve o couro cabeludo.
+No mapa, os materiais do herói usam amostragem de área para reduzir os sprites sem perder tantos detalhes e sem bordas irregulares. A criação e o inventário mantêm os materiais anteriores e todos os encaixes editados. O tamanho do herói e o zoom continuam os mesmos. Detalhes e validações em `relatorios/qualidade-personagem-mundo.md`.
+
+A seleção agora usa o pátio de ruínas com painéis laterais, conforme a referência enviada. Os controles de identidade ficam à esquerda; cabelo, barba e cores ficam à direita. Os personagens aparecem no pedestal central com os mesmos tamanhos configurados nos Sprite2D. Detalhes da tela e do fundo em `assets/game/ui/creation/README.md`; verificação dos 295 ajustes preservados em `relatorios/verify_selection_screen.gd`.
+
+## Anão e barbas selecionáveis
+
+A base masculina do anão agora usa a referência sem barba enviada pelo usuário. A área visível continua exatamente em `(12,77,232,425)` na textura de 256×512; posição, escala e rotação do Sprite2D da montagem foram preservadas. A nova base está em `assets/game/sprites/herois/bases/anao_masculino_sem_barba.png`; o atlas usado no jogo é `bald_races_beards.png`. As demais bases foram mantidas.
+
+Há 20 barbas, opção **Sem barba**, cores independentes e opção **Original**, que conserva os tons da folha enviada. Cada peça é um Sprite2D em `scenes/character_beards.tscn`, instanciada com filhos editáveis na criação. Os grupos por raça/modelo têm `Modelo1` a `Modelo20`; escolha e cor apenas alteram visibilidade/material, preservando os encaixes editados. No mundo e inventário, o componente `character_parts.gd` usa um Sprite2D `Barba` com o mesmo encaixe. Os campos `beard_style` e `beard_color` são gravados no save; arquivos antigos assumem Sem barba. Nada muda nos atributos.
+
+Fontes preservadas: `beards_reference.png` e `dwarf_shaved_reference.png`. `scripts/tools/prepare_beards_and_dwarf.gd` recorta as peças sem as legendas, mantém os dois lados das costeletas e prepara a base no tamanho anterior. `scripts/tools/prepare_beard_scene.gd` cria os nós iniciais das barbas a partir das transformações das bases. Não é necessário regenerar a cena para editar os Sprite2D no Godot.
+
+Os 100 ícones de armadura usam recortes pelo contorno opaco, registrados em `assets/game/ui/items/armor_icon_layout.gd`. Eles excluem legendas e margens das pranchas, incluem capacete e botas completos e são desenhados no centro do slot com proporção preservada. As artes vestidas e os recortes de armas continuam independentes.
+
+Validações desta revisão: `relatorios/verify_beards_and_dwarf.gd`, `verify_creation_editor_match.gd`, `verify_all_catalog_armor.gd` e `verify_inventory_reference.gd`.
+
+Inclui Humano, Elfo, Orc e Anão, em modelos masculino e feminino, seis classes, nome, opção Careca, 16 cabelos e sete cores. Trocar raça, modelo ou classe preserva o nome e as escolhas de cabelo. O cabelo é cosmético e não altera atributos. A barba do anão é agora uma peça selecionável, separada da base.
 
 As bases `bald_races_source.png` e `bald_races_female_source.png` foram produzidas com a ferramenta integrada ImageGen a partir das referências enviadas. `hair_clean_source.png` adapta os modelos fornecidos sem os números das folhas de referência. Os prompts exatos estão em `generation.json`. As referências de cabelo permanecem preservadas. As folhas mantêm alfa transparente.
 

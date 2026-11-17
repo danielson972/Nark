@@ -67,6 +67,7 @@ func _run() -> void:
 		game._on_panel_action("equip", {"id": "roupa_basica"})
 		game._on_panel_action("equip", {"id": "arma_basica"})
 		assert(hero.weapon_sprite.visible)
+		# The starter outfit is already drawn on the racial base.
 		assert(hero.sprite.texture == Appearance.Custom.bald_body("humano"))
 		await process_frame
 	# An old save with the old starter IDs retains its equipment and renders it.

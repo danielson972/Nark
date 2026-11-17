@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/game/ui/items/armor_portraits/classes-guerreiro-assassino.png" id="1_rm3gt"]
+
+[resource]
+atlas = ExtResource("1_rm3gt")
+region = Rect2(416, 218, 184, 170)
+filter_clip = true

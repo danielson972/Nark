@@ -6,7 +6,7 @@ extends RefCounted
 const ACTIONS: = [
 	"move_up", "move_down", "move_left", "move_right", 
 	"attack", "block", "dodge", "dash", "sprint", "interact", 
-	"inventory", "skill_menu", "map_region", "map_world", "pause", 
+	"inventory", "character_status", "skill_menu", "map_region", "map_world", "pause",
 	"hotbar_1", "hotbar_2", "hotbar_3", "hotbar_4", "hotbar_5", 
 	"hotbar_6", "hotbar_7", "hotbar_8", "hotbar_9", "hotbar_10", "target_lock", 
 ]
@@ -14,7 +14,7 @@ const ACTIONS: = [
 const REBINDABLE: = [
 	"move_up", "move_down", "move_left", "move_right", 
 	"attack", "block", "dodge", "dash", "sprint", "interact", 
-	"inventory", "skill_menu", "map_region", "map_world", "pause", "potion", "target_lock", 
+	"inventory", "character_status", "skill_menu", "map_region", "map_world", "pause", "potion", "target_lock",
 ]
 
 const LABELS: = {
@@ -28,7 +28,8 @@ const LABELS: = {
 	"dash": "Dash", 
 	"sprint": "Correr", 
 	"interact": "Interagir", 
-	"inventory": "Inventário", 
+	"inventory": "Inventário",
+	"character_status": "Equipamento e status",
 	"skill_menu": "Skills", 
 	"map_region": "Mapa da região", 
 	"map_world": "Mapa do reino", 
@@ -48,7 +49,8 @@ const DEFAULT_BINDINGS: = {
 	"dash": ["key:81"], 
 	"sprint": ["key:4194325"], 
 	"interact": ["key:69"], 
-	"inventory": ["key:73"], 
+	"inventory": ["key:73"],
+	"character_status": ["key:84"],
 	"skill_menu": ["key:75"], 
 	"map_region": ["key:77"], 
 	"map_world": ["key:4194334"], 

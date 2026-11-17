@@ -4,7 +4,7 @@ extends RefCounted
 signal equipment_changed
 
 
-const EQUIP_SLOTS: = ["arma", "armadura", "joia", "aura"]
+const EQUIP_SLOTS: = ["arma", "armadura", "escudo", "anel", "colar", "talisma", "aura"]
 
 var hero_name: = "Herói"
 var race_id: = "humano"
@@ -12,6 +12,14 @@ var class_id: = "guerreiro"
 var hair_style: int = 0
 var hair_color: String = "castanho"
 var gender_id: String = "masculino"
+var beard_style: int = 0
+var beard_color: String = "original"
+
+func set_beard(style: int, color_id: String = "original", notify: bool = true) -> void:
+	beard_style = clampi(style, 0, 20)
+	beard_color = color_id if color_id in ["original", "castanho", "preto", "ruivo", "loiro", "branco", "azul", "roxo"] else "original"
+	if notify:
+		equipment_changed.emit()
 
 func set_hair(style: int, color_id: String, notify: bool = true) -> void:
 	hair_style = clampi(style, 0, 16)
@@ -436,6 +444,7 @@ func to_dict() -> Dictionary:
 		"hero_name": hero_name, "race_id": race_id, "class_id": class_id, 
 		"hair_style": hair_style, "hair_color": hair_color,
 		"gender_id": gender_id,
+		"beard_style": beard_style, "beard_color": beard_color,
 		"level": level, "xp": xp, "fame": fame, "coins": coins, 
 		"hp": hp, "mp": mp, "energy": energy, 
 		"skill_levels": skill_levels.duplicate(true), "evolutions": evolutions.duplicate(true), 
@@ -453,6 +462,7 @@ func from_dict(data: Dictionary) -> void :
 	class_id = str(data.get("class_id", "guerreiro"))
 	set_hair(int(data.get("hair_style", 0)), str(data.get("hair_color", "castanho")), false)
 	gender_id = "feminino" if str(data.get("gender_id", "masculino")) == "feminino" else "masculino"
+	set_beard(int(data.get("beard_style", 0)), str(data.get("beard_color", "original")), false)
 	level = int(data.get("level", 1))
 	xp = int(data.get("xp", 0))
 	fame = float(data.get("fame", 0.0))
@@ -468,6 +478,21 @@ func from_dict(data: Dictionary) -> void :
 	inventory = (data.get("inventory", []) as Array).duplicate(true)
 	stored = (data.get("stored", []) as Array).duplicate(true)
 	equipment = (data.get("equipment", {}) as Dictionary).duplicate(true)
+	# Preserve old rings and shields while moving them to their dedicated slots.
+	var legacy_ring: Dictionary = equipment.get("joia", {})
+	if not legacy_ring.is_empty():
+		if equipment.get("anel", {}).is_empty():
+			equipment["anel"] = legacy_ring
+		else:
+			add_item(str(legacy_ring["id"]), 1, true)
+	equipment.erase("joia")
+	var legacy_weapon: Dictionary = equipment.get("arma", {})
+	if str(GameData.item(str(legacy_weapon.get("id", ""))).get("type", "")) == "escudo":
+		if equipment.get("escudo", {}).is_empty():
+			equipment["escudo"] = legacy_weapon
+		else:
+			add_item(str(legacy_weapon["id"]), 1, true)
+		equipment["arma"] = {}
 	for slot: String in EQUIP_SLOTS:
 		if not equipment.has(slot):
 			equipment[slot] = {}

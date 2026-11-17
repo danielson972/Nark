@@ -5,8 +5,10 @@ var head: Sprite2D
 var hair: Sprite2D
 var ear: Sprite2D
 var tooth: Sprite2D
+var beard: Sprite2D
 var configuration_key: String = ""
 var hair_enabled: bool = true
+var world_antialiasing: bool = false
 
 func _init() -> void:
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -34,6 +36,15 @@ func _init() -> void:
 	tooth.z_index = 1
 	tooth.visible = false
 	add_child(tooth)
+	beard = Sprite2D.new()
+	beard.name = "Barba"
+	beard.centered = false
+	beard.z_index = 2
+	beard.visible = false
+	var beard_material := ShaderMaterial.new()
+	beard_material.shader = preload("res://shaders/character_beard.gdshader")
+	beard.material = beard_material
+	add_child(beard)
 
 func _ready() -> void:
 	# Draw behind the body at its own canvas depth, above map/UI backgrounds.
@@ -44,10 +55,18 @@ func _attach_head() -> void:
 		head.reparent(get_parent())
 
 func configure(state: PlayerState, origin: Vector2, scale_factor: Vector2, mirrored: bool = false) -> void:
-	var key: String = "%s:%s:%s:%s:%s:%s:%s:%s:%s" % [state.race_id, state.gender_id, Custom.armored(state), state.hair_style, state.hair_color, origin, scale_factor, mirrored, hair_enabled]
+	var key: String = "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % [state.race_id, state.gender_id, Custom.armored(state), state.hair_style, state.hair_color, origin, scale_factor, mirrored, hair_enabled, state.beard_style, state.beard_color, world_antialiasing]
 	if key == configuration_key:
 		return
 	configuration_key = key
+	head.material.set_shader_parameter("world_antialiasing",world_antialiasing)
+	beard.material.set_shader_parameter("world_antialiasing",world_antialiasing)
+	beard.visible = state.beard_style > 0
+	if beard.visible:
+		beard.texture = Custom.beard_texture(state.beard_style)
+		beard.material.set_shader_parameter("original_color",state.beard_color == "original")
+		beard.material.set_shader_parameter("beard_color",Custom.COLORS.get(state.beard_color,Custom.COLORS.castanho))
+		_place(beard,Custom.beard_destination(state),origin,scale_factor,mirrored)
 	var source: Rect2 = Custom.head_rect(state)
 	var destination: Rect2 = Custom.head_destination(state)
 	head.visible = Custom.armored(state)
@@ -70,10 +89,15 @@ func configure(state: PlayerState, origin: Vector2, scale_factor: Vector2, mirro
 			color_material.shader = preload("res://shaders/fitted_hair.gdshader")
 			hair.material = color_material
 		hair.material.set_shader_parameter("hair_color", Custom.COLORS[state.hair_color])
+		hair.material.set_shader_parameter("world_antialiasing",world_antialiasing)
+		var atlas_size: Vector2 = hair.texture.atlas.get_size()
+		var region: Rect2 = hair.texture.region
+		hair.material.set_shader_parameter("texture_region",Vector4(region.position.x/atlas_size.x,region.position.y/atlas_size.y,region.size.x/atlas_size.x,region.size.y/atlas_size.y))
 		_place(hair, Custom.fitted_hair_destination(state), origin, scale_factor, mirrored)
 	ear.visible = hair.visible and state.race_id in ["elfo", "orc"]
 	if ear.visible:
 		ear.texture = load("res://assets/game/sprites/herois/bases/orelha_%s_%s.png" % [state.race_id, state.gender_id])
+		_world_accessory(ear)
 		var head_factor: float = destination.size.x / source.size.x
 		var ear_origin := Vector2(138, 46) if state.race_id == "orc" else Vector2(140, 50)
 		var ear_rect := Rect2(destination.position + (ear_origin - source.position) * head_factor, ear.texture.get_size() * head_factor)
@@ -81,10 +105,19 @@ func configure(state: PlayerState, origin: Vector2, scale_factor: Vector2, mirro
 	tooth.visible = hair.visible and state.race_id == "orc"
 	if tooth.visible:
 		tooth.texture = load("res://assets/game/sprites/herois/bases/dente_esquerdo_orc_%s.png" % state.gender_id)
+		_world_accessory(tooth)
 		var tooth_origin := Vector2(81, 81) if state.gender_id == "masculino" else Vector2(95, 77)
 		var head_factor: float = destination.size.x / source.size.x
 		var tooth_rect := Rect2(destination.position + (tooth_origin - source.position) * head_factor, tooth.texture.get_size() * head_factor)
 		_place(tooth, tooth_rect, origin, scale_factor, mirrored)
+
+func _world_accessory(part: Sprite2D) -> void:
+	if not world_antialiasing: return
+	if part.material == null:
+		var material := ShaderMaterial.new()
+		material.shader = Appearance.CUTOUT_SHADER
+		material.set_shader_parameter("world_antialiasing",true)
+		part.material = material
 
 func _place(part: Sprite2D, rect: Rect2, origin: Vector2, factor: Vector2, mirrored: bool) -> void:
 	part.position = origin + rect.position * factor

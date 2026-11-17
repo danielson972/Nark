@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/equipment_panels.gd" id="1_w0y4n"]
+[ext_resource type="PackedScene" path="res://scenes/ui/equipment_status_panel.tscn" id="2_ew05o"]
+[ext_resource type="Script" path="res://scripts/ui/equipment_status_panel.gd" id="3_wdrlt"]
+[ext_resource type="PackedScene" path="res://scenes/ui/inventory_panel.tscn" id="4_3jhxs"]
+[ext_resource type="Script" path="res://scripts/ui/inventory_panel.gd" id="5_vwhqp"]
+
+[node name="EquipmentPanels" type="Control" unique_id=1790572612]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 974.0
+offset_bottom = 646.0
+mouse_filter = 2
+script = ExtResource("1_w0y4n")
+
+[node name="StatusPanel" type="Control" parent="." unique_id=315778877 instance=ExtResource("2_ew05o")]
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 646.0
+script = ExtResource("3_wdrlt")
+
+[node name="InventoryPanel" type="Control" parent="." unique_id=1166237097 instance=ExtResource("4_3jhxs")]
+anchors_preset = 0
+offset_left = 494.0
+offset_right = 972.0
+offset_bottom = 646.0
+script = ExtResource("5_vwhqp")

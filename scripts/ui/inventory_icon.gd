@@ -26,11 +26,19 @@ func _ready() -> void:
 
 func _draw() -> void:
 	if not item_id.is_empty():
+		var is_armor: bool = str(GameData.item(item_id).get("type", "")) == "armadura"
+		var filtering: int = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS if is_armor else CanvasItem.TEXTURE_FILTER_NEAREST
+		if texture_filter != filtering:
+			texture_filter = filtering
 		_draw_item_background()
-		var texture: Texture2D = Catalog.texture_for(item_id, class_id)
+		var texture: Texture2D = Catalog.icon_texture_for(item_id, class_id)
 		if texture != null:
 			var side: float = minf(size.x, size.y)
 			var destination: Rect2 = Rect2(((size - Vector2.ONE * side) * 0.5).floor(), Vector2.ONE * side)
+			if str(GameData.item(item_id).get("type","")) == "armadura":
+				var factor: float = maxf(side-8,1.0)/maxf(texture.get_width(),texture.get_height())
+				var drawn_size: Vector2 = texture.get_size()*factor
+				destination = Rect2((size-drawn_size)*0.5,drawn_size)
 			draw_texture_rect(texture, destination, false)
 			return
 	var kind: String = str(GameData.item(item_id).get("type", "")) if not item_id.is_empty() else empty_slot
@@ -88,6 +96,8 @@ func _background_color() -> Color:
 		"D": return Color("44566a")
 		"C": return Color("244f70")
 		"B": return Color("59355f")
+		"A": return Color("80602f")
+		"S": return Color("9a6b26")
 	match item_id:
 		"hero": return Color("73602b")
 		"pocao_cura": return Color("652f36")

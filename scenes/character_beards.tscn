@@ -1,0 +1,1517 @@
+[gd_scene load_steps=23 format=3]
+
+[ext_resource type="Shader" path="res://shaders/character_beard.gdshader" id="shader"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo1.png" id="beard_1"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo2.png" id="beard_2"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo3.png" id="beard_3"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo4.png" id="beard_4"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo5.png" id="beard_5"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo6.png" id="beard_6"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo7.png" id="beard_7"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo8.png" id="beard_8"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo9.png" id="beard_9"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo10.png" id="beard_10"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo11.png" id="beard_11"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo12.png" id="beard_12"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo13.png" id="beard_13"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo14.png" id="beard_14"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo15.png" id="beard_15"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo16.png" id="beard_16"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo17.png" id="beard_17"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo18.png" id="beard_18"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo19.png" id="beard_19"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/barbas/Modelo20.png" id="beard_20"]
+
+[sub_resource type="ShaderMaterial" id="BeardMaterial"]
+shader = ExtResource("shader")
+
+[node name="Barbas" type="Node2D"]
+z_index = 4
+
+[node name="HumanoMasculino" type="Node2D" parent="."]
+visible = false
+position = Vector2(0.0,0.0)
+rotation = 0.0
+scale = Vector2(1.0,1.0)
+
+[node name="Modelo1" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.617126464844,211.542922973633)
+rotation = 0.0
+scale = Vector2(0.33689367771149,0.33689367771149)
+texture = ExtResource("beard_1")
+
+[node name="Modelo2" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(954.618530273438,215.568344116211)
+rotation = 0.0
+scale = Vector2(0.37832981348038,0.3783298432827)
+texture = ExtResource("beard_2")
+
+[node name="Modelo3" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.617126464844,212.646148681641)
+rotation = 0.0
+scale = Vector2(0.37021285295486,0.37021282315254)
+texture = ExtResource("beard_3")
+
+[node name="Modelo4" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(953.638488769531,215.936019897461)
+rotation = 0.0
+scale = Vector2(0.38502135872841,0.38502135872841)
+texture = ExtResource("beard_4")
+
+[node name="Modelo5" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.617126464844,219.043243408203)
+rotation = 0.0
+scale = Vector2(0.35462492704391,0.35462495684624)
+texture = ExtResource("beard_5")
+
+[node name="Modelo6" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.188354492188,218.16796875)
+rotation = 0.0
+scale = Vector2(0.40298289060593,0.4029828608036)
+texture = ExtResource("beard_6")
+
+[node name="Modelo7" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.188354492188,218.139434814453)
+rotation = 0.0
+scale = Vector2(0.39264997839928,0.39264997839928)
+texture = ExtResource("beard_7")
+
+[node name="Modelo8" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.617126464844,212.522964477539)
+rotation = 0.0
+scale = Vector2(0.40835598111153,0.40835601091385)
+texture = ExtResource("beard_8")
+
+[node name="Modelo9" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.188354492188,216.831253051758)
+rotation = 0.0
+scale = Vector2(0.38045588135719,0.38045588135719)
+texture = ExtResource("beard_9")
+
+[node name="Modelo10" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.188354492188,217.257415771484)
+rotation = 0.0
+scale = Vector2(0.37349632382393,0.37349632382393)
+texture = ExtResource("beard_10")
+
+[node name="Modelo11" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.903442382813,225.935256958008)
+rotation = 0.0
+scale = Vector2(0.34439662098885,0.34439662098885)
+texture = ExtResource("beard_11")
+
+[node name="Modelo12" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.973999023438,239.165344238281)
+rotation = 0.0
+scale = Vector2(0.36369204521179,0.36369204521179)
+texture = ExtResource("beard_12")
+
+[node name="Modelo13" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.474670410156,232.771560668945)
+rotation = 0.0
+scale = Vector2(0.35234254598618,0.3523425757885)
+texture = ExtResource("beard_13")
+
+[node name="Modelo14" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.689086914063,235.009887695313)
+rotation = 0.0
+scale = Vector2(0.35188120603561,0.35188123583794)
+texture = ExtResource("beard_14")
+
+[node name="Modelo15" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.689086914063,227.696716308594)
+rotation = 0.0
+scale = Vector2(0.38461434841156,0.38461437821388)
+texture = ExtResource("beard_15")
+
+[node name="Modelo16" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.188354492188,221.035552978516)
+rotation = 0.0
+scale = Vector2(0.32755827903748,0.32755827903748)
+texture = ExtResource("beard_16")
+
+[node name="Modelo17" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.617126464844,224.204513549805)
+rotation = 0.0
+scale = Vector2(0.35093092918396,0.35093089938164)
+texture = ExtResource("beard_17")
+
+[node name="Modelo18" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.617126464844,230.355865478516)
+rotation = 0.0
+scale = Vector2(0.33191496133804,0.33191499114037)
+texture = ExtResource("beard_18")
+
+[node name="Modelo19" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(959.378173828125,205.458435058594)
+rotation = 0.0
+scale = Vector2(0.27223733067513,0.27223733067513)
+texture = ExtResource("beard_19")
+
+[node name="Modelo20" type="Sprite2D" parent="HumanoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.617126464844,226.965881347656)
+rotation = 0.0
+scale = Vector2(0.32238629460335,0.32238629460335)
+texture = ExtResource("beard_20")
+
+[node name="ElfoMasculino" type="Node2D" parent="."]
+visible = false
+position = Vector2(0.0,0.0)
+rotation = 0.0
+scale = Vector2(1.0,1.0)
+
+[node name="Modelo1" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.714416503906,210.806488037109)
+rotation = 0.0
+scale = Vector2(0.33289042115211,0.33289042115211)
+texture = ExtResource("beard_1")
+
+[node name="Modelo2" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.68017578125,214.784088134766)
+rotation = 0.0
+scale = Vector2(0.37383416295052,0.37383416295052)
+texture = ExtResource("beard_2")
+
+[node name="Modelo3" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.714416503906,211.896606445313)
+rotation = 0.0
+scale = Vector2(0.36581367254257,0.36581364274025)
+texture = ExtResource("beard_3")
+
+[node name="Modelo4" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.711791992188,215.147399902344)
+rotation = 0.0
+scale = Vector2(0.38044622540474,0.38044619560242)
+texture = ExtResource("beard_4")
+
+[node name="Modelo5" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.714416503906,218.217681884766)
+rotation = 0.0
+scale = Vector2(0.35041099786758,0.35041093826294)
+texture = ExtResource("beard_5")
+
+[node name="Modelo6" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.290710449219,217.352813720703)
+rotation = 0.0
+scale = Vector2(0.39819428324699,0.39819428324699)
+texture = ExtResource("beard_6")
+
+[node name="Modelo7" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.290710449219,217.324630737305)
+rotation = 0.0
+scale = Vector2(0.3879841864109,0.38798415660858)
+texture = ExtResource("beard_7")
+
+[node name="Modelo8" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.714416503906,211.77490234375)
+rotation = 0.0
+scale = Vector2(0.40350356698036,0.40350353717804)
+texture = ExtResource("beard_8")
+
+[node name="Modelo9" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.290710449219,216.031982421875)
+rotation = 0.0
+scale = Vector2(0.37593498826027,0.37593495845795)
+texture = ExtResource("beard_9")
+
+[node name="Modelo10" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.290710449219,216.453079223633)
+rotation = 0.0
+scale = Vector2(0.36905813217163,0.36905813217163)
+texture = ExtResource("beard_10")
+
+[node name="Modelo11" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.985473632813,225.027816772461)
+rotation = 0.0
+scale = Vector2(0.34030419588089,0.34030419588089)
+texture = ExtResource("beard_11")
+
+[node name="Modelo12" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.078918457031,238.100677490234)
+rotation = 0.0
+scale = Vector2(0.35937035083771,0.35937035083771)
+texture = ExtResource("beard_12")
+
+[node name="Modelo13" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.561767578125,231.782867431641)
+rotation = 0.0
+scale = Vector2(0.3481557071209,0.3481557071209)
+texture = ExtResource("beard_13")
+
+[node name="Modelo14" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.773620605469,233.994598388672)
+rotation = 0.0
+scale = Vector2(0.34769985079765,0.34769985079765)
+texture = ExtResource("beard_14")
+
+[node name="Modelo15" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.773620605469,226.768341064453)
+rotation = 0.0
+scale = Vector2(0.3800440132618,0.38004407286644)
+texture = ExtResource("beard_15")
+
+[node name="Modelo16" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.290710449219,220.186340332031)
+rotation = 0.0
+scale = Vector2(0.32366594672203,0.32366594672203)
+texture = ExtResource("beard_16")
+
+[node name="Modelo17" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.714416503906,223.317626953125)
+rotation = 0.0
+scale = Vector2(0.34676086902618,0.34676083922386)
+texture = ExtResource("beard_17")
+
+[node name="Modelo18" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.714416503906,229.395889282227)
+rotation = 0.0
+scale = Vector2(0.32797086238861,0.32797086238861)
+texture = ExtResource("beard_18")
+
+[node name="Modelo19" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(957.159057617188,204.794311523438)
+rotation = 0.0
+scale = Vector2(0.26900237798691,0.26900237798691)
+texture = ExtResource("beard_19")
+
+[node name="Modelo20" type="Sprite2D" parent="ElfoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.714416503906,226.046188354492)
+rotation = 0.0
+scale = Vector2(0.31855544447899,0.31855541467667)
+texture = ExtResource("beard_20")
+
+[node name="OrcMasculino" type="Node2D" parent="."]
+visible = false
+position = Vector2(0.0,0.0)
+rotation = 0.0
+scale = Vector2(1.0,1.0)
+
+[node name="Modelo1" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.057861328125,208.099426269531)
+rotation = 0.0
+scale = Vector2(0.36494389176369,0.36494389176369)
+texture = ExtResource("beard_1")
+
+[node name="Modelo2" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(954.309143066406,212.460021972656)
+rotation = 0.0
+scale = Vector2(0.40983003377914,0.40983003377914)
+texture = ExtResource("beard_2")
+
+[node name="Modelo3" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.057861328125,209.294509887695)
+rotation = 0.0
+scale = Vector2(0.40103724598885,0.40103721618652)
+texture = ExtResource("beard_3")
+
+[node name="Modelo4" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(953.247497558594,212.858276367188)
+rotation = 0.0
+scale = Vector2(0.41707873344421,0.41707873344421)
+texture = ExtResource("beard_4")
+
+[node name="Modelo5" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.057861328125,216.224212646484)
+rotation = 0.0
+scale = Vector2(0.38415145874023,0.38415145874023)
+texture = ExtResource("beard_5")
+
+[node name="Modelo6" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.593383789063,215.276062011719)
+rotation = 0.0
+scale = Vector2(0.43653574585915,0.43653571605682)
+texture = ExtResource("beard_6")
+
+[node name="Modelo7" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.593383789063,215.245178222656)
+rotation = 0.0
+scale = Vector2(0.42534250020981,0.42534250020981)
+texture = ExtResource("beard_7")
+
+[node name="Modelo8" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.057861328125,209.161071777344)
+rotation = 0.0
+scale = Vector2(0.44235622882843,0.44235619902611)
+texture = ExtResource("beard_8")
+
+[node name="Modelo9" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.593383789063,213.828079223633)
+rotation = 0.0
+scale = Vector2(0.41213312745094,0.41213312745094)
+texture = ExtResource("beard_9")
+
+[node name="Modelo10" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.593383789063,214.289703369141)
+rotation = 0.0
+scale = Vector2(0.40459409356117,0.40459412336349)
+texture = ExtResource("beard_10")
+
+[node name="Modelo11" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.451232910156,223.690078735352)
+rotation = 0.0
+scale = Vector2(0.37307152152061,0.37307149171829)
+texture = ExtResource("beard_11")
+
+[node name="Modelo12" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.361145019531,238.021713256836)
+rotation = 0.0
+scale = Vector2(0.39397352933884,0.39397349953651)
+texture = ExtResource("beard_12")
+
+[node name="Modelo13" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.98681640625,231.095581054688)
+rotation = 0.0
+scale = Vector2(0.38167902827263,0.38167905807495)
+texture = ExtResource("beard_13")
+
+[node name="Modelo14" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.218994140625,233.520263671875)
+rotation = 0.0
+scale = Vector2(0.38117930293083,0.38117927312851)
+texture = ExtResource("beard_14")
+
+[node name="Modelo15" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(952.218994140625,225.598220825195)
+rotation = 0.0
+scale = Vector2(0.41663783788681,0.41663783788681)
+texture = ExtResource("beard_15")
+
+[node name="Modelo16" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(950.593383789063,218.382431030273)
+rotation = 0.0
+scale = Vector2(0.35483118891716,0.35483118891716)
+texture = ExtResource("beard_16")
+
+[node name="Modelo17" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.057861328125,221.815216064453)
+rotation = 0.0
+scale = Vector2(0.38014987111092,0.38014990091324)
+texture = ExtResource("beard_17")
+
+[node name="Modelo18" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.057861328125,228.478759765625)
+rotation = 0.0
+scale = Vector2(0.35955062508583,0.35955062508583)
+texture = ExtResource("beard_18")
+
+[node name="Modelo19" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.487121582031,201.508316040039)
+rotation = 0.0
+scale = Vector2(0.29490414261818,0.29490414261818)
+texture = ExtResource("beard_19")
+
+[node name="Modelo20" type="Sprite2D" parent="OrcMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(951.057861328125,224.806518554688)
+rotation = 0.0
+scale = Vector2(0.34922859072685,0.34922859072685)
+texture = ExtResource("beard_20")
+
+[node name="AnaoMasculino" type="Node2D" parent="."]
+visible = false
+position = Vector2(0.0,0.0)
+rotation = 0.0
+scale = Vector2(1.0,1.0)
+
+[node name="Modelo1" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.300170898438,261.633514404297)
+rotation = 0.0
+scale = Vector2(0.35819530487061,0.35819533467293)
+texture = ExtResource("beard_1")
+
+[node name="Modelo2" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(959.491394042969,265.913482666016)
+rotation = 0.0
+scale = Vector2(0.40225142240524,0.40225145220757)
+texture = ExtResource("beard_2")
+
+[node name="Modelo3" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.300170898438,262.806518554688)
+rotation = 0.0
+scale = Vector2(0.39362120628357,0.39362123608589)
+texture = ExtResource("beard_3")
+
+[node name="Modelo4" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(958.449340820313,266.304382324219)
+rotation = 0.0
+scale = Vector2(0.40936607122421,0.40936607122421)
+texture = ExtResource("beard_4")
+
+[node name="Modelo5" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.300170898438,269.608093261719)
+rotation = 0.0
+scale = Vector2(0.37704768776894,0.37704768776894)
+texture = ExtResource("beard_5")
+
+[node name="Modelo6" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.844299316406,268.677459716797)
+rotation = 0.0
+scale = Vector2(0.42846328020096,0.42846331000328)
+texture = ExtResource("beard_6")
+
+[node name="Modelo7" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.844299316406,268.647125244141)
+rotation = 0.0
+scale = Vector2(0.41747704148293,0.41747704148293)
+texture = ExtResource("beard_7")
+
+[node name="Modelo8" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.300170898438,262.675537109375)
+rotation = 0.0
+scale = Vector2(0.43417611718178,0.43417611718178)
+texture = ExtResource("beard_8")
+
+[node name="Modelo9" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.844299316406,267.256225585938)
+rotation = 0.0
+scale = Vector2(0.40451192855835,0.40451192855835)
+texture = ExtResource("beard_9")
+
+[node name="Modelo10" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.844299316406,267.709350585938)
+rotation = 0.0
+scale = Vector2(0.39711230993271,0.39711233973503)
+texture = ExtResource("beard_10")
+
+[node name="Modelo11" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(957.667846679688,276.935882568359)
+rotation = 0.0
+scale = Vector2(0.36617267131805,0.36617267131805)
+texture = ExtResource("beard_11")
+
+[node name="Modelo12" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.616333007813,291.002471923828)
+rotation = 0.0
+scale = Vector2(0.38668814301491,0.38668814301491)
+texture = ExtResource("beard_12")
+
+[node name="Modelo13" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(957.211975097656,284.204437255859)
+rotation = 0.0
+scale = Vector2(0.3746210038662,0.3746210038662)
+texture = ExtResource("beard_13")
+
+[node name="Modelo14" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(957.439880371094,286.584289550781)
+rotation = 0.0
+scale = Vector2(0.37413051724434,0.37413051724434)
+texture = ExtResource("beard_14")
+
+[node name="Modelo15" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(957.439880371094,278.808715820313)
+rotation = 0.0
+scale = Vector2(0.40893334150314,0.40893334150314)
+texture = ExtResource("beard_15")
+
+[node name="Modelo16" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(955.844299316406,271.726379394531)
+rotation = 0.0
+scale = Vector2(0.34826961159706,0.34826964139938)
+texture = ExtResource("beard_16")
+
+[node name="Modelo17" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.300170898438,275.095703125)
+rotation = 0.0
+scale = Vector2(0.37312009930611,0.37312012910843)
+texture = ExtResource("beard_17")
+
+[node name="Modelo18" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.300170898438,281.635986328125)
+rotation = 0.0
+scale = Vector2(0.35290178656578,0.3529018163681)
+texture = ExtResource("beard_18")
+
+[node name="Modelo19" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(970.374206542969,255.164306640625)
+rotation = 0.0
+scale = Vector2(0.28945076465607,0.28945079445839)
+texture = ExtResource("beard_19")
+
+[node name="Modelo20" type="Sprite2D" parent="AnaoMasculino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.300170898438,278.031677246094)
+rotation = 0.0
+scale = Vector2(0.3427706360817,0.3427706360817)
+texture = ExtResource("beard_20")
+
+[node name="HumanoFeminino" type="Node2D" parent="."]
+visible = false
+position = Vector2(0.0,0.0)
+rotation = 0.0
+scale = Vector2(1.0,1.0)
+
+[node name="Modelo1" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.160522460938,211.679656982422)
+rotation = 0.0
+scale = Vector2(0.30326384305954,0.30326384305954)
+texture = ExtResource("beard_1")
+
+[node name="Modelo2" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.8623046875,215.303253173828)
+rotation = 0.0
+scale = Vector2(0.34056368470192,0.34056368470192)
+texture = ExtResource("beard_2")
+
+[node name="Modelo3" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.160522460938,212.672760009766)
+rotation = 0.0
+scale = Vector2(0.33325695991516,0.33325695991516)
+texture = ExtResource("beard_3")
+
+[node name="Modelo4" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(948.980102539063,215.634216308594)
+rotation = 0.0
+scale = Vector2(0.34658724069595,0.34658724069595)
+texture = ExtResource("beard_4")
+
+[node name="Modelo5" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.160522460938,218.431274414063)
+rotation = 0.0
+scale = Vector2(0.31922510266304,0.31922510266304)
+texture = ExtResource("beard_5")
+
+[node name="Modelo6" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.774536132813,217.643356323242)
+rotation = 0.0
+scale = Vector2(0.36275577545166,0.36275577545166)
+texture = ExtResource("beard_6")
+
+[node name="Modelo7" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.774536132813,217.617691040039)
+rotation = 0.0
+scale = Vector2(0.35345435142517,0.35345435142517)
+texture = ExtResource("beard_7")
+
+[node name="Modelo8" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.160522460938,212.561874389648)
+rotation = 0.0
+scale = Vector2(0.36759251356125,0.36759251356125)
+texture = ExtResource("beard_8")
+
+[node name="Modelo9" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.774536132813,216.440093994141)
+rotation = 0.0
+scale = Vector2(0.34247750043869,0.34247750043869)
+texture = ExtResource("beard_9")
+
+[node name="Modelo10" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.774536132813,216.823699951172)
+rotation = 0.0
+scale = Vector2(0.33621266484261,0.33621269464493)
+texture = ExtResource("beard_10")
+
+[node name="Modelo11" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(948.318420410156,224.635299682617)
+rotation = 0.0
+scale = Vector2(0.31001779437065,0.31001779437065)
+texture = ExtResource("beard_11")
+
+[node name="Modelo12" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.58154296875,236.544708251953)
+rotation = 0.0
+scale = Vector2(0.32738709449768,0.32738709449768)
+texture = ExtResource("beard_12")
+
+[node name="Modelo13" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.932434082031,230.789184570313)
+rotation = 0.0
+scale = Vector2(0.31717053055763,0.31717053055763)
+texture = ExtResource("beard_13")
+
+[node name="Modelo14" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(948.125427246094,232.804061889648)
+rotation = 0.0
+scale = Vector2(0.31675526499748,0.3167552947998)
+texture = ExtResource("beard_14")
+
+[node name="Modelo15" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(948.125427246094,226.220947265625)
+rotation = 0.0
+scale = Vector2(0.34622085094452,0.34622085094452)
+texture = ExtResource("beard_15")
+
+[node name="Modelo16" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.774536132813,220.224700927734)
+rotation = 0.0
+scale = Vector2(0.29486030340195,0.29486030340195)
+texture = ExtResource("beard_16")
+
+[node name="Modelo17" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.160522460938,223.077331542969)
+rotation = 0.0
+scale = Vector2(0.31589981913567,0.31589981913567)
+texture = ExtResource("beard_17")
+
+[node name="Modelo18" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.160522460938,228.614624023438)
+rotation = 0.0
+scale = Vector2(0.29878211021423,0.29878211021423)
+texture = ExtResource("beard_18")
+
+[node name="Modelo19" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(956.133056640625,206.202514648438)
+rotation = 0.0
+scale = Vector2(0.24506168067455,0.24506168067455)
+texture = ExtResource("beard_19")
+
+[node name="Modelo20" type="Sprite2D" parent="HumanoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.160522460938,225.563049316406)
+rotation = 0.0
+scale = Vector2(0.29020461440086,0.29020461440086)
+texture = ExtResource("beard_20")
+
+[node name="ElfoFeminino" type="Node2D" parent="."]
+visible = false
+position = Vector2(0.0,0.0)
+rotation = 0.0
+scale = Vector2(1.0,1.0)
+
+[node name="Modelo1" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30224609375,209.062469482422)
+rotation = 0.0
+scale = Vector2(0.31054693460464,0.31054693460464)
+texture = ExtResource("beard_1")
+
+[node name="Modelo2" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.068969726563,212.773101806641)
+rotation = 0.0
+scale = Vector2(0.34874254465103,0.34874257445335)
+texture = ExtResource("beard_2")
+
+[node name="Modelo3" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30224609375,210.079437255859)
+rotation = 0.0
+scale = Vector2(0.34126037359238,0.34126037359238)
+texture = ExtResource("beard_3")
+
+[node name="Modelo4" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(948.16552734375,213.111999511719)
+rotation = 0.0
+scale = Vector2(0.35491079092026,0.35491076111794)
+texture = ExtResource("beard_4")
+
+[node name="Modelo5" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30224609375,215.976226806641)
+rotation = 0.0
+scale = Vector2(0.3268915116787,0.3268915116787)
+texture = ExtResource("beard_5")
+
+[node name="Modelo6" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.907043457031,215.169403076172)
+rotation = 0.0
+scale = Vector2(0.37146762013435,0.37146764993668)
+texture = ExtResource("beard_6")
+
+[node name="Modelo7" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.907043457031,215.143127441406)
+rotation = 0.0
+scale = Vector2(0.36194279789925,0.36194279789925)
+texture = ExtResource("beard_7")
+
+[node name="Modelo8" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30224609375,209.965881347656)
+rotation = 0.0
+scale = Vector2(0.37642052769661,0.37642052769661)
+texture = ExtResource("beard_8")
+
+[node name="Modelo9" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.907043457031,213.937240600586)
+rotation = 0.0
+scale = Vector2(0.35070234537125,0.35070237517357)
+texture = ExtResource("beard_9")
+
+[node name="Modelo10" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.907043457031,214.330078125)
+rotation = 0.0
+scale = Vector2(0.34428706765175,0.34428706765175)
+texture = ExtResource("beard_10")
+
+[node name="Modelo11" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.487976074219,222.329254150391)
+rotation = 0.0
+scale = Vector2(0.31746309995651,0.31746309995651)
+texture = ExtResource("beard_11")
+
+[node name="Modelo12" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.709411621094,234.524688720703)
+rotation = 0.0
+scale = Vector2(0.33524954319,0.33524954319)
+texture = ExtResource("beard_12")
+
+[node name="Modelo13" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.092712402344,228.630920410156)
+rotation = 0.0
+scale = Vector2(0.32478761672974,0.32478761672974)
+texture = ExtResource("beard_13")
+
+[node name="Modelo14" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.290344238281,230.694213867188)
+rotation = 0.0
+scale = Vector2(0.32436236739159,0.32436236739159)
+texture = ExtResource("beard_14")
+
+[node name="Modelo15" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(947.290344238281,223.952972412109)
+rotation = 0.0
+scale = Vector2(0.35453560948372,0.35453560948372)
+texture = ExtResource("beard_15")
+
+[node name="Modelo16" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(945.907043457031,217.812744140625)
+rotation = 0.0
+scale = Vector2(0.30194160342216,0.30194160342216)
+texture = ExtResource("beard_16")
+
+[node name="Modelo17" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30224609375,220.733871459961)
+rotation = 0.0
+scale = Vector2(0.32348638772964,0.32348638772964)
+texture = ExtResource("beard_17")
+
+[node name="Modelo18" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30224609375,226.404144287109)
+rotation = 0.0
+scale = Vector2(0.30595755577087,0.3059575855732)
+texture = ExtResource("beard_18")
+
+[node name="Modelo19" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(954.37646484375,203.453811645508)
+rotation = 0.0
+scale = Vector2(0.25094699859619,0.25094702839851)
+texture = ExtResource("beard_19")
+
+[node name="Modelo20" type="Sprite2D" parent="ElfoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(946.30224609375,223.279281616211)
+rotation = 0.0
+scale = Vector2(0.29717409610748,0.29717409610748)
+texture = ExtResource("beard_20")
+
+[node name="OrcFeminino" type="Node2D" parent="."]
+visible = false
+position = Vector2(0.0,0.0)
+rotation = 0.0
+scale = Vector2(1.0,1.0)
+
+[node name="Modelo1" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.479187011719,199.448837280273)
+rotation = 0.0
+scale = Vector2(0.29876855015755,0.29876857995987)
+texture = ExtResource("beard_1")
+
+[node name="Modelo2" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(941.140991210938,203.01872253418)
+rotation = 0.0
+scale = Vector2(0.33551552891731,0.33551549911499)
+texture = ExtResource("beard_2")
+
+[node name="Modelo3" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.479187011719,200.427215576172)
+rotation = 0.0
+scale = Vector2(0.32831710577011,0.32831710577011)
+texture = ExtResource("beard_3")
+
+[node name="Modelo4" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(940.271850585938,203.344787597656)
+rotation = 0.0
+scale = Vector2(0.34144976735115,0.34144979715347)
+texture = ExtResource("beard_4")
+
+[node name="Modelo5" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.479187011719,206.100372314453)
+rotation = 0.0
+scale = Vector2(0.31449320912361,0.31449320912361)
+texture = ExtResource("beard_5")
+
+[node name="Modelo6" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.098937988281,205.324142456055)
+rotation = 0.0
+scale = Vector2(0.35737869143486,0.35737866163254)
+texture = ExtResource("beard_6")
+
+[node name="Modelo7" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.098937988281,205.298858642578)
+rotation = 0.0
+scale = Vector2(0.34821513295174,0.34821513295174)
+texture = ExtResource("beard_7")
+
+[node name="Modelo8" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.479187011719,200.317993164063)
+rotation = 0.0
+scale = Vector2(0.36214369535446,0.36214369535446)
+texture = ExtResource("beard_8")
+
+[node name="Modelo9" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.098937988281,204.138717651367)
+rotation = 0.0
+scale = Vector2(0.33740100264549,0.33740100264549)
+texture = ExtResource("beard_9")
+
+[node name="Modelo10" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.098937988281,204.516632080078)
+rotation = 0.0
+scale = Vector2(0.33122903108597,0.33122903108597)
+texture = ExtResource("beard_10")
+
+[node name="Modelo11" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(939.619934082031,212.212432861328)
+rotation = 0.0
+scale = Vector2(0.30542242527008,0.30542242527008)
+texture = ExtResource("beard_11")
+
+[node name="Modelo12" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(937.908813476563,223.9453125)
+rotation = 0.0
+scale = Vector2(0.32253423333168,0.322534263134)
+texture = ExtResource("beard_12")
+
+[node name="Modelo13" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(939.239685058594,218.275100708008)
+rotation = 0.0
+scale = Vector2(0.31246915459633,0.31246915459633)
+texture = ExtResource("beard_13")
+
+[node name="Modelo14" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(939.429870605469,220.260116577148)
+rotation = 0.0
+scale = Vector2(0.31206002831459,0.31206002831459)
+texture = ExtResource("beard_14")
+
+[node name="Modelo15" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(939.429870605469,213.774566650391)
+rotation = 0.0
+scale = Vector2(0.34108886122704,0.34108883142471)
+texture = ExtResource("beard_15")
+
+[node name="Modelo16" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.098937988281,207.867218017578)
+rotation = 0.0
+scale = Vector2(0.29048961400986,0.29048961400986)
+texture = ExtResource("beard_16")
+
+[node name="Modelo17" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.479187011719,210.677551269531)
+rotation = 0.0
+scale = Vector2(0.31121724843979,0.31121724843979)
+texture = ExtResource("beard_17")
+
+[node name="Modelo18" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.479187011719,216.132781982422)
+rotation = 0.0
+scale = Vector2(0.29435324668884,0.29435327649117)
+texture = ExtResource("beard_18")
+
+[node name="Modelo19" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(949.980834960938,194.052886962891)
+rotation = 0.0
+scale = Vector2(0.24142915010452,0.24142915010452)
+texture = ExtResource("beard_19")
+
+[node name="Modelo20" type="Sprite2D" parent="OrcFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(938.479187011719,213.126434326172)
+rotation = 0.0
+scale = Vector2(0.2859029173851,0.28590294718742)
+texture = ExtResource("beard_20")
+
+[node name="AnaoFeminino" type="Node2D" parent="."]
+visible = false
+position = Vector2(0.0,0.0)
+rotation = 0.0
+scale = Vector2(1.0,1.0)
+
+[node name="Modelo1" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.216125488281,251.299530029297)
+rotation = 0.0
+scale = Vector2(0.30845710635185,0.30845710635185)
+texture = ExtResource("beard_1")
+
+[node name="Modelo2" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(965.964172363281,254.98518371582)
+rotation = 0.0
+scale = Vector2(0.34639570116997,0.34639570116997)
+texture = ExtResource("beard_2")
+
+[node name="Modelo3" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.216125488281,252.309646606445)
+rotation = 0.0
+scale = Vector2(0.33896386623383,0.3389638364315)
+texture = ExtResource("beard_3")
+
+[node name="Modelo4" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(965.066833496094,255.321807861328)
+rotation = 0.0
+scale = Vector2(0.35252240300179,0.35252240300179)
+texture = ExtResource("beard_4")
+
+[node name="Modelo5" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.216125488281,258.166748046875)
+rotation = 0.0
+scale = Vector2(0.32469168305397,0.32469168305397)
+texture = ExtResource("beard_5")
+
+[node name="Modelo6" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.823547363281,257.365356445313)
+rotation = 0.0
+scale = Vector2(0.3689678311348,0.3689678311348)
+texture = ExtResource("beard_6")
+
+[node name="Modelo7" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.823547363281,257.339233398438)
+rotation = 0.0
+scale = Vector2(0.35950711369514,0.35950711369514)
+texture = ExtResource("beard_7")
+
+[node name="Modelo8" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.216125488281,252.196868896484)
+rotation = 0.0
+scale = Vector2(0.3738873898983,0.37388741970062)
+texture = ExtResource("beard_8")
+
+[node name="Modelo9" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.823547363281,256.141479492188)
+rotation = 0.0
+scale = Vector2(0.34834229946136,0.34834232926369)
+texture = ExtResource("beard_9")
+
+[node name="Modelo10" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.823547363281,256.531677246094)
+rotation = 0.0
+scale = Vector2(0.34197017550468,0.34197020530701)
+texture = ExtResource("beard_10")
+
+[node name="Modelo11" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(964.393859863281,264.47705078125)
+rotation = 0.0
+scale = Vector2(0.31532675027847,0.31532672047615)
+texture = ExtResource("beard_11")
+
+[node name="Modelo12" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.627258300781,276.590393066406)
+rotation = 0.0
+scale = Vector2(0.33299344778061,0.33299344778061)
+texture = ExtResource("beard_12")
+
+[node name="Modelo13" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(964.001281738281,270.736297607422)
+rotation = 0.0
+scale = Vector2(0.32260197401047,0.32260194420815)
+texture = ExtResource("beard_13")
+
+[node name="Modelo14" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(964.197570800781,272.785675048828)
+rotation = 0.0
+scale = Vector2(0.32217955589294,0.32217955589294)
+texture = ExtResource("beard_14")
+
+[node name="Modelo15" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(964.197570800781,266.08984375)
+rotation = 0.0
+scale = Vector2(0.35214975476265,0.35214978456497)
+texture = ExtResource("beard_15")
+
+[node name="Modelo16" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(962.823547363281,259.990905761719)
+rotation = 0.0
+scale = Vector2(0.29990968108177,0.29990968108177)
+texture = ExtResource("beard_16")
+
+[node name="Modelo17" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.216125488281,262.892395019531)
+rotation = 0.0
+scale = Vector2(0.32130947709084,0.32130950689316)
+texture = ExtResource("beard_17")
+
+[node name="Modelo18" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.216125488281,268.524505615234)
+rotation = 0.0
+scale = Vector2(0.3038986325264,0.3038986325264)
+texture = ExtResource("beard_18")
+
+[node name="Modelo19" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(968.46484375,245.728607177734)
+rotation = 0.0
+scale = Vector2(0.24925826489925,0.24925826489925)
+texture = ExtResource("beard_19")
+
+[node name="Modelo20" type="Sprite2D" parent="AnaoFeminino"]
+visible = false
+texture_filter = 1
+material = SubResource("BeardMaterial")
+position = Vector2(963.216125488281,265.420654296875)
+rotation = 0.0
+scale = Vector2(0.2951742708683,0.29517430067062)
+texture = ExtResource("beard_20")

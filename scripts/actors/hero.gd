@@ -4,6 +4,7 @@ extends Actor
 const Appearance = preload("res://scripts/actors/hero_appearance.gd")
 const ItemArt = preload("res://scripts/ui/item_catalog.gd")
 var weapon_sprite: Sprite2D
+var shield_sprite: Sprite2D
 var grip_hand_sprite: Sprite2D
 var colossal_effect: Node2D
 var aura_effect: Sprite2D
@@ -80,8 +81,15 @@ func setup(world_ref: Node, _texture_path: String, target_height: float = 92.0) 
 	visual_height = target_height
 	if character_parts == null:
 		character_parts = preload("res://scripts/actors/character_parts.gd").new()
+		character_parts.world_antialiasing = true
 		character_parts.name = "AparenciaModular"
 		sprite.add_child(character_parts)
+	shield_sprite = sprite.get_node_or_null("EscudoEquipado") as Sprite2D
+	if shield_sprite == null:
+		shield_sprite = Sprite2D.new()
+		shield_sprite.name = "EscudoEquipado"
+		sprite.add_child(shield_sprite)
+	shield_sprite.visible = false
 	weapon_sprite = sprite.get_node_or_null("ArmaEquipada") as Sprite2D
 	if weapon_sprite == null:
 		weapon_sprite = Sprite2D.new()
@@ -118,7 +126,7 @@ func refresh_appearance() -> void:
 	var weapon_id: String = str(state.equipment.get("arma", {}).get("id", ""))
 	appearance_key = "%s:%s:%s:%s" % [state.race_id, state.class_id, armor_id, weapon_id]
 	sprite.texture = Appearance.body_texture(state)
-	sprite.material = Appearance.body_material(state)
+	sprite.material = Appearance.world_material(Appearance.body_material(state))
 	grip_hand_sprite.material = sprite.material
 	var body_size: Vector2 = sprite.texture.get_size()
 	# O brilho acompanha o torso e os movimentos do corpo em todas as classes e raças.
@@ -135,15 +143,28 @@ func refresh_appearance() -> void:
 	grip_hand_sprite.visible = not weapon_id.is_empty()
 	grip_hand_sprite.texture = Appearance.hand_texture(state) if grip_hand_sprite.visible else null
 	if weapon_sprite.texture != null:
-		weapon_sprite.material = Appearance.weapon_material(state, weapon_sprite.texture)
+		weapon_sprite.material = Appearance.world_material(Appearance.weapon_material(state, weapon_sprite.texture))
 		var weapon_size: Vector2 = weapon_sprite.texture.get_size()
 		weapon_sprite.scale = Vector2.ONE * (body_size.y * Appearance.weapon_height(state.class_id, weapon_id) / weapon_size.y)
 	colossal_effect.visible = weapon_id == "arma_b"
+	var shield_id: String = str(state.equipment.get("escudo", {}).get("id", ""))
+	shield_sprite.texture = ItemArt.texture_for(shield_id, state.class_id) if not shield_id.is_empty() else null
+	shield_sprite.visible = shield_sprite.texture != null
+	if shield_sprite.visible:
+		shield_sprite.material = Appearance.world_material(Appearance.shield_material(shield_id, shield_sprite.texture))
+		shield_sprite.scale = Vector2.ONE * body_size.y * 0.28 / shield_sprite.texture.get_height()
 	_update_equipment_pose()
 
 
 func _update_equipment_pose() -> void:
 	_update_character_parts()
+	if shield_sprite != null and shield_sprite.visible:
+		var point: Vector2 = Appearance.shield_anchor(state)
+		var dimensions: Vector2 = sprite.texture.get_size()
+		var shield_mirror: float = -1.0 if sprite.flip_h else 1.0
+		shield_sprite.position = Vector2((point.x - 0.5) * dimensions.x * shield_mirror, (point.y - Appearance.FOOT_Y) * dimensions.y)
+		shield_sprite.flip_h = sprite.flip_h
+		shield_sprite.z_index = -1 if facing.y < -0.5 else 2
 	if weapon_sprite == null or weapon_sprite.texture == null:
 		return
 	var mirror: float = -1.0 if sprite.flip_h else 1.0

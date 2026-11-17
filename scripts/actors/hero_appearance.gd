@@ -59,7 +59,17 @@ static var cutout: ShaderMaterial
 static var weapon_materials: Dictionary = {}
 static var body_materials: Dictionary = {}
 static var catalog_bodies: Dictionary = {}
+static var world_materials: Dictionary = {}
+static var shield_materials: Dictionary = {}
 const WORN_CATALOG_FOLDER = "res://assets/game/sprites/herois/armaduras_vestidas/"
+
+static func world_material(source: ShaderMaterial) -> ShaderMaterial:
+	var key: int = source.get_instance_id()
+	if not world_materials.has(key):
+		var material: ShaderMaterial = source.duplicate()
+		material.set_shader_parameter("world_antialiasing",true)
+		world_materials[key] = material
+	return world_materials[key]
 
 static func cutout_material() -> ShaderMaterial:
 	if cutout == null:
@@ -246,3 +256,16 @@ static func weapon_rotation(class_id: String, item_id: String = "") -> float:
 static func weapon_layer(class_id: String) -> int:
 	# A spear crosses behind the torso; the fingers remain above the shaft.
 	return -1 if class_id == "cavaleiro" else 1
+
+static func shield_anchor(state: PlayerState) -> Vector2:
+	var right_hand := hand_position(state)
+	return Vector2(1.0 - right_hand.x, right_hand.y - 0.025)
+
+static func shield_material(item_id: String, texture: AtlasTexture) -> ShaderMaterial:
+	if not shield_materials.has(item_id):
+		var result := ShaderMaterial.new()
+		result.shader = CUTOUT_SHADER
+		var dimensions := texture.atlas.get_size()
+		result.set_shader_parameter("texture_region", Vector4(texture.region.position.x / dimensions.x, texture.region.position.y / dimensions.y, texture.region.size.x / dimensions.x, texture.region.size.y / dimensions.y))
+		shield_materials[item_id] = result
+	return shield_materials[item_id]

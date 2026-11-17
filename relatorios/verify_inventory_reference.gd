@@ -23,21 +23,21 @@ func _run() -> void:
 	panel._select("", "aura")
 	assert(panel.detail_title.text == "Slot Hero" and panel.action_buttons["unequip"].disabled)
 	var original: Array = game.state.inventory.duplicate(true)
-	for category: String in ["all", "equipment", "consumables", "materials", "quest"]:
+	for category: String in ["all", "weapons", "armor", "consumables", "materials", "quest"]:
 		panel._change_filter(category)
 		assert(panel.tab_buttons[category].button_pressed)
 		for key: String in panel.slot_buttons:
 			if not key.begins_with("bag:"): continue
 			assert(panel._matches_filter(key.trim_prefix("bag:")))
 		assert(game.state.inventory == original, "Filtering must never mutate the inventory")
-	panel._change_filter("equipment")
+	panel._change_filter("all")
 	assert(panel.slot_buttons.has("bag:hero"))
 	panel._select("hero", "")
 	assert(not panel.action_buttons["equip"].disabled)
 	panel.action_buttons["equip"].pressed.emit()
 	await settle()
 	panel = game.ui.inventory_view
-	assert(game.state.equipment.aura.id == "hero" and panel.filter_tab == "equipment")
+	assert(game.state.equipment.aura.id == "hero" and panel.filter_tab == "all")
 	panel._select("hero", "aura")
 	assert(panel.detail_type.text == "Visual Hero" and not panel.detail_properties.text.contains("Durabilidade"))
 	panel.action_buttons["unequip"].pressed.emit()
@@ -67,7 +67,7 @@ func _run() -> void:
 	assert(game.state.count_item("gosma") == 0 and game.state.stored[0].id == "gosma")
 	panel = game.ui.inventory_view
 	assert(panel.filter_tab == "materials" and panel.selected_id.is_empty())
-	assert(panel.action_buttons["store"].disabled and panel.bag_count.text.contains("Nenhum"))
+	assert(panel.action_buttons["store"].disabled and panel.bag_count.text == "0 tipos")
 	print("INVENTORY_BOUNDS ", root.size, " viewport ", root.get_visible_rect(), " parent ", panel.get_parent().size, " rect ", panel.get_global_rect(), " scale ", panel.scale)
 	assert(root.get_visible_rect().encloses(panel.get_global_rect()), "Inventory must fit initial viewport")
 	root.size = Vector2i(960, 540)

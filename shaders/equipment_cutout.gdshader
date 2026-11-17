@@ -10,15 +10,18 @@ uniform bool colossal = false;
 uniform float head_cutoff = 0.0;
 uniform bool orc_skin = false;
 uniform vec2 attachment_size = vec2(0.0);
+uniform bool world_antialiasing = false;
 
 void vertex() {
 	equipment_tint = COLOR;
 }
 
 void fragment() {
+	vec2 pixel_dx = dFdx(UV);
+	vec2 pixel_dy = dFdy(UV);
 	vec2 snapped_uv = UV;
 	vec2 local_uv = (snapped_uv - texture_region.xy) / texture_region.zw;
-	if (attachment_size.x > 0.0) {
+	if (attachment_size.x > 0.0 && !world_antialiasing) {
 		local_uv = (floor(local_uv * attachment_size) + vec2(0.5)) / attachment_size;
 		snapped_uv = texture_region.xy + local_uv * texture_region.zw;
 	}
@@ -30,6 +33,27 @@ void fragment() {
 	vec4 source = texture(TEXTURE, snapped_uv);
 	float alpha = smoothstep(0.75, 0.95, source.a);
 	vec3 ink = source.rgb;
+	if (world_antialiasing) {
+		// Integrate the visible source area of a screen pixel before shrinking.
+		// Clean transparent matte per sample, so it cannot contaminate the edge.
+		vec2 lo = texture_region.xy + TEXTURE_PIXEL_SIZE * 0.5;
+		vec2 hi = texture_region.xy + texture_region.zw - TEXTURE_PIXEL_SIZE * 0.5;
+		vec3 total_ink = vec3(0.0);
+		float coverage = 0.0;
+		for (int y = 0; y < 4; y++) {
+			for (int x = 0; x < 4; x++) {
+				vec2 offset = (vec2(float(x),float(y)) + vec2(0.5)) / 4.0 - vec2(0.5);
+				vec4 sample_color = texture(TEXTURE,clamp(UV+pixel_dx*offset.x+pixel_dy*offset.y,lo,hi));
+				float sample_alpha = smoothstep(0.75,0.95,sample_color.a);
+				total_ink += sample_color.rgb * sample_alpha;
+				coverage += sample_alpha;
+			}
+		}
+		// Retain a little native detail without bringing back hard edge aliasing.
+		ink = mix(total_ink / max(coverage,0.00001),source.rgb,0.20*alpha);
+		alpha = coverage / 16.0;
+		source.rgb = ink;
+	}
 	bool hand_area = length((local_uv - vec2(0.23, 0.54)) / vec2(0.09, 0.08)) < 1.0 || length((local_uv - vec2(0.77, 0.55)) / vec2(0.09, 0.08)) < 1.0;
 	bool neck_area = local_uv.x > 0.36 && local_uv.x < 0.67 && local_uv.y > 0.20 && local_uv.y < 0.30;
 	if (orc_skin && (hand_area || neck_area) && source.r > source.g * 1.12 && source.g > source.b * 1.18 && source.r > 0.50) {

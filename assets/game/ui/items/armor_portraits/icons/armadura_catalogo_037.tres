@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/game/ui/items/armor_portraits/031-040.png" id="1_subc0"]
+
+[resource]
+atlas = ExtResource("1_subc0")
+region = Rect2(220, 222, 183, 168)
+filter_clip = true

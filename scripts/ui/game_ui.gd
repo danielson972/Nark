@@ -43,12 +43,16 @@ var creation_class: = "guerreiro"
 var creation_hair_style: int = 0
 var creation_hair_color: String = "castanho"
 var creation_gender_id: String = "masculino"
+var creation_beard_style: int = 0
+var creation_beard_color: String = "original"
 var creation_preview: VBoxContainer
 var name_input: LineEdit
 var rebind_action: = ""
 var rebind_buttons: Dictionary = {}
 var options_status: Label
 var current_panel: = ""
+var equipment_workspace: Control
+var status_view: Control
 var inventory_view: Control
 var skills_view: Control
 
@@ -56,9 +60,9 @@ const SkillArt = preload("res://scripts/ui/skill_icon.gd")
 const SkillCatalog = preload("res://scripts/ui/skill_catalog.gd")
 const SkillHover = preload("res://scripts/ui/skill_hover.gd")
 
-const SkillsPanelView = preload("res://scripts/ui/skills_panel.gd")
+const SkillsPanelView = preload("res://scenes/ui/skills_panel.tscn")
 
-const InventoryPanelView = preload("res://scripts/ui/inventory_panel.gd")
+const EquipmentPanelsView = preload("res://scenes/ui/equipment_panels.tscn")
 
 const MINIMAP_SIZE: = 174.0
 
@@ -459,12 +463,14 @@ func show_creation() -> void:
 	assembly.back_requested.connect(func(): show_title(SaveGame.has_save()))
 	overlay.add_child(assembly)
 
-func _submit_assembled_character(race_id: String, class_id: String, hero_name: String, hair_style: int, hair_color: String, gender_id: String) -> void:
+func _submit_assembled_character(race_id: String, class_id: String, hero_name: String, hair_style: int, hair_color: String, gender_id: String, beard_style: int = 0, beard_color: String = "original") -> void:
 	creation_race = race_id
 	creation_class = class_id
 	creation_hair_style = hair_style
 	creation_hair_color = hair_color
 	creation_gender_id = gender_id
+	creation_beard_style = beard_style
+	creation_beard_color = beard_color
 	AudioDirector.unlock_audio()
 	new_game_requested.emit(race_id, class_id, hero_name)
 
@@ -802,31 +808,52 @@ func show_pause_panel() -> void :
 	content.add_child(quit)
 
 
+func _has_equipment_workspace() -> bool:
+	return current_panel in ["inventory", "status"] and is_instance_valid(equipment_workspace) and not equipment_workspace.is_queued_for_deletion()
+
 func show_inventory_panel() -> void:
-	var item_id: String = ""
-	var equip_slot: String = ""
-	var scroll_y: int = 0
-	var category: String = "all"
-	if is_instance_valid(inventory_view) and not inventory_view.is_queued_for_deletion():
-		item_id = inventory_view.selected_id
-		equip_slot = inventory_view.selected_slot
-		scroll_y = inventory_view.bag_scroll.scroll_vertical
-		category = inventory_view.filter_tab
-	current_panel = "inventory"
+	if _has_equipment_workspace():
+		equipment_workspace.open_inventory()
+		return
+	_create_equipment_workspace(true)
+
+func show_status_panel() -> void:
+	if _has_equipment_workspace():
+		equipment_workspace.open_status()
+		return
+	_create_equipment_workspace(false)
+
+func toggle_status_panel() -> void:
+	if _has_equipment_workspace() and status_view.visible:
+		equipment_workspace._action("close_status", {})
+	else:
+		show_status_panel()
+
+func refresh_equipment_panels() -> void:
+	if _has_equipment_workspace():
+		equipment_workspace.refresh_data()
+
+func _create_equipment_workspace(with_inventory: bool) -> void:
+	current_panel = "inventory" if with_inventory else "status"
 	modal_layer.visible = true
 	for child in modal_layer.get_children():
 		modal_layer.remove_child(child)
 		child.queue_free()
-	var shade: ColorRect = ColorRect.new()
+	var shade := ColorRect.new()
 	shade.color = Color(0.015, 0.01, 0.008, 0.8)
 	modal_layer.add_child(shade)
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	inventory_view = InventoryPanelView.new()
-	inventory_view.configure(state, item_id, equip_slot, scroll_y, category)
-	inventory_view.action_requested.connect(func(action: String, payload: Dictionary) -> void:
-		panel_action.emit(action, payload)
+	equipment_workspace = EquipmentPanelsView.instantiate()
+	inventory_view = equipment_workspace.get_node("InventoryPanel")
+	status_view = equipment_workspace.get_node("StatusPanel")
+	inventory_view.configure(state)
+	status_view.configure(state)
+	inventory_view.visible = with_inventory
+	equipment_workspace.action_requested.connect(func(action: String, payload: Dictionary) -> void: panel_action.emit(action, payload))
+	equipment_workspace.panels_changed.connect(func(inventory_open: bool, status_open: bool) -> void:
+		current_panel = "inventory" if inventory_open else ("status" if status_open else "")
 	)
-	modal_layer.add_child(inventory_view)
+	modal_layer.add_child(equipment_workspace)
 
 
 func show_skills_panel(tab: String = "") -> void:
@@ -849,7 +876,7 @@ func show_skills_panel(tab: String = "") -> void:
 	shade.color = Color(0.015, 0.01, 0.008, 0.8)
 	modal_layer.add_child(shade)
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	skills_view = SkillsPanelView.new()
+	skills_view = SkillsPanelView.instantiate()
 	skills_view.configure(state, tab, selection, scroll_y)
 	skills_view.action_requested.connect(func(action: String, payload: Dictionary) -> void:
 		panel_action.emit(action, payload)
@@ -1275,7 +1302,7 @@ func _fill_developer_shop_category(parent: VBoxContainer, category: int) -> void
 		child.queue_free()
 	for id: String in GameData.ITEMS:
 		var type: String = str(GameData.item(id).get("type", ""))
-		var item_category: int = 0 if type == "arma" else (1 if type == "armadura" else 2)
+		var item_category: int = 0 if type in ["arma", "escudo"] else (1 if type == "armadura" else 2)
 		if item_category == category:
 			parent.add_child(_developer_item_row(id))
 
@@ -1303,7 +1330,7 @@ func _developer_item_row(item_id: String) -> Control:
 	title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	title.tooltip_text = "%s\n%s" % [item.get("name", item_id), item.get("desc", "")]
 	info.add_child(title)
-	var kind: String = str({"arma": "Arma", "armadura": "Armadura", "joia": "Joia", "material": "Material", "livro": "Livro", "chave": "Chave", "consumivel": "Consumível"}.get(str(item.get("type", "")), "Item"))
+	var kind: String = str({"arma": "Arma", "armadura": "Armadura", "anel": "Anel", "colar": "Colar", "talisma": "Talismã", "escudo": "Escudo", "material": "Material", "livro": "Livro", "chave": "Chave", "consumivel": "Consumível"}.get(str(item.get("type", "")), "Item"))
 	info.add_child(theme_kit.text("%s · %s · Grátis" % [kind, item.get("grade", "NG")], 11, theme_kit.MUTED))
 	for qty: int in [1, 10]:
 		var receive: Button = theme_kit.button("×%d" % qty)

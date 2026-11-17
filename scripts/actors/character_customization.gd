@@ -57,7 +57,7 @@ static func bald_body(race_id: String, gender_id: String = "masculino") -> Atlas
 	var key: String = race_id + ":" + gender_id
 	if not frames.has(key):
 		if bodies == null:
-			bodies = load(FOLDER + "bald_races_supplied.png")
+			bodies = load(FOLDER + "bald_races_beards.png")
 		var texture := AtlasTexture.new()
 		texture.atlas = bodies
 		texture.region = Rect2(maxi(RACES.find(race_id), 0) * 256, 512 if gender_id == "feminino" else 0, 256, 512)
@@ -67,6 +67,10 @@ static func bald_body(race_id: String, gender_id: String = "masculino") -> Atlas
 
 static func armored(state: PlayerState) -> bool:
 	var armor_id := str(state.equipment.get("armadura", {}).get("id", ""))
+	# The racial base already wears the starter outfit. Replacing it with the
+	# armor mannequin changes its proportions and shrinks the selected head.
+	if armor_id == "roupa_basica":
+		return false
 	return str(GameData.item(armor_id).get("type", "")) == "armadura"
 
 static func head_rect(state: PlayerState) -> Rect2:
@@ -125,3 +129,30 @@ static func scalp_rect(state: PlayerState) -> Rect2:
 	if state.gender_id == "feminino":
 		return FEMALE_SCALPS.get(state.race_id, FEMALE_SCALPS.humano)
 	return SCALPS.get(state.race_id, SCALPS.humano)
+
+const BEARD_NAMES = ["Sem barba", "Cheia", "Pontuda", "Arredondada", "Longa pontuda", "Curta", "Cavanhaque fino", "Bigode e cavanhaque", "Aparada", "Cavanhaque duplo", "Cavanhaque longo", "Volumosa", "Trança única", "Duas tranças", "Três tranças", "Selvagem", "Contorno curto", "Contorno pontudo", "Trança no queixo", "Costeletas", "Contorno com tranças"]
+const BEARD_ANCHORS = [Vector2(.43,.50),Vector2(.38,.43),Vector2(.43,.48),Vector2(.40,.43),Vector2(.43,.35),Vector2(.43,.38),Vector2(.43,.38),Vector2(.43,.48),Vector2(.43,.40),Vector2(.43,.40),Vector2(.43,.29),Vector2(.43,.19),Vector2(.43,.25),Vector2(.43,.23),Vector2(.43,.29),Vector2(.43,.27),Vector2(.43,.28),Vector2(.43,.24),Vector2(.50,.65),Vector2(.43,.27)]
+const BEARD_WIDTHS = [1.10,1.05,1.10,1.10,1.10,1.0,1.0,1.10,1.0,1.0,1.40,.95,1.30,1.35,1.35,1.0,1.10,1.10,1.0,1.10]
+static var beard_frames: Dictionary = {}
+
+static func beard_texture(style: int) -> Texture2D:
+	if style <= 0: return null
+	style = clampi(style,1,20)
+	if not beard_frames.has(style):
+		beard_frames[style] = load("res://assets/game/sprites/herois/barbas/Modelo%d.png" % style)
+	return beard_frames[style]
+
+static func beard_destination(state: PlayerState) -> Rect2:
+	var texture := beard_texture(state.beard_style)
+	if texture == null: return Rect2()
+	var source: Rect2 = head_rect(state)
+	var destination: Rect2 = head_destination(state)
+	var factor: float = destination.size.x/source.size.x
+	var mouth := Vector2(112,102)
+	if state.race_id == "orc": mouth = Vector2(110,96)
+	if state.race_id == "anao" and state.gender_id == "masculino": mouth = Vector2(103,162)
+	if state.beard_style == 19: mouth.x = scalp_rect(state).get_center().x
+	var anchor: Vector2 = destination.position + (mouth-source.position)*factor
+	var width: float = scalp_rect(state).size.x*factor*BEARD_WIDTHS[state.beard_style-1]
+	var size := Vector2(width,width*texture.get_height()/texture.get_width())
+	return Rect2(anchor-size*BEARD_ANCHORS[state.beard_style-1],size)

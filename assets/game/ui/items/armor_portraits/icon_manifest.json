@@ -1,0 +1,1302 @@
+{
+	"armadura_catalogo_001": {
+		"atlas": "001-010.png",
+		"region": [
+			22,
+			18,
+			174,
+			166
+		],
+		"resource": "icons/armadura_catalogo_001.tres"
+	},
+	"armadura_catalogo_002": {
+		"atlas": "001-010.png",
+		"region": [
+			225,
+			17,
+			170,
+			165
+		],
+		"resource": "icons/armadura_catalogo_002.tres"
+	},
+	"armadura_catalogo_003": {
+		"atlas": "001-010.png",
+		"region": [
+			418,
+			17,
+			185,
+			167
+		],
+		"resource": "icons/armadura_catalogo_003.tres"
+	},
+	"armadura_catalogo_004": {
+		"atlas": "001-010.png",
+		"region": [
+			627,
+			17,
+			173,
+			167
+		],
+		"resource": "icons/armadura_catalogo_004.tres"
+	},
+	"armadura_catalogo_005": {
+		"atlas": "001-010.png",
+		"region": [
+			828,
+			17,
+			175,
+			179
+		],
+		"resource": "icons/armadura_catalogo_005.tres"
+	},
+	"armadura_catalogo_006": {
+		"atlas": "001-010.png",
+		"region": [
+			24,
+			219,
+			172,
+			178
+		],
+		"resource": "icons/armadura_catalogo_006.tres"
+	},
+	"armadura_catalogo_007": {
+		"atlas": "001-010.png",
+		"region": [
+			222,
+			219,
+			176,
+			175
+		],
+		"resource": "icons/armadura_catalogo_007.tres"
+	},
+	"armadura_catalogo_008": {
+		"atlas": "001-010.png",
+		"region": [
+			420,
+			219,
+			183,
+			175
+		],
+		"resource": "icons/armadura_catalogo_008.tres"
+	},
+	"armadura_catalogo_009": {
+		"atlas": "001-010.png",
+		"region": [
+			622,
+			219,
+			182,
+			175
+		],
+		"resource": "icons/armadura_catalogo_009.tres"
+	},
+	"armadura_catalogo_010": {
+		"atlas": "001-010.png",
+		"region": [
+			820,
+			219,
+			190,
+			175
+		],
+		"resource": "icons/armadura_catalogo_010.tres"
+	},
+	"armadura_catalogo_011": {
+		"atlas": "011-020.png",
+		"region": [
+			26,
+			24,
+			170,
+			159
+		],
+		"resource": "icons/armadura_catalogo_011.tres"
+	},
+	"armadura_catalogo_012": {
+		"atlas": "011-020.png",
+		"region": [
+			235,
+			23,
+			161,
+			160
+		],
+		"resource": "icons/armadura_catalogo_012.tres"
+	},
+	"armadura_catalogo_013": {
+		"atlas": "011-020.png",
+		"region": [
+			433,
+			24,
+			160,
+			157
+		],
+		"resource": "icons/armadura_catalogo_013.tres"
+	},
+	"armadura_catalogo_014": {
+		"atlas": "011-020.png",
+		"region": [
+			630,
+			23,
+			162,
+			158
+		],
+		"resource": "icons/armadura_catalogo_014.tres"
+	},
+	"armadura_catalogo_015": {
+		"atlas": "011-020.png",
+		"region": [
+			831,
+			23,
+			167,
+			159
+		],
+		"resource": "icons/armadura_catalogo_015.tres"
+	},
+	"armadura_catalogo_016": {
+		"atlas": "011-020.png",
+		"region": [
+			28,
+			219,
+			164,
+			164
+		],
+		"resource": "icons/armadura_catalogo_016.tres"
+	},
+	"armadura_catalogo_017": {
+		"atlas": "011-020.png",
+		"region": [
+			227,
+			220,
+			167,
+			163
+		],
+		"resource": "icons/armadura_catalogo_017.tres"
+	},
+	"armadura_catalogo_018": {
+		"atlas": "011-020.png",
+		"region": [
+			421,
+			221,
+			172,
+			162
+		],
+		"resource": "icons/armadura_catalogo_018.tres"
+	},
+	"armadura_catalogo_019": {
+		"atlas": "011-020.png",
+		"region": [
+			623,
+			222,
+			174,
+			160
+		],
+		"resource": "icons/armadura_catalogo_019.tres"
+	},
+	"armadura_catalogo_020": {
+		"atlas": "011-020.png",
+		"region": [
+			828,
+			220,
+			173,
+			162
+		],
+		"resource": "icons/armadura_catalogo_020.tres"
+	},
+	"armadura_catalogo_021": {
+		"atlas": "021-030.png",
+		"region": [
+			29,
+			57,
+			175,
+			184
+		],
+		"resource": "icons/armadura_catalogo_021.tres"
+	},
+	"armadura_catalogo_022": {
+		"atlas": "021-030.png",
+		"region": [
+			204,
+			58,
+			197,
+			180
+		],
+		"resource": "icons/armadura_catalogo_022.tres"
+	},
+	"armadura_catalogo_023": {
+		"atlas": "021-030.png",
+		"region": [
+			421,
+			57,
+			177,
+			181
+		],
+		"resource": "icons/armadura_catalogo_023.tres"
+	},
+	"armadura_catalogo_024": {
+		"atlas": "021-030.png",
+		"region": [
+			620,
+			57,
+			199,
+			189
+		],
+		"resource": "icons/armadura_catalogo_024.tres"
+	},
+	"armadura_catalogo_025": {
+		"atlas": "021-030.png",
+		"region": [
+			819,
+			58,
+			182,
+			180
+		],
+		"resource": "icons/armadura_catalogo_025.tres"
+	},
+	"armadura_catalogo_026": {
+		"atlas": "021-030.png",
+		"region": [
+			27,
+			276,
+			177,
+			192
+		],
+		"resource": "icons/armadura_catalogo_026.tres"
+	},
+	"armadura_catalogo_027": {
+		"atlas": "021-030.png",
+		"region": [
+			204,
+			276,
+			203,
+			186
+		],
+		"resource": "icons/armadura_catalogo_027.tres"
+	},
+	"armadura_catalogo_028": {
+		"atlas": "021-030.png",
+		"region": [
+			421,
+			276,
+			177,
+			191
+		],
+		"resource": "icons/armadura_catalogo_028.tres"
+	},
+	"armadura_catalogo_029": {
+		"atlas": "021-030.png",
+		"region": [
+			618,
+			276,
+			201,
+			188
+		],
+		"resource": "icons/armadura_catalogo_029.tres"
+	},
+	"armadura_catalogo_030": {
+		"atlas": "021-030.png",
+		"region": [
+			819,
+			276,
+			183,
+			192
+		],
+		"resource": "icons/armadura_catalogo_030.tres"
+	},
+	"armadura_catalogo_031": {
+		"atlas": "031-040.png",
+		"region": [
+			25,
+			21,
+			173,
+			161
+		],
+		"resource": "icons/armadura_catalogo_031.tres"
+	},
+	"armadura_catalogo_032": {
+		"atlas": "031-040.png",
+		"region": [
+			222,
+			21,
+			179,
+			168
+		],
+		"resource": "icons/armadura_catalogo_032.tres"
+	},
+	"armadura_catalogo_033": {
+		"atlas": "031-040.png",
+		"region": [
+			423,
+			21,
+			177,
+			168
+		],
+		"resource": "icons/armadura_catalogo_033.tres"
+	},
+	"armadura_catalogo_034": {
+		"atlas": "031-040.png",
+		"region": [
+			622,
+			21,
+			179,
+			165
+		],
+		"resource": "icons/armadura_catalogo_034.tres"
+	},
+	"armadura_catalogo_035": {
+		"atlas": "031-040.png",
+		"region": [
+			821,
+			21,
+			184,
+			168
+		],
+		"resource": "icons/armadura_catalogo_035.tres"
+	},
+	"armadura_catalogo_036": {
+		"atlas": "031-040.png",
+		"region": [
+			17,
+			222,
+			186,
+			170
+		],
+		"resource": "icons/armadura_catalogo_036.tres"
+	},
+	"armadura_catalogo_037": {
+		"atlas": "031-040.png",
+		"region": [
+			220,
+			222,
+			183,
+			168
+		],
+		"resource": "icons/armadura_catalogo_037.tres"
+	},
+	"armadura_catalogo_038": {
+		"atlas": "031-040.png",
+		"region": [
+			419,
+			222,
+			185,
+			169
+		],
+		"resource": "icons/armadura_catalogo_038.tres"
+	},
+	"armadura_catalogo_039": {
+		"atlas": "031-040.png",
+		"region": [
+			619,
+			222,
+			186,
+			167
+		],
+		"resource": "icons/armadura_catalogo_039.tres"
+	},
+	"armadura_catalogo_040": {
+		"atlas": "031-040.png",
+		"region": [
+			819,
+			222,
+			191,
+			168
+		],
+		"resource": "icons/armadura_catalogo_040.tres"
+	},
+	"armadura_catalogo_041": {
+		"atlas": "041-050.png",
+		"region": [
+			32,
+			28,
+			164,
+			152
+		],
+		"resource": "icons/armadura_catalogo_041.tres"
+	},
+	"armadura_catalogo_042": {
+		"atlas": "041-050.png",
+		"region": [
+			227,
+			26,
+			167,
+			155
+		],
+		"resource": "icons/armadura_catalogo_042.tres"
+	},
+	"armadura_catalogo_043": {
+		"atlas": "041-050.png",
+		"region": [
+			426,
+			27,
+			172,
+			157
+		],
+		"resource": "icons/armadura_catalogo_043.tres"
+	},
+	"armadura_catalogo_044": {
+		"atlas": "041-050.png",
+		"region": [
+			626,
+			27,
+			166,
+			155
+		],
+		"resource": "icons/armadura_catalogo_044.tres"
+	},
+	"armadura_catalogo_045": {
+		"atlas": "041-050.png",
+		"region": [
+			822,
+			28,
+			171,
+			155
+		],
+		"resource": "icons/armadura_catalogo_045.tres"
+	},
+	"armadura_catalogo_046": {
+		"atlas": "041-050.png",
+		"region": [
+			32,
+			225,
+			166,
+			158
+		],
+		"resource": "icons/armadura_catalogo_046.tres"
+	},
+	"armadura_catalogo_047": {
+		"atlas": "041-050.png",
+		"region": [
+			229,
+			225,
+			164,
+			155
+		],
+		"resource": "icons/armadura_catalogo_047.tres"
+	},
+	"armadura_catalogo_048": {
+		"atlas": "041-050.png",
+		"region": [
+			421,
+			225,
+			180,
+			160
+		],
+		"resource": "icons/armadura_catalogo_048.tres"
+	},
+	"armadura_catalogo_049": {
+		"atlas": "041-050.png",
+		"region": [
+			625,
+			225,
+			169,
+			156
+		],
+		"resource": "icons/armadura_catalogo_049.tres"
+	},
+	"armadura_catalogo_050": {
+		"atlas": "041-050.png",
+		"region": [
+			819,
+			225,
+			180,
+			161
+		],
+		"resource": "icons/armadura_catalogo_050.tres"
+	},
+	"armadura_catalogo_051": {
+		"atlas": "051-060.png",
+		"region": [
+			27,
+			22,
+			171,
+			158
+		],
+		"resource": "icons/armadura_catalogo_051.tres"
+	},
+	"armadura_catalogo_052": {
+		"atlas": "051-060.png",
+		"region": [
+			229,
+			22,
+			167,
+			160
+		],
+		"resource": "icons/armadura_catalogo_052.tres"
+	},
+	"armadura_catalogo_053": {
+		"atlas": "051-060.png",
+		"region": [
+			423,
+			22,
+			177,
+			160
+		],
+		"resource": "icons/armadura_catalogo_053.tres"
+	},
+	"armadura_catalogo_054": {
+		"atlas": "051-060.png",
+		"region": [
+			625,
+			22,
+			175,
+			162
+		],
+		"resource": "icons/armadura_catalogo_054.tres"
+	},
+	"armadura_catalogo_055": {
+		"atlas": "051-060.png",
+		"region": [
+			827,
+			22,
+			175,
+			162
+		],
+		"resource": "icons/armadura_catalogo_055.tres"
+	},
+	"armadura_catalogo_056": {
+		"atlas": "051-060.png",
+		"region": [
+			26,
+			223,
+			177,
+			165
+		],
+		"resource": "icons/armadura_catalogo_056.tres"
+	},
+	"armadura_catalogo_057": {
+		"atlas": "051-060.png",
+		"region": [
+			225,
+			223,
+			176,
+			163
+		],
+		"resource": "icons/armadura_catalogo_057.tres"
+	},
+	"armadura_catalogo_058": {
+		"atlas": "051-060.png",
+		"region": [
+			421,
+			221,
+			180,
+			167
+		],
+		"resource": "icons/armadura_catalogo_058.tres"
+	},
+	"armadura_catalogo_059": {
+		"atlas": "051-060.png",
+		"region": [
+			623,
+			223,
+			181,
+			169
+		],
+		"resource": "icons/armadura_catalogo_059.tres"
+	},
+	"armadura_catalogo_060": {
+		"atlas": "051-060.png",
+		"region": [
+			821,
+			221,
+			187,
+			175
+		],
+		"resource": "icons/armadura_catalogo_060.tres"
+	},
+	"armadura_catalogo_061": {
+		"atlas": "061-070.png",
+		"region": [
+			28,
+			54,
+			175,
+			170
+		],
+		"resource": "icons/armadura_catalogo_061.tres"
+	},
+	"armadura_catalogo_062": {
+		"atlas": "061-070.png",
+		"region": [
+			223,
+			54,
+			180,
+			171
+		],
+		"resource": "icons/armadura_catalogo_062.tres"
+	},
+	"armadura_catalogo_063": {
+		"atlas": "061-070.png",
+		"region": [
+			424,
+			54,
+			176,
+			170
+		],
+		"resource": "icons/armadura_catalogo_063.tres"
+	},
+	"armadura_catalogo_064": {
+		"atlas": "061-070.png",
+		"region": [
+			625,
+			54,
+			169,
+			175
+		],
+		"resource": "icons/armadura_catalogo_064.tres"
+	},
+	"armadura_catalogo_065": {
+		"atlas": "061-070.png",
+		"region": [
+			819,
+			54,
+			179,
+			174
+		],
+		"resource": "icons/armadura_catalogo_065.tres"
+	},
+	"armadura_catalogo_066": {
+		"atlas": "061-070.png",
+		"region": [
+			25,
+			279,
+			178,
+			179
+		],
+		"resource": "icons/armadura_catalogo_066.tres"
+	},
+	"armadura_catalogo_067": {
+		"atlas": "061-070.png",
+		"region": [
+			222,
+			280,
+			177,
+			175
+		],
+		"resource": "icons/armadura_catalogo_067.tres"
+	},
+	"armadura_catalogo_068": {
+		"atlas": "061-070.png",
+		"region": [
+			422,
+			278,
+			176,
+			176
+		],
+		"resource": "icons/armadura_catalogo_068.tres"
+	},
+	"armadura_catalogo_069": {
+		"atlas": "061-070.png",
+		"region": [
+			620,
+			281,
+			181,
+			173
+		],
+		"resource": "icons/armadura_catalogo_069.tres"
+	},
+	"armadura_catalogo_070": {
+		"atlas": "061-070.png",
+		"region": [
+			819,
+			278,
+			183,
+			176
+		],
+		"resource": "icons/armadura_catalogo_070.tres"
+	},
+	"armadura_catalogo_071": {
+		"atlas": "071-080.png",
+		"region": [
+			26,
+			44,
+			178,
+			183
+		],
+		"resource": "icons/armadura_catalogo_071.tres"
+	},
+	"armadura_catalogo_072": {
+		"atlas": "071-080.png",
+		"region": [
+			204,
+			44,
+			203,
+			181
+		],
+		"resource": "icons/armadura_catalogo_072.tres"
+	},
+	"armadura_catalogo_073": {
+		"atlas": "071-080.png",
+		"region": [
+			424,
+			44,
+			181,
+			182
+		],
+		"resource": "icons/armadura_catalogo_073.tres"
+	},
+	"armadura_catalogo_074": {
+		"atlas": "071-080.png",
+		"region": [
+			620,
+			45,
+			181,
+			181
+		],
+		"resource": "icons/armadura_catalogo_074.tres"
+	},
+	"armadura_catalogo_075": {
+		"atlas": "071-080.png",
+		"region": [
+			819,
+			45,
+			179,
+			181
+		],
+		"resource": "icons/armadura_catalogo_075.tres"
+	},
+	"armadura_catalogo_076": {
+		"atlas": "071-080.png",
+		"region": [
+			22,
+			283,
+			182,
+			191
+		],
+		"resource": "icons/armadura_catalogo_076.tres"
+	},
+	"armadura_catalogo_077": {
+		"atlas": "071-080.png",
+		"region": [
+			204,
+			283,
+			203,
+			195
+		],
+		"resource": "icons/armadura_catalogo_077.tres"
+	},
+	"armadura_catalogo_078": {
+		"atlas": "071-080.png",
+		"region": [
+			417,
+			283,
+			187,
+			195
+		],
+		"resource": "icons/armadura_catalogo_078.tres"
+	},
+	"armadura_catalogo_079": {
+		"atlas": "071-080.png",
+		"region": [
+			614,
+			283,
+			193,
+			193
+		],
+		"resource": "icons/armadura_catalogo_079.tres"
+	},
+	"armadura_catalogo_080": {
+		"atlas": "071-080.png",
+		"region": [
+			819,
+			283,
+			185,
+			198
+		],
+		"resource": "icons/armadura_catalogo_080.tres"
+	},
+	"armadura_catalogo_081": {
+		"atlas": "081-090.png",
+		"region": [
+			29,
+			25,
+			168,
+			163
+		],
+		"resource": "icons/armadura_catalogo_081.tres"
+	},
+	"armadura_catalogo_082": {
+		"atlas": "081-090.png",
+		"region": [
+			232,
+			25,
+			168,
+			163
+		],
+		"resource": "icons/armadura_catalogo_082.tres"
+	},
+	"armadura_catalogo_083": {
+		"atlas": "081-090.png",
+		"region": [
+			426,
+			26,
+			170,
+			163
+		],
+		"resource": "icons/armadura_catalogo_083.tres"
+	},
+	"armadura_catalogo_084": {
+		"atlas": "081-090.png",
+		"region": [
+			625,
+			26,
+			175,
+			167
+		],
+		"resource": "icons/armadura_catalogo_084.tres"
+	},
+	"armadura_catalogo_085": {
+		"atlas": "081-090.png",
+		"region": [
+			821,
+			26,
+			177,
+			167
+		],
+		"resource": "icons/armadura_catalogo_085.tres"
+	},
+	"armadura_catalogo_086": {
+		"atlas": "081-090.png",
+		"region": [
+			24,
+			220,
+			180,
+			168
+		],
+		"resource": "icons/armadura_catalogo_086.tres"
+	},
+	"armadura_catalogo_087": {
+		"atlas": "081-090.png",
+		"region": [
+			231,
+			220,
+			172,
+			168
+		],
+		"resource": "icons/armadura_catalogo_087.tres"
+	},
+	"armadura_catalogo_088": {
+		"atlas": "081-090.png",
+		"region": [
+			424,
+			220,
+			177,
+			168
+		],
+		"resource": "icons/armadura_catalogo_088.tres"
+	},
+	"armadura_catalogo_089": {
+		"atlas": "081-090.png",
+		"region": [
+			625,
+			220,
+			176,
+			168
+		],
+		"resource": "icons/armadura_catalogo_089.tres"
+	},
+	"armadura_catalogo_090": {
+		"atlas": "081-090.png",
+		"region": [
+			819,
+			220,
+			183,
+			168
+		],
+		"resource": "icons/armadura_catalogo_090.tres"
+	},
+	"armadura_catalogo_091": {
+		"atlas": "091-100.png",
+		"region": [
+			30,
+			61,
+			174,
+			173
+		],
+		"resource": "icons/armadura_catalogo_091.tres"
+	},
+	"armadura_catalogo_092": {
+		"atlas": "091-100.png",
+		"region": [
+			204,
+			62,
+			198,
+			166
+		],
+		"resource": "icons/armadura_catalogo_092.tres"
+	},
+	"armadura_catalogo_093": {
+		"atlas": "091-100.png",
+		"region": [
+			415,
+			62,
+			199,
+			167
+		],
+		"resource": "icons/armadura_catalogo_093.tres"
+	},
+	"armadura_catalogo_094": {
+		"atlas": "091-100.png",
+		"region": [
+			614,
+			61,
+			205,
+			167
+		],
+		"resource": "icons/armadura_catalogo_094.tres"
+	},
+	"armadura_catalogo_095": {
+		"atlas": "091-100.png",
+		"region": [
+			819,
+			62,
+			178,
+			169
+		],
+		"resource": "icons/armadura_catalogo_095.tres"
+	},
+	"armadura_catalogo_096": {
+		"atlas": "091-100.png",
+		"region": [
+			23,
+			281,
+			181,
+			159
+		],
+		"resource": "icons/armadura_catalogo_096.tres"
+	},
+	"armadura_catalogo_097": {
+		"atlas": "091-100.png",
+		"region": [
+			204,
+			281,
+			201,
+			159
+		],
+		"resource": "icons/armadura_catalogo_097.tres"
+	},
+	"armadura_catalogo_098": {
+		"atlas": "091-100.png",
+		"region": [
+			412,
+			281,
+			202,
+			162
+		],
+		"resource": "icons/armadura_catalogo_098.tres"
+	},
+	"armadura_catalogo_099": {
+		"atlas": "091-100.png",
+		"region": [
+			614,
+			281,
+			205,
+			165
+		],
+		"resource": "icons/armadura_catalogo_099.tres"
+	},
+	"armadura_catalogo_100": {
+		"atlas": "091-100.png",
+		"region": [
+			819,
+			281,
+			185,
+			165
+		],
+		"resource": "icons/armadura_catalogo_100.tres"
+	},
+	"assassino/armadura_b": {
+		"atlas": "classes-guerreiro-assassino.png",
+		"region": [
+			821,
+			223,
+			186,
+			165
+		],
+		"resource": "icons/assassino/armadura_b.tres"
+	},
+	"assassino/armadura_c": {
+		"atlas": "classes-guerreiro-assassino.png",
+		"region": [
+			616,
+			224,
+			186,
+			164
+		],
+		"resource": "icons/assassino/armadura_c.tres"
+	},
+	"assassino/armadura_d": {
+		"atlas": "classes-guerreiro-assassino.png",
+		"region": [
+			416,
+			218,
+			184,
+			170
+		],
+		"resource": "icons/assassino/armadura_d.tres"
+	},
+	"assassino/armadura_ng": {
+		"atlas": "classes-guerreiro-assassino.png",
+		"region": [
+			232,
+			217,
+			161,
+			175
+		],
+		"resource": "icons/assassino/armadura_ng.tres"
+	},
+	"assassino/roupa_basica": {
+		"atlas": "classes-guerreiro-assassino.png",
+		"region": [
+			22,
+			223,
+			178,
+			168
+		],
+		"resource": "icons/assassino/roupa_basica.tres"
+	},
+	"atirador/armadura_b": {
+		"atlas": "classes-atirador-mago.png",
+		"region": [
+			819,
+			15,
+			182,
+			179
+		],
+		"resource": "icons/atirador/armadura_b.tres"
+	},
+	"atirador/armadura_c": {
+		"atlas": "classes-atirador-mago.png",
+		"region": [
+			627,
+			16,
+			172,
+			177
+		],
+		"resource": "icons/atirador/armadura_c.tres"
+	},
+	"atirador/armadura_d": {
+		"atlas": "classes-atirador-mago.png",
+		"region": [
+			424,
+			15,
+			180,
+			178
+		],
+		"resource": "icons/atirador/armadura_d.tres"
+	},
+	"atirador/armadura_ng": {
+		"atlas": "classes-atirador-mago.png",
+		"region": [
+			204,
+			15,
+			193,
+			178
+		],
+		"resource": "icons/atirador/armadura_ng.tres"
+	},
+	"atirador/roupa_basica": {
+		"atlas": "classes-atirador-mago.png",
+		"region": [
+			24,
+			16,
+			180,
+			176
+		],
+		"resource": "icons/atirador/roupa_basica.tres"
+	},
+	"cavaleiro/armadura_b": {
+		"atlas": "classes-tank-cavaleiro.png",
+		"region": [
+			819,
+			217,
+			191,
+			178
+		],
+		"resource": "icons/cavaleiro/armadura_b.tres"
+	},
+	"cavaleiro/armadura_c": {
+		"atlas": "classes-tank-cavaleiro.png",
+		"region": [
+			617,
+			217,
+			189,
+			176
+		],
+		"resource": "icons/cavaleiro/armadura_c.tres"
+	},
+	"cavaleiro/armadura_d": {
+		"atlas": "classes-tank-cavaleiro.png",
+		"region": [
+			417,
+			217,
+			188,
+			176
+		],
+		"resource": "icons/cavaleiro/armadura_d.tres"
+	},
+	"cavaleiro/armadura_ng": {
+		"atlas": "classes-tank-cavaleiro.png",
+		"region": [
+			220,
+			217,
+			185,
+			177
+		],
+		"resource": "icons/cavaleiro/armadura_ng.tres"
+	},
+	"cavaleiro/roupa_basica": {
+		"atlas": "classes-tank-cavaleiro.png",
+		"region": [
+			20,
+			219,
+			181,
+			173
+		],
+		"resource": "icons/cavaleiro/roupa_basica.tres"
+	},
+	"guerreiro/armadura_b": {
+		"atlas": "classes-guerreiro-assassino.png",
+		"region": [
+			819,
+			16,
+			191,
+			172
+		],
+		"resource": "icons/guerreiro/armadura_b.tres"
+	},
+	"guerreiro/armadura_c": {
+		"atlas": "classes-guerreiro-assassino.png",
+		"region": [
+			617,
+			15,
+			186,
+			174
+		],
+		"resource": "icons/guerreiro/armadura_c.tres"
+	},
+	"guerreiro/armadura_d": {
+		"atlas": "classes-guerreiro-assassino.png",
+		"region": [
+			419,
+			17,
+			184,
+			173
+		],
+		"resource": "icons/guerreiro/armadura_d.tres"
+	},
+	"guerreiro/armadura_ng": {
+		"atlas": "classes-guerreiro-assassino.png",
+		"region": [
+			204,
+			14,
+			199,
+			176
+		],
+		"resource": "icons/guerreiro/armadura_ng.tres"
+	},
+	"guerreiro/roupa_basica": {
+		"atlas": "classes-guerreiro-assassino.png",
+		"region": [
+			16,
+			21,
+			188,
+			169
+		],
+		"resource": "icons/guerreiro/roupa_basica.tres"
+	},
+	"mago/armadura_b": {
+		"atlas": "classes-atirador-mago.png",
+		"region": [
+			819,
+			215,
+			182,
+			180
+		],
+		"resource": "icons/mago/armadura_b.tres"
+	},
+	"mago/armadura_c": {
+		"atlas": "classes-atirador-mago.png",
+		"region": [
+			620,
+			215,
+			199,
+			179
+		],
+		"resource": "icons/mago/armadura_c.tres"
+	},
+	"mago/armadura_d": {
+		"atlas": "classes-atirador-mago.png",
+		"region": [
+			421,
+			214,
+			181,
+			179
+		],
+		"resource": "icons/mago/armadura_d.tres"
+	},
+	"mago/armadura_ng": {
+		"atlas": "classes-atirador-mago.png",
+		"region": [
+			204,
+			214,
+			205,
+			179
+		],
+		"resource": "icons/mago/armadura_ng.tres"
+	},
+	"mago/roupa_basica": {
+		"atlas": "classes-atirador-mago.png",
+		"region": [
+			23,
+			218,
+			181,
+			177
+		],
+		"resource": "icons/mago/roupa_basica.tres"
+	},
+	"tank/armadura_b": {
+		"atlas": "classes-tank-cavaleiro.png",
+		"region": [
+			821,
+			15,
+			189,
+			176
+		],
+		"resource": "icons/tank/armadura_b.tres"
+	},
+	"tank/armadura_c": {
+		"atlas": "classes-tank-cavaleiro.png",
+		"region": [
+			622,
+			15,
+			183,
+			174
+		],
+		"resource": "icons/tank/armadura_c.tres"
+	},
+	"tank/armadura_d": {
+		"atlas": "classes-tank-cavaleiro.png",
+		"region": [
+			421,
+			16,
+			183,
+			174
+		],
+		"resource": "icons/tank/armadura_d.tres"
+	},
+	"tank/armadura_ng": {
+		"atlas": "classes-tank-cavaleiro.png",
+		"region": [
+			223,
+			15,
+			180,
+			173
+		],
+		"resource": "icons/tank/armadura_ng.tres"
+	},
+	"tank/roupa_basica": {
+		"atlas": "classes-tank-cavaleiro.png",
+		"region": [
+			24,
+			16,
+			177,
+			173
+		],
+		"resource": "icons/tank/roupa_basica.tres"
+	}
+}
