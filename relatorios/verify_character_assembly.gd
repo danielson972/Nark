@@ -29,7 +29,7 @@ func _run() -> void:
 					assert(hero.character_parts.head.visible == Custom.armored(state))
 					var stats := [state.max_hp(), state.damage_power(), state.defense_power(), state.move_speed()]
 					state.set_hair(10, "loiro")
-					assert(hero.character_parts.hair.visible and hero.character_parts.hair.material.get_shader_parameter("face_mask_enabled"))
+					assert(hero.character_parts.hair.visible and hero.character_parts.hair.texture == Custom.fitted_hair_texture(state))
 					assert(stats == [state.max_hp(), state.damage_power(), state.defense_power(), state.move_speed()])
 					var loaded := PlayerState.new()
 					loaded.from_dict(JSON.parse_string(JSON.stringify(state.to_dict())))

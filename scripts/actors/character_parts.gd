@@ -3,7 +3,10 @@ const Custom = preload("res://scripts/actors/character_customization.gd")
 const Appearance = preload("res://scripts/actors/hero_appearance.gd")
 var head: Sprite2D
 var hair: Sprite2D
+var ear: Sprite2D
+var tooth: Sprite2D
 var configuration_key: String = ""
+var hair_enabled: bool = true
 
 func _init() -> void:
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -11,14 +14,26 @@ func _init() -> void:
 	head = Sprite2D.new()
 	head.centered = false
 	head.show_behind_parent = true
-	head.material = Appearance.cutout_material()
+	var head_material := ShaderMaterial.new()
+	head_material.shader = Appearance.CUTOUT_SHADER
+	head.material = head_material
 	add_child(head)
 	hair = Sprite2D.new()
 	hair.centered = false
-	var color_material := ShaderMaterial.new()
-	color_material.shader = preload("res://shaders/character_hair.gdshader")
-	hair.material = color_material
+	hair.visible = false
 	add_child(hair)
+	ear = Sprite2D.new()
+	ear.name = "Orelha"
+	ear.centered = false
+	ear.z_index = 1
+	ear.visible = false
+	add_child(ear)
+	tooth = Sprite2D.new()
+	tooth.name = "DenteEsquerdo"
+	tooth.centered = false
+	tooth.z_index = 1
+	tooth.visible = false
+	add_child(tooth)
 
 func _ready() -> void:
 	# Draw behind the body at its own canvas depth, above map/UI backgrounds.
@@ -29,7 +44,7 @@ func _attach_head() -> void:
 		head.reparent(get_parent())
 
 func configure(state: PlayerState, origin: Vector2, scale_factor: Vector2, mirrored: bool = false) -> void:
-	var key: String = "%s:%s:%s:%s:%s:%s:%s:%s" % [state.race_id, state.gender_id, Custom.armored(state), state.hair_style, state.hair_color, origin, scale_factor, mirrored]
+	var key: String = "%s:%s:%s:%s:%s:%s:%s:%s:%s" % [state.race_id, state.gender_id, Custom.armored(state), state.hair_style, state.hair_color, origin, scale_factor, mirrored, hair_enabled]
 	if key == configuration_key:
 		return
 	configuration_key = key
@@ -43,26 +58,33 @@ func configure(state: PlayerState, origin: Vector2, scale_factor: Vector2, mirro
 		patch.region = Rect2(body.region.position + source.position, source.size)
 		patch.filter_clip = true
 		head.texture = patch
+		var atlas_size: Vector2 = body.atlas.get_size()
+		head.material.set_shader_parameter("texture_region", Vector4(patch.region.position.x / atlas_size.x, patch.region.position.y / atlas_size.y, patch.region.size.x / atlas_size.x, patch.region.size.y / atlas_size.y))
+		head.material.set_shader_parameter("attachment_size", destination.size.round())
 		_place(head, destination, origin, scale_factor, mirrored)
-	hair.visible = state.hair_style > 0
+	hair.visible = hair_enabled and state.hair_style > 0
 	if hair.visible:
-		hair.texture = Custom.hair_texture(state.hair_style)
-		hair.material.set_shader_parameter("hair_color", Custom.COLORS.get(state.hair_color, Custom.COLORS.castanho))
-		var hair_destination: Rect2 = Custom.hair_destination(state)
-		_place(hair, hair_destination, origin, scale_factor, mirrored)
-		# Occlude hair with the actual head silhouette rather than drawing a
-		# rectangular face patch over it (which cut long styles at the neck).
-		var body := Custom.bald_body(state.race_id, state.gender_id)
-		var body_atlas_size: Vector2 = body.atlas.get_size()
-		var hair_atlas_size: Vector2 = hair.texture.atlas.get_size()
-		hair.material.set_shader_parameter("face_mask_enabled", true)
-		hair.material.set_shader_parameter("bald_base", body.atlas)
-		hair.material.set_shader_parameter("bald_region", Vector4(body.region.position.x / body_atlas_size.x, body.region.position.y / body_atlas_size.y, body.region.size.x / body_atlas_size.x, body.region.size.y / body_atlas_size.y))
-		hair.material.set_shader_parameter("hair_region", Vector4(hair.texture.region.position.x / hair_atlas_size.x, hair.texture.region.position.y / hair_atlas_size.y, hair.texture.region.size.x / hair_atlas_size.x, hair.texture.region.size.y / hair_atlas_size.y))
-		hair.material.set_shader_parameter("hair_destination", Vector4(hair_destination.position.x, hair_destination.position.y, hair_destination.size.x, hair_destination.size.y))
-		hair.material.set_shader_parameter("head_source", Vector4(source.position.x, source.position.y, source.size.x, source.size.y))
-		hair.material.set_shader_parameter("head_destination", Vector4(destination.position.x, destination.position.y, destination.size.x, destination.size.y))
-		hair.material.set_shader_parameter("face_top", Custom.scalp_rect(state).position.y + 43.0)
+		hair.texture = Custom.fitted_hair_texture(state)
+		if hair.material == null:
+			var color_material := ShaderMaterial.new()
+			color_material.shader = preload("res://shaders/fitted_hair.gdshader")
+			hair.material = color_material
+		hair.material.set_shader_parameter("hair_color", Custom.COLORS[state.hair_color])
+		_place(hair, Custom.fitted_hair_destination(state), origin, scale_factor, mirrored)
+	ear.visible = hair.visible and state.race_id in ["elfo", "orc"]
+	if ear.visible:
+		ear.texture = load("res://assets/game/sprites/herois/bases/orelha_%s_%s.png" % [state.race_id, state.gender_id])
+		var head_factor: float = destination.size.x / source.size.x
+		var ear_origin := Vector2(138, 46) if state.race_id == "orc" else Vector2(140, 50)
+		var ear_rect := Rect2(destination.position + (ear_origin - source.position) * head_factor, ear.texture.get_size() * head_factor)
+		_place(ear, ear_rect, origin, scale_factor, mirrored)
+	tooth.visible = hair.visible and state.race_id == "orc"
+	if tooth.visible:
+		tooth.texture = load("res://assets/game/sprites/herois/bases/dente_esquerdo_orc_%s.png" % state.gender_id)
+		var tooth_origin := Vector2(81, 81) if state.gender_id == "masculino" else Vector2(95, 77)
+		var head_factor: float = destination.size.x / source.size.x
+		var tooth_rect := Rect2(destination.position + (tooth_origin - source.position) * head_factor, tooth.texture.get_size() * head_factor)
+		_place(tooth, tooth_rect, origin, scale_factor, mirrored)
 
 func _place(part: Sprite2D, rect: Rect2, origin: Vector2, factor: Vector2, mirrored: bool) -> void:
 	part.position = origin + rect.position * factor

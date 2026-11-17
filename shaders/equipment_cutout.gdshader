@@ -9,6 +9,7 @@ uniform vec2 grip_position = vec2(0.5);
 uniform bool colossal = false;
 uniform float head_cutoff = 0.0;
 uniform bool orc_skin = false;
+uniform vec2 attachment_size = vec2(0.0);
 
 void vertex() {
 	equipment_tint = COLOR;
@@ -17,6 +18,10 @@ void vertex() {
 void fragment() {
 	vec2 snapped_uv = UV;
 	vec2 local_uv = (snapped_uv - texture_region.xy) / texture_region.zw;
+	if (attachment_size.x > 0.0) {
+		local_uv = (floor(local_uv * attachment_size) + vec2(0.5)) / attachment_size;
+		snapped_uv = texture_region.xy + local_uv * texture_region.zw;
+	}
 	if (local_uv.y < head_cutoff && local_uv.x > 0.26 && local_uv.x < 0.74) { discard; }
 	// The far end of a sword grip goes behind the closed fist, not through it.
 	if (trim_grip && dot(local_uv - grip_position, normalize(vec2(1.0, -1.0))) > 0.0) {

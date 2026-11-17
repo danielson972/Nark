@@ -4,11 +4,16 @@ extends Control
 const Appearance = preload("res://scripts/actors/hero_appearance.gd")
 const ItemArt = preload("res://scripts/ui/item_catalog.gd")
 var state: PlayerState
+@export var show_hair: bool = true
+@export var draw_character: bool = true
 var held_weapon: Sprite2D
 var held_hand: Sprite2D
 var character_parts: Node2D
 
 func _ready() -> void:
+	var editor_base := get_node_or_null("BaseCarecaEditor")
+	if editor_base != null:
+		editor_base.hide()
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	material = Appearance.cutout_material()
@@ -27,6 +32,11 @@ func _ready() -> void:
 		state.equipment_changed.connect(queue_redraw)
 
 func _draw() -> void:
+	if not draw_character:
+		if is_instance_valid(character_parts): character_parts.hide()
+		if is_instance_valid(held_weapon): held_weapon.hide()
+		if is_instance_valid(held_hand): held_hand.hide()
+		return
 	if state == null:
 		return
 	var body: Texture2D = Appearance.body_texture(state)
@@ -35,11 +45,17 @@ func _draw() -> void:
 		material = body_material
 	held_hand.material = body_material
 	var source_size: Vector2 = body.get_size()
-	var factor: float = minf(size.x / (source_size.x * 1.15), size.y / source_size.y)
+	# Fit the complete bald base with a small portrait margin.
+	var content := Rect2(Vector2.ZERO, source_size)
+	content = content.grow(8.0)
+	if not str(state.equipment.get("arma", {}).get("id", "")).is_empty():
+		content = content.merge(Rect2(-96, -8, 360, 528))
+	var factor: float = minf(size.x / (content.size.x * 1.15), size.y / content.size.y)
 	factor *= 0.85 if state.race_id == "anao" else 1.0
 	var destination_size: Vector2 = source_size * factor
-	var origin: Vector2 = (size - destination_size) * 0.5
+	var origin: Vector2 = (size - content.size * factor) * 0.5 - content.position * factor
 	draw_texture_rect(body, Rect2(origin, destination_size), false)
+	character_parts.hair_enabled = show_hair
 	character_parts.configure(state, origin, Vector2.ONE * factor)
 	var weapon_id: String = str(state.equipment.get("arma", {}).get("id", ""))
 	held_weapon.visible = not weapon_id.is_empty()
@@ -50,13 +66,13 @@ func _draw() -> void:
 	if weapon == null:
 		return
 	var weapon_size: Vector2 = weapon.get_size()
-	weapon_size *= destination_size.y * Appearance.weapon_height(state.class_id) / weapon_size.y
+	weapon_size *= destination_size.y * Appearance.weapon_height(state.class_id, weapon_id) / weapon_size.y
 	var grip: Vector2 = origin + destination_size * Appearance.hand_position(state)
 	held_weapon.texture = weapon
 	held_weapon.material = Appearance.weapon_material(state, weapon)
 	held_weapon.position = grip
 	held_weapon.offset = -weapon.get_size() * Appearance.weapon_pivot(state.class_id, weapon_id)
-	held_weapon.rotation = Appearance.weapon_rotation(state.class_id)
+	held_weapon.rotation = Appearance.weapon_rotation(state.class_id, weapon_id)
 	held_weapon.z_index = Appearance.weapon_layer(state.class_id)
 	held_weapon.scale = weapon_size / weapon.get_size()
 	if held_hand.visible:

@@ -38,6 +38,7 @@ var boss_bar: ProgressBar
 var hotbar_slots: Array = []
 var minimap: Control
 var creation_race: = "humano"
+var developer_shop_category: int = 0
 var creation_class: = "guerreiro"
 var creation_hair_style: int = 0
 var creation_hair_color: String = "castanho"
@@ -1196,8 +1197,21 @@ func show_developer_shop(kind: String) -> void:
 		"dev_items":
 			content.add_theme_constant_override("separation", 4)
 			_developer_currency_buttons(content)
-			for id: String in GameData.ITEMS:
-				content.add_child(_developer_item_row(id))
+			var tabs := TabBar.new()
+			tabs.name = "ShopCategoryTabs"
+			for caption: String in ["Armas", "Armaduras", "Itens"]:
+				tabs.add_tab(caption)
+			tabs.current_tab = developer_shop_category
+			content.add_child(tabs)
+			var items := VBoxContainer.new()
+			items.name = "ShopCategoryItems"
+			items.add_theme_constant_override("separation", 4)
+			content.add_child(items)
+			tabs.tab_changed.connect(func(index: int) -> void:
+				developer_shop_category = index
+				_fill_developer_shop_category(items, index)
+			)
+			_fill_developer_shop_category(items, developer_shop_category)
 		"dev_skills":
 			content.add_child(UiKit.label("Escolha uma classe para testar todas as skills no nível 100.", 14))
 			for id: String in GameData.CLASS_ORDER:
@@ -1254,6 +1268,16 @@ func show_developer_shop(kind: String) -> void:
 	_developer_button(content, "Sair da sala e restaurar personagem", "dev_exit")
 
 
+
+func _fill_developer_shop_category(parent: VBoxContainer, category: int) -> void:
+	for child in parent.get_children():
+		parent.remove_child(child)
+		child.queue_free()
+	for id: String in GameData.ITEMS:
+		var type: String = str(GameData.item(id).get("type", ""))
+		var item_category: int = 0 if type == "arma" else (1 if type == "armadura" else 2)
+		if item_category == category:
+			parent.add_child(_developer_item_row(id))
 
 func _developer_item_row(item_id: String) -> Control:
 	var theme_kit = preload("res://scripts/ui/rpg_panel_theme.gd")

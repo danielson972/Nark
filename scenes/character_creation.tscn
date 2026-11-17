@@ -1,12 +1,2491 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://jlda5kmspgis"]
 
-[ext_resource type="Script" path="res://scripts/ui/character_creation.gd" id="1"]
+[ext_resource type="Script" uid="uid://c5j3ux5bl4wpn" path="res://scripts/ui/character_creation.gd" id="1"]
+[ext_resource type="FontVariation" path="res://assets/template/fonts/ui_medium.tres" id="1_ejawe"]
+[ext_resource type="FontVariation" path="res://assets/template/fonts/ui_bold.tres" id="2_h36os"]
+[ext_resource type="FontVariation" path="res://assets/template/fonts/ui_regular.tres" id="3_tq5bv"]
+[ext_resource type="FontFile" uid="uid://bgc58vpcn0oln" path="res://assets/fonts/Cinzel-SemiBold.ttf" id="5_itg48"]
+[ext_resource type="Shader" uid="uid://qhrf8hxkuaqq" path="res://shaders/equipment_cutout.gdshader" id="6_xbgf7"]
+[ext_resource type="Script" uid="uid://btdoh3ixljp76" path="res://scripts/ui/hero_preview.gd" id="7_grvxh"]
+[ext_resource type="Texture2D" uid="uid://btnuhxqfix4p0" path="res://assets/game/character_builder/bald_races_supplied.png" id="8_rcxrn"]
+[ext_resource type="Texture2D" uid="uid://wdac475l37c7" path="res://assets/game/sprites/herois/cabelos/Modelo1.png" id="9_h36os"]
+[ext_resource type="Texture2D" uid="uid://dnw4745ugs7gk" path="res://assets/game/sprites/herois/bases/anao_feminino.png" id="Base_AnaoFeminino"]
+[ext_resource type="Texture2D" uid="uid://vdyb432dijgn" path="res://assets/game/sprites/herois/bases/anao_masculino.png" id="Base_AnaoMasculino"]
+[ext_resource type="Texture2D" uid="uid://cclo73w03way3" path="res://assets/game/sprites/herois/bases/elfo_feminino.png" id="Base_ElfoFeminino"]
+[ext_resource type="Texture2D" uid="uid://mb2ebkvyfg52" path="res://assets/game/sprites/herois/bases/elfo_masculino.png" id="Base_ElfoMasculino"]
+[ext_resource type="Texture2D" uid="uid://785lun565apy" path="res://assets/game/sprites/herois/bases/humano_feminino.png" id="Base_HumanoFeminino"]
+[ext_resource type="Texture2D" uid="uid://ejjlyunm5f07" path="res://assets/game/sprites/herois/bases/humano_masculino.png" id="Base_HumanoMasculino"]
+[ext_resource type="Texture2D" uid="uid://c0ige2c57sw6t" path="res://assets/game/sprites/herois/bases/orc_feminino.png" id="Base_OrcFeminino"]
+[ext_resource type="Texture2D" uid="uid://dm22vehugbjgt" path="res://assets/game/sprites/herois/bases/orc_masculino.png" id="Base_OrcMasculino"]
+[ext_resource type="Texture2D" uid="uid://5abttj6lger2" path="res://assets/game/sprites/herois/bases/orelha_elfo_feminino.png" id="Ear_ElfoFeminino"]
+[ext_resource type="Texture2D" uid="uid://bese2uxlnqi7s" path="res://assets/game/sprites/herois/bases/orelha_elfo_masculino.png" id="Ear_ElfoMasculino"]
+[ext_resource type="Texture2D" uid="uid://d1jwwo6heqymn" path="res://assets/game/sprites/herois/cabelos/Modelo2.png" id="hair_2"]
+[ext_resource type="Texture2D" uid="uid://bvci017ukx3p4" path="res://assets/game/sprites/herois/cabelos/Modelo3.png" id="hair_3"]
+[ext_resource type="Texture2D" uid="uid://cavb8musur21c" path="res://assets/game/sprites/herois/cabelos/Modelo4.png" id="hair_4"]
+[ext_resource type="Texture2D" uid="uid://djhrl11fxpav0" path="res://assets/game/sprites/herois/cabelos/Modelo5.png" id="hair_5"]
+[ext_resource type="Texture2D" uid="uid://r6mcc7vr87xp" path="res://assets/game/sprites/herois/cabelos/Modelo6.png" id="hair_6"]
+[ext_resource type="Texture2D" uid="uid://cwla56ct1dm1p" path="res://assets/game/sprites/herois/cabelos/Modelo7.png" id="hair_7"]
+[ext_resource type="Texture2D" uid="uid://cm2g2vndfmwib" path="res://assets/game/sprites/herois/cabelos/Modelo8.png" id="hair_8"]
+[ext_resource type="Texture2D" uid="uid://sw6ef340shqx" path="res://assets/game/sprites/herois/cabelos/Modelo9.png" id="hair_9"]
+[ext_resource type="Texture2D" uid="uid://c58fwd6uyt0pl" path="res://assets/game/sprites/herois/cabelos/Modelo10.png" id="hair_10"]
+[ext_resource type="Texture2D" uid="uid://dftu5dqftre3h" path="res://assets/game/sprites/herois/cabelos/Modelo11.png" id="hair_11"]
+[ext_resource type="Texture2D" uid="uid://dpjd3vgabcnfl" path="res://assets/game/sprites/herois/cabelos/Modelo12.png" id="hair_12"]
+[ext_resource type="Texture2D" uid="uid://nsrqp01icl2p" path="res://assets/game/sprites/herois/cabelos/Modelo13.png" id="hair_13"]
+[ext_resource type="Texture2D" uid="uid://cq022trye5r5g" path="res://assets/game/sprites/herois/cabelos/Modelo14.png" id="hair_14"]
+[ext_resource type="Texture2D" uid="uid://devp6m1gbq8dc" path="res://assets/game/sprites/herois/cabelos/Modelo15.png" id="hair_15"]
+[ext_resource type="Texture2D" uid="uid://cfw1thkhujgjd" path="res://assets/game/sprites/herois/cabelos/Modelo16.png" id="hair_16"]
 
-[node name="MontagemPersonagem" type="Control"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/orelha_orc_masculino.png" id="OrelhaOrcMasculino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/dente_esquerdo_orc_masculino.png" id="DenteEsquerdoOrcMasculino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/orelha_orc_feminino.png" id="OrelhaOrcFeminino"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/bases/dente_esquerdo_orc_feminino.png" id="DenteEsquerdoOrcFeminino"]
+
+[sub_resource type="Theme" id="Theme_e7rmw"]
+default_font = ExtResource("3_tq5bv")
+Button/fonts/font = ExtResource("1_ejawe")
+CheckBox/fonts/font = ExtResource("1_ejawe")
+CheckButton/fonts/font = ExtResource("1_ejawe")
+MenuButton/fonts/font = ExtResource("1_ejawe")
+OptionButton/fonts/font = ExtResource("1_ejawe")
+RichTextLabel/fonts/bold_font = ExtResource("2_h36os")
+RichTextLabel/fonts/normal_font = ExtResource("3_tq5bv")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3vo3"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4swy3"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2ju7"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngspo"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.11, 0.09, 0.07, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pllwc"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyeim"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7j2r"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3q42y"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pok4s"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dn7f"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02vu4"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8gbw"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34ufj"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xco0x"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o44q3"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhvyv"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kuqu3"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdqul"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ueas"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tus7k"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qg6ca"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8h678"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1ob1"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vajx"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84aa8"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43xlr"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iik4o"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsuce"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sasjs"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6fsu"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asje0"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jvir"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80r1j"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqqc8"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uywmd"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rshur"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wf65"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrmmq"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.13, 0.1, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t71sv"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.19, 0.13, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swrcr"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eur1e"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.11, 0.09, 0.07, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iv3nq"]
+shader = ExtResource("6_xbgf7")
+shader_parameter/texture_region = Vector4(0, 0, 0.25, 0.5)
+shader_parameter/trim_grip = false
+shader_parameter/grip_position = Vector2(0.5, 0.5)
+shader_parameter/colossal = false
+shader_parameter/head_cutoff = 0.0
+shader_parameter/orc_skin = false
+shader_parameter/attachment_size = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n5lcl"]
+shader = ExtResource("6_xbgf7")
+shader_parameter/texture_region = Vector4(0, 0, 1, 1)
+shader_parameter/trim_grip = false
+shader_parameter/grip_position = Vector2(0.5, 0.5)
+shader_parameter/colossal = false
+shader_parameter/head_cutoff = 0.0
+shader_parameter/orc_skin = false
+shader_parameter/attachment_size = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2j0r"]
+atlas = ExtResource("8_rcxrn")
+region = Rect2(0, 0, 256, 512)
+filter_clip = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5pbs"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.85, 0.7, 0.31, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.51, 0.26, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lku81"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.95, 0.82, 0.45, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jiq2"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.09, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.27, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[node name="MontagemPersonagem" type="Control" unique_id=632965288]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_e7rmw")
 script = ExtResource("1")
+
+[node name="Fundo" type="ColorRect" parent="." unique_id=1918041724]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.06666667, 0.09019608, 0.07450981, 1)
+
+[node name="Margens" type="MarginContainer" parent="." unique_id=275503630]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Layout" type="VBoxContainer" parent="Margens" unique_id=1513933840]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Cabecalho" type="HBoxContainer" parent="Margens/Layout" unique_id=448192577]
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="Margens/Layout/Cabecalho" unique_id=375931467]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.02, 0.02, 0.9)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 30
+text = "Monte seu personagem"
+
+[node name="Voltar" type="Button" parent="Margens/Layout/Cabecalho" unique_id=1005330648]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_d3vo3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4swy3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4swy3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_u2ju7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4swy3")
+text = "Voltar"
+
+[node name="RolagemPrincipal" type="ScrollContainer" parent="Margens/Layout" unique_id=138226357]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Colunas" type="HBoxContainer" parent="Margens/Layout/RolagemPrincipal" unique_id=1893685752]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="PainelIdentidade" type="PanelContainer" parent="Margens/Layout/RolagemPrincipal/Colunas" unique_id=198418997]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ngspo")
+
+[node name="RolagemIdentidade" type="ScrollContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade" unique_id=1385004321]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Identidade" type="VBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade" unique_id=808938214]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="TituloIdentidade" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=1039975442]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.02, 0.02, 0.9)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 22
+text = "Identidade"
+
+[node name="RotuloNome" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=984022115]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
+theme_override_font_sizes/font_size = 14
+text = "Nome do personagem"
+
+[node name="Nome" type="LineEdit" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=930029289]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+text = "Aurora"
+max_length = 14
+
+[node name="RotuloModelo" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=136175469]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
+theme_override_font_sizes/font_size = 16
+text = "Modelo"
+
+[node name="Modelos" type="HBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=1180744941]
+layout_mode = 2
+
+[node name="Modelo_masculino" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Modelos" unique_id=1432290346]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_pllwc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cyeim")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cyeim")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_u7j2r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cyeim")
+toggle_mode = true
+button_pressed = true
+text = "Masculino"
+
+[node name="Modelo_feminino" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Modelos" unique_id=2021558009]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_3q42y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pok4s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pok4s")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8dn7f")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pok4s")
+toggle_mode = true
+text = "Feminino"
+
+[node name="RotuloRaca" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=1529701058]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
+theme_override_font_sizes/font_size = 16
+text = "Raça"
+
+[node name="Racas" type="GridContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=2063532534]
+layout_mode = 2
+columns = 2
+
+[node name="Raca_humano" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Racas" unique_id=1712722548]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_02vu4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g8gbw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g8gbw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_34ufj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_g8gbw")
+toggle_mode = true
+button_pressed = true
+text = "Humano"
+
+[node name="Raca_elfo" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Racas" unique_id=2017474502]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_xco0x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o44q3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o44q3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_dhvyv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o44q3")
+toggle_mode = true
+text = "Elfo"
+
+[node name="Raca_orc" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Racas" unique_id=1915932787]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_kuqu3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qdqul")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qdqul")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5ueas")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qdqul")
+toggle_mode = true
+text = "Orc"
+
+[node name="Raca_anao" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Racas" unique_id=777608904]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_tus7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qg6ca")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qg6ca")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8h678")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qg6ca")
+toggle_mode = true
+text = "Anão"
+
+[node name="DescricaoRaca" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=1383307805]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
+theme_override_font_sizes/font_size = 13
+text = "Ambicioso e sociável. O reino abre portas para quem sabe negociar."
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="RotuloClasse" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=1808403006]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
+theme_override_font_sizes/font_size = 16
+text = "Classe"
+
+[node name="Classes" type="GridContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=12364952]
+layout_mode = 2
+columns = 2
+
+[node name="Classe_atirador" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=1022656002]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_u1ob1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7vajx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vajx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_84aa8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7vajx")
+toggle_mode = true
+text = "Atirador"
+
+[node name="Classe_mago" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=640740384]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_43xlr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iik4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iik4o")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_fsuce")
+theme_override_styles/focus = SubResource("StyleBoxFlat_iik4o")
+toggle_mode = true
+text = "Mago"
+
+[node name="Classe_guerreiro" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=1957344933]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_sasjs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_r6fsu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r6fsu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_asje0")
+theme_override_styles/focus = SubResource("StyleBoxFlat_r6fsu")
+toggle_mode = true
+button_pressed = true
+text = "Guerreiro"
+
+[node name="Classe_assassino" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=1007560447]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_1jvir")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_80r1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_80r1j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mqqc8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_80r1j")
+toggle_mode = true
+text = "Assassino"
+
+[node name="Classe_tank" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=62800301]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_uywmd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rshur")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rshur")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0wf65")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rshur")
+toggle_mode = true
+text = "Tank"
+
+[node name="Classe_cavaleiro" type="Button" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade/Classes" unique_id=1782133000]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_hrmmq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t71sv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t71sv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_swrcr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_t71sv")
+toggle_mode = true
+text = "Cavaleiro"
+
+[node name="DescricaoClasse" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelIdentidade/RolagemIdentidade/Identidade" unique_id=819305424]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
+theme_override_font_sizes/font_size = 13
+text = "Rompe guardas e pune quem tenta se proteger."
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="PainelPersonagem" type="PanelContainer" parent="Margens/Layout/RolagemPrincipal/Colunas" unique_id=1578314420]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_eur1e")
+
+[node name="Previa" type="VBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem" unique_id=300796622]
+layout_mode = 2
+size_flags_stretch_ratio = 1.1
+theme_override_constants/separation = 8
+
+[node name="TituloPersonagem" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa" unique_id=274853183]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.02, 0.02, 0.9)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_itg48")
+theme_override_font_sizes/font_size = 22
+text = "Seu personagem"
+
+[node name="Personagem" type="Control" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa" unique_id=1968999995]
+unique_name_in_owner = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_iv3nq")
+custom_minimum_size = Vector2(240, 300)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("7_grvxh")
+
+[node name="BaseCarecaEditor" type="TextureRect" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Personagem" unique_id=1667839822]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_n5lcl")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_y2j0r")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Resumo" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa" unique_id=939892186]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
+theme_override_font_sizes/font_size = 16
+text = "Humano · Guerreiro"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Aparencia" type="HBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa" unique_id=402191819]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Penteado" type="VBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia" unique_id=1375121801]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TituloCabelo" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia/Penteado" unique_id=1447054597]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
+text = "Cabelo"
+
+[node name="EscolhaCabelo" type="OptionButton" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia/Penteado" unique_id=2073805850]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+selected = 1
+item_count = 17
+popup/item_0/text = "Careca"
+popup/item_0/id = 0
+popup/item_1/text = "Desarrumado"
+popup/item_1/id = 1
+popup/item_2/text = "Lateral"
+popup/item_2/id = 2
+popup/item_3/text = "Cacheado"
+popup/item_3/id = 3
+popup/item_4/text = "Penteado"
+popup/item_4/id = 4
+popup/item_5/text = "Cortina"
+popup/item_5/id = 5
+popup/item_6/text = "Rebelde"
+popup/item_6/id = 6
+popup/item_7/text = "Curto"
+popup/item_7/id = 7
+popup/item_8/text = "Longo"
+popup/item_8/id = 8
+popup/item_9/text = "Ondulado"
+popup/item_9/id = 9
+popup/item_10/text = "Rabo de cavalo"
+popup/item_10/id = 10
+popup/item_11/text = "Coque"
+popup/item_11/id = 11
+popup/item_12/text = "Trança"
+popup/item_12/id = 12
+popup/item_13/text = "Rente"
+popup/item_13/id = 13
+popup/item_14/text = "Crista"
+popup/item_14/id = 14
+popup/item_15/text = "Volume"
+popup/item_15/id = 15
+popup/item_16/text = "Picos"
+popup/item_16/id = 16
+
+[node name="Cor" type="VBoxContainer" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia" unique_id=1010167237]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TituloCor" type="Label" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia/Cor" unique_id=526253098]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.7, 0.31, 1)
+text = "Cor do cabelo"
+
+[node name="EscolhaCor" type="OptionButton" parent="Margens/Layout/RolagemPrincipal/Colunas/PainelPersonagem/Previa/Aparencia/Cor" unique_id=1062576891]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+selected = 0
+item_count = 7
+popup/item_0/text = "Castanho"
+popup/item_0/id = 0
+popup/item_1/text = "Preto"
+popup/item_1/id = 1
+popup/item_2/text = "Ruivo"
+popup/item_2/id = 2
+popup/item_3/text = "Loiro"
+popup/item_3/id = 3
+popup/item_4/text = "Branco"
+popup/item_4/id = 4
+popup/item_5/text = "Azul"
+popup/item_5/id = 5
+popup/item_6/text = "Roxo"
+popup/item_6/id = 6
+
+[node name="Rodape" type="HBoxContainer" parent="Margens/Layout" unique_id=146400070]
+layout_mode = 2
+
+[node name="Aviso" type="Label" parent="Margens/Layout/Rodape" unique_id=791738314]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
+theme_override_font_sizes/font_size = 13
+text = "Sua aparência acompanha o personagem e fica salva com a partida."
+autowrap_mode = 3
+
+[node name="Concluir" type="Button" parent="Margens/Layout/Rodape" unique_id=1193529564]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.09, 0.05, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.06, 0.03, 1)
+theme_override_colors/font_disabled_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_q5pbs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lku81")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lku81")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8jiq2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lku81")
+text = "Entrar no Reino"
+
+[node name="Cabelos" type="Sprite2D" parent="." unique_id=136049397]
+z_index = 2
+
+[node name="HumanoMasculino" type="Sprite2D" parent="Cabelos" unique_id=1072283512]
+
+[node name="Modelo1" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=705322078]
+position = Vector2(956.18427, 163.75264)
+scale = Vector2(0.3517131, 0.32297367)
+texture = ExtResource("9_h36os")
+
+[node name="Modelo2" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=1526144541]
+visible = false
+position = Vector2(956.20166, 173.24567)
+scale = Vector2(0.3384518, 0.32806492)
+texture = ExtResource("hair_2")
+region_enabled = true
+region_rect = Rect2(0, 33, 274, 239)
+
+[node name="Modelo3" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=887150882]
+visible = false
+position = Vector2(950.6055, 176.07512)
+scale = Vector2(0.3598591, 0.35475123)
+texture = ExtResource("hair_3")
+region_enabled = true
+region_rect = Rect2(0, 30, 266, 242)
+
+[node name="Modelo4" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=1313266679]
+visible = false
+position = Vector2(957.99994, 167.00002)
+scale = Vector2(0.34274212, 0.34448108)
+texture = ExtResource("hair_4")
+region_enabled = true
+region_rect = Rect2(1, 11, 283, 261)
+
+[node name="Modelo5" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=756707911]
+visible = false
+position = Vector2(951.99994, 169.00002)
+scale = Vector2(0.40264347, 0.3981533)
+texture = ExtResource("hair_5")
+region_enabled = true
+region_rect = Rect2(8, 12, 276, 249)
+
+[node name="Modelo6" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=915930595]
+visible = false
+position = Vector2(947.99994, 177.00002)
+scale = Vector2(0.39716294, 0.38272613)
+texture = ExtResource("hair_6")
+region_enabled = true
+region_rect = Rect2(0, 16, 282, 241)
+
+[node name="Modelo7" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=1798429381]
+visible = false
+position = Vector2(956.43427, 176.17924)
+scale = Vector2(0.37861887, 0.4417051)
+texture = ExtResource("hair_7")
+region_enabled = true
+region_rect = Rect2(26, 32, 240, 212)
+
+[node name="Modelo8" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=1637834400]
+visible = false
+position = Vector2(955.99994, 190)
+scale = Vector2(0.36496693, 0.40846136)
+texture = ExtResource("hair_8")
+region_enabled = true
+region_rect = Rect2(33, 0, 243, 272)
+
+[node name="Modelo9" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=1061546118]
+visible = false
+position = Vector2(954.00006, 195)
+scale = Vector2(0.38399997, 0.473149)
+texture = ExtResource("hair_9")
+region_enabled = true
+region_rect = Rect2(26, 2, 250, 263)
+
+[node name="Modelo10" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=984417014]
+visible = false
+position = Vector2(960.6051, 185.7208)
+scale = Vector2(0.34875003, 0.43309933)
+texture = ExtResource("hair_10")
+region_enabled = true
+region_rect = Rect2(9, 13, 270, 251)
+
+[node name="Modelo11" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=1505188842]
+visible = false
+position = Vector2(957.0824, 172.60342)
+scale = Vector2(0.38626936, 0.36983487)
+texture = ExtResource("hair_11")
+region_enabled = true
+region_rect = Rect2(30, 28, 229, 223)
+
+[node name="Modelo12" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=1660971716]
+visible = false
+position = Vector2(958.84375, 222.78514)
+scale = Vector2(0.35127196, 0.6697312)
+texture = ExtResource("hair_12")
+region_enabled = true
+region_rect = Rect2(5, 0, 264, 273)
+
+[node name="Modelo13" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=273839611]
+visible = false
+position = Vector2(952.67896, 174.41673)
+scale = Vector2(0.46707588, 0.31453303)
+texture = ExtResource("hair_13")
+region_enabled = true
+region_rect = Rect2(57, 28, 168, 149)
+
+[node name="Modelo14" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=1454534272]
+visible = false
+position = Vector2(950.9176, 178.44809)
+scale = Vector2(0.5481125, 0.46182343)
+texture = ExtResource("hair_14")
+region_enabled = true
+region_rect = Rect2(55, 29, 177, 173)
+
+[node name="Modelo15" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=607049541]
+visible = false
+position = Vector2(950.9176, 173.94847)
+scale = Vector2(0.5052912, 0.3982935)
+texture = ExtResource("hair_15")
+region_enabled = true
+region_rect = Rect2(50, 12, 192, 178)
+
+[node name="Modelo16" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=1768410422]
+visible = false
+position = Vector2(950.9176, 172.68365)
+scale = Vector2(0.42180833, 0.38756886)
+texture = ExtResource("hair_16")
+region_enabled = true
+region_rect = Rect2(43, 25, 230, 181)
+
+[node name="BaseCareca" type="Sprite2D" parent="Cabelos/HumanoMasculino" unique_id=1036374105]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_n5lcl")
+position = Vector2(959.00006, 328)
+scale = Vector2(0.7562148, 0.7562148)
+texture = ExtResource("Base_HumanoMasculino")
+metadata/_edit_lock_ = true
+
+[node name="ElfoMasculino" type="Sprite2D" parent="Cabelos" unique_id=1925805178]
+visible = false
+
+[node name="Modelo1" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=1232229541]
+visible = false
+position = Vector2(947.2548, 164.5694)
+rotation = -0.18870305
+scale = Vector2(0.35751066, 0.3554699)
+texture = ExtResource("9_h36os")
+
+[node name="Modelo2" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=1041422617]
+visible = false
+position = Vector2(945.99994, 176)
+rotation = -0.35759294
+scale = Vector2(0.36939105, 0.3871093)
+texture = ExtResource("hair_2")
+region_enabled = true
+region_rect = Rect2(0, 33, 274, 239)
+
+[node name="Modelo3" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=2074471487]
+visible = false
+position = Vector2(944.3799, 175.36272)
+rotation = -0.19407193
+scale = Vector2(0.3852206, 0.37770003)
+texture = ExtResource("hair_3")
+region_enabled = true
+region_rect = Rect2(0, 30, 266, 242)
+
+[node name="Modelo4" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=1325091043]
+visible = false
+position = Vector2(955.00006, 166)
+scale = Vector2(0.35791326, 0.3410539)
+texture = ExtResource("hair_4")
+region_enabled = true
+region_rect = Rect2(1, 11, 283, 261)
+
+[node name="Modelo5" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=975913530]
+visible = false
+position = Vector2(949, 168.99998)
+rotation = -0.062888525
+scale = Vector2(0.41657448, 0.32380265)
+texture = ExtResource("hair_5")
+region_enabled = true
+region_rect = Rect2(8, 12, 276, 249)
+
+[node name="Modelo6" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=472219656]
+visible = false
+position = Vector2(946.49994, 176.18294)
+scale = Vector2(0.39361686, 0.37865335)
+texture = ExtResource("hair_6")
+region_enabled = true
+region_rect = Rect2(0, 16, 282, 241)
+
+[node name="Modelo7" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=568634125]
+visible = false
+position = Vector2(952.1133, 175)
+scale = Vector2(0.375944, 0.4174528)
+texture = ExtResource("hair_7")
+region_enabled = true
+region_rect = Rect2(26, 32, 240, 212)
+
+[node name="Modelo8" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=1335831900]
+visible = false
+position = Vector2(956.00006, 190)
+scale = Vector2(0.39502397, 0.44819096)
+texture = ExtResource("hair_8")
+region_enabled = true
+region_rect = Rect2(33, 0, 243, 272)
+
+[node name="Modelo9" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=598121515]
+visible = false
+position = Vector2(954, 194.00002)
+scale = Vector2(0.4200002, 0.5703422)
+texture = ExtResource("hair_9")
+region_enabled = true
+region_rect = Rect2(26, 2, 250, 263)
+
+[node name="Modelo10" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=292062033]
+visible = false
+position = Vector2(965.81177, 183)
+scale = Vector2(0.44583923, 0.46347743)
+texture = ExtResource("hair_10")
+region_enabled = true
+region_rect = Rect2(9, 13, 270, 251)
+
+[node name="Modelo11" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=474740136]
+visible = false
+position = Vector2(955.7904, 173.99998)
+scale = Vector2(0.4192143, 0.44821417)
+texture = ExtResource("hair_11")
+region_enabled = true
+region_rect = Rect2(30, 28, 229, 223)
+
+[node name="Modelo12" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=1029469826]
+visible = false
+position = Vector2(945, 197.85857)
+scale = Vector2(0.40909076, 0.5119813)
+texture = ExtResource("hair_12")
+region_enabled = true
+region_rect = Rect2(5, 0, 264, 273)
+
+[node name="Modelo13" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=1355220196]
+visible = false
+position = Vector2(958, 159)
+scale = Vector2(0.49999985, 0.55033565)
+texture = ExtResource("hair_13")
+region_enabled = true
+region_rect = Rect2(57, 28, 168, 149)
+
+[node name="Modelo14" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=118835909]
+visible = false
+position = Vector2(961.9139, 151)
+scale = Vector2(0.51038504, 0.45247087)
+texture = ExtResource("hair_14")
+region_enabled = true
+region_rect = Rect2(55, 29, 177, 173)
+
+[node name="Modelo15" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=692507401]
+visible = false
+position = Vector2(959.00006, 151)
+scale = Vector2(0.4817709, 0.48120862)
+texture = ExtResource("hair_15")
+region_enabled = true
+region_rect = Rect2(50, 12, 192, 178)
+
+[node name="Modelo16" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=2133190258]
+position = Vector2(969.98773, 150.00002)
+scale = Vector2(0.44337147, 0.4075223)
+texture = ExtResource("hair_16")
+region_enabled = true
+region_rect = Rect2(43, 25, 230, 181)
+
+[node name="BaseCareca" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=2126646728]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_n5lcl")
+position = Vector2(957.15906, 327.31815)
+scale = Vector2(0.75656915, 0.75656915)
+texture = ExtResource("Base_ElfoMasculino")
+metadata/_edit_lock_ = true
+
+[node name="Orelha" type="Sprite2D" parent="Cabelos/ElfoMasculino" unique_id=387330488]
+z_index = 1
+texture_filter = 1
+position = Vector2(987.99994, 185)
+scale = Vector2(0.8806818, 0.8806818)
+texture = ExtResource("Ear_ElfoMasculino")
+metadata/_edit_lock_ = true
+
+[node name="OrcMasculino" type="Sprite2D" parent="Cabelos" unique_id=1159169751]
+visible = false
+
+[node name="Modelo1" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=107902591]
+visible = false
+position = Vector2(950.7898, 157.53378)
+rotation = -0.25101092
+scale = Vector2(0.42978603, 0.4120215)
+texture = ExtResource("9_h36os")
+
+[node name="Modelo2" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=895665473]
+visible = false
+position = Vector2(948.266, 175.34131)
+rotation = -0.3013615
+scale = Vector2(0.43159083, 0.43522203)
+texture = ExtResource("hair_2")
+region_enabled = true
+region_rect = Rect2(0, 33, 274, 239)
+
+[node name="Modelo3" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=1381432476]
+visible = false
+position = Vector2(951.75476, 171.78436)
+scale = Vector2(0.40785897, 0.36541855)
+texture = ExtResource("hair_3")
+region_enabled = true
+region_rect = Rect2(0, 30, 266, 242)
+
+[node name="Modelo4" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=1099945569]
+visible = false
+position = Vector2(959.3961, 168)
+scale = Vector2(0.39861915, 0.36194202)
+texture = ExtResource("hair_4")
+region_enabled = true
+region_rect = Rect2(1, 11, 283, 261)
+
+[node name="Modelo5" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=134286503]
+visible = false
+position = Vector2(952.1056, 168.61606)
+rotation = -0.074914396
+scale = Vector2(0.47361535, 0.3694665)
+texture = ExtResource("hair_5")
+region_enabled = true
+region_rect = Rect2(8, 12, 276, 249)
+
+[node name="Modelo6" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=1479118544]
+visible = false
+position = Vector2(948.00006, 174.7005)
+scale = Vector2(0.46099305, 0.4735496)
+texture = ExtResource("hair_6")
+region_enabled = true
+region_rect = Rect2(0, 16, 282, 241)
+
+[node name="Modelo8" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=1514803901]
+visible = false
+position = Vector2(954, 188)
+scale = Vector2(0.40229547, 0.41772798)
+texture = ExtResource("hair_8")
+region_enabled = true
+region_rect = Rect2(33, 0, 243, 272)
+
+[node name="Modelo9" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=477020485]
+visible = false
+position = Vector2(957, 191)
+scale = Vector2(0.4877387, 0.51156557)
+texture = ExtResource("hair_9")
+region_enabled = true
+region_rect = Rect2(26, 2, 250, 263)
+
+[node name="Modelo10" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=227284935]
+visible = false
+position = Vector2(969.5, 179)
+scale = Vector2(0.5074076, 0.46820876)
+texture = ExtResource("hair_10")
+region_enabled = true
+region_rect = Rect2(9, 13, 270, 251)
+
+[node name="Modelo11" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=1454588110]
+visible = false
+position = Vector2(961, 169.48235)
+scale = Vector2(0.5065504, 0.4956933)
+texture = ExtResource("hair_11")
+region_enabled = true
+region_rect = Rect2(30, 28, 229, 223)
+
+[node name="Modelo12" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=2000612771]
+visible = false
+position = Vector2(947, 195.00005)
+rotation = -0.17802705
+scale = Vector2(0.490988, 0.58044004)
+texture = ExtResource("hair_12")
+region_enabled = true
+region_rect = Rect2(5, 0, 264, 273)
+
+[node name="Modelo13" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=1425038491]
+visible = false
+position = Vector2(958, 158.93362)
+scale = Vector2(0.44047627, 0.4542182)
+texture = ExtResource("hair_13")
+region_enabled = true
+region_rect = Rect2(57, 28, 168, 149)
+
+[node name="Modelo14" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=890318714]
+visible = false
+position = Vector2(960.7514, 153.67955)
+scale = Vector2(0.49717495, 0.46345347)
+texture = ExtResource("hair_14")
+region_enabled = true
+region_rect = Rect2(55, 29, 177, 173)
+
+[node name="Modelo15" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=95317814]
+visible = false
+position = Vector2(960.00006, 152.00002)
+scale = Vector2(0.44791695, 0.40430743)
+texture = ExtResource("hair_15")
+region_enabled = true
+region_rect = Rect2(50, 12, 192, 178)
+
+[node name="Modelo16" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=577869930]
+visible = false
+position = Vector2(968, 150)
+scale = Vector2(0.41608006, 0.3823056)
+texture = ExtResource("hair_16")
+region_enabled = true
+region_rect = Rect2(43, 25, 230, 181)
+
+[node name="BaseCareca" type="Sprite2D" parent="Cabelos/OrcMasculino" unique_id=287972767]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_n5lcl")
+position = Vector2(959.99994, 333)
+scale = Vector2(0.7806286, 0.7806286)
+texture = ExtResource("Base_OrcMasculino")
+metadata/_edit_lock_ = true
+
+[node name="AnaoMasculino" type="Sprite2D" parent="Cabelos" unique_id=1325210953]
+visible = false
+
+[node name="Modelo1" type="Sprite2D" parent="Cabelos/AnaoMasculino" unique_id=471297944]
+visible = false
+position = Vector2(971.9501, 213.49574)
+rotation = -0.089431554
+scale = Vector2(0.52083683, 0.44810048)
+texture = ExtResource("9_h36os")
+
+[node name="Modelo2" type="Sprite2D" parent="Cabelos/AnaoMasculino" unique_id=1891215059]
+visible = false
+position = Vector2(964.5, 225.9686)
+scale = Vector2(0.5437957, 0.4335949)
+texture = ExtResource("hair_2")
+region_enabled = true
+region_rect = Rect2(0, 33, 274, 239)
+
+[node name="Modelo3" type="Sprite2D" parent="Cabelos/AnaoMasculino" unique_id=207826784]
+visible = false
+position = Vector2(967, 225)
+scale = Vector2(0.48872206, 0.4416799)
+texture = ExtResource("hair_3")
+region_enabled = true
+region_rect = Rect2(0, 30, 266, 242)
+
+[node name="Modelo4" type="Sprite2D" parent="Cabelos/AnaoMasculino" unique_id=110251115]
+visible = false
+position = Vector2(974.20654, 215.00002)
+scale = Vector2(0.47741815, 0.4560034)
+texture = ExtResource("hair_4")
+region_enabled = true
+region_rect = Rect2(1, 11, 283, 261)
+
+[node name="Modelo5" type="Sprite2D" parent="Cabelos/AnaoMasculino" unique_id=1643876353]
+visible = false
+position = Vector2(965, 218.31071)
+rotation = -0.08672758
+scale = Vector2(0.6376812, 0.46218315)
+texture = ExtResource("hair_5")
+region_enabled = true
+region_rect = Rect2(8, 12, 276, 249)
+
+[node name="Modelo11" type="Sprite2D" parent="Cabelos/AnaoMasculino" unique_id=1315623342]
+visible = false
+position = Vector2(975.70306, 225.00003)
+scale = Vector2(0.59388614, 0.4873494)
+texture = ExtResource("hair_11")
+region_enabled = true
+region_rect = Rect2(30, 28, 229, 223)
+
+[node name="Modelo13" type="Sprite2D" parent="Cabelos/AnaoMasculino" unique_id=768328948]
+visible = false
+position = Vector2(952.87714, 246.45523)
+scale = Vector2(0.426423, 0.28715703)
+texture = ExtResource("hair_13")
+region_enabled = true
+region_rect = Rect2(57, 28, 168, 149)
+
+[node name="Modelo14" type="Sprite2D" parent="Cabelos/AnaoMasculino" unique_id=1937742772]
+visible = false
+position = Vector2(981.20337, 203.1525)
+scale = Vector2(0.59322053, 0.4350287)
+texture = ExtResource("hair_14")
+region_enabled = true
+region_rect = Rect2(55, 29, 177, 173)
+
+[node name="Modelo15" type="Sprite2D" parent="Cabelos/AnaoMasculino" unique_id=983913381]
+visible = false
+position = Vector2(978.90216, 201.6593)
+scale = Vector2(0.546523, 0.43079427)
+texture = ExtResource("hair_15")
+region_enabled = true
+region_rect = Rect2(50, 12, 192, 178)
+
+[node name="Modelo16" type="Sprite2D" parent="Cabelos/AnaoMasculino" unique_id=562498552]
+visible = false
+position = Vector2(989.00006, 200.69258)
+scale = Vector2(0.530435, 0.39898258)
+texture = ExtResource("hair_16")
+region_enabled = true
+region_rect = Rect2(43, 25, 230, 181)
+
+[node name="BaseCareca" type="Sprite2D" parent="Cabelos/AnaoMasculino" unique_id=1903272547]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_n5lcl")
+position = Vector2(969.99994, 332)
+scale = Vector2(0.74857956, 0.74857956)
+texture = ExtResource("Base_AnaoMasculino")
+metadata/_edit_lock_ = true
+
+[node name="HumanoFeminino" type="Sprite2D" parent="Cabelos" unique_id=323370171]
+visible = false
+
+[node name="Modelo1" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=256827761]
+visible = false
+position = Vector2(955, 161)
+scale = Vector2(0.37826103, 0.34735233)
+texture = ExtResource("9_h36os")
+
+[node name="Modelo2" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=1662228230]
+visible = false
+position = Vector2(947.39844, 174.91873)
+rotation = -0.3760815
+scale = Vector2(0.3358463, 0.4309165)
+texture = ExtResource("hair_2")
+region_enabled = true
+region_rect = Rect2(0, 33, 274, 239)
+
+[node name="Modelo3" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=2061997019]
+visible = false
+position = Vector2(951, 174.81935)
+scale = Vector2(0.33834615, 0.3486004)
+texture = ExtResource("hair_3")
+region_enabled = true
+region_rect = Rect2(0, 30, 266, 242)
+
+[node name="Modelo4" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=480680147]
+visible = false
+position = Vector2(955.00006, 168.00002)
+rotation = -0.108826384
+scale = Vector2(0.3356892, 0.321839)
+texture = ExtResource("hair_4")
+region_enabled = true
+region_rect = Rect2(1, 11, 283, 261)
+
+[node name="Modelo5" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=1846452267]
+visible = false
+position = Vector2(948.90314, 170.8593)
+rotation = -0.0737925
+scale = Vector2(0.39195657, 0.3587838)
+texture = ExtResource("hair_5")
+region_enabled = true
+region_rect = Rect2(8, 12, 276, 249)
+
+[node name="Modelo6" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=1513176009]
+visible = false
+position = Vector2(946.9999, 174.00002)
+rotation = -0.10011741
+scale = Vector2(0.38598135, 0.36476135)
+texture = ExtResource("hair_6")
+region_enabled = true
+region_rect = Rect2(0, 16, 282, 241)
+
+[node name="Modelo7" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=1533546820]
+visible = false
+position = Vector2(954.5364, 174.63089)
+scale = Vector2(0.34613603, 0.43744457)
+texture = ExtResource("hair_7")
+region_enabled = true
+region_rect = Rect2(26, 32, 240, 212)
+
+[node name="Modelo8" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=2544919]
+visible = false
+position = Vector2(955.8148, 184.96788)
+scale = Vector2(0.37037072, 0.41200095)
+texture = ExtResource("hair_8")
+region_enabled = true
+region_rect = Rect2(33, 0, 243, 272)
+
+[node name="Modelo9" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=1837131697]
+visible = false
+position = Vector2(956.67316, 191.86336)
+rotation = -0.08149532
+scale = Vector2(0.41339013, 0.5006068)
+texture = ExtResource("hair_9")
+region_enabled = true
+region_rect = Rect2(26, 2, 250, 263)
+
+[node name="Modelo10" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=1498019706]
+visible = false
+position = Vector2(965.5, 179)
+scale = Vector2(0.42592573, 0.45512468)
+texture = ExtResource("hair_10")
+region_enabled = true
+region_rect = Rect2(9, 13, 270, 251)
+
+[node name="Modelo11" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=2044212451]
+visible = false
+position = Vector2(957.2672, 174.287)
+scale = Vector2(0.40637177, 0.42600903)
+texture = ExtResource("hair_11")
+region_enabled = true
+region_rect = Rect2(30, 28, 229, 223)
+
+[node name="Modelo12" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=1121030019]
+visible = false
+position = Vector2(945.05396, 192.17137)
+rotation = -0.12792557
+scale = Vector2(0.4226008, 0.44800064)
+texture = ExtResource("hair_12")
+region_enabled = true
+region_rect = Rect2(5, 0, 264, 273)
+
+[node name="Modelo13" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=890322823]
+visible = false
+position = Vector2(959.00006, 158)
+scale = Vector2(0.41666684, 0.37568215)
+texture = ExtResource("hair_13")
+region_enabled = true
+region_rect = Rect2(57, 28, 168, 149)
+
+[node name="Modelo14" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=809964681]
+visible = false
+position = Vector2(962.2156, 153)
+scale = Vector2(0.42454377, 0.3656091)
+texture = ExtResource("hair_14")
+region_enabled = true
+region_rect = Rect2(55, 29, 177, 173)
+
+[node name="Modelo15" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=1312066238]
+visible = false
+position = Vector2(961.00006, 152.00002)
+scale = Vector2(0.39062512, 0.33146065)
+texture = ExtResource("hair_15")
+region_enabled = true
+region_rect = Rect2(50, 12, 192, 178)
+
+[node name="Modelo16" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=1396784811]
+visible = false
+position = Vector2(969, 152)
+scale = Vector2(0.3801482, 0.34929046)
+texture = ExtResource("hair_16")
+region_enabled = true
+region_rect = Rect2(43, 25, 230, 181)
+
+[node name="BaseCareca" type="Sprite2D" parent="Cabelos/HumanoFeminino" unique_id=1312925984]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_n5lcl")
+position = Vector2(955.00006, 328.00003)
+scale = Vector2(0.7553271, 0.7553271)
+texture = ExtResource("Base_HumanoFeminino")
+metadata/_edit_lock_ = true
+
+[node name="ElfoFeminino" type="Sprite2D" parent="Cabelos" unique_id=1258079258]
+visible = false
+
+[node name="Modelo1" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=1387503608]
+visible = false
+position = Vector2(952.3391, 158.23152)
+scale = Vector2(0.32179964, 0.37787205)
+texture = ExtResource("9_h36os")
+
+[node name="Modelo2" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=779478403]
+visible = false
+position = Vector2(951.4627, 168.62346)
+scale = Vector2(0.33238864, 0.32813784)
+texture = ExtResource("hair_2")
+region_enabled = true
+region_rect = Rect2(0, 33, 274, 239)
+
+[node name="Modelo3" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=1324821018]
+visible = false
+position = Vector2(947.3445, 172.68112)
+scale = Vector2(0.32071844, 0.36627164)
+texture = ExtResource("hair_3")
+region_enabled = true
+region_rect = Rect2(0, 30, 266, 242)
+
+[node name="Modelo4" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=1901938055]
+visible = false
+position = Vector2(954.1167, 163.84502)
+scale = Vector2(0.33016443, 0.35232824)
+texture = ExtResource("hair_4")
+region_enabled = true
+region_rect = Rect2(1, 11, 283, 261)
+
+[node name="Modelo5" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=1950818228]
+visible = false
+position = Vector2(951.9627, 166.99998)
+scale = Vector2(0.33360362, 0.31195235)
+texture = ExtResource("hair_5")
+region_enabled = true
+region_rect = Rect2(8, 12, 276, 249)
+
+[node name="Modelo6" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=10988822]
+visible = false
+position = Vector2(946, 172.11339)
+scale = Vector2(0.36879438, 0.3544347)
+texture = ExtResource("hair_6")
+region_enabled = true
+region_rect = Rect2(0, 16, 282, 241)
+
+[node name="Modelo7" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=1388730476]
+visible = false
+position = Vector2(949.8568, 173)
+scale = Vector2(0.3238066, 0.38546938)
+texture = ExtResource("hair_7")
+region_enabled = true
+region_rect = Rect2(26, 32, 240, 212)
+
+[node name="Modelo8" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=670928077]
+visible = false
+position = Vector2(953.58545, 183.29643)
+scale = Vector2(0.3767397, 0.41693807)
+texture = ExtResource("hair_8")
+region_enabled = true
+region_rect = Rect2(33, 0, 243, 272)
+
+[node name="Modelo9" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=436956147]
+visible = false
+position = Vector2(955, 189.7542)
+scale = Vector2(0.40799987, 0.45640767)
+texture = ExtResource("hair_9")
+region_enabled = true
+region_rect = Rect2(26, 2, 250, 263)
+
+[node name="Modelo10" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=810662497]
+visible = false
+position = Vector2(963, 174)
+scale = Vector2(0.39259252, 0.44272783)
+texture = ExtResource("hair_10")
+region_enabled = true
+region_rect = Rect2(9, 13, 270, 251)
+
+[node name="Modelo11" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=715733433]
+visible = false
+position = Vector2(956.12573, 170.81616)
+scale = Vector2(0.40461197, 0.36771303)
+texture = ExtResource("hair_11")
+region_enabled = true
+region_rect = Rect2(30, 28, 229, 223)
+
+[node name="Modelo12" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=1819653523]
+visible = false
+position = Vector2(945, 187)
+scale = Vector2(0.36101422, 0.46455738)
+texture = ExtResource("hair_12")
+region_enabled = true
+region_rect = Rect2(5, 0, 264, 273)
+
+[node name="Modelo13" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=1863129646]
+visible = false
+position = Vector2(956.03186, 157)
+scale = Vector2(0.4281928, 0.3551147)
+texture = ExtResource("hair_13")
+region_enabled = true
+region_rect = Rect2(57, 28, 168, 149)
+
+[node name="Modelo14" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=327438895]
+visible = false
+position = Vector2(959, 150)
+scale = Vector2(0.47607434, 0.419062)
+texture = ExtResource("hair_14")
+region_enabled = true
+region_rect = Rect2(55, 29, 177, 173)
+
+[node name="Modelo15" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=1177224088]
+visible = false
+position = Vector2(960.25, 151.32791)
+scale = Vector2(0.38802084, 0.33339417)
+texture = ExtResource("hair_15")
+region_enabled = true
+region_rect = Rect2(50, 12, 192, 178)
+
+[node name="Modelo16" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=1925581922]
+visible = false
+position = Vector2(967, 148)
+scale = Vector2(0.38275197, 0.35168287)
+texture = ExtResource("hair_16")
+region_enabled = true
+region_rect = Rect2(43, 25, 230, 181)
+
+[node name="BaseCareca" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=480736181]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_n5lcl")
+position = Vector2(954.00006, 325)
+scale = Vector2(0.75284106, 0.75284106)
+texture = ExtResource("Base_ElfoFeminino")
+metadata/_edit_lock_ = true
+
+[node name="Orelha" type="Sprite2D" parent="Cabelos/ElfoFeminino" unique_id=269649799]
+z_index = 1
+texture_filter = 1
+position = Vector2(981.0001, 186)
+scale = Vector2(0.75588554, 0.75588554)
+texture = ExtResource("Ear_ElfoFeminino")
+metadata/_edit_lock_ = true
+
+[node name="OrcFeminino" type="Sprite2D" parent="Cabelos" unique_id=1767823126]
+visible = false
+
+[node name="Modelo1" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=945989476]
+visible = false
+position = Vector2(948.00006, 150)
+scale = Vector2(0.3802149, 0.34914652)
+texture = ExtResource("9_h36os")
+
+[node name="Modelo2" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=1488393213]
+visible = false
+position = Vector2(942.4342, 163.06253)
+rotation = -0.2640815
+scale = Vector2(0.36253974, 0.4109651)
+texture = ExtResource("hair_2")
+region_enabled = true
+region_rect = Rect2(0, 33, 274, 239)
+
+[node name="Modelo3" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=1288194751]
+visible = false
+position = Vector2(946.5, 162.54993)
+scale = Vector2(0.34210524, 0.34256265)
+texture = ExtResource("hair_3")
+region_enabled = true
+region_rect = Rect2(0, 30, 266, 242)
+
+[node name="Modelo4" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=1382078182]
+visible = false
+position = Vector2(949.8339, 157.83908)
+scale = Vector2(0.33215553, 0.3218391)
+texture = ExtResource("hair_4")
+region_enabled = true
+region_rect = Rect2(1, 11, 283, 261)
+
+[node name="Modelo5" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=1343222244]
+visible = false
+position = Vector2(946.24506, 159.32475)
+rotation = -0.07353955
+scale = Vector2(0.40869996, 0.3538059)
+texture = ExtResource("hair_5")
+region_enabled = true
+region_rect = Rect2(8, 12, 276, 249)
+
+[node name="Modelo6" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=874386143]
+visible = false
+position = Vector2(943.9482, 168.82158)
+scale = Vector2(0.39679524, 0.35684648)
+texture = ExtResource("hair_6")
+region_enabled = true
+region_rect = Rect2(0, 16, 282, 241)
+
+[node name="Modelo7" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=492068154]
+visible = false
+position = Vector2(947.5, 166.89143)
+scale = Vector2(0.35416663, 0.4538545)
+texture = ExtResource("hair_7")
+region_enabled = true
+region_rect = Rect2(26, 32, 240, 212)
+
+[node name="Modelo8" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=1385795970]
+visible = false
+position = Vector2(950.51904, 177.54933)
+rotation = -0.089255705
+scale = Vector2(0.38438946, 0.40354303)
+texture = ExtResource("hair_8")
+region_enabled = true
+region_rect = Rect2(33, 0, 243, 272)
+
+[node name="Modelo9" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=1970973963]
+visible = false
+position = Vector2(950, 181.00003)
+rotation = -0.11545249
+scale = Vector2(0.42014503, 0.5025918)
+texture = ExtResource("hair_9")
+region_enabled = true
+region_rect = Rect2(26, 2, 250, 263)
+
+[node name="Modelo10" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=1126608360]
+visible = false
+position = Vector2(961.5, 170.09953)
+scale = Vector2(0.42592606, 0.4754005)
+texture = ExtResource("hair_10")
+region_enabled = true
+region_rect = Rect2(9, 13, 270, 251)
+
+[node name="Modelo11" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=229779641]
+visible = false
+position = Vector2(950.00006, 164)
+scale = Vector2(0.42025098, 0.4023707)
+texture = ExtResource("hair_11")
+region_enabled = true
+region_rect = Rect2(30, 28, 229, 223)
+
+[node name="Modelo12" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=119417702]
+visible = false
+position = Vector2(942, 179.70921)
+scale = Vector2(0.39393923, 0.4692759)
+texture = ExtResource("hair_12")
+region_enabled = true
+region_rect = Rect2(5, 0, 264, 273)
+
+[node name="Modelo13" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=538276486]
+visible = false
+position = Vector2(952.8364, 151.25279)
+scale = Vector2(0.39480466, 0.3166296)
+texture = ExtResource("hair_13")
+region_enabled = true
+region_rect = Rect2(57, 28, 168, 149)
+
+[node name="Modelo14" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=336275863]
+visible = false
+position = Vector2(953, 143)
+scale = Vector2(0.4516176, 0.38051972)
+texture = ExtResource("hair_14")
+region_enabled = true
+region_rect = Rect2(55, 29, 177, 173)
+
+[node name="Modelo15" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=1846674309]
+visible = false
+position = Vector2(953, 145.00002)
+scale = Vector2(0.416335, 0.32817417)
+texture = ExtResource("hair_15")
+region_enabled = true
+region_rect = Rect2(50, 12, 192, 178)
+
+[node name="Modelo16" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=930377345]
+visible = false
+position = Vector2(952.67896, 168.49025)
+scale = Vector2(0.3475492, 0.3193376)
+texture = ExtResource("hair_16")
+region_enabled = true
+region_rect = Rect2(43, 25, 230, 181)
+
+[node name="BaseCareca" type="Sprite2D" parent="Cabelos/OrcFeminino" unique_id=157764648]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_n5lcl")
+position = Vector2(948.0681, 321.86362)
+scale = Vector2(0.7650924, 0.7650924)
+texture = ExtResource("Base_OrcFeminino")
+metadata/_edit_lock_ = true
+
+[node name="AnaoFeminino" type="Sprite2D" parent="Cabelos" unique_id=404938686]
+visible = false
+
+[node name="Modelo1" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=579476510]
+visible = false
+position = Vector2(968.9493, 201.65265)
+scale = Vector2(0.38655612, 0.37479815)
+texture = ExtResource("9_h36os")
+
+[node name="Modelo2" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=1947164347]
+visible = false
+position = Vector2(965.9527, 212.05447)
+scale = Vector2(0.38640457, 0.37454608)
+texture = ExtResource("hair_2")
+region_enabled = true
+region_rect = Rect2(0, 33, 274, 239)
+
+[node name="Modelo3" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=1521307484]
+visible = false
+position = Vector2(962.93225, 214.52669)
+scale = Vector2(0.36445674, 0.35928357)
+texture = ExtResource("hair_3")
+region_enabled = true
+region_rect = Rect2(0, 30, 266, 242)
+
+[node name="Modelo4" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=1887836662]
+visible = false
+position = Vector2(970.0453, 209.27797)
+rotation = -0.043061193
+scale = Vector2(0.35492715, 0.35305265)
+texture = ExtResource("hair_4")
+region_enabled = true
+region_rect = Rect2(1, 11, 283, 261)
+
+[node name="Modelo5" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=455958165]
+visible = false
+position = Vector2(965.5, 209.43007)
+scale = Vector2(0.4021738, 0.39056507)
+texture = ExtResource("hair_5")
+region_enabled = true
+region_rect = Rect2(8, 12, 276, 249)
+
+[node name="Modelo6" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=399139533]
+visible = false
+position = Vector2(961.99994, 216)
+scale = Vector2(0.4068369, 0.39215577)
+texture = ExtResource("hair_6")
+region_enabled = true
+region_rect = Rect2(0, 16, 282, 241)
+
+[node name="Modelo7" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=302678853]
+visible = false
+position = Vector2(965.59155, 213.86165)
+scale = Vector2(0.426595, 0.41639963)
+texture = ExtResource("hair_7")
+region_enabled = true
+region_rect = Rect2(26, 32, 240, 212)
+
+[node name="Modelo8" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=1078795491]
+visible = false
+position = Vector2(970.2922, 229.85901)
+scale = Vector2(0.41563785, 0.4597192)
+texture = ExtResource("hair_8")
+region_enabled = true
+region_rect = Rect2(33, 0, 243, 272)
+
+[node name="Modelo9" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=167436282]
+visible = false
+position = Vector2(970.5, 236.10168)
+scale = Vector2(0.4519996, 0.49922955)
+texture = ExtResource("hair_9")
+region_enabled = true
+region_rect = Rect2(26, 2, 250, 263)
+
+[node name="Modelo10" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=785102359]
+visible = false
+position = Vector2(981, 220.92102)
+scale = Vector2(0.44444415, 0.47681722)
+texture = ExtResource("hair_10")
+region_enabled = true
+region_rect = Rect2(9, 13, 270, 251)
+
+[node name="Modelo11" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=1139192678]
+visible = false
+position = Vector2(971, 216.00002)
+scale = Vector2(0.44439623, 0.42548862)
+texture = ExtResource("hair_11")
+region_enabled = true
+region_rect = Rect2(30, 28, 229, 223)
+
+[node name="Modelo12" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=1869001291]
+visible = false
+position = Vector2(957.5, 235)
+scale = Vector2(0.4734849, 0.5338984)
+texture = ExtResource("hair_12")
+region_enabled = true
+region_rect = Rect2(5, 0, 264, 273)
+
+[node name="Modelo13" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=613067250]
+visible = false
+position = Vector2(971.5, 206.6495)
+scale = Vector2(0.4226186, 0.33800662)
+texture = ExtResource("hair_13")
+region_enabled = true
+region_rect = Rect2(57, 28, 168, 149)
+
+[node name="Modelo14" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=1276026123]
+visible = false
+position = Vector2(972.265, 200.3526)
+scale = Vector2(0.44646043, 0.29479772)
+texture = ExtResource("hair_14")
+region_enabled = true
+region_rect = Rect2(55, 29, 177, 173)
+
+[node name="Modelo15" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=1723984879]
+visible = false
+position = Vector2(974, 201.5)
+scale = Vector2(0.375, 0.24157304)
+texture = ExtResource("hair_15")
+region_enabled = true
+region_rect = Rect2(50, 12, 192, 178)
+
+[node name="Modelo16" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=771308898]
+visible = false
+position = Vector2(979.495, 199)
+scale = Vector2(0.35221744, 0.2596684)
+texture = ExtResource("hair_16")
+region_enabled = true
+region_rect = Rect2(43, 25, 230, 181)
+
+[node name="BaseCareca" type="Sprite2D" parent="Cabelos/AnaoFeminino" unique_id=276282691]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_n5lcl")
+position = Vector2(969.4545, 352.90894)
+scale = Vector2(0.6598013, 0.6598013)
+texture = ExtResource("Base_AnaoFeminino")
+metadata/_edit_lock_ = true
+
+[node name="Orelha" type="Sprite2D" parent="Cabelos/OrcMasculino"]
+z_index = 1
+texture_filter = 1
+position = Vector2(984.98004, 185.4612)
+scale = Vector2(0.7806286, 0.7806286)
+texture = ExtResource("OrelhaOrcMasculino")
+
+[node name="DenteEsquerdo" type="Sprite2D" parent="Cabelos/OrcMasculino"]
+z_index = 1
+texture_filter = 1
+position = Vector2(928.38446, 202.2447)
+scale = Vector2(0.7806286, 0.7806286)
+texture = ExtResource("DenteEsquerdoOrcMasculino")
+
+[node name="Orelha" type="Sprite2D" parent="Cabelos/OrcFeminino"]
+z_index = 1
+texture_filter = 1
+position = Vector2(972.5511, 177.26115)
+scale = Vector2(0.7650924, 0.7650924)
+texture = ExtResource("OrelhaOrcFeminino")
+
+[node name="DenteEsquerdo" type="Sprite2D" parent="Cabelos/OrcFeminino"]
+z_index = 1
+texture_filter = 1
+position = Vector2(927.41064, 189.88518)
+scale = Vector2(0.7650924, 0.7650924)
+texture = ExtResource("DenteEsquerdoOrcFeminino")

@@ -18,16 +18,16 @@ const WEAPON_SHEETS = [
 	[89, 100, "res://assets/game/sprites/Arsenal_RPG/pranchas/089-100.png", 4],
 ]
 const ARMOR_SHEETS = [
-	[1, 10, "res://assets/game/sprites/Armaduras/001-010.png"],
-	[11, 20, "res://assets/game/sprites/Armaduras/011-020.png"],
-	[21, 30, "res://assets/game/sprites/Armaduras/021-030.png"],
-	[31, 40, "res://assets/game/sprites/Armaduras/031-040.png"],
-	[41, 50, "res://assets/game/sprites/Armaduras/041-050.png"],
-	[51, 60, "res://assets/game/sprites/Armaduras/051-060.png"],
-	[61, 70, "res://assets/game/sprites/Armaduras/061-070.png"],
-	[71, 80, "res://assets/game/sprites/Armaduras/071-080.png"],
-	[81, 90, "res://assets/game/sprites/Armaduras/081-090.png"],
-	[91, 100, "res://assets/game/sprites/Armaduras/091-100.png"],
+	[1, 10, "res://assets/game/sprites/Armaduras_RPG/pranchas/001-010.png"],
+	[11, 20, "res://assets/game/sprites/Armaduras_RPG/pranchas/011-020.png"],
+	[21, 30, "res://assets/game/sprites/Armaduras_RPG/pranchas/021-030.png"],
+	[31, 40, "res://assets/game/sprites/Armaduras_RPG/pranchas/031-040.png"],
+	[41, 50, "res://assets/game/sprites/Armaduras_RPG/pranchas/041-050.png"],
+	[51, 60, "res://assets/game/sprites/Armaduras_RPG/pranchas/051-060.png"],
+	[61, 70, "res://assets/game/sprites/Armaduras_RPG/pranchas/061-070.png"],
+	[71, 80, "res://assets/game/sprites/Armaduras_RPG/pranchas/071-080.png"],
+	[81, 90, "res://assets/game/sprites/Armaduras_RPG/pranchas/081-090.png"],
+	[91, 100, "res://assets/game/sprites/Armaduras_RPG/pranchas/091-100.png"],
 ]
 const CLASS_ROWS = {
 	"atirador": 0, "mago": 1, "guerreiro": 2,

@@ -10,10 +10,14 @@ func _initialize() -> void:
 			for style in range(1, 17):
 				state.set_hair(style, "castanho")
 				var scalp: Rect2 = custom.scalp_rect(state)
+				var source: Rect2 = custom.head_rect(state)
+				var destination: Rect2 = custom.head_destination(state)
+				var factor: float = destination.size.x / source.size.x
+				scalp = Rect2(destination.position + (scalp.position - source.position) * factor, scalp.size * factor)
 				var rect: Rect2 = custom.hair_destination(state)
 				var texture: AtlasTexture = custom.hair_texture(style)
 				var image: Image = texture.get_image()
-				var point := Vector2(scalp.get_center().x, scalp.position.y + 10)
+				var point := Vector2(scalp.get_center().x, scalp.position.y + 10 * factor)
 				var sample := Vector2i((point - rect.position) / rect.size * Vector2(image.get_size()))
 				var covered: bool = Rect2i(Vector2i.ZERO, image.get_size()).has_point(sample) and image.get_pixelv(sample).a >= 0.75
 				if not covered:

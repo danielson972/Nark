@@ -4,6 +4,7 @@ extends RefCounted
 const ATLAS_PATH = "res://assets/game/sprites/herois/compartilhados/equipamentos/hero_equipment_atlas.png"
 const HUMAN_ATLAS_PATH = "res://assets/game/sprites/herois/humano/human_equipment_atlas_vibrant.png"
 const Custom = preload("res://scripts/actors/character_customization.gd")
+const WornLayout = preload("res://assets/game/sprites/herois/armaduras_vestidas/worn_layout.gd")
 const HUMAN_GRID = Vector2i(6, 6)
 const GRID = Vector2i(8, 6)
 const CUTOUT_SHADER = preload("res://shaders/equipment_cutout.gdshader")
@@ -57,6 +58,8 @@ static var hand_frames: Dictionary = {}
 static var cutout: ShaderMaterial
 static var weapon_materials: Dictionary = {}
 static var body_materials: Dictionary = {}
+static var catalog_bodies: Dictionary = {}
+const WORN_CATALOG_FOLDER = "res://assets/game/sprites/herois/armaduras_vestidas/"
 
 static func cutout_material() -> ShaderMaterial:
 	if cutout == null:
@@ -86,7 +89,7 @@ static func weapon_material(state: PlayerState, texture: AtlasTexture) -> Shader
 		var atlas_size: Vector2 = texture.atlas.get_size()
 		result.set_shader_parameter("texture_region", Vector4(texture.region.position.x / atlas_size.x,
 			texture.region.position.y / atlas_size.y, texture.region.size.x / atlas_size.x, texture.region.size.y / atlas_size.y))
-		result.set_shader_parameter("trim_grip", state.class_id == "guerreiro")
+		result.set_shader_parameter("trim_grip", state.class_id == "guerreiro" and _catalog_weapon_group(item_id).is_empty())
 		result.set_shader_parameter("grip_position", weapon_pivot(state.class_id, item_id))
 		result.set_shader_parameter("colossal", item_id == "arma_b")
 		weapon_materials[key] = result
@@ -119,7 +122,21 @@ static func body_texture(state: PlayerState) -> AtlasTexture:
 	var armor_id: String = str(state.equipment.get("armadura", {}).get("id", ""))
 	if not Custom.armored(state):
 		return Custom.bald_body(state.race_id, state.gender_id)
+	if armor_id.begins_with("armadura_catalogo_"):
+		return catalog_body(state, armor_id)
 	return human_frame(state.class_id, outfit_column(armor_id))
+
+static func catalog_body(state: PlayerState, item_id: String) -> AtlasTexture:
+	var key: String = item_id + ":" + state.gender_id
+	if not catalog_bodies.has(key):
+		var number: int = int(str(GameData.item(item_id).get("catalog_art", "")).trim_prefix("armadura_"))
+		var worn_path: String = WORN_CATALOG_FOLDER + "armadura_%03d.png" % number
+		var worn := AtlasTexture.new()
+		worn.atlas = load(worn_path)
+		worn.region = Rect2(Vector2.ZERO, worn.atlas.get_size())
+		worn.filter_clip = true
+		catalog_bodies[key] = worn
+	return catalog_bodies[key]
 
 static func human_frame(class_id: String, column: int) -> AtlasTexture:
 	var key := Vector2i(clampi(column, 0, 5), int(CLASS_ROWS.get(class_id, 2)))
@@ -135,6 +152,15 @@ static func human_frame(class_id: String, column: int) -> AtlasTexture:
 	return human_frames[key]
 
 static func hand_position(state: PlayerState) -> Vector2:
+	var armor_id: String = str(state.equipment.get("armadura", {}).get("id", ""))
+	if armor_id.begins_with("armadura_catalogo_"):
+		var number: String = str(int(str(GameData.item(armor_id).get("catalog_art", "")).trim_prefix("armadura_")))
+		if WornLayout.HANDS.has(number):
+			var coordinates: Array = WornLayout.HANDS[number]
+			return Vector2(coordinates[0], coordinates[1])
+	var worn_hands := {"armadura_catalogo_022": Vector2(0.25, 0.55), "armadura_catalogo_039": Vector2(0.24, 0.55), "armadura_catalogo_040": Vector2(0.23, 0.58)}
+	if worn_hands.has(armor_id):
+		return worn_hands[armor_id]
 	if not Custom.armored(state):
 		if state.gender_id == "feminino":
 			return {"humano": Vector2(0.17, 0.55), "elfo": Vector2(0.20, 0.55), "orc": Vector2(0.13, 0.55), "anao": Vector2(0.14, 0.56)}.get(state.race_id, Vector2(0.20, 0.535))
@@ -150,7 +176,7 @@ static func hand_rect(state: PlayerState) -> Rect2:
 static func hand_texture(state: PlayerState) -> AtlasTexture:
 	var body: AtlasTexture = body_texture(state)
 	var rect: Rect2 = hand_rect(state)
-	var key: String = body.atlas.resource_path + ":" + str(body.region) + ":" + str(rect)
+	var key: String = "%s:%s:%s:%s:%s" % [body.atlas.resource_path, body.region, rect, state.gender_id, state.equipment.get("armadura", {}).get("id", "")]
 	if not hand_frames.has(key):
 		var patch: AtlasTexture = AtlasTexture.new()
 		patch.atlas = body.atlas
@@ -176,13 +202,13 @@ static func weapon_pivot(class_id: String, item_id: String = "") -> Vector2:
 	var group := _catalog_weapon_group(item_id)
 	if not group.is_empty():
 		return {
-			"sword": Vector2(0.20, 0.78),
+			"sword": Vector2(0.32, 0.65),
 			"heavy": Vector2(0.18, 0.80),
 			"dagger": Vector2(0.24, 0.76),
 			"bow": Vector2(0.50, 0.54),
 			"staff": Vector2(0.46, 0.78),
 			"spear": Vector2(0.20, 0.77),
-			"shield": Vector2(0.23, 0.60),
+			"shield": Vector2(0.50, 0.50),
 		}.get(group, Vector2(0.28, 0.76))
 	if class_id == "guerreiro":
 		return SWORD_GRIPS.get(item_id, SWORD_GRIPS["arma_ng"])
@@ -197,8 +223,8 @@ static func weapon_height(class_id: String, item_id: String = "") -> float:
 		"dagger": return base * 0.82
 		"bow": return base * 0.92
 		"staff": return base * 1.06
-		"shield": return base * 0.86
-		"sword": return base * 1.02
+		"shield": return 0.28
+		"sword": return 0.38
 	return base
 
 # Rest pose follows the reference: bow across the waist, staff upward-left,
@@ -207,9 +233,9 @@ static func weapon_rotation(class_id: String, item_id: String = "") -> float:
 	match _catalog_weapon_group(item_id):
 		"bow": return deg_to_rad(-115.0)
 		"staff": return deg_to_rad(-47.0)
-		"shield": return deg_to_rad(-165.0)
+		"shield": return 0.0
 		"spear": return deg_to_rad(-160.0)
-		"sword", "heavy", "dagger": return 0.0
+		"sword", "heavy", "dagger": return PI
 	match class_id:
 		"atirador": return deg_to_rad(-115.0)
 		"mago": return deg_to_rad(-47.0)

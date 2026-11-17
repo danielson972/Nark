@@ -3,6 +3,7 @@
 
 # Godot 4+ specific ignores
 .godot/
+.runtime/
 .nomedia
 
 # Godot-specific ignores
@@ -31,3 +32,4 @@ mono_crash.*.json
 .work/
 outputs/
 relatorios/*.log
+.runtime/

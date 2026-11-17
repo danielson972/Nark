@@ -1,0 +1,122 @@
+ARMADURAS RPG — 100 SETS
+100 sets com elmo ou capuz, torso, pernas e botas. Pranchas com fundo de apresentação; não são sprites recortados nem arquivos nativos de 64×64. O catálogo padroniza nomes e grades; alguns rótulos das imagens podem conter erros de grafia.
+
+TECIDO
+001 | Aprendiz | Grade: No-Grade
+002 | Viajante | Grade: No-Grade
+003 | Acólito | Grade: D
+004 | Erudito | Grade: D
+005 | Runas Azuis | Grade: C
+006 | Tecelão Arcano | Grade: C
+007 | Sábio de Mithril | Grade: B
+008 | Oráculo | Grade: B
+009 | Vestes Astrais | Grade: A
+010 | Manto Celestial | Grade: S
+
+COURO
+011 | Caçador Novato | Grade: No-Grade
+012 | Explorador | Grade: No-Grade
+013 | Batedor | Grade: D
+014 | Couro Reforçado | Grade: D
+015 | Patrulheiro | Grade: C
+016 | Couro de Fera | Grade: C
+017 | Caçador Rúnico | Grade: B
+018 | Rastreador Real | Grade: B
+019 | Predador Sombrio | Grade: A
+020 | Caçador Celestial | Grade: S
+
+MALHA
+021 | Recruta | Grade: No-Grade
+022 | Miliciano | Grade: No-Grade
+023 | Guarda de Bronze | Grade: D
+024 | Sentinela | Grade: D
+025 | Malha Temperada | Grade: C
+026 | Guarda Azul | Grade: C
+027 | Malha de Mithril | Grade: B
+028 | Defensor Rúnico | Grade: B
+029 | Malha de Obsidiana | Grade: A
+030 | Sentinela Celestial | Grade: S
+
+PLACAS
+031 | Escudeiro | Grade: No-Grade
+032 | Ferro Gasto | Grade: No-Grade
+033 | Soldado de Bronze | Grade: D
+034 | Cavaleiro de Ferro | Grade: D
+035 | Aço Temperado | Grade: C
+036 | Cavaleiro Real | Grade: C
+037 | Placas de Mithril | Grade: B
+038 | Guardião de Safira | Grade: B
+039 | Placas de Obsidiana | Grade: A
+040 | Soberano Celestial | Grade: S
+
+FLORESTA
+041 | Andarilho Verde | Grade: No-Grade
+042 | Coletor do Bosque | Grade: No-Grade
+043 | Guardião de Casca | Grade: D
+044 | Couro de Musgo | Grade: D
+045 | Vigia Élfico | Grade: C
+046 | Folhas de Prata | Grade: C
+047 | Sentinela Esmeralda | Grade: B
+048 | Druida Ancestral | Grade: B
+049 | Espinhos Sombrios | Grade: A
+050 | Coração da Floresta | Grade: S
+
+MONTANHA
+051 | Minerador | Grade: No-Grade
+052 | Desbravador | Grade: No-Grade
+053 | Guarda de Cobre | Grade: D
+054 | Ferreiro de Bronze | Grade: D
+055 | Guardião de Granito | Grade: C
+056 | Carapaça Branca | Grade: C
+057 | Forja de Mithril | Grade: B
+058 | Defensor de Quartzo | Grade: B
+059 | Basalto Rúnico | Grade: A
+060 | Rei da Montanha | Grade: S
+
+GELO
+061 | Viajante do Frio | Grade: No-Grade
+062 | Caçador da Neve | Grade: No-Grade
+063 | Pele de Lobo | Grade: D
+064 | Guarda Invernal | Grade: D
+065 | Aço Glacial | Grade: C
+066 | Vigia da Geada | Grade: C
+067 | Cristal Ártico | Grade: B
+068 | Guardião da Aurora | Grade: B
+069 | Soberano do Gelo | Grade: A
+070 | Coroa do Inverno | Grade: S
+
+FOGO
+071 | Vigia das Cinzas | Grade: No-Grade
+072 | Couro Chamuscado | Grade: No-Grade
+073 | Guarda de Cobre Rubro | Grade: D
+074 | Forja Escarlate | Grade: D
+075 | Aço Incandescente | Grade: C
+076 | Caçador de Brasas | Grade: C
+077 | Rubi Rúnico | Grade: B
+078 | Guardião Vulcânico | Grade: B
+079 | Obsidiana Ardente | Grade: A
+080 | Soberano das Chamas | Grade: S
+
+SOMBRAS
+081 | Vigia Noturno | Grade: No-Grade
+082 | Couro Escuro | Grade: No-Grade
+083 | Batedor da Névoa | Grade: D
+084 | Guarda Crepuscular | Grade: D
+085 | Assassino de Prata | Grade: C
+086 | Caçador do Eclipse | Grade: C
+087 | Safira Sombria | Grade: B
+088 | Guardião Lunar | Grade: B
+089 | Cavaleiro do Abismo | Grade: A
+090 | Soberano da Noite | Grade: S
+
+OCEANO
+091 | Marinheiro | Grade: No-Grade
+092 | Explorador da Costa | Grade: No-Grade
+093 | Guarda de Coral | Grade: D
+094 | Couro de Arraia | Grade: D
+095 | Escamas Azuis | Grade: C
+096 | Carapaça Marinha | Grade: C
+097 | Mithril das Marés | Grade: B
+098 | Guardião de Pérolas | Grade: B
+099 | Armadura Abissal | Grade: A
+100 | Soberano do Leviatã | Grade: S
