@@ -1,0 +1,209 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/actors/armor_parts.gd" id="1_tdxdy"]
+[ext_resource type="Shader" path="res://shaders/equipment_cutout.gdshader" id="2_ww8pd"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/herois/armaduras_vestidas/armadura_014.png" id="3_kle2y"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/Armaduras_RPG/pranchas/011-020.png" id="4_sks1b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ftcam"]
+resource_local_to_scene = true
+shader = ExtResource("2_ww8pd")
+shader_parameter/texture_region = Vector4(0, 0, 1, 1)
+shader_parameter/trim_grip = null
+shader_parameter/grip_position = null
+shader_parameter/colossal = null
+shader_parameter/head_cutoff = null
+shader_parameter/orc_skin = null
+shader_parameter/attachment_size = null
+shader_parameter/world_antialiasing = null
+shader_parameter/armor_layer = null
+shader_parameter/armor_glove_a = null
+shader_parameter/armor_glove_b = null
+shader_parameter/armor_skin_head = null
+shader_parameter/armor_waist_y = null
+shader_parameter/armor_boots_y = null
+shader_parameter/helmet_hollow = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulvx2"]
+atlas = ExtResource("3_kle2y")
+region = Rect2(60, 0, 136, 113)
+filter_clip = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ks65p"]
+resource_local_to_scene = true
+shader = ExtResource("2_ww8pd")
+shader_parameter/texture_region = Vector4(0, 0, 1, 1)
+shader_parameter/trim_grip = null
+shader_parameter/grip_position = null
+shader_parameter/colossal = null
+shader_parameter/head_cutoff = 0.22
+shader_parameter/orc_skin = null
+shader_parameter/attachment_size = null
+shader_parameter/world_antialiasing = null
+shader_parameter/armor_layer = 0
+shader_parameter/armor_glove_a = Vector4(0.19140625, 0.4765625, 0.09765625, 0.080078125)
+shader_parameter/armor_glove_b = Vector4(0.64453125, 0.48242188, 0.12109375, 0.0859375)
+shader_parameter/armor_skin_head = Vector4(0, 0, 0, 0)
+shader_parameter/armor_waist_y = 0.59765625
+shader_parameter/armor_boots_y = 0.8203125
+shader_parameter/helmet_hollow = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poxp0"]
+atlas = ExtResource("3_kle2y")
+region = Rect2(49, 107, 164, 205)
+filter_clip = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ss5mr"]
+resource_local_to_scene = true
+shader = ExtResource("2_ww8pd")
+shader_parameter/texture_region = Vector4(0, 0, 1, 1)
+shader_parameter/trim_grip = null
+shader_parameter/grip_position = null
+shader_parameter/colossal = null
+shader_parameter/head_cutoff = 0.22
+shader_parameter/orc_skin = null
+shader_parameter/attachment_size = null
+shader_parameter/world_antialiasing = null
+shader_parameter/armor_layer = 1
+shader_parameter/armor_glove_a = Vector4(0.19140625, 0.4765625, 0.09765625, 0.080078125)
+shader_parameter/armor_glove_b = Vector4(0.64453125, 0.48242188, 0.12109375, 0.0859375)
+shader_parameter/armor_skin_head = Vector4(0, 0, 0, 0)
+shader_parameter/armor_waist_y = 0.59765625
+shader_parameter/armor_boots_y = 0.8203125
+shader_parameter/helmet_hollow = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoep3"]
+atlas = ExtResource("3_kle2y")
+region = Rect2(43, 238, 159, 59)
+filter_clip = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_koi8h"]
+resource_local_to_scene = true
+shader = ExtResource("2_ww8pd")
+shader_parameter/texture_region = Vector4(0, 0, 1, 1)
+shader_parameter/trim_grip = null
+shader_parameter/grip_position = null
+shader_parameter/colossal = null
+shader_parameter/head_cutoff = 0.22
+shader_parameter/orc_skin = null
+shader_parameter/attachment_size = null
+shader_parameter/world_antialiasing = null
+shader_parameter/armor_layer = 2
+shader_parameter/armor_glove_a = Vector4(0.19140625, 0.4765625, 0.09765625, 0.080078125)
+shader_parameter/armor_glove_b = Vector4(0.64453125, 0.48242188, 0.12109375, 0.0859375)
+shader_parameter/armor_skin_head = Vector4(0, 0, 0, 0)
+shader_parameter/armor_waist_y = 0.59765625
+shader_parameter/armor_boots_y = 0.8203125
+shader_parameter/helmet_hollow = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khhln"]
+atlas = ExtResource("3_kle2y")
+region = Rect2(68, 300, 129, 126)
+filter_clip = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e5441"]
+resource_local_to_scene = true
+shader = ExtResource("2_ww8pd")
+shader_parameter/texture_region = Vector4(0, 0, 1, 1)
+shader_parameter/trim_grip = null
+shader_parameter/grip_position = null
+shader_parameter/colossal = null
+shader_parameter/head_cutoff = 0.22
+shader_parameter/orc_skin = null
+shader_parameter/attachment_size = null
+shader_parameter/world_antialiasing = null
+shader_parameter/armor_layer = 3
+shader_parameter/armor_glove_a = Vector4(0.19140625, 0.4765625, 0.09765625, 0.080078125)
+shader_parameter/armor_glove_b = Vector4(0.64453125, 0.48242188, 0.12109375, 0.0859375)
+shader_parameter/armor_skin_head = Vector4(0, 0, 0, 0)
+shader_parameter/armor_waist_y = 0.59765625
+shader_parameter/armor_boots_y = 0.8203125
+shader_parameter/helmet_hollow = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg6wi"]
+atlas = ExtResource("3_kle2y")
+region = Rect2(52, 414, 151, 94)
+filter_clip = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddk4g"]
+resource_local_to_scene = true
+shader = ExtResource("2_ww8pd")
+shader_parameter/texture_region = Vector4(0.62369794, 0.009765625, 0.111979164, 0.08496094)
+shader_parameter/trim_grip = null
+shader_parameter/grip_position = null
+shader_parameter/colossal = null
+shader_parameter/head_cutoff = null
+shader_parameter/orc_skin = null
+shader_parameter/attachment_size = null
+shader_parameter/world_antialiasing = null
+shader_parameter/armor_layer = null
+shader_parameter/armor_glove_a = null
+shader_parameter/armor_glove_b = null
+shader_parameter/armor_skin_head = null
+shader_parameter/armor_waist_y = null
+shader_parameter/armor_boots_y = null
+shader_parameter/helmet_hollow = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vowqs"]
+atlas = ExtResource("4_sks1b")
+region = Rect2(958, 10, 172, 87)
+filter_clip = true
+
+[node name="ArmaduraEmPartes" type="Node2D" unique_id=1548950989]
+script = ExtResource("1_tdxdy")
+armor_id = "armadura_catalogo_014"
+metadata/source_body = "res://assets/game/sprites/herois/armaduras_vestidas/armadura_014.png"
+metadata/source_region = Rect2(0, 0, 256, 512)
+
+[node name="Pele" type="Sprite2D" parent="." unique_id=413957644]
+visible = false
+centered = false
+metadata/source_position = Vector2(0, 0)
+
+[node name="ReferenciaCabeca" type="Sprite2D" parent="." unique_id=140496729]
+material = SubResource("ShaderMaterial_ftcam")
+position = Vector2(60, 0)
+texture = SubResource("AtlasTexture_ulvx2")
+centered = false
+metadata/source_position = Vector2(60, 0)
+metadata/editor_only = true
+
+[node name="Peito" type="Sprite2D" parent="." unique_id=1810776429]
+material = SubResource("ShaderMaterial_ks65p")
+position = Vector2(49, 107)
+texture = SubResource("AtlasTexture_poxp0")
+centered = false
+metadata/source_position = Vector2(49, 107)
+metadata/includes = "Torso, ombreiras e avambraços"
+
+[node name="Luvas" type="Sprite2D" parent="." unique_id=1734022814]
+material = SubResource("ShaderMaterial_ss5mr")
+position = Vector2(43, 238)
+texture = SubResource("AtlasTexture_uoep3")
+centered = false
+metadata/source_position = Vector2(43, 238)
+metadata/includes = "Mãos/luvas; preserva as mãos nos conjuntos sem luvas desenhadas"
+
+[node name="Calca" type="Sprite2D" parent="." unique_id=2099864123]
+material = SubResource("ShaderMaterial_koi8h")
+position = Vector2(68, 300)
+texture = SubResource("AtlasTexture_khhln")
+centered = false
+metadata/source_position = Vector2(68, 300)
+
+[node name="Botas" type="Sprite2D" parent="." unique_id=947958327]
+material = SubResource("ShaderMaterial_e5441")
+position = Vector2(52, 414)
+texture = SubResource("AtlasTexture_kg6wi")
+centered = false
+metadata/source_position = Vector2(52, 414)
+
+[node name="Elmo" type="Sprite2D" parent="." unique_id=338802253]
+visible = false
+z_index = 4
+material = SubResource("ShaderMaterial_ddk4g")
+position = Vector2(70.3, 29.080002)
+scale = Vector2(0.65930235, 0.65930235)
+texture = SubResource("AtlasTexture_vowqs")
+centered = false
+metadata/source_position = Vector2(70.3, 29.080002)
