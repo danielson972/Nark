@@ -54,14 +54,6 @@ func _process(delta: float) -> void :
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.ctrl_pressed and not event.shift_pressed and not event.alt_pressed and (event.keycode == KEY_I or event.physical_keycode == KEY_I):
-		if developer_active and mode in ["playing", "panel"]:
-			if mode == "panel" and ui.current_panel == "armor_parts":
-				_close_panel()
-			else:
-				_open_panel("armor_parts")
-		get_viewport().set_input_as_handled()
-		return
 	# Captura o atalho antes que um painel da interface consuma a tecla.
 	if event is InputEventKey and event.pressed and not event.echo and event.ctrl_pressed and event.shift_pressed and event.keycode == KEY_F12:
 		if developer_active:
@@ -73,10 +65,6 @@ func _input(event: InputEvent) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void :
-	if mode == "panel" and ui.current_panel == "armor_parts" and event.is_action_pressed("inventory"):
-		ui.show_inventory_panel()
-		get_viewport().set_input_as_handled()
-		return
 	if event.is_action_pressed("character_status"):
 		if mode == "playing":
 			_open_panel("status")
@@ -138,6 +126,7 @@ func _unhandled_input(event: InputEvent) -> void :
 func _on_new_game(race_id: String, class_id: String, hero_name: String) -> void :
 	state = PlayerState.create(hero_name, race_id, class_id)
 	state.gender_id = ui.creation_gender_id
+	state.body_type = ui.creation_body_type
 	state.set_hair(ui.creation_hair_style, ui.creation_hair_color)
 	state.set_beard(ui.creation_beard_style,ui.creation_beard_color)
 	world_flags = {}
@@ -200,14 +189,11 @@ func _resume() -> void :
 
 
 func _open_panel(kind: String) -> void :
-	if kind == "armor_parts" and not developer_active: return
 	if world == null:
 		return
 	world.set_paused(true)
 	mode = "panel"
 	match kind:
-		"armor_parts":
-			if developer_active: ui.show_armor_parts_inventory()
 		"inventory": ui.show_inventory_panel()
 		"status": ui.show_status_panel()
 		"skills": ui.show_skills_panel()
@@ -292,7 +278,7 @@ func _on_boss_finished(defeated: bool) -> void :
 
 func _on_prop_used(prop: Dictionary) -> void :
 	match str(prop["kind"]):
-		"dev_items", "dev_armor_parts", "dev_skills", "dev_tools", "dev_quests": _open_developer_shop(str(prop["kind"]))
+		"dev_items", "dev_skills", "dev_tools", "dev_quests": _open_developer_shop(str(prop["kind"]))
 		"dev_arena", "arena_console": _open_developer_shop("dev_arena")
 		"dev_exit": _leave_developer_room()
 		"estatua": _open_panel("statue")
@@ -425,7 +411,7 @@ func _store_item(item_id: String) -> void :
 
 
 func _refresh_storage_panel() -> void:
-	if ui.current_panel in ["inventory", "status", "armor_parts"]:
+	if ui.current_panel in ["inventory", "status"]:
 		ui.refresh_equipment_panels()
 	else:
 		ui.show_chest_panel()
@@ -694,7 +680,7 @@ func _enter_developer_room() -> void:
 	state.hp = state.max_hp()
 	developer_active = true
 	_start_world()
-	ui.toast("Sala secreta: E nas lojas. Ctrl + I: inventário de peças. Ctrl + Shift + F12: sair.", UiKit.GOLD)
+	ui.toast("Sala secreta: E nas lojas. Ctrl + Shift + F12 para sair. Testes nÃ£o sÃ£o salvos.", UiKit.GOLD)
 
 
 func _leave_developer_room() -> void:

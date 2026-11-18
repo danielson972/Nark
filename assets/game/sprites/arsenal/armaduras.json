@@ -1,0 +1,2375 @@
+{
+  "versao": 1,
+  "sets": [
+    {
+      "id": "guerreiro_no_grade",
+      "nome": "Conjunto Aço de Caminho",
+      "classe": "guerreiro",
+      "grade": "No Grade",
+      "historia": "Equipamento de quem patrulhava as estradas partidas pelo Nascimento.",
+      "pecas": [
+        {
+          "id": "guerreiro_no_grade_elmo",
+          "nome": "Elmo · Aço de Caminho",
+          "slot": "elmo",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/no_grade/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 0,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_no_grade_peito",
+          "nome": "Peitoral com avambraços · Aço de Caminho",
+          "slot": "peito",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/no_grade/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 64,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_no_grade_luvas",
+          "nome": "Luvas · Aço de Caminho",
+          "slot": "luvas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/no_grade/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 128,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_no_grade_calca",
+          "nome": "Calça · Aço de Caminho",
+          "slot": "calca",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/no_grade/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 192,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_no_grade_botas",
+          "nome": "Botas · Aço de Caminho",
+          "slot": "botas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/no_grade/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 256,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "guerreiro_d",
+      "nome": "Conjunto Pedra Rachada",
+      "classe": "guerreiro",
+      "grade": "D",
+      "historia": "Os ferreiros copiaram nas placas as fraturas deixadas pela marcha dos Colossais.",
+      "pecas": [
+        {
+          "id": "guerreiro_d_elmo",
+          "nome": "Elmo · Pedra Rachada",
+          "slot": "elmo",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/d/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 0,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_d_peito",
+          "nome": "Peitoral com avambraços · Pedra Rachada",
+          "slot": "peito",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/d/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 64,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_d_luvas",
+          "nome": "Luvas · Pedra Rachada",
+          "slot": "luvas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/d/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 128,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_d_calca",
+          "nome": "Calça · Pedra Rachada",
+          "slot": "calca",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/d/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 192,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_d_botas",
+          "nome": "Botas · Pedra Rachada",
+          "slot": "botas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/d/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 256,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "guerreiro_c",
+      "nome": "Conjunto Bastião de Ferro",
+      "classe": "guerreiro",
+      "grade": "C",
+      "historia": "Modelo usado por combatentes que ganhavam tempo para os conjuradores da Primeira Aliança.",
+      "pecas": [
+        {
+          "id": "guerreiro_c_elmo",
+          "nome": "Elmo · Bastião de Ferro",
+          "slot": "elmo",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/c/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 0,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_c_peito",
+          "nome": "Peitoral com avambraços · Bastião de Ferro",
+          "slot": "peito",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/c/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 64,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_c_luvas",
+          "nome": "Luvas · Bastião de Ferro",
+          "slot": "luvas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/c/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 128,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_c_calca",
+          "nome": "Calça · Bastião de Ferro",
+          "slot": "calca",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/c/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 192,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_c_botas",
+          "nome": "Botas · Bastião de Ferro",
+          "slot": "botas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/c/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 256,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "guerreiro_b",
+      "nome": "Conjunto Frente da Aliança",
+      "classe": "guerreiro",
+      "grade": "B",
+      "historia": "As marcas no aço registram as companhias que sustentaram a linha diante dos gigantes.",
+      "pecas": [
+        {
+          "id": "guerreiro_b_elmo",
+          "nome": "Elmo · Frente da Aliança",
+          "slot": "elmo",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/b/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 0,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_b_peito",
+          "nome": "Peitoral com avambraços · Frente da Aliança",
+          "slot": "peito",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/b/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 64,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_b_luvas",
+          "nome": "Luvas · Frente da Aliança",
+          "slot": "luvas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/b/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 128,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_b_calca",
+          "nome": "Calça · Frente da Aliança",
+          "slot": "calca",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/b/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 192,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_b_botas",
+          "nome": "Botas · Frente da Aliança",
+          "slot": "botas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/b/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 256,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "guerreiro_a",
+      "nome": "Conjunto Juramento da Montanha",
+      "classe": "guerreiro",
+      "grade": "A",
+      "historia": "O brasão recorda uma montanha derrubada durante o Grande Selamento.",
+      "pecas": [
+        {
+          "id": "guerreiro_a_elmo",
+          "nome": "Elmo · Juramento da Montanha",
+          "slot": "elmo",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/a/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 0,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_a_peito",
+          "nome": "Peitoral com avambraços · Juramento da Montanha",
+          "slot": "peito",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/a/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 64,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_a_luvas",
+          "nome": "Luvas · Juramento da Montanha",
+          "slot": "luvas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/a/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 128,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_a_calca",
+          "nome": "Calça · Juramento da Montanha",
+          "slot": "calca",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/a/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 192,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_a_botas",
+          "nome": "Botas · Juramento da Montanha",
+          "slot": "botas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/a/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 256,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "guerreiro_s",
+      "nome": "Conjunto Martelo do Mundo Partido",
+      "classe": "guerreiro",
+      "grade": "S",
+      "historia": "Relíquia que honra os combatentes que abriram caminho até as prisões dos Colossais.",
+      "pecas": [
+        {
+          "id": "guerreiro_s_elmo",
+          "nome": "Elmo · Martelo do Mundo Partido",
+          "slot": "elmo",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/s/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 0,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_s_peito",
+          "nome": "Peitoral com avambraços · Martelo do Mundo Partido",
+          "slot": "peito",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/s/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 64,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_s_luvas",
+          "nome": "Luvas · Martelo do Mundo Partido",
+          "slot": "luvas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/s/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 128,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_s_calca",
+          "nome": "Calça · Martelo do Mundo Partido",
+          "slot": "calca",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/s/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 192,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "guerreiro_s_botas",
+          "nome": "Botas · Martelo do Mundo Partido",
+          "slot": "botas",
+          "classe": "guerreiro",
+          "sprite": "sprites/guerreiro/s/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/guerreiro.png",
+            "x": 256,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "cavaleiro_no_grade",
+      "nome": "Conjunto Vigília de Estrada",
+      "classe": "cavaleiro",
+      "grade": "No Grade",
+      "historia": "Traje de escolta dos povoados reconstruídos após o Nascimento.",
+      "pecas": [
+        {
+          "id": "cavaleiro_no_grade_elmo",
+          "nome": "Elmo · Vigília de Estrada",
+          "slot": "elmo",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/no_grade/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 0,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_no_grade_peito",
+          "nome": "Peitoral com avambraços · Vigília de Estrada",
+          "slot": "peito",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/no_grade/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 64,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_no_grade_luvas",
+          "nome": "Luvas · Vigília de Estrada",
+          "slot": "luvas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/no_grade/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 128,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_no_grade_calca",
+          "nome": "Calça · Vigília de Estrada",
+          "slot": "calca",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/no_grade/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 192,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_no_grade_botas",
+          "nome": "Botas · Vigília de Estrada",
+          "slot": "botas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/no_grade/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 256,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "cavaleiro_d",
+      "nome": "Conjunto Escudo da Aurora",
+      "classe": "cavaleiro",
+      "grade": "D",
+      "historia": "Os primeiros votos a Nivah aparecem gravados nos rebites do conjunto.",
+      "pecas": [
+        {
+          "id": "cavaleiro_d_elmo",
+          "nome": "Elmo · Escudo da Aurora",
+          "slot": "elmo",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/d/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 0,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_d_peito",
+          "nome": "Peitoral com avambraços · Escudo da Aurora",
+          "slot": "peito",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/d/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 64,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_d_luvas",
+          "nome": "Luvas · Escudo da Aurora",
+          "slot": "luvas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/d/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 128,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_d_calca",
+          "nome": "Calça · Escudo da Aurora",
+          "slot": "calca",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/d/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 192,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_d_botas",
+          "nome": "Botas · Escudo da Aurora",
+          "slot": "botas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/d/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 256,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "cavaleiro_c",
+      "nome": "Conjunto Estandarte da Aurora",
+      "classe": "cavaleiro",
+      "grade": "C",
+      "historia": "O heráldico sol nascente marca o juramento de defender os refugiados.",
+      "pecas": [
+        {
+          "id": "cavaleiro_c_elmo",
+          "nome": "Elmo · Estandarte da Aurora",
+          "slot": "elmo",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/c/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 0,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_c_peito",
+          "nome": "Peitoral com avambraços · Estandarte da Aurora",
+          "slot": "peito",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/c/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 64,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_c_luvas",
+          "nome": "Luvas · Estandarte da Aurora",
+          "slot": "luvas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/c/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 128,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_c_calca",
+          "nome": "Calça · Estandarte da Aurora",
+          "slot": "calca",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/c/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 192,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_c_botas",
+          "nome": "Botas · Estandarte da Aurora",
+          "slot": "botas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/c/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 256,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "cavaleiro_b",
+      "nome": "Conjunto Asas da Aliança",
+      "classe": "cavaleiro",
+      "grade": "B",
+      "historia": "As placas aladas celebram os anjos que lutaram sob a proteção de Nivah.",
+      "pecas": [
+        {
+          "id": "cavaleiro_b_elmo",
+          "nome": "Elmo · Asas da Aliança",
+          "slot": "elmo",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/b/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 0,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_b_peito",
+          "nome": "Peitoral com avambraços · Asas da Aliança",
+          "slot": "peito",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/b/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 64,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_b_luvas",
+          "nome": "Luvas · Asas da Aliança",
+          "slot": "luvas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/b/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 128,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_b_calca",
+          "nome": "Calça · Asas da Aliança",
+          "slot": "calca",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/b/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 192,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_b_botas",
+          "nome": "Botas · Asas da Aliança",
+          "slot": "botas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/b/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 256,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "cavaleiro_a",
+      "nome": "Conjunto Coroa da Vigília",
+      "classe": "cavaleiro",
+      "grade": "A",
+      "historia": "Os relevos dourados guardam a memória das escoltas do Grande Selamento.",
+      "pecas": [
+        {
+          "id": "cavaleiro_a_elmo",
+          "nome": "Elmo · Coroa da Vigília",
+          "slot": "elmo",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/a/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 0,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_a_peito",
+          "nome": "Peitoral com avambraços · Coroa da Vigília",
+          "slot": "peito",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/a/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 64,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_a_luvas",
+          "nome": "Luvas · Coroa da Vigília",
+          "slot": "luvas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/a/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 128,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_a_calca",
+          "nome": "Calça · Coroa da Vigília",
+          "slot": "calca",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/a/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 192,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_a_botas",
+          "nome": "Botas · Coroa da Vigília",
+          "slot": "botas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/a/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 256,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "cavaleiro_s",
+      "nome": "Conjunto Última Aurora de Nivah",
+      "classe": "cavaleiro",
+      "grade": "S",
+      "historia": "Forjada como voto de vigília enquanto o destino da deusa permanecer desconhecido.",
+      "pecas": [
+        {
+          "id": "cavaleiro_s_elmo",
+          "nome": "Elmo · Última Aurora de Nivah",
+          "slot": "elmo",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/s/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 0,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_s_peito",
+          "nome": "Peitoral com avambraços · Última Aurora de Nivah",
+          "slot": "peito",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/s/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 64,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_s_luvas",
+          "nome": "Luvas · Última Aurora de Nivah",
+          "slot": "luvas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/s/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 128,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_s_calca",
+          "nome": "Calça · Última Aurora de Nivah",
+          "slot": "calca",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/s/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 192,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "cavaleiro_s_botas",
+          "nome": "Botas · Última Aurora de Nivah",
+          "slot": "botas",
+          "classe": "cavaleiro",
+          "sprite": "sprites/cavaleiro/s/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/cavaleiro.png",
+            "x": 256,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "arqueiro_no_grade",
+      "nome": "Conjunto Trilha Nova",
+      "classe": "arqueiro",
+      "grade": "No Grade",
+      "historia": "Couro leve para atravessar as florestas que brotaram após o Nascimento.",
+      "pecas": [
+        {
+          "id": "arqueiro_no_grade_elmo",
+          "nome": "Elmo · Trilha Nova",
+          "slot": "elmo",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/no_grade/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 0,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_no_grade_peito",
+          "nome": "Peitoral com avambraços · Trilha Nova",
+          "slot": "peito",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/no_grade/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 64,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_no_grade_luvas",
+          "nome": "Luvas · Trilha Nova",
+          "slot": "luvas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/no_grade/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 128,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_no_grade_calca",
+          "nome": "Calça · Trilha Nova",
+          "slot": "calca",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/no_grade/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 192,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_no_grade_botas",
+          "nome": "Botas · Trilha Nova",
+          "slot": "botas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/no_grade/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 256,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "arqueiro_d",
+      "nome": "Conjunto Galho de Cinza",
+      "classe": "arqueiro",
+      "grade": "D",
+      "historia": "Feita para se confundir com os bosques queimados na passagem dos Colossais.",
+      "pecas": [
+        {
+          "id": "arqueiro_d_elmo",
+          "nome": "Elmo · Galho de Cinza",
+          "slot": "elmo",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/d/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 0,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_d_peito",
+          "nome": "Peitoral com avambraços · Galho de Cinza",
+          "slot": "peito",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/d/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 64,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_d_luvas",
+          "nome": "Luvas · Galho de Cinza",
+          "slot": "luvas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/d/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 128,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_d_calca",
+          "nome": "Calça · Galho de Cinza",
+          "slot": "calca",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/d/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 192,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_d_botas",
+          "nome": "Botas · Galho de Cinza",
+          "slot": "botas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/d/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 256,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "arqueiro_c",
+      "nome": "Conjunto Pena de Safira",
+      "classe": "arqueiro",
+      "grade": "C",
+      "historia": "A pena azul identifica batedores responsáveis por cartografar os acessos remotos.",
+      "pecas": [
+        {
+          "id": "arqueiro_c_elmo",
+          "nome": "Elmo · Pena de Safira",
+          "slot": "elmo",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/c/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 0,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_c_peito",
+          "nome": "Peitoral com avambraços · Pena de Safira",
+          "slot": "peito",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/c/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 64,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_c_luvas",
+          "nome": "Luvas · Pena de Safira",
+          "slot": "luvas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/c/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 128,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_c_calca",
+          "nome": "Calça · Pena de Safira",
+          "slot": "calca",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/c/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 192,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_c_botas",
+          "nome": "Botas · Pena de Safira",
+          "slot": "botas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/c/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 256,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "arqueiro_b",
+      "nome": "Conjunto Rota da Aliança",
+      "classe": "arqueiro",
+      "grade": "B",
+      "historia": "As placas folheadas homenageiam os arqueiros que mantiveram abertas as rotas dos conjuradores.",
+      "pecas": [
+        {
+          "id": "arqueiro_b_elmo",
+          "nome": "Elmo · Rota da Aliança",
+          "slot": "elmo",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/b/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 0,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_b_peito",
+          "nome": "Peitoral com avambraços · Rota da Aliança",
+          "slot": "peito",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/b/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 64,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_b_luvas",
+          "nome": "Luvas · Rota da Aliança",
+          "slot": "luvas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/b/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 128,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_b_calca",
+          "nome": "Calça · Rota da Aliança",
+          "slot": "calca",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/b/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 192,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_b_botas",
+          "nome": "Botas · Rota da Aliança",
+          "slot": "botas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/b/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 256,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "arqueiro_a",
+      "nome": "Conjunto Copa do Céu Partido",
+      "classe": "arqueiro",
+      "grade": "A",
+      "historia": "O bordado reproduz um céu registrado depois que Nark alterou as estrelas.",
+      "pecas": [
+        {
+          "id": "arqueiro_a_elmo",
+          "nome": "Elmo · Copa do Céu Partido",
+          "slot": "elmo",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/a/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 0,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_a_peito",
+          "nome": "Peitoral com avambraços · Copa do Céu Partido",
+          "slot": "peito",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/a/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 64,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_a_luvas",
+          "nome": "Luvas · Copa do Céu Partido",
+          "slot": "luvas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/a/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 128,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_a_calca",
+          "nome": "Calça · Copa do Céu Partido",
+          "slot": "calca",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/a/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 192,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_a_botas",
+          "nome": "Botas · Copa do Céu Partido",
+          "slot": "botas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/a/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 256,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "arqueiro_s",
+      "nome": "Conjunto Horizonte Imóvel",
+      "classe": "arqueiro",
+      "grade": "S",
+      "historia": "Relíquia dos vigias que observam as trilhas entre santuários a partir das copas.",
+      "pecas": [
+        {
+          "id": "arqueiro_s_elmo",
+          "nome": "Elmo · Horizonte Imóvel",
+          "slot": "elmo",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/s/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 0,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_s_peito",
+          "nome": "Peitoral com avambraços · Horizonte Imóvel",
+          "slot": "peito",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/s/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 64,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_s_luvas",
+          "nome": "Luvas · Horizonte Imóvel",
+          "slot": "luvas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/s/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 128,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_s_calca",
+          "nome": "Calça · Horizonte Imóvel",
+          "slot": "calca",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/s/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 192,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "arqueiro_s_botas",
+          "nome": "Botas · Horizonte Imóvel",
+          "slot": "botas",
+          "classe": "arqueiro",
+          "sprite": "sprites/arqueiro/s/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/arqueiro.png",
+            "x": 256,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "assassino_no_grade",
+      "nome": "Conjunto Passo de Cinza",
+      "classe": "assassino",
+      "grade": "No Grade",
+      "historia": "Couro discreto para cruzar as ruínas de cidades abandonadas após o Nascimento.",
+      "pecas": [
+        {
+          "id": "assassino_no_grade_elmo",
+          "nome": "Elmo · Passo de Cinza",
+          "slot": "elmo",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/no_grade/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 0,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_no_grade_peito",
+          "nome": "Peitoral com avambraços · Passo de Cinza",
+          "slot": "peito",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/no_grade/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 64,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_no_grade_luvas",
+          "nome": "Luvas · Passo de Cinza",
+          "slot": "luvas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/no_grade/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 128,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_no_grade_calca",
+          "nome": "Calça · Passo de Cinza",
+          "slot": "calca",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/no_grade/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 192,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_no_grade_botas",
+          "nome": "Botas · Passo de Cinza",
+          "slot": "botas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/no_grade/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 256,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "assassino_d",
+      "nome": "Conjunto Véu da Fenda",
+      "classe": "assassino",
+      "grade": "D",
+      "historia": "O capuz foi inspirado nas passagens abertas quando a terra se partiu.",
+      "pecas": [
+        {
+          "id": "assassino_d_elmo",
+          "nome": "Elmo · Véu da Fenda",
+          "slot": "elmo",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/d/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 0,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_d_peito",
+          "nome": "Peitoral com avambraços · Véu da Fenda",
+          "slot": "peito",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/d/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 64,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_d_luvas",
+          "nome": "Luvas · Véu da Fenda",
+          "slot": "luvas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/d/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 128,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_d_calca",
+          "nome": "Calça · Véu da Fenda",
+          "slot": "calca",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/d/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 192,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_d_botas",
+          "nome": "Botas · Véu da Fenda",
+          "slot": "botas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/d/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 256,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "assassino_c",
+      "nome": "Conjunto Lua Fraturada",
+      "classe": "assassino",
+      "grade": "C",
+      "historia": "O emblema da lua quebrada é usado por batedores que estudam os limites dos santuários.",
+      "pecas": [
+        {
+          "id": "assassino_c_elmo",
+          "nome": "Elmo · Lua Fraturada",
+          "slot": "elmo",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/c/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 0,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_c_peito",
+          "nome": "Peitoral com avambraços · Lua Fraturada",
+          "slot": "peito",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/c/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 64,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_c_luvas",
+          "nome": "Luvas · Lua Fraturada",
+          "slot": "luvas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/c/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 128,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_c_calca",
+          "nome": "Calça · Lua Fraturada",
+          "slot": "calca",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/c/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 192,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_c_botas",
+          "nome": "Botas · Lua Fraturada",
+          "slot": "botas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/c/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 256,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "assassino_b",
+      "nome": "Conjunto Sombra da Vigília",
+      "classe": "assassino",
+      "grade": "B",
+      "historia": "O aço escurecido evita reflexos durante o reconhecimento das entradas seladas.",
+      "pecas": [
+        {
+          "id": "assassino_b_elmo",
+          "nome": "Elmo · Sombra da Vigília",
+          "slot": "elmo",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/b/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 0,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_b_peito",
+          "nome": "Peitoral com avambraços · Sombra da Vigília",
+          "slot": "peito",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/b/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 64,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_b_luvas",
+          "nome": "Luvas · Sombra da Vigília",
+          "slot": "luvas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/b/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 128,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_b_calca",
+          "nome": "Calça · Sombra da Vigília",
+          "slot": "calca",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/b/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 192,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_b_botas",
+          "nome": "Botas · Sombra da Vigília",
+          "slot": "botas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/b/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 256,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "assassino_a",
+      "nome": "Conjunto Limiar Violeta",
+      "classe": "assassino",
+      "grade": "A",
+      "historia": "Os relevos registram as rotas por onde vigias se aproximam sem alertar os Guardiões.",
+      "pecas": [
+        {
+          "id": "assassino_a_elmo",
+          "nome": "Elmo · Limiar Violeta",
+          "slot": "elmo",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/a/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 0,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_a_peito",
+          "nome": "Peitoral com avambraços · Limiar Violeta",
+          "slot": "peito",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/a/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 64,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_a_luvas",
+          "nome": "Luvas · Limiar Violeta",
+          "slot": "luvas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/a/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 128,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_a_calca",
+          "nome": "Calça · Limiar Violeta",
+          "slot": "calca",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/a/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 192,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_a_botas",
+          "nome": "Botas · Limiar Violeta",
+          "slot": "botas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/a/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 256,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "assassino_s",
+      "nome": "Conjunto Silêncio de Nark",
+      "classe": "assassino",
+      "grade": "S",
+      "historia": "Seu nome recorda a última palavra de Nith e o instante de silêncio que antecedeu o Nascimento.",
+      "pecas": [
+        {
+          "id": "assassino_s_elmo",
+          "nome": "Elmo · Silêncio de Nark",
+          "slot": "elmo",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/s/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 0,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_s_peito",
+          "nome": "Peitoral com avambraços · Silêncio de Nark",
+          "slot": "peito",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/s/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 64,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_s_luvas",
+          "nome": "Luvas · Silêncio de Nark",
+          "slot": "luvas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/s/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 128,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_s_calca",
+          "nome": "Calça · Silêncio de Nark",
+          "slot": "calca",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/s/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 192,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "assassino_s_botas",
+          "nome": "Botas · Silêncio de Nark",
+          "slot": "botas",
+          "classe": "assassino",
+          "sprite": "sprites/assassino/s/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/assassino.png",
+            "x": 256,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "mago_no_grade",
+      "nome": "Conjunto Linho do Aprendiz",
+      "classe": "mago",
+      "grade": "No Grade",
+      "historia": "Vestes de quem aprende a ler os registros fragmentários da Primeira Aliança.",
+      "pecas": [
+        {
+          "id": "mago_no_grade_elmo",
+          "nome": "Elmo · Linho do Aprendiz",
+          "slot": "elmo",
+          "classe": "mago",
+          "sprite": "sprites/mago/no_grade/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 0,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_no_grade_peito",
+          "nome": "Peitoral com avambraços · Linho do Aprendiz",
+          "slot": "peito",
+          "classe": "mago",
+          "sprite": "sprites/mago/no_grade/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 64,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_no_grade_luvas",
+          "nome": "Luvas · Linho do Aprendiz",
+          "slot": "luvas",
+          "classe": "mago",
+          "sprite": "sprites/mago/no_grade/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 128,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_no_grade_calca",
+          "nome": "Calça · Linho do Aprendiz",
+          "slot": "calca",
+          "classe": "mago",
+          "sprite": "sprites/mago/no_grade/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 192,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_no_grade_botas",
+          "nome": "Botas · Linho do Aprendiz",
+          "slot": "botas",
+          "classe": "mago",
+          "sprite": "sprites/mago/no_grade/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 256,
+            "y": 0,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "mago_d",
+      "nome": "Conjunto Traço de Prata",
+      "classe": "mago",
+      "grade": "D",
+      "historia": "O primeiro círculo de contenção é bordado nas mangas.",
+      "pecas": [
+        {
+          "id": "mago_d_elmo",
+          "nome": "Elmo · Traço de Prata",
+          "slot": "elmo",
+          "classe": "mago",
+          "sprite": "sprites/mago/d/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 0,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_d_peito",
+          "nome": "Peitoral com avambraços · Traço de Prata",
+          "slot": "peito",
+          "classe": "mago",
+          "sprite": "sprites/mago/d/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 64,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_d_luvas",
+          "nome": "Luvas · Traço de Prata",
+          "slot": "luvas",
+          "classe": "mago",
+          "sprite": "sprites/mago/d/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 128,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_d_calca",
+          "nome": "Calça · Traço de Prata",
+          "slot": "calca",
+          "classe": "mago",
+          "sprite": "sprites/mago/d/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 192,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_d_botas",
+          "nome": "Botas · Traço de Prata",
+          "slot": "botas",
+          "classe": "mago",
+          "sprite": "sprites/mago/d/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 256,
+            "y": 64,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "mago_c",
+      "nome": "Conjunto Círculo de Safira",
+      "classe": "mago",
+      "grade": "C",
+      "historia": "Os bordados ensinam a distinguir o selo original da segunda magia dos santuários.",
+      "pecas": [
+        {
+          "id": "mago_c_elmo",
+          "nome": "Elmo · Círculo de Safira",
+          "slot": "elmo",
+          "classe": "mago",
+          "sprite": "sprites/mago/c/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 0,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_c_peito",
+          "nome": "Peitoral com avambraços · Círculo de Safira",
+          "slot": "peito",
+          "classe": "mago",
+          "sprite": "sprites/mago/c/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 64,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_c_luvas",
+          "nome": "Luvas · Círculo de Safira",
+          "slot": "luvas",
+          "classe": "mago",
+          "sprite": "sprites/mago/c/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 128,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_c_calca",
+          "nome": "Calça · Círculo de Safira",
+          "slot": "calca",
+          "classe": "mago",
+          "sprite": "sprites/mago/c/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 192,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_c_botas",
+          "nome": "Botas · Círculo de Safira",
+          "slot": "botas",
+          "classe": "mago",
+          "sprite": "sprites/mago/c/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 256,
+            "y": 128,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "mago_b",
+      "nome": "Conjunto Rito da Aliança",
+      "classe": "mago",
+      "grade": "B",
+      "historia": "O conjunto reproduz diagramas usados pelos conjuradores durante o Grande Selamento.",
+      "pecas": [
+        {
+          "id": "mago_b_elmo",
+          "nome": "Elmo · Rito da Aliança",
+          "slot": "elmo",
+          "classe": "mago",
+          "sprite": "sprites/mago/b/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 0,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_b_peito",
+          "nome": "Peitoral com avambraços · Rito da Aliança",
+          "slot": "peito",
+          "classe": "mago",
+          "sprite": "sprites/mago/b/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 64,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_b_luvas",
+          "nome": "Luvas · Rito da Aliança",
+          "slot": "luvas",
+          "classe": "mago",
+          "sprite": "sprites/mago/b/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 128,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_b_calca",
+          "nome": "Calça · Rito da Aliança",
+          "slot": "calca",
+          "classe": "mago",
+          "sprite": "sprites/mago/b/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 192,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_b_botas",
+          "nome": "Botas · Rito da Aliança",
+          "slot": "botas",
+          "classe": "mago",
+          "sprite": "sprites/mago/b/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 256,
+            "y": 192,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "mago_a",
+      "nome": "Conjunto Escritura dos Santuários",
+      "classe": "mago",
+      "grade": "A",
+      "historia": "Runas de ouro velho representam as prisões mantidas distantes umas das outras.",
+      "pecas": [
+        {
+          "id": "mago_a_elmo",
+          "nome": "Elmo · Escritura dos Santuários",
+          "slot": "elmo",
+          "classe": "mago",
+          "sprite": "sprites/mago/a/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 0,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_a_peito",
+          "nome": "Peitoral com avambraços · Escritura dos Santuários",
+          "slot": "peito",
+          "classe": "mago",
+          "sprite": "sprites/mago/a/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 64,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_a_luvas",
+          "nome": "Luvas · Escritura dos Santuários",
+          "slot": "luvas",
+          "classe": "mago",
+          "sprite": "sprites/mago/a/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 128,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_a_calca",
+          "nome": "Calça · Escritura dos Santuários",
+          "slot": "calca",
+          "classe": "mago",
+          "sprite": "sprites/mago/a/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 192,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_a_botas",
+          "nome": "Botas · Escritura dos Santuários",
+          "slot": "botas",
+          "classe": "mago",
+          "sprite": "sprites/mago/a/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 256,
+            "y": 256,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    },
+    {
+      "id": "mago_s",
+      "nome": "Conjunto Equilíbrio de Nivah",
+      "classe": "mago",
+      "grade": "S",
+      "historia": "Vestes cerimoniais dedicadas à decisão de Nivah de conter a corrupção deixada por Nark.",
+      "pecas": [
+        {
+          "id": "mago_s_elmo",
+          "nome": "Elmo · Equilíbrio de Nivah",
+          "slot": "elmo",
+          "classe": "mago",
+          "sprite": "sprites/mago/s/elmo.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 0,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_s_peito",
+          "nome": "Peitoral com avambraços · Equilíbrio de Nivah",
+          "slot": "peito",
+          "classe": "mago",
+          "sprite": "sprites/mago/s/peito.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 64,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_s_luvas",
+          "nome": "Luvas · Equilíbrio de Nivah",
+          "slot": "luvas",
+          "classe": "mago",
+          "sprite": "sprites/mago/s/luvas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 128,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_s_calca",
+          "nome": "Calça · Equilíbrio de Nivah",
+          "slot": "calca",
+          "classe": "mago",
+          "sprite": "sprites/mago/s/calca.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 192,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        },
+        {
+          "id": "mago_s_botas",
+          "nome": "Botas · Equilíbrio de Nivah",
+          "slot": "botas",
+          "classe": "mago",
+          "sprite": "sprites/mago/s/botas.png",
+          "prancha": {
+            "arquivo": "pranchas/mago.png",
+            "x": 256,
+            "y": 320,
+            "largura": 64,
+            "altura": 64
+          }
+        }
+      ]
+    }
+  ]
+}

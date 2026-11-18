@@ -12,6 +12,7 @@ var class_id: = "guerreiro"
 var hair_style: int = 0
 var hair_color: String = "castanho"
 var gender_id: String = "masculino"
+var body_type: String = "medio"
 var beard_style: int = 0
 var beard_color: String = "original"
 
@@ -79,6 +80,12 @@ static func create(p_name: String, p_race: String, p_class: String) -> PlayerSta
 	state.add_item("pocao_energia", 2, true)
 	state.equip("arma_basica")
 	state.equip("roupa_basica")
+	var armor_class: String = {"tank": "guerreiro", "atirador": "arqueiro"}.get(p_class, p_class)
+	for armor_slot: String in ["peito", "calca", "botas"]:
+		var piece_id: String = armor_class + "_no_grade_" + armor_slot
+		if GameData.ITEMS.has(piece_id):
+			state.add_item(piece_id, 1, true)
+			state.equip(piece_id)
 	state.contracts = [
 		{"id": "contrato_lobos", "progress": 0, "claimed": false, "done": false}, 
 		{"id": "contrato_gosmas", "progress": 0, "claimed": false, "done": false}, 
@@ -334,6 +341,10 @@ func equip(item_id: String) -> String:
 		return "Esse item não pode ser equipado."
 	if count_item(item_id) <= 0:
 		return "Você não possui esse item."
+	if slot == "armadura":
+		for piece: String in ["elmo", "peito", "luvas", "calca", "botas"]: unequip(piece)
+	elif slot in ["elmo", "peito", "luvas", "calca", "botas"]:
+		unequip("armadura")
 	remove_item(item_id, 1)
 	var previous: Dictionary = equipment.get(slot, {})
 	if not previous.is_empty():
@@ -443,7 +454,7 @@ func to_dict() -> Dictionary:
 	return {
 		"hero_name": hero_name, "race_id": race_id, "class_id": class_id, 
 		"hair_style": hair_style, "hair_color": hair_color,
-		"gender_id": gender_id,
+		"gender_id": gender_id, "body_type": body_type,
 		"beard_style": beard_style, "beard_color": beard_color,
 		"level": level, "xp": xp, "fame": fame, "coins": coins, 
 		"hp": hp, "mp": mp, "energy": energy, 
@@ -463,6 +474,9 @@ func from_dict(data: Dictionary) -> void :
 	set_hair(int(data.get("hair_style", 0)), str(data.get("hair_color", "castanho")), false)
 	gender_id = "feminino" if str(data.get("gender_id", "masculino")) == "feminino" else "masculino"
 	set_beard(int(data.get("beard_style", 0)), str(data.get("beard_color", "original")), false)
+	body_type = str(data.get("body_type", "medio"))
+	if body_type not in ["magro", "medio", "forte"]: body_type = "medio"
+	if race_id not in ["humano", "elfo", "orc", "anao", "elarim"]: race_id = "humano"
 	level = int(data.get("level", 1))
 	xp = int(data.get("xp", 0))
 	fame = float(data.get("fame", 0.0))

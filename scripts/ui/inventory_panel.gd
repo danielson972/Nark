@@ -3,10 +3,9 @@ extends Control
 signal action_requested(action: String, payload: Dictionary)
 
 const FILTERS = [["all", "Todos"], ["weapons", "Armas"], ["armor", "Armaduras"], ["materials", "Materiais"], ["consumables", "Consumíveis"], ["quest", "Missões"]]
-const TYPE_NAMES = {"elmo": "Elmo", "peito": "Peitoral", "luvas": "Luvas", "calca": "Calça", "botas": "Botas", "arma": "Arma", "armadura": "Armadura", "anel": "Anel", "colar": "Colar", "talisma": "Talismã", "escudo": "Escudo", "aura": "Visual Hero", "consumivel": "Consumível", "material": "Material", "chave": "Missão", "livro": "Livro"}
+const TYPE_NAMES = {"arma": "Arma", "armadura": "Armadura", "elmo": "Elmo", "peito": "Peitoral", "luvas": "Luvas", "calca": "Calça", "botas": "Botas", "anel": "Anel", "colar": "Colar", "talisma": "Talismã", "escudo": "Escudo", "aura": "Visual Hero", "consumivel": "Consumível", "material": "Material", "chave": "Missão", "livro": "Livro"}
 
 var state: PlayerState
-@export var parts_only: bool = false
 var selected_id: String = ""
 var selected_slot: String = ""
 var filter_tab: String = "all"
@@ -57,7 +56,6 @@ func _ready() -> void:
 		var button: Button = get_node("%Filter_" + id)
 		tab_buttons[id] = button
 		button.pressed.connect(_change_filter.bind(id))
-		if parts_only: button.visible = id in ["all", "weapons", "armor"]
 	for action: String in ["equip", "unequip", "use_item", "store", "drop_item"]:
 		var button: Button = get_node("%Action_" + action)
 		action_buttons[action] = button
@@ -120,10 +118,9 @@ func _populate_bag() -> void:
 
 func _matches_filter(item_id: String) -> bool:
 	var kind: String = str(GameData.item(item_id).get("type", ""))
-	if parts_only and (not PlayerState.EQUIP_SLOTS.has(kind) or kind == "armadura"): return false
 	match filter_tab:
 		"weapons": return kind in ["arma", "escudo"]
-		"armor": return kind == "armadura" or GameData.ARMOR_PARTS.has(kind)
+		"armor": return kind in ["armadura", "elmo", "peito", "luvas", "calca", "botas", "escudo"]
 		"consumables": return kind == "consumivel"
 		"materials": return kind == "material"
 		"quest": return kind in ["chave", "livro"]

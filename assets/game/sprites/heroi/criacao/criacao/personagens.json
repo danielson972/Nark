@@ -1,0 +1,3209 @@
+{
+  "tamanho": [
+    64,
+    64
+  ],
+  "fps": 9,
+  "direcoes": [
+    "s",
+    "so",
+    "o",
+    "no",
+    "n",
+    "ne",
+    "l",
+    "se"
+  ],
+  "personagens": [
+    {
+      "raca": "humano",
+      "versao": "masculino",
+      "biotipo": "magro",
+      "criacao": "criacao/humano/masculino/magro.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/humano/masculino/magro/s.png",
+          "andando": [
+            "topdown/andando/humano/masculino/magro/s/01.png",
+            "topdown/andando/humano/masculino/magro/s/02.png",
+            "topdown/andando/humano/masculino/magro/s/03.png",
+            "topdown/andando/humano/masculino/magro/s/04.png",
+            "topdown/andando/humano/masculino/magro/s/05.png",
+            "topdown/andando/humano/masculino/magro/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/humano/masculino/magro/so.png",
+          "andando": [
+            "topdown/andando/humano/masculino/magro/so/01.png",
+            "topdown/andando/humano/masculino/magro/so/02.png",
+            "topdown/andando/humano/masculino/magro/so/03.png",
+            "topdown/andando/humano/masculino/magro/so/04.png",
+            "topdown/andando/humano/masculino/magro/so/05.png",
+            "topdown/andando/humano/masculino/magro/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/humano/masculino/magro/o.png",
+          "andando": [
+            "topdown/andando/humano/masculino/magro/o/01.png",
+            "topdown/andando/humano/masculino/magro/o/02.png",
+            "topdown/andando/humano/masculino/magro/o/03.png",
+            "topdown/andando/humano/masculino/magro/o/04.png",
+            "topdown/andando/humano/masculino/magro/o/05.png",
+            "topdown/andando/humano/masculino/magro/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/humano/masculino/magro/no.png",
+          "andando": [
+            "topdown/andando/humano/masculino/magro/no/01.png",
+            "topdown/andando/humano/masculino/magro/no/02.png",
+            "topdown/andando/humano/masculino/magro/no/03.png",
+            "topdown/andando/humano/masculino/magro/no/04.png",
+            "topdown/andando/humano/masculino/magro/no/05.png",
+            "topdown/andando/humano/masculino/magro/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/humano/masculino/magro/n.png",
+          "andando": [
+            "topdown/andando/humano/masculino/magro/n/01.png",
+            "topdown/andando/humano/masculino/magro/n/02.png",
+            "topdown/andando/humano/masculino/magro/n/03.png",
+            "topdown/andando/humano/masculino/magro/n/04.png",
+            "topdown/andando/humano/masculino/magro/n/05.png",
+            "topdown/andando/humano/masculino/magro/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/humano/masculino/magro/ne.png",
+          "andando": [
+            "topdown/andando/humano/masculino/magro/ne/01.png",
+            "topdown/andando/humano/masculino/magro/ne/02.png",
+            "topdown/andando/humano/masculino/magro/ne/03.png",
+            "topdown/andando/humano/masculino/magro/ne/04.png",
+            "topdown/andando/humano/masculino/magro/ne/05.png",
+            "topdown/andando/humano/masculino/magro/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/humano/masculino/magro/l.png",
+          "andando": [
+            "topdown/andando/humano/masculino/magro/l/01.png",
+            "topdown/andando/humano/masculino/magro/l/02.png",
+            "topdown/andando/humano/masculino/magro/l/03.png",
+            "topdown/andando/humano/masculino/magro/l/04.png",
+            "topdown/andando/humano/masculino/magro/l/05.png",
+            "topdown/andando/humano/masculino/magro/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/humano/masculino/magro/se.png",
+          "andando": [
+            "topdown/andando/humano/masculino/magro/se/01.png",
+            "topdown/andando/humano/masculino/magro/se/02.png",
+            "topdown/andando/humano/masculino/magro/se/03.png",
+            "topdown/andando/humano/masculino/magro/se/04.png",
+            "topdown/andando/humano/masculino/magro/se/05.png",
+            "topdown/andando/humano/masculino/magro/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elfo",
+      "versao": "masculino",
+      "biotipo": "magro",
+      "criacao": "criacao/elfo/masculino/magro.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elfo/masculino/magro/s.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/magro/s/01.png",
+            "topdown/andando/elfo/masculino/magro/s/02.png",
+            "topdown/andando/elfo/masculino/magro/s/03.png",
+            "topdown/andando/elfo/masculino/magro/s/04.png",
+            "topdown/andando/elfo/masculino/magro/s/05.png",
+            "topdown/andando/elfo/masculino/magro/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elfo/masculino/magro/so.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/magro/so/01.png",
+            "topdown/andando/elfo/masculino/magro/so/02.png",
+            "topdown/andando/elfo/masculino/magro/so/03.png",
+            "topdown/andando/elfo/masculino/magro/so/04.png",
+            "topdown/andando/elfo/masculino/magro/so/05.png",
+            "topdown/andando/elfo/masculino/magro/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elfo/masculino/magro/o.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/magro/o/01.png",
+            "topdown/andando/elfo/masculino/magro/o/02.png",
+            "topdown/andando/elfo/masculino/magro/o/03.png",
+            "topdown/andando/elfo/masculino/magro/o/04.png",
+            "topdown/andando/elfo/masculino/magro/o/05.png",
+            "topdown/andando/elfo/masculino/magro/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elfo/masculino/magro/no.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/magro/no/01.png",
+            "topdown/andando/elfo/masculino/magro/no/02.png",
+            "topdown/andando/elfo/masculino/magro/no/03.png",
+            "topdown/andando/elfo/masculino/magro/no/04.png",
+            "topdown/andando/elfo/masculino/magro/no/05.png",
+            "topdown/andando/elfo/masculino/magro/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elfo/masculino/magro/n.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/magro/n/01.png",
+            "topdown/andando/elfo/masculino/magro/n/02.png",
+            "topdown/andando/elfo/masculino/magro/n/03.png",
+            "topdown/andando/elfo/masculino/magro/n/04.png",
+            "topdown/andando/elfo/masculino/magro/n/05.png",
+            "topdown/andando/elfo/masculino/magro/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elfo/masculino/magro/ne.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/magro/ne/01.png",
+            "topdown/andando/elfo/masculino/magro/ne/02.png",
+            "topdown/andando/elfo/masculino/magro/ne/03.png",
+            "topdown/andando/elfo/masculino/magro/ne/04.png",
+            "topdown/andando/elfo/masculino/magro/ne/05.png",
+            "topdown/andando/elfo/masculino/magro/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elfo/masculino/magro/l.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/magro/l/01.png",
+            "topdown/andando/elfo/masculino/magro/l/02.png",
+            "topdown/andando/elfo/masculino/magro/l/03.png",
+            "topdown/andando/elfo/masculino/magro/l/04.png",
+            "topdown/andando/elfo/masculino/magro/l/05.png",
+            "topdown/andando/elfo/masculino/magro/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elfo/masculino/magro/se.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/magro/se/01.png",
+            "topdown/andando/elfo/masculino/magro/se/02.png",
+            "topdown/andando/elfo/masculino/magro/se/03.png",
+            "topdown/andando/elfo/masculino/magro/se/04.png",
+            "topdown/andando/elfo/masculino/magro/se/05.png",
+            "topdown/andando/elfo/masculino/magro/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "orc",
+      "versao": "masculino",
+      "biotipo": "magro",
+      "criacao": "criacao/orc/masculino/magro.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/orc/masculino/magro/s.png",
+          "andando": [
+            "topdown/andando/orc/masculino/magro/s/01.png",
+            "topdown/andando/orc/masculino/magro/s/02.png",
+            "topdown/andando/orc/masculino/magro/s/03.png",
+            "topdown/andando/orc/masculino/magro/s/04.png",
+            "topdown/andando/orc/masculino/magro/s/05.png",
+            "topdown/andando/orc/masculino/magro/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/orc/masculino/magro/so.png",
+          "andando": [
+            "topdown/andando/orc/masculino/magro/so/01.png",
+            "topdown/andando/orc/masculino/magro/so/02.png",
+            "topdown/andando/orc/masculino/magro/so/03.png",
+            "topdown/andando/orc/masculino/magro/so/04.png",
+            "topdown/andando/orc/masculino/magro/so/05.png",
+            "topdown/andando/orc/masculino/magro/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/orc/masculino/magro/o.png",
+          "andando": [
+            "topdown/andando/orc/masculino/magro/o/01.png",
+            "topdown/andando/orc/masculino/magro/o/02.png",
+            "topdown/andando/orc/masculino/magro/o/03.png",
+            "topdown/andando/orc/masculino/magro/o/04.png",
+            "topdown/andando/orc/masculino/magro/o/05.png",
+            "topdown/andando/orc/masculino/magro/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/orc/masculino/magro/no.png",
+          "andando": [
+            "topdown/andando/orc/masculino/magro/no/01.png",
+            "topdown/andando/orc/masculino/magro/no/02.png",
+            "topdown/andando/orc/masculino/magro/no/03.png",
+            "topdown/andando/orc/masculino/magro/no/04.png",
+            "topdown/andando/orc/masculino/magro/no/05.png",
+            "topdown/andando/orc/masculino/magro/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/orc/masculino/magro/n.png",
+          "andando": [
+            "topdown/andando/orc/masculino/magro/n/01.png",
+            "topdown/andando/orc/masculino/magro/n/02.png",
+            "topdown/andando/orc/masculino/magro/n/03.png",
+            "topdown/andando/orc/masculino/magro/n/04.png",
+            "topdown/andando/orc/masculino/magro/n/05.png",
+            "topdown/andando/orc/masculino/magro/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/orc/masculino/magro/ne.png",
+          "andando": [
+            "topdown/andando/orc/masculino/magro/ne/01.png",
+            "topdown/andando/orc/masculino/magro/ne/02.png",
+            "topdown/andando/orc/masculino/magro/ne/03.png",
+            "topdown/andando/orc/masculino/magro/ne/04.png",
+            "topdown/andando/orc/masculino/magro/ne/05.png",
+            "topdown/andando/orc/masculino/magro/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/orc/masculino/magro/l.png",
+          "andando": [
+            "topdown/andando/orc/masculino/magro/l/01.png",
+            "topdown/andando/orc/masculino/magro/l/02.png",
+            "topdown/andando/orc/masculino/magro/l/03.png",
+            "topdown/andando/orc/masculino/magro/l/04.png",
+            "topdown/andando/orc/masculino/magro/l/05.png",
+            "topdown/andando/orc/masculino/magro/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/orc/masculino/magro/se.png",
+          "andando": [
+            "topdown/andando/orc/masculino/magro/se/01.png",
+            "topdown/andando/orc/masculino/magro/se/02.png",
+            "topdown/andando/orc/masculino/magro/se/03.png",
+            "topdown/andando/orc/masculino/magro/se/04.png",
+            "topdown/andando/orc/masculino/magro/se/05.png",
+            "topdown/andando/orc/masculino/magro/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "anao",
+      "versao": "masculino",
+      "biotipo": "magro",
+      "criacao": "criacao/anao/masculino/magro.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/anao/masculino/magro/s.png",
+          "andando": [
+            "topdown/andando/anao/masculino/magro/s/01.png",
+            "topdown/andando/anao/masculino/magro/s/02.png",
+            "topdown/andando/anao/masculino/magro/s/03.png",
+            "topdown/andando/anao/masculino/magro/s/04.png",
+            "topdown/andando/anao/masculino/magro/s/05.png",
+            "topdown/andando/anao/masculino/magro/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/anao/masculino/magro/so.png",
+          "andando": [
+            "topdown/andando/anao/masculino/magro/so/01.png",
+            "topdown/andando/anao/masculino/magro/so/02.png",
+            "topdown/andando/anao/masculino/magro/so/03.png",
+            "topdown/andando/anao/masculino/magro/so/04.png",
+            "topdown/andando/anao/masculino/magro/so/05.png",
+            "topdown/andando/anao/masculino/magro/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/anao/masculino/magro/o.png",
+          "andando": [
+            "topdown/andando/anao/masculino/magro/o/01.png",
+            "topdown/andando/anao/masculino/magro/o/02.png",
+            "topdown/andando/anao/masculino/magro/o/03.png",
+            "topdown/andando/anao/masculino/magro/o/04.png",
+            "topdown/andando/anao/masculino/magro/o/05.png",
+            "topdown/andando/anao/masculino/magro/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/anao/masculino/magro/no.png",
+          "andando": [
+            "topdown/andando/anao/masculino/magro/no/01.png",
+            "topdown/andando/anao/masculino/magro/no/02.png",
+            "topdown/andando/anao/masculino/magro/no/03.png",
+            "topdown/andando/anao/masculino/magro/no/04.png",
+            "topdown/andando/anao/masculino/magro/no/05.png",
+            "topdown/andando/anao/masculino/magro/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/anao/masculino/magro/n.png",
+          "andando": [
+            "topdown/andando/anao/masculino/magro/n/01.png",
+            "topdown/andando/anao/masculino/magro/n/02.png",
+            "topdown/andando/anao/masculino/magro/n/03.png",
+            "topdown/andando/anao/masculino/magro/n/04.png",
+            "topdown/andando/anao/masculino/magro/n/05.png",
+            "topdown/andando/anao/masculino/magro/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/anao/masculino/magro/ne.png",
+          "andando": [
+            "topdown/andando/anao/masculino/magro/ne/01.png",
+            "topdown/andando/anao/masculino/magro/ne/02.png",
+            "topdown/andando/anao/masculino/magro/ne/03.png",
+            "topdown/andando/anao/masculino/magro/ne/04.png",
+            "topdown/andando/anao/masculino/magro/ne/05.png",
+            "topdown/andando/anao/masculino/magro/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/anao/masculino/magro/l.png",
+          "andando": [
+            "topdown/andando/anao/masculino/magro/l/01.png",
+            "topdown/andando/anao/masculino/magro/l/02.png",
+            "topdown/andando/anao/masculino/magro/l/03.png",
+            "topdown/andando/anao/masculino/magro/l/04.png",
+            "topdown/andando/anao/masculino/magro/l/05.png",
+            "topdown/andando/anao/masculino/magro/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/anao/masculino/magro/se.png",
+          "andando": [
+            "topdown/andando/anao/masculino/magro/se/01.png",
+            "topdown/andando/anao/masculino/magro/se/02.png",
+            "topdown/andando/anao/masculino/magro/se/03.png",
+            "topdown/andando/anao/masculino/magro/se/04.png",
+            "topdown/andando/anao/masculino/magro/se/05.png",
+            "topdown/andando/anao/masculino/magro/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elarim",
+      "versao": "masculino",
+      "biotipo": "magro",
+      "criacao": "criacao/elarim/masculino/magro.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elarim/masculino/magro/s.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/magro/s/01.png",
+            "topdown/andando/elarim/masculino/magro/s/02.png",
+            "topdown/andando/elarim/masculino/magro/s/03.png",
+            "topdown/andando/elarim/masculino/magro/s/04.png",
+            "topdown/andando/elarim/masculino/magro/s/05.png",
+            "topdown/andando/elarim/masculino/magro/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elarim/masculino/magro/so.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/magro/so/01.png",
+            "topdown/andando/elarim/masculino/magro/so/02.png",
+            "topdown/andando/elarim/masculino/magro/so/03.png",
+            "topdown/andando/elarim/masculino/magro/so/04.png",
+            "topdown/andando/elarim/masculino/magro/so/05.png",
+            "topdown/andando/elarim/masculino/magro/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elarim/masculino/magro/o.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/magro/o/01.png",
+            "topdown/andando/elarim/masculino/magro/o/02.png",
+            "topdown/andando/elarim/masculino/magro/o/03.png",
+            "topdown/andando/elarim/masculino/magro/o/04.png",
+            "topdown/andando/elarim/masculino/magro/o/05.png",
+            "topdown/andando/elarim/masculino/magro/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elarim/masculino/magro/no.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/magro/no/01.png",
+            "topdown/andando/elarim/masculino/magro/no/02.png",
+            "topdown/andando/elarim/masculino/magro/no/03.png",
+            "topdown/andando/elarim/masculino/magro/no/04.png",
+            "topdown/andando/elarim/masculino/magro/no/05.png",
+            "topdown/andando/elarim/masculino/magro/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elarim/masculino/magro/n.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/magro/n/01.png",
+            "topdown/andando/elarim/masculino/magro/n/02.png",
+            "topdown/andando/elarim/masculino/magro/n/03.png",
+            "topdown/andando/elarim/masculino/magro/n/04.png",
+            "topdown/andando/elarim/masculino/magro/n/05.png",
+            "topdown/andando/elarim/masculino/magro/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elarim/masculino/magro/ne.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/magro/ne/01.png",
+            "topdown/andando/elarim/masculino/magro/ne/02.png",
+            "topdown/andando/elarim/masculino/magro/ne/03.png",
+            "topdown/andando/elarim/masculino/magro/ne/04.png",
+            "topdown/andando/elarim/masculino/magro/ne/05.png",
+            "topdown/andando/elarim/masculino/magro/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elarim/masculino/magro/l.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/magro/l/01.png",
+            "topdown/andando/elarim/masculino/magro/l/02.png",
+            "topdown/andando/elarim/masculino/magro/l/03.png",
+            "topdown/andando/elarim/masculino/magro/l/04.png",
+            "topdown/andando/elarim/masculino/magro/l/05.png",
+            "topdown/andando/elarim/masculino/magro/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elarim/masculino/magro/se.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/magro/se/01.png",
+            "topdown/andando/elarim/masculino/magro/se/02.png",
+            "topdown/andando/elarim/masculino/magro/se/03.png",
+            "topdown/andando/elarim/masculino/magro/se/04.png",
+            "topdown/andando/elarim/masculino/magro/se/05.png",
+            "topdown/andando/elarim/masculino/magro/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "humano",
+      "versao": "masculino",
+      "biotipo": "medio",
+      "criacao": "criacao/humano/masculino/medio.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/humano/masculino/medio/s.png",
+          "andando": [
+            "topdown/andando/humano/masculino/medio/s/01.png",
+            "topdown/andando/humano/masculino/medio/s/02.png",
+            "topdown/andando/humano/masculino/medio/s/03.png",
+            "topdown/andando/humano/masculino/medio/s/04.png",
+            "topdown/andando/humano/masculino/medio/s/05.png",
+            "topdown/andando/humano/masculino/medio/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/humano/masculino/medio/so.png",
+          "andando": [
+            "topdown/andando/humano/masculino/medio/so/01.png",
+            "topdown/andando/humano/masculino/medio/so/02.png",
+            "topdown/andando/humano/masculino/medio/so/03.png",
+            "topdown/andando/humano/masculino/medio/so/04.png",
+            "topdown/andando/humano/masculino/medio/so/05.png",
+            "topdown/andando/humano/masculino/medio/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/humano/masculino/medio/o.png",
+          "andando": [
+            "topdown/andando/humano/masculino/medio/o/01.png",
+            "topdown/andando/humano/masculino/medio/o/02.png",
+            "topdown/andando/humano/masculino/medio/o/03.png",
+            "topdown/andando/humano/masculino/medio/o/04.png",
+            "topdown/andando/humano/masculino/medio/o/05.png",
+            "topdown/andando/humano/masculino/medio/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/humano/masculino/medio/no.png",
+          "andando": [
+            "topdown/andando/humano/masculino/medio/no/01.png",
+            "topdown/andando/humano/masculino/medio/no/02.png",
+            "topdown/andando/humano/masculino/medio/no/03.png",
+            "topdown/andando/humano/masculino/medio/no/04.png",
+            "topdown/andando/humano/masculino/medio/no/05.png",
+            "topdown/andando/humano/masculino/medio/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/humano/masculino/medio/n.png",
+          "andando": [
+            "topdown/andando/humano/masculino/medio/n/01.png",
+            "topdown/andando/humano/masculino/medio/n/02.png",
+            "topdown/andando/humano/masculino/medio/n/03.png",
+            "topdown/andando/humano/masculino/medio/n/04.png",
+            "topdown/andando/humano/masculino/medio/n/05.png",
+            "topdown/andando/humano/masculino/medio/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/humano/masculino/medio/ne.png",
+          "andando": [
+            "topdown/andando/humano/masculino/medio/ne/01.png",
+            "topdown/andando/humano/masculino/medio/ne/02.png",
+            "topdown/andando/humano/masculino/medio/ne/03.png",
+            "topdown/andando/humano/masculino/medio/ne/04.png",
+            "topdown/andando/humano/masculino/medio/ne/05.png",
+            "topdown/andando/humano/masculino/medio/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/humano/masculino/medio/l.png",
+          "andando": [
+            "topdown/andando/humano/masculino/medio/l/01.png",
+            "topdown/andando/humano/masculino/medio/l/02.png",
+            "topdown/andando/humano/masculino/medio/l/03.png",
+            "topdown/andando/humano/masculino/medio/l/04.png",
+            "topdown/andando/humano/masculino/medio/l/05.png",
+            "topdown/andando/humano/masculino/medio/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/humano/masculino/medio/se.png",
+          "andando": [
+            "topdown/andando/humano/masculino/medio/se/01.png",
+            "topdown/andando/humano/masculino/medio/se/02.png",
+            "topdown/andando/humano/masculino/medio/se/03.png",
+            "topdown/andando/humano/masculino/medio/se/04.png",
+            "topdown/andando/humano/masculino/medio/se/05.png",
+            "topdown/andando/humano/masculino/medio/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elfo",
+      "versao": "masculino",
+      "biotipo": "medio",
+      "criacao": "criacao/elfo/masculino/medio.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elfo/masculino/medio/s.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/medio/s/01.png",
+            "topdown/andando/elfo/masculino/medio/s/02.png",
+            "topdown/andando/elfo/masculino/medio/s/03.png",
+            "topdown/andando/elfo/masculino/medio/s/04.png",
+            "topdown/andando/elfo/masculino/medio/s/05.png",
+            "topdown/andando/elfo/masculino/medio/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elfo/masculino/medio/so.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/medio/so/01.png",
+            "topdown/andando/elfo/masculino/medio/so/02.png",
+            "topdown/andando/elfo/masculino/medio/so/03.png",
+            "topdown/andando/elfo/masculino/medio/so/04.png",
+            "topdown/andando/elfo/masculino/medio/so/05.png",
+            "topdown/andando/elfo/masculino/medio/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elfo/masculino/medio/o.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/medio/o/01.png",
+            "topdown/andando/elfo/masculino/medio/o/02.png",
+            "topdown/andando/elfo/masculino/medio/o/03.png",
+            "topdown/andando/elfo/masculino/medio/o/04.png",
+            "topdown/andando/elfo/masculino/medio/o/05.png",
+            "topdown/andando/elfo/masculino/medio/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elfo/masculino/medio/no.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/medio/no/01.png",
+            "topdown/andando/elfo/masculino/medio/no/02.png",
+            "topdown/andando/elfo/masculino/medio/no/03.png",
+            "topdown/andando/elfo/masculino/medio/no/04.png",
+            "topdown/andando/elfo/masculino/medio/no/05.png",
+            "topdown/andando/elfo/masculino/medio/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elfo/masculino/medio/n.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/medio/n/01.png",
+            "topdown/andando/elfo/masculino/medio/n/02.png",
+            "topdown/andando/elfo/masculino/medio/n/03.png",
+            "topdown/andando/elfo/masculino/medio/n/04.png",
+            "topdown/andando/elfo/masculino/medio/n/05.png",
+            "topdown/andando/elfo/masculino/medio/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elfo/masculino/medio/ne.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/medio/ne/01.png",
+            "topdown/andando/elfo/masculino/medio/ne/02.png",
+            "topdown/andando/elfo/masculino/medio/ne/03.png",
+            "topdown/andando/elfo/masculino/medio/ne/04.png",
+            "topdown/andando/elfo/masculino/medio/ne/05.png",
+            "topdown/andando/elfo/masculino/medio/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elfo/masculino/medio/l.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/medio/l/01.png",
+            "topdown/andando/elfo/masculino/medio/l/02.png",
+            "topdown/andando/elfo/masculino/medio/l/03.png",
+            "topdown/andando/elfo/masculino/medio/l/04.png",
+            "topdown/andando/elfo/masculino/medio/l/05.png",
+            "topdown/andando/elfo/masculino/medio/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elfo/masculino/medio/se.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/medio/se/01.png",
+            "topdown/andando/elfo/masculino/medio/se/02.png",
+            "topdown/andando/elfo/masculino/medio/se/03.png",
+            "topdown/andando/elfo/masculino/medio/se/04.png",
+            "topdown/andando/elfo/masculino/medio/se/05.png",
+            "topdown/andando/elfo/masculino/medio/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "orc",
+      "versao": "masculino",
+      "biotipo": "medio",
+      "criacao": "criacao/orc/masculino/medio.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/orc/masculino/medio/s.png",
+          "andando": [
+            "topdown/andando/orc/masculino/medio/s/01.png",
+            "topdown/andando/orc/masculino/medio/s/02.png",
+            "topdown/andando/orc/masculino/medio/s/03.png",
+            "topdown/andando/orc/masculino/medio/s/04.png",
+            "topdown/andando/orc/masculino/medio/s/05.png",
+            "topdown/andando/orc/masculino/medio/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/orc/masculino/medio/so.png",
+          "andando": [
+            "topdown/andando/orc/masculino/medio/so/01.png",
+            "topdown/andando/orc/masculino/medio/so/02.png",
+            "topdown/andando/orc/masculino/medio/so/03.png",
+            "topdown/andando/orc/masculino/medio/so/04.png",
+            "topdown/andando/orc/masculino/medio/so/05.png",
+            "topdown/andando/orc/masculino/medio/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/orc/masculino/medio/o.png",
+          "andando": [
+            "topdown/andando/orc/masculino/medio/o/01.png",
+            "topdown/andando/orc/masculino/medio/o/02.png",
+            "topdown/andando/orc/masculino/medio/o/03.png",
+            "topdown/andando/orc/masculino/medio/o/04.png",
+            "topdown/andando/orc/masculino/medio/o/05.png",
+            "topdown/andando/orc/masculino/medio/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/orc/masculino/medio/no.png",
+          "andando": [
+            "topdown/andando/orc/masculino/medio/no/01.png",
+            "topdown/andando/orc/masculino/medio/no/02.png",
+            "topdown/andando/orc/masculino/medio/no/03.png",
+            "topdown/andando/orc/masculino/medio/no/04.png",
+            "topdown/andando/orc/masculino/medio/no/05.png",
+            "topdown/andando/orc/masculino/medio/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/orc/masculino/medio/n.png",
+          "andando": [
+            "topdown/andando/orc/masculino/medio/n/01.png",
+            "topdown/andando/orc/masculino/medio/n/02.png",
+            "topdown/andando/orc/masculino/medio/n/03.png",
+            "topdown/andando/orc/masculino/medio/n/04.png",
+            "topdown/andando/orc/masculino/medio/n/05.png",
+            "topdown/andando/orc/masculino/medio/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/orc/masculino/medio/ne.png",
+          "andando": [
+            "topdown/andando/orc/masculino/medio/ne/01.png",
+            "topdown/andando/orc/masculino/medio/ne/02.png",
+            "topdown/andando/orc/masculino/medio/ne/03.png",
+            "topdown/andando/orc/masculino/medio/ne/04.png",
+            "topdown/andando/orc/masculino/medio/ne/05.png",
+            "topdown/andando/orc/masculino/medio/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/orc/masculino/medio/l.png",
+          "andando": [
+            "topdown/andando/orc/masculino/medio/l/01.png",
+            "topdown/andando/orc/masculino/medio/l/02.png",
+            "topdown/andando/orc/masculino/medio/l/03.png",
+            "topdown/andando/orc/masculino/medio/l/04.png",
+            "topdown/andando/orc/masculino/medio/l/05.png",
+            "topdown/andando/orc/masculino/medio/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/orc/masculino/medio/se.png",
+          "andando": [
+            "topdown/andando/orc/masculino/medio/se/01.png",
+            "topdown/andando/orc/masculino/medio/se/02.png",
+            "topdown/andando/orc/masculino/medio/se/03.png",
+            "topdown/andando/orc/masculino/medio/se/04.png",
+            "topdown/andando/orc/masculino/medio/se/05.png",
+            "topdown/andando/orc/masculino/medio/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "anao",
+      "versao": "masculino",
+      "biotipo": "medio",
+      "criacao": "criacao/anao/masculino/medio.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/anao/masculino/medio/s.png",
+          "andando": [
+            "topdown/andando/anao/masculino/medio/s/01.png",
+            "topdown/andando/anao/masculino/medio/s/02.png",
+            "topdown/andando/anao/masculino/medio/s/03.png",
+            "topdown/andando/anao/masculino/medio/s/04.png",
+            "topdown/andando/anao/masculino/medio/s/05.png",
+            "topdown/andando/anao/masculino/medio/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/anao/masculino/medio/so.png",
+          "andando": [
+            "topdown/andando/anao/masculino/medio/so/01.png",
+            "topdown/andando/anao/masculino/medio/so/02.png",
+            "topdown/andando/anao/masculino/medio/so/03.png",
+            "topdown/andando/anao/masculino/medio/so/04.png",
+            "topdown/andando/anao/masculino/medio/so/05.png",
+            "topdown/andando/anao/masculino/medio/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/anao/masculino/medio/o.png",
+          "andando": [
+            "topdown/andando/anao/masculino/medio/o/01.png",
+            "topdown/andando/anao/masculino/medio/o/02.png",
+            "topdown/andando/anao/masculino/medio/o/03.png",
+            "topdown/andando/anao/masculino/medio/o/04.png",
+            "topdown/andando/anao/masculino/medio/o/05.png",
+            "topdown/andando/anao/masculino/medio/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/anao/masculino/medio/no.png",
+          "andando": [
+            "topdown/andando/anao/masculino/medio/no/01.png",
+            "topdown/andando/anao/masculino/medio/no/02.png",
+            "topdown/andando/anao/masculino/medio/no/03.png",
+            "topdown/andando/anao/masculino/medio/no/04.png",
+            "topdown/andando/anao/masculino/medio/no/05.png",
+            "topdown/andando/anao/masculino/medio/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/anao/masculino/medio/n.png",
+          "andando": [
+            "topdown/andando/anao/masculino/medio/n/01.png",
+            "topdown/andando/anao/masculino/medio/n/02.png",
+            "topdown/andando/anao/masculino/medio/n/03.png",
+            "topdown/andando/anao/masculino/medio/n/04.png",
+            "topdown/andando/anao/masculino/medio/n/05.png",
+            "topdown/andando/anao/masculino/medio/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/anao/masculino/medio/ne.png",
+          "andando": [
+            "topdown/andando/anao/masculino/medio/ne/01.png",
+            "topdown/andando/anao/masculino/medio/ne/02.png",
+            "topdown/andando/anao/masculino/medio/ne/03.png",
+            "topdown/andando/anao/masculino/medio/ne/04.png",
+            "topdown/andando/anao/masculino/medio/ne/05.png",
+            "topdown/andando/anao/masculino/medio/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/anao/masculino/medio/l.png",
+          "andando": [
+            "topdown/andando/anao/masculino/medio/l/01.png",
+            "topdown/andando/anao/masculino/medio/l/02.png",
+            "topdown/andando/anao/masculino/medio/l/03.png",
+            "topdown/andando/anao/masculino/medio/l/04.png",
+            "topdown/andando/anao/masculino/medio/l/05.png",
+            "topdown/andando/anao/masculino/medio/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/anao/masculino/medio/se.png",
+          "andando": [
+            "topdown/andando/anao/masculino/medio/se/01.png",
+            "topdown/andando/anao/masculino/medio/se/02.png",
+            "topdown/andando/anao/masculino/medio/se/03.png",
+            "topdown/andando/anao/masculino/medio/se/04.png",
+            "topdown/andando/anao/masculino/medio/se/05.png",
+            "topdown/andando/anao/masculino/medio/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elarim",
+      "versao": "masculino",
+      "biotipo": "medio",
+      "criacao": "criacao/elarim/masculino/medio.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elarim/masculino/medio/s.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/medio/s/01.png",
+            "topdown/andando/elarim/masculino/medio/s/02.png",
+            "topdown/andando/elarim/masculino/medio/s/03.png",
+            "topdown/andando/elarim/masculino/medio/s/04.png",
+            "topdown/andando/elarim/masculino/medio/s/05.png",
+            "topdown/andando/elarim/masculino/medio/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elarim/masculino/medio/so.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/medio/so/01.png",
+            "topdown/andando/elarim/masculino/medio/so/02.png",
+            "topdown/andando/elarim/masculino/medio/so/03.png",
+            "topdown/andando/elarim/masculino/medio/so/04.png",
+            "topdown/andando/elarim/masculino/medio/so/05.png",
+            "topdown/andando/elarim/masculino/medio/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elarim/masculino/medio/o.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/medio/o/01.png",
+            "topdown/andando/elarim/masculino/medio/o/02.png",
+            "topdown/andando/elarim/masculino/medio/o/03.png",
+            "topdown/andando/elarim/masculino/medio/o/04.png",
+            "topdown/andando/elarim/masculino/medio/o/05.png",
+            "topdown/andando/elarim/masculino/medio/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elarim/masculino/medio/no.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/medio/no/01.png",
+            "topdown/andando/elarim/masculino/medio/no/02.png",
+            "topdown/andando/elarim/masculino/medio/no/03.png",
+            "topdown/andando/elarim/masculino/medio/no/04.png",
+            "topdown/andando/elarim/masculino/medio/no/05.png",
+            "topdown/andando/elarim/masculino/medio/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elarim/masculino/medio/n.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/medio/n/01.png",
+            "topdown/andando/elarim/masculino/medio/n/02.png",
+            "topdown/andando/elarim/masculino/medio/n/03.png",
+            "topdown/andando/elarim/masculino/medio/n/04.png",
+            "topdown/andando/elarim/masculino/medio/n/05.png",
+            "topdown/andando/elarim/masculino/medio/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elarim/masculino/medio/ne.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/medio/ne/01.png",
+            "topdown/andando/elarim/masculino/medio/ne/02.png",
+            "topdown/andando/elarim/masculino/medio/ne/03.png",
+            "topdown/andando/elarim/masculino/medio/ne/04.png",
+            "topdown/andando/elarim/masculino/medio/ne/05.png",
+            "topdown/andando/elarim/masculino/medio/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elarim/masculino/medio/l.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/medio/l/01.png",
+            "topdown/andando/elarim/masculino/medio/l/02.png",
+            "topdown/andando/elarim/masculino/medio/l/03.png",
+            "topdown/andando/elarim/masculino/medio/l/04.png",
+            "topdown/andando/elarim/masculino/medio/l/05.png",
+            "topdown/andando/elarim/masculino/medio/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elarim/masculino/medio/se.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/medio/se/01.png",
+            "topdown/andando/elarim/masculino/medio/se/02.png",
+            "topdown/andando/elarim/masculino/medio/se/03.png",
+            "topdown/andando/elarim/masculino/medio/se/04.png",
+            "topdown/andando/elarim/masculino/medio/se/05.png",
+            "topdown/andando/elarim/masculino/medio/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "humano",
+      "versao": "masculino",
+      "biotipo": "forte",
+      "criacao": "criacao/humano/masculino/forte.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/humano/masculino/forte/s.png",
+          "andando": [
+            "topdown/andando/humano/masculino/forte/s/01.png",
+            "topdown/andando/humano/masculino/forte/s/02.png",
+            "topdown/andando/humano/masculino/forte/s/03.png",
+            "topdown/andando/humano/masculino/forte/s/04.png",
+            "topdown/andando/humano/masculino/forte/s/05.png",
+            "topdown/andando/humano/masculino/forte/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/humano/masculino/forte/so.png",
+          "andando": [
+            "topdown/andando/humano/masculino/forte/so/01.png",
+            "topdown/andando/humano/masculino/forte/so/02.png",
+            "topdown/andando/humano/masculino/forte/so/03.png",
+            "topdown/andando/humano/masculino/forte/so/04.png",
+            "topdown/andando/humano/masculino/forte/so/05.png",
+            "topdown/andando/humano/masculino/forte/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/humano/masculino/forte/o.png",
+          "andando": [
+            "topdown/andando/humano/masculino/forte/o/01.png",
+            "topdown/andando/humano/masculino/forte/o/02.png",
+            "topdown/andando/humano/masculino/forte/o/03.png",
+            "topdown/andando/humano/masculino/forte/o/04.png",
+            "topdown/andando/humano/masculino/forte/o/05.png",
+            "topdown/andando/humano/masculino/forte/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/humano/masculino/forte/no.png",
+          "andando": [
+            "topdown/andando/humano/masculino/forte/no/01.png",
+            "topdown/andando/humano/masculino/forte/no/02.png",
+            "topdown/andando/humano/masculino/forte/no/03.png",
+            "topdown/andando/humano/masculino/forte/no/04.png",
+            "topdown/andando/humano/masculino/forte/no/05.png",
+            "topdown/andando/humano/masculino/forte/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/humano/masculino/forte/n.png",
+          "andando": [
+            "topdown/andando/humano/masculino/forte/n/01.png",
+            "topdown/andando/humano/masculino/forte/n/02.png",
+            "topdown/andando/humano/masculino/forte/n/03.png",
+            "topdown/andando/humano/masculino/forte/n/04.png",
+            "topdown/andando/humano/masculino/forte/n/05.png",
+            "topdown/andando/humano/masculino/forte/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/humano/masculino/forte/ne.png",
+          "andando": [
+            "topdown/andando/humano/masculino/forte/ne/01.png",
+            "topdown/andando/humano/masculino/forte/ne/02.png",
+            "topdown/andando/humano/masculino/forte/ne/03.png",
+            "topdown/andando/humano/masculino/forte/ne/04.png",
+            "topdown/andando/humano/masculino/forte/ne/05.png",
+            "topdown/andando/humano/masculino/forte/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/humano/masculino/forte/l.png",
+          "andando": [
+            "topdown/andando/humano/masculino/forte/l/01.png",
+            "topdown/andando/humano/masculino/forte/l/02.png",
+            "topdown/andando/humano/masculino/forte/l/03.png",
+            "topdown/andando/humano/masculino/forte/l/04.png",
+            "topdown/andando/humano/masculino/forte/l/05.png",
+            "topdown/andando/humano/masculino/forte/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/humano/masculino/forte/se.png",
+          "andando": [
+            "topdown/andando/humano/masculino/forte/se/01.png",
+            "topdown/andando/humano/masculino/forte/se/02.png",
+            "topdown/andando/humano/masculino/forte/se/03.png",
+            "topdown/andando/humano/masculino/forte/se/04.png",
+            "topdown/andando/humano/masculino/forte/se/05.png",
+            "topdown/andando/humano/masculino/forte/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elfo",
+      "versao": "masculino",
+      "biotipo": "forte",
+      "criacao": "criacao/elfo/masculino/forte.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elfo/masculino/forte/s.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/forte/s/01.png",
+            "topdown/andando/elfo/masculino/forte/s/02.png",
+            "topdown/andando/elfo/masculino/forte/s/03.png",
+            "topdown/andando/elfo/masculino/forte/s/04.png",
+            "topdown/andando/elfo/masculino/forte/s/05.png",
+            "topdown/andando/elfo/masculino/forte/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elfo/masculino/forte/so.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/forte/so/01.png",
+            "topdown/andando/elfo/masculino/forte/so/02.png",
+            "topdown/andando/elfo/masculino/forte/so/03.png",
+            "topdown/andando/elfo/masculino/forte/so/04.png",
+            "topdown/andando/elfo/masculino/forte/so/05.png",
+            "topdown/andando/elfo/masculino/forte/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elfo/masculino/forte/o.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/forte/o/01.png",
+            "topdown/andando/elfo/masculino/forte/o/02.png",
+            "topdown/andando/elfo/masculino/forte/o/03.png",
+            "topdown/andando/elfo/masculino/forte/o/04.png",
+            "topdown/andando/elfo/masculino/forte/o/05.png",
+            "topdown/andando/elfo/masculino/forte/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elfo/masculino/forte/no.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/forte/no/01.png",
+            "topdown/andando/elfo/masculino/forte/no/02.png",
+            "topdown/andando/elfo/masculino/forte/no/03.png",
+            "topdown/andando/elfo/masculino/forte/no/04.png",
+            "topdown/andando/elfo/masculino/forte/no/05.png",
+            "topdown/andando/elfo/masculino/forte/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elfo/masculino/forte/n.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/forte/n/01.png",
+            "topdown/andando/elfo/masculino/forte/n/02.png",
+            "topdown/andando/elfo/masculino/forte/n/03.png",
+            "topdown/andando/elfo/masculino/forte/n/04.png",
+            "topdown/andando/elfo/masculino/forte/n/05.png",
+            "topdown/andando/elfo/masculino/forte/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elfo/masculino/forte/ne.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/forte/ne/01.png",
+            "topdown/andando/elfo/masculino/forte/ne/02.png",
+            "topdown/andando/elfo/masculino/forte/ne/03.png",
+            "topdown/andando/elfo/masculino/forte/ne/04.png",
+            "topdown/andando/elfo/masculino/forte/ne/05.png",
+            "topdown/andando/elfo/masculino/forte/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elfo/masculino/forte/l.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/forte/l/01.png",
+            "topdown/andando/elfo/masculino/forte/l/02.png",
+            "topdown/andando/elfo/masculino/forte/l/03.png",
+            "topdown/andando/elfo/masculino/forte/l/04.png",
+            "topdown/andando/elfo/masculino/forte/l/05.png",
+            "topdown/andando/elfo/masculino/forte/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elfo/masculino/forte/se.png",
+          "andando": [
+            "topdown/andando/elfo/masculino/forte/se/01.png",
+            "topdown/andando/elfo/masculino/forte/se/02.png",
+            "topdown/andando/elfo/masculino/forte/se/03.png",
+            "topdown/andando/elfo/masculino/forte/se/04.png",
+            "topdown/andando/elfo/masculino/forte/se/05.png",
+            "topdown/andando/elfo/masculino/forte/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "orc",
+      "versao": "masculino",
+      "biotipo": "forte",
+      "criacao": "criacao/orc/masculino/forte.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/orc/masculino/forte/s.png",
+          "andando": [
+            "topdown/andando/orc/masculino/forte/s/01.png",
+            "topdown/andando/orc/masculino/forte/s/02.png",
+            "topdown/andando/orc/masculino/forte/s/03.png",
+            "topdown/andando/orc/masculino/forte/s/04.png",
+            "topdown/andando/orc/masculino/forte/s/05.png",
+            "topdown/andando/orc/masculino/forte/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/orc/masculino/forte/so.png",
+          "andando": [
+            "topdown/andando/orc/masculino/forte/so/01.png",
+            "topdown/andando/orc/masculino/forte/so/02.png",
+            "topdown/andando/orc/masculino/forte/so/03.png",
+            "topdown/andando/orc/masculino/forte/so/04.png",
+            "topdown/andando/orc/masculino/forte/so/05.png",
+            "topdown/andando/orc/masculino/forte/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/orc/masculino/forte/o.png",
+          "andando": [
+            "topdown/andando/orc/masculino/forte/o/01.png",
+            "topdown/andando/orc/masculino/forte/o/02.png",
+            "topdown/andando/orc/masculino/forte/o/03.png",
+            "topdown/andando/orc/masculino/forte/o/04.png",
+            "topdown/andando/orc/masculino/forte/o/05.png",
+            "topdown/andando/orc/masculino/forte/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/orc/masculino/forte/no.png",
+          "andando": [
+            "topdown/andando/orc/masculino/forte/no/01.png",
+            "topdown/andando/orc/masculino/forte/no/02.png",
+            "topdown/andando/orc/masculino/forte/no/03.png",
+            "topdown/andando/orc/masculino/forte/no/04.png",
+            "topdown/andando/orc/masculino/forte/no/05.png",
+            "topdown/andando/orc/masculino/forte/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/orc/masculino/forte/n.png",
+          "andando": [
+            "topdown/andando/orc/masculino/forte/n/01.png",
+            "topdown/andando/orc/masculino/forte/n/02.png",
+            "topdown/andando/orc/masculino/forte/n/03.png",
+            "topdown/andando/orc/masculino/forte/n/04.png",
+            "topdown/andando/orc/masculino/forte/n/05.png",
+            "topdown/andando/orc/masculino/forte/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/orc/masculino/forte/ne.png",
+          "andando": [
+            "topdown/andando/orc/masculino/forte/ne/01.png",
+            "topdown/andando/orc/masculino/forte/ne/02.png",
+            "topdown/andando/orc/masculino/forte/ne/03.png",
+            "topdown/andando/orc/masculino/forte/ne/04.png",
+            "topdown/andando/orc/masculino/forte/ne/05.png",
+            "topdown/andando/orc/masculino/forte/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/orc/masculino/forte/l.png",
+          "andando": [
+            "topdown/andando/orc/masculino/forte/l/01.png",
+            "topdown/andando/orc/masculino/forte/l/02.png",
+            "topdown/andando/orc/masculino/forte/l/03.png",
+            "topdown/andando/orc/masculino/forte/l/04.png",
+            "topdown/andando/orc/masculino/forte/l/05.png",
+            "topdown/andando/orc/masculino/forte/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/orc/masculino/forte/se.png",
+          "andando": [
+            "topdown/andando/orc/masculino/forte/se/01.png",
+            "topdown/andando/orc/masculino/forte/se/02.png",
+            "topdown/andando/orc/masculino/forte/se/03.png",
+            "topdown/andando/orc/masculino/forte/se/04.png",
+            "topdown/andando/orc/masculino/forte/se/05.png",
+            "topdown/andando/orc/masculino/forte/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "anao",
+      "versao": "masculino",
+      "biotipo": "forte",
+      "criacao": "criacao/anao/masculino/forte.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/anao/masculino/forte/s.png",
+          "andando": [
+            "topdown/andando/anao/masculino/forte/s/01.png",
+            "topdown/andando/anao/masculino/forte/s/02.png",
+            "topdown/andando/anao/masculino/forte/s/03.png",
+            "topdown/andando/anao/masculino/forte/s/04.png",
+            "topdown/andando/anao/masculino/forte/s/05.png",
+            "topdown/andando/anao/masculino/forte/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/anao/masculino/forte/so.png",
+          "andando": [
+            "topdown/andando/anao/masculino/forte/so/01.png",
+            "topdown/andando/anao/masculino/forte/so/02.png",
+            "topdown/andando/anao/masculino/forte/so/03.png",
+            "topdown/andando/anao/masculino/forte/so/04.png",
+            "topdown/andando/anao/masculino/forte/so/05.png",
+            "topdown/andando/anao/masculino/forte/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/anao/masculino/forte/o.png",
+          "andando": [
+            "topdown/andando/anao/masculino/forte/o/01.png",
+            "topdown/andando/anao/masculino/forte/o/02.png",
+            "topdown/andando/anao/masculino/forte/o/03.png",
+            "topdown/andando/anao/masculino/forte/o/04.png",
+            "topdown/andando/anao/masculino/forte/o/05.png",
+            "topdown/andando/anao/masculino/forte/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/anao/masculino/forte/no.png",
+          "andando": [
+            "topdown/andando/anao/masculino/forte/no/01.png",
+            "topdown/andando/anao/masculino/forte/no/02.png",
+            "topdown/andando/anao/masculino/forte/no/03.png",
+            "topdown/andando/anao/masculino/forte/no/04.png",
+            "topdown/andando/anao/masculino/forte/no/05.png",
+            "topdown/andando/anao/masculino/forte/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/anao/masculino/forte/n.png",
+          "andando": [
+            "topdown/andando/anao/masculino/forte/n/01.png",
+            "topdown/andando/anao/masculino/forte/n/02.png",
+            "topdown/andando/anao/masculino/forte/n/03.png",
+            "topdown/andando/anao/masculino/forte/n/04.png",
+            "topdown/andando/anao/masculino/forte/n/05.png",
+            "topdown/andando/anao/masculino/forte/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/anao/masculino/forte/ne.png",
+          "andando": [
+            "topdown/andando/anao/masculino/forte/ne/01.png",
+            "topdown/andando/anao/masculino/forte/ne/02.png",
+            "topdown/andando/anao/masculino/forte/ne/03.png",
+            "topdown/andando/anao/masculino/forte/ne/04.png",
+            "topdown/andando/anao/masculino/forte/ne/05.png",
+            "topdown/andando/anao/masculino/forte/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/anao/masculino/forte/l.png",
+          "andando": [
+            "topdown/andando/anao/masculino/forte/l/01.png",
+            "topdown/andando/anao/masculino/forte/l/02.png",
+            "topdown/andando/anao/masculino/forte/l/03.png",
+            "topdown/andando/anao/masculino/forte/l/04.png",
+            "topdown/andando/anao/masculino/forte/l/05.png",
+            "topdown/andando/anao/masculino/forte/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/anao/masculino/forte/se.png",
+          "andando": [
+            "topdown/andando/anao/masculino/forte/se/01.png",
+            "topdown/andando/anao/masculino/forte/se/02.png",
+            "topdown/andando/anao/masculino/forte/se/03.png",
+            "topdown/andando/anao/masculino/forte/se/04.png",
+            "topdown/andando/anao/masculino/forte/se/05.png",
+            "topdown/andando/anao/masculino/forte/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elarim",
+      "versao": "masculino",
+      "biotipo": "forte",
+      "criacao": "criacao/elarim/masculino/forte.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elarim/masculino/forte/s.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/forte/s/01.png",
+            "topdown/andando/elarim/masculino/forte/s/02.png",
+            "topdown/andando/elarim/masculino/forte/s/03.png",
+            "topdown/andando/elarim/masculino/forte/s/04.png",
+            "topdown/andando/elarim/masculino/forte/s/05.png",
+            "topdown/andando/elarim/masculino/forte/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elarim/masculino/forte/so.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/forte/so/01.png",
+            "topdown/andando/elarim/masculino/forte/so/02.png",
+            "topdown/andando/elarim/masculino/forte/so/03.png",
+            "topdown/andando/elarim/masculino/forte/so/04.png",
+            "topdown/andando/elarim/masculino/forte/so/05.png",
+            "topdown/andando/elarim/masculino/forte/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elarim/masculino/forte/o.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/forte/o/01.png",
+            "topdown/andando/elarim/masculino/forte/o/02.png",
+            "topdown/andando/elarim/masculino/forte/o/03.png",
+            "topdown/andando/elarim/masculino/forte/o/04.png",
+            "topdown/andando/elarim/masculino/forte/o/05.png",
+            "topdown/andando/elarim/masculino/forte/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elarim/masculino/forte/no.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/forte/no/01.png",
+            "topdown/andando/elarim/masculino/forte/no/02.png",
+            "topdown/andando/elarim/masculino/forte/no/03.png",
+            "topdown/andando/elarim/masculino/forte/no/04.png",
+            "topdown/andando/elarim/masculino/forte/no/05.png",
+            "topdown/andando/elarim/masculino/forte/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elarim/masculino/forte/n.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/forte/n/01.png",
+            "topdown/andando/elarim/masculino/forte/n/02.png",
+            "topdown/andando/elarim/masculino/forte/n/03.png",
+            "topdown/andando/elarim/masculino/forte/n/04.png",
+            "topdown/andando/elarim/masculino/forte/n/05.png",
+            "topdown/andando/elarim/masculino/forte/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elarim/masculino/forte/ne.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/forte/ne/01.png",
+            "topdown/andando/elarim/masculino/forte/ne/02.png",
+            "topdown/andando/elarim/masculino/forte/ne/03.png",
+            "topdown/andando/elarim/masculino/forte/ne/04.png",
+            "topdown/andando/elarim/masculino/forte/ne/05.png",
+            "topdown/andando/elarim/masculino/forte/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elarim/masculino/forte/l.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/forte/l/01.png",
+            "topdown/andando/elarim/masculino/forte/l/02.png",
+            "topdown/andando/elarim/masculino/forte/l/03.png",
+            "topdown/andando/elarim/masculino/forte/l/04.png",
+            "topdown/andando/elarim/masculino/forte/l/05.png",
+            "topdown/andando/elarim/masculino/forte/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elarim/masculino/forte/se.png",
+          "andando": [
+            "topdown/andando/elarim/masculino/forte/se/01.png",
+            "topdown/andando/elarim/masculino/forte/se/02.png",
+            "topdown/andando/elarim/masculino/forte/se/03.png",
+            "topdown/andando/elarim/masculino/forte/se/04.png",
+            "topdown/andando/elarim/masculino/forte/se/05.png",
+            "topdown/andando/elarim/masculino/forte/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "humano",
+      "versao": "feminino",
+      "biotipo": "magro",
+      "criacao": "criacao/humano/feminino/magro.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/humano/feminino/magro/s.png",
+          "andando": [
+            "topdown/andando/humano/feminino/magro/s/01.png",
+            "topdown/andando/humano/feminino/magro/s/02.png",
+            "topdown/andando/humano/feminino/magro/s/03.png",
+            "topdown/andando/humano/feminino/magro/s/04.png",
+            "topdown/andando/humano/feminino/magro/s/05.png",
+            "topdown/andando/humano/feminino/magro/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/humano/feminino/magro/so.png",
+          "andando": [
+            "topdown/andando/humano/feminino/magro/so/01.png",
+            "topdown/andando/humano/feminino/magro/so/02.png",
+            "topdown/andando/humano/feminino/magro/so/03.png",
+            "topdown/andando/humano/feminino/magro/so/04.png",
+            "topdown/andando/humano/feminino/magro/so/05.png",
+            "topdown/andando/humano/feminino/magro/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/humano/feminino/magro/o.png",
+          "andando": [
+            "topdown/andando/humano/feminino/magro/o/01.png",
+            "topdown/andando/humano/feminino/magro/o/02.png",
+            "topdown/andando/humano/feminino/magro/o/03.png",
+            "topdown/andando/humano/feminino/magro/o/04.png",
+            "topdown/andando/humano/feminino/magro/o/05.png",
+            "topdown/andando/humano/feminino/magro/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/humano/feminino/magro/no.png",
+          "andando": [
+            "topdown/andando/humano/feminino/magro/no/01.png",
+            "topdown/andando/humano/feminino/magro/no/02.png",
+            "topdown/andando/humano/feminino/magro/no/03.png",
+            "topdown/andando/humano/feminino/magro/no/04.png",
+            "topdown/andando/humano/feminino/magro/no/05.png",
+            "topdown/andando/humano/feminino/magro/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/humano/feminino/magro/n.png",
+          "andando": [
+            "topdown/andando/humano/feminino/magro/n/01.png",
+            "topdown/andando/humano/feminino/magro/n/02.png",
+            "topdown/andando/humano/feminino/magro/n/03.png",
+            "topdown/andando/humano/feminino/magro/n/04.png",
+            "topdown/andando/humano/feminino/magro/n/05.png",
+            "topdown/andando/humano/feminino/magro/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/humano/feminino/magro/ne.png",
+          "andando": [
+            "topdown/andando/humano/feminino/magro/ne/01.png",
+            "topdown/andando/humano/feminino/magro/ne/02.png",
+            "topdown/andando/humano/feminino/magro/ne/03.png",
+            "topdown/andando/humano/feminino/magro/ne/04.png",
+            "topdown/andando/humano/feminino/magro/ne/05.png",
+            "topdown/andando/humano/feminino/magro/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/humano/feminino/magro/l.png",
+          "andando": [
+            "topdown/andando/humano/feminino/magro/l/01.png",
+            "topdown/andando/humano/feminino/magro/l/02.png",
+            "topdown/andando/humano/feminino/magro/l/03.png",
+            "topdown/andando/humano/feminino/magro/l/04.png",
+            "topdown/andando/humano/feminino/magro/l/05.png",
+            "topdown/andando/humano/feminino/magro/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/humano/feminino/magro/se.png",
+          "andando": [
+            "topdown/andando/humano/feminino/magro/se/01.png",
+            "topdown/andando/humano/feminino/magro/se/02.png",
+            "topdown/andando/humano/feminino/magro/se/03.png",
+            "topdown/andando/humano/feminino/magro/se/04.png",
+            "topdown/andando/humano/feminino/magro/se/05.png",
+            "topdown/andando/humano/feminino/magro/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elfo",
+      "versao": "feminino",
+      "biotipo": "magro",
+      "criacao": "criacao/elfo/feminino/magro.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elfo/feminino/magro/s.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/magro/s/01.png",
+            "topdown/andando/elfo/feminino/magro/s/02.png",
+            "topdown/andando/elfo/feminino/magro/s/03.png",
+            "topdown/andando/elfo/feminino/magro/s/04.png",
+            "topdown/andando/elfo/feminino/magro/s/05.png",
+            "topdown/andando/elfo/feminino/magro/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elfo/feminino/magro/so.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/magro/so/01.png",
+            "topdown/andando/elfo/feminino/magro/so/02.png",
+            "topdown/andando/elfo/feminino/magro/so/03.png",
+            "topdown/andando/elfo/feminino/magro/so/04.png",
+            "topdown/andando/elfo/feminino/magro/so/05.png",
+            "topdown/andando/elfo/feminino/magro/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elfo/feminino/magro/o.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/magro/o/01.png",
+            "topdown/andando/elfo/feminino/magro/o/02.png",
+            "topdown/andando/elfo/feminino/magro/o/03.png",
+            "topdown/andando/elfo/feminino/magro/o/04.png",
+            "topdown/andando/elfo/feminino/magro/o/05.png",
+            "topdown/andando/elfo/feminino/magro/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elfo/feminino/magro/no.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/magro/no/01.png",
+            "topdown/andando/elfo/feminino/magro/no/02.png",
+            "topdown/andando/elfo/feminino/magro/no/03.png",
+            "topdown/andando/elfo/feminino/magro/no/04.png",
+            "topdown/andando/elfo/feminino/magro/no/05.png",
+            "topdown/andando/elfo/feminino/magro/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elfo/feminino/magro/n.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/magro/n/01.png",
+            "topdown/andando/elfo/feminino/magro/n/02.png",
+            "topdown/andando/elfo/feminino/magro/n/03.png",
+            "topdown/andando/elfo/feminino/magro/n/04.png",
+            "topdown/andando/elfo/feminino/magro/n/05.png",
+            "topdown/andando/elfo/feminino/magro/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elfo/feminino/magro/ne.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/magro/ne/01.png",
+            "topdown/andando/elfo/feminino/magro/ne/02.png",
+            "topdown/andando/elfo/feminino/magro/ne/03.png",
+            "topdown/andando/elfo/feminino/magro/ne/04.png",
+            "topdown/andando/elfo/feminino/magro/ne/05.png",
+            "topdown/andando/elfo/feminino/magro/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elfo/feminino/magro/l.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/magro/l/01.png",
+            "topdown/andando/elfo/feminino/magro/l/02.png",
+            "topdown/andando/elfo/feminino/magro/l/03.png",
+            "topdown/andando/elfo/feminino/magro/l/04.png",
+            "topdown/andando/elfo/feminino/magro/l/05.png",
+            "topdown/andando/elfo/feminino/magro/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elfo/feminino/magro/se.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/magro/se/01.png",
+            "topdown/andando/elfo/feminino/magro/se/02.png",
+            "topdown/andando/elfo/feminino/magro/se/03.png",
+            "topdown/andando/elfo/feminino/magro/se/04.png",
+            "topdown/andando/elfo/feminino/magro/se/05.png",
+            "topdown/andando/elfo/feminino/magro/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "orc",
+      "versao": "feminino",
+      "biotipo": "magro",
+      "criacao": "criacao/orc/feminino/magro.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/orc/feminino/magro/s.png",
+          "andando": [
+            "topdown/andando/orc/feminino/magro/s/01.png",
+            "topdown/andando/orc/feminino/magro/s/02.png",
+            "topdown/andando/orc/feminino/magro/s/03.png",
+            "topdown/andando/orc/feminino/magro/s/04.png",
+            "topdown/andando/orc/feminino/magro/s/05.png",
+            "topdown/andando/orc/feminino/magro/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/orc/feminino/magro/so.png",
+          "andando": [
+            "topdown/andando/orc/feminino/magro/so/01.png",
+            "topdown/andando/orc/feminino/magro/so/02.png",
+            "topdown/andando/orc/feminino/magro/so/03.png",
+            "topdown/andando/orc/feminino/magro/so/04.png",
+            "topdown/andando/orc/feminino/magro/so/05.png",
+            "topdown/andando/orc/feminino/magro/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/orc/feminino/magro/o.png",
+          "andando": [
+            "topdown/andando/orc/feminino/magro/o/01.png",
+            "topdown/andando/orc/feminino/magro/o/02.png",
+            "topdown/andando/orc/feminino/magro/o/03.png",
+            "topdown/andando/orc/feminino/magro/o/04.png",
+            "topdown/andando/orc/feminino/magro/o/05.png",
+            "topdown/andando/orc/feminino/magro/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/orc/feminino/magro/no.png",
+          "andando": [
+            "topdown/andando/orc/feminino/magro/no/01.png",
+            "topdown/andando/orc/feminino/magro/no/02.png",
+            "topdown/andando/orc/feminino/magro/no/03.png",
+            "topdown/andando/orc/feminino/magro/no/04.png",
+            "topdown/andando/orc/feminino/magro/no/05.png",
+            "topdown/andando/orc/feminino/magro/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/orc/feminino/magro/n.png",
+          "andando": [
+            "topdown/andando/orc/feminino/magro/n/01.png",
+            "topdown/andando/orc/feminino/magro/n/02.png",
+            "topdown/andando/orc/feminino/magro/n/03.png",
+            "topdown/andando/orc/feminino/magro/n/04.png",
+            "topdown/andando/orc/feminino/magro/n/05.png",
+            "topdown/andando/orc/feminino/magro/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/orc/feminino/magro/ne.png",
+          "andando": [
+            "topdown/andando/orc/feminino/magro/ne/01.png",
+            "topdown/andando/orc/feminino/magro/ne/02.png",
+            "topdown/andando/orc/feminino/magro/ne/03.png",
+            "topdown/andando/orc/feminino/magro/ne/04.png",
+            "topdown/andando/orc/feminino/magro/ne/05.png",
+            "topdown/andando/orc/feminino/magro/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/orc/feminino/magro/l.png",
+          "andando": [
+            "topdown/andando/orc/feminino/magro/l/01.png",
+            "topdown/andando/orc/feminino/magro/l/02.png",
+            "topdown/andando/orc/feminino/magro/l/03.png",
+            "topdown/andando/orc/feminino/magro/l/04.png",
+            "topdown/andando/orc/feminino/magro/l/05.png",
+            "topdown/andando/orc/feminino/magro/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/orc/feminino/magro/se.png",
+          "andando": [
+            "topdown/andando/orc/feminino/magro/se/01.png",
+            "topdown/andando/orc/feminino/magro/se/02.png",
+            "topdown/andando/orc/feminino/magro/se/03.png",
+            "topdown/andando/orc/feminino/magro/se/04.png",
+            "topdown/andando/orc/feminino/magro/se/05.png",
+            "topdown/andando/orc/feminino/magro/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "anao",
+      "versao": "feminino",
+      "biotipo": "magro",
+      "criacao": "criacao/anao/feminino/magro.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/anao/feminino/magro/s.png",
+          "andando": [
+            "topdown/andando/anao/feminino/magro/s/01.png",
+            "topdown/andando/anao/feminino/magro/s/02.png",
+            "topdown/andando/anao/feminino/magro/s/03.png",
+            "topdown/andando/anao/feminino/magro/s/04.png",
+            "topdown/andando/anao/feminino/magro/s/05.png",
+            "topdown/andando/anao/feminino/magro/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/anao/feminino/magro/so.png",
+          "andando": [
+            "topdown/andando/anao/feminino/magro/so/01.png",
+            "topdown/andando/anao/feminino/magro/so/02.png",
+            "topdown/andando/anao/feminino/magro/so/03.png",
+            "topdown/andando/anao/feminino/magro/so/04.png",
+            "topdown/andando/anao/feminino/magro/so/05.png",
+            "topdown/andando/anao/feminino/magro/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/anao/feminino/magro/o.png",
+          "andando": [
+            "topdown/andando/anao/feminino/magro/o/01.png",
+            "topdown/andando/anao/feminino/magro/o/02.png",
+            "topdown/andando/anao/feminino/magro/o/03.png",
+            "topdown/andando/anao/feminino/magro/o/04.png",
+            "topdown/andando/anao/feminino/magro/o/05.png",
+            "topdown/andando/anao/feminino/magro/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/anao/feminino/magro/no.png",
+          "andando": [
+            "topdown/andando/anao/feminino/magro/no/01.png",
+            "topdown/andando/anao/feminino/magro/no/02.png",
+            "topdown/andando/anao/feminino/magro/no/03.png",
+            "topdown/andando/anao/feminino/magro/no/04.png",
+            "topdown/andando/anao/feminino/magro/no/05.png",
+            "topdown/andando/anao/feminino/magro/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/anao/feminino/magro/n.png",
+          "andando": [
+            "topdown/andando/anao/feminino/magro/n/01.png",
+            "topdown/andando/anao/feminino/magro/n/02.png",
+            "topdown/andando/anao/feminino/magro/n/03.png",
+            "topdown/andando/anao/feminino/magro/n/04.png",
+            "topdown/andando/anao/feminino/magro/n/05.png",
+            "topdown/andando/anao/feminino/magro/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/anao/feminino/magro/ne.png",
+          "andando": [
+            "topdown/andando/anao/feminino/magro/ne/01.png",
+            "topdown/andando/anao/feminino/magro/ne/02.png",
+            "topdown/andando/anao/feminino/magro/ne/03.png",
+            "topdown/andando/anao/feminino/magro/ne/04.png",
+            "topdown/andando/anao/feminino/magro/ne/05.png",
+            "topdown/andando/anao/feminino/magro/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/anao/feminino/magro/l.png",
+          "andando": [
+            "topdown/andando/anao/feminino/magro/l/01.png",
+            "topdown/andando/anao/feminino/magro/l/02.png",
+            "topdown/andando/anao/feminino/magro/l/03.png",
+            "topdown/andando/anao/feminino/magro/l/04.png",
+            "topdown/andando/anao/feminino/magro/l/05.png",
+            "topdown/andando/anao/feminino/magro/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/anao/feminino/magro/se.png",
+          "andando": [
+            "topdown/andando/anao/feminino/magro/se/01.png",
+            "topdown/andando/anao/feminino/magro/se/02.png",
+            "topdown/andando/anao/feminino/magro/se/03.png",
+            "topdown/andando/anao/feminino/magro/se/04.png",
+            "topdown/andando/anao/feminino/magro/se/05.png",
+            "topdown/andando/anao/feminino/magro/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elarim",
+      "versao": "feminino",
+      "biotipo": "magro",
+      "criacao": "criacao/elarim/feminino/magro.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elarim/feminino/magro/s.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/magro/s/01.png",
+            "topdown/andando/elarim/feminino/magro/s/02.png",
+            "topdown/andando/elarim/feminino/magro/s/03.png",
+            "topdown/andando/elarim/feminino/magro/s/04.png",
+            "topdown/andando/elarim/feminino/magro/s/05.png",
+            "topdown/andando/elarim/feminino/magro/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elarim/feminino/magro/so.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/magro/so/01.png",
+            "topdown/andando/elarim/feminino/magro/so/02.png",
+            "topdown/andando/elarim/feminino/magro/so/03.png",
+            "topdown/andando/elarim/feminino/magro/so/04.png",
+            "topdown/andando/elarim/feminino/magro/so/05.png",
+            "topdown/andando/elarim/feminino/magro/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elarim/feminino/magro/o.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/magro/o/01.png",
+            "topdown/andando/elarim/feminino/magro/o/02.png",
+            "topdown/andando/elarim/feminino/magro/o/03.png",
+            "topdown/andando/elarim/feminino/magro/o/04.png",
+            "topdown/andando/elarim/feminino/magro/o/05.png",
+            "topdown/andando/elarim/feminino/magro/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elarim/feminino/magro/no.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/magro/no/01.png",
+            "topdown/andando/elarim/feminino/magro/no/02.png",
+            "topdown/andando/elarim/feminino/magro/no/03.png",
+            "topdown/andando/elarim/feminino/magro/no/04.png",
+            "topdown/andando/elarim/feminino/magro/no/05.png",
+            "topdown/andando/elarim/feminino/magro/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elarim/feminino/magro/n.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/magro/n/01.png",
+            "topdown/andando/elarim/feminino/magro/n/02.png",
+            "topdown/andando/elarim/feminino/magro/n/03.png",
+            "topdown/andando/elarim/feminino/magro/n/04.png",
+            "topdown/andando/elarim/feminino/magro/n/05.png",
+            "topdown/andando/elarim/feminino/magro/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elarim/feminino/magro/ne.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/magro/ne/01.png",
+            "topdown/andando/elarim/feminino/magro/ne/02.png",
+            "topdown/andando/elarim/feminino/magro/ne/03.png",
+            "topdown/andando/elarim/feminino/magro/ne/04.png",
+            "topdown/andando/elarim/feminino/magro/ne/05.png",
+            "topdown/andando/elarim/feminino/magro/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elarim/feminino/magro/l.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/magro/l/01.png",
+            "topdown/andando/elarim/feminino/magro/l/02.png",
+            "topdown/andando/elarim/feminino/magro/l/03.png",
+            "topdown/andando/elarim/feminino/magro/l/04.png",
+            "topdown/andando/elarim/feminino/magro/l/05.png",
+            "topdown/andando/elarim/feminino/magro/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elarim/feminino/magro/se.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/magro/se/01.png",
+            "topdown/andando/elarim/feminino/magro/se/02.png",
+            "topdown/andando/elarim/feminino/magro/se/03.png",
+            "topdown/andando/elarim/feminino/magro/se/04.png",
+            "topdown/andando/elarim/feminino/magro/se/05.png",
+            "topdown/andando/elarim/feminino/magro/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "humano",
+      "versao": "feminino",
+      "biotipo": "medio",
+      "criacao": "criacao/humano/feminino/medio.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/humano/feminino/medio/s.png",
+          "andando": [
+            "topdown/andando/humano/feminino/medio/s/01.png",
+            "topdown/andando/humano/feminino/medio/s/02.png",
+            "topdown/andando/humano/feminino/medio/s/03.png",
+            "topdown/andando/humano/feminino/medio/s/04.png",
+            "topdown/andando/humano/feminino/medio/s/05.png",
+            "topdown/andando/humano/feminino/medio/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/humano/feminino/medio/so.png",
+          "andando": [
+            "topdown/andando/humano/feminino/medio/so/01.png",
+            "topdown/andando/humano/feminino/medio/so/02.png",
+            "topdown/andando/humano/feminino/medio/so/03.png",
+            "topdown/andando/humano/feminino/medio/so/04.png",
+            "topdown/andando/humano/feminino/medio/so/05.png",
+            "topdown/andando/humano/feminino/medio/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/humano/feminino/medio/o.png",
+          "andando": [
+            "topdown/andando/humano/feminino/medio/o/01.png",
+            "topdown/andando/humano/feminino/medio/o/02.png",
+            "topdown/andando/humano/feminino/medio/o/03.png",
+            "topdown/andando/humano/feminino/medio/o/04.png",
+            "topdown/andando/humano/feminino/medio/o/05.png",
+            "topdown/andando/humano/feminino/medio/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/humano/feminino/medio/no.png",
+          "andando": [
+            "topdown/andando/humano/feminino/medio/no/01.png",
+            "topdown/andando/humano/feminino/medio/no/02.png",
+            "topdown/andando/humano/feminino/medio/no/03.png",
+            "topdown/andando/humano/feminino/medio/no/04.png",
+            "topdown/andando/humano/feminino/medio/no/05.png",
+            "topdown/andando/humano/feminino/medio/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/humano/feminino/medio/n.png",
+          "andando": [
+            "topdown/andando/humano/feminino/medio/n/01.png",
+            "topdown/andando/humano/feminino/medio/n/02.png",
+            "topdown/andando/humano/feminino/medio/n/03.png",
+            "topdown/andando/humano/feminino/medio/n/04.png",
+            "topdown/andando/humano/feminino/medio/n/05.png",
+            "topdown/andando/humano/feminino/medio/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/humano/feminino/medio/ne.png",
+          "andando": [
+            "topdown/andando/humano/feminino/medio/ne/01.png",
+            "topdown/andando/humano/feminino/medio/ne/02.png",
+            "topdown/andando/humano/feminino/medio/ne/03.png",
+            "topdown/andando/humano/feminino/medio/ne/04.png",
+            "topdown/andando/humano/feminino/medio/ne/05.png",
+            "topdown/andando/humano/feminino/medio/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/humano/feminino/medio/l.png",
+          "andando": [
+            "topdown/andando/humano/feminino/medio/l/01.png",
+            "topdown/andando/humano/feminino/medio/l/02.png",
+            "topdown/andando/humano/feminino/medio/l/03.png",
+            "topdown/andando/humano/feminino/medio/l/04.png",
+            "topdown/andando/humano/feminino/medio/l/05.png",
+            "topdown/andando/humano/feminino/medio/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/humano/feminino/medio/se.png",
+          "andando": [
+            "topdown/andando/humano/feminino/medio/se/01.png",
+            "topdown/andando/humano/feminino/medio/se/02.png",
+            "topdown/andando/humano/feminino/medio/se/03.png",
+            "topdown/andando/humano/feminino/medio/se/04.png",
+            "topdown/andando/humano/feminino/medio/se/05.png",
+            "topdown/andando/humano/feminino/medio/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elfo",
+      "versao": "feminino",
+      "biotipo": "medio",
+      "criacao": "criacao/elfo/feminino/medio.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elfo/feminino/medio/s.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/medio/s/01.png",
+            "topdown/andando/elfo/feminino/medio/s/02.png",
+            "topdown/andando/elfo/feminino/medio/s/03.png",
+            "topdown/andando/elfo/feminino/medio/s/04.png",
+            "topdown/andando/elfo/feminino/medio/s/05.png",
+            "topdown/andando/elfo/feminino/medio/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elfo/feminino/medio/so.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/medio/so/01.png",
+            "topdown/andando/elfo/feminino/medio/so/02.png",
+            "topdown/andando/elfo/feminino/medio/so/03.png",
+            "topdown/andando/elfo/feminino/medio/so/04.png",
+            "topdown/andando/elfo/feminino/medio/so/05.png",
+            "topdown/andando/elfo/feminino/medio/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elfo/feminino/medio/o.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/medio/o/01.png",
+            "topdown/andando/elfo/feminino/medio/o/02.png",
+            "topdown/andando/elfo/feminino/medio/o/03.png",
+            "topdown/andando/elfo/feminino/medio/o/04.png",
+            "topdown/andando/elfo/feminino/medio/o/05.png",
+            "topdown/andando/elfo/feminino/medio/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elfo/feminino/medio/no.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/medio/no/01.png",
+            "topdown/andando/elfo/feminino/medio/no/02.png",
+            "topdown/andando/elfo/feminino/medio/no/03.png",
+            "topdown/andando/elfo/feminino/medio/no/04.png",
+            "topdown/andando/elfo/feminino/medio/no/05.png",
+            "topdown/andando/elfo/feminino/medio/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elfo/feminino/medio/n.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/medio/n/01.png",
+            "topdown/andando/elfo/feminino/medio/n/02.png",
+            "topdown/andando/elfo/feminino/medio/n/03.png",
+            "topdown/andando/elfo/feminino/medio/n/04.png",
+            "topdown/andando/elfo/feminino/medio/n/05.png",
+            "topdown/andando/elfo/feminino/medio/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elfo/feminino/medio/ne.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/medio/ne/01.png",
+            "topdown/andando/elfo/feminino/medio/ne/02.png",
+            "topdown/andando/elfo/feminino/medio/ne/03.png",
+            "topdown/andando/elfo/feminino/medio/ne/04.png",
+            "topdown/andando/elfo/feminino/medio/ne/05.png",
+            "topdown/andando/elfo/feminino/medio/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elfo/feminino/medio/l.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/medio/l/01.png",
+            "topdown/andando/elfo/feminino/medio/l/02.png",
+            "topdown/andando/elfo/feminino/medio/l/03.png",
+            "topdown/andando/elfo/feminino/medio/l/04.png",
+            "topdown/andando/elfo/feminino/medio/l/05.png",
+            "topdown/andando/elfo/feminino/medio/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elfo/feminino/medio/se.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/medio/se/01.png",
+            "topdown/andando/elfo/feminino/medio/se/02.png",
+            "topdown/andando/elfo/feminino/medio/se/03.png",
+            "topdown/andando/elfo/feminino/medio/se/04.png",
+            "topdown/andando/elfo/feminino/medio/se/05.png",
+            "topdown/andando/elfo/feminino/medio/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "orc",
+      "versao": "feminino",
+      "biotipo": "medio",
+      "criacao": "criacao/orc/feminino/medio.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/orc/feminino/medio/s.png",
+          "andando": [
+            "topdown/andando/orc/feminino/medio/s/01.png",
+            "topdown/andando/orc/feminino/medio/s/02.png",
+            "topdown/andando/orc/feminino/medio/s/03.png",
+            "topdown/andando/orc/feminino/medio/s/04.png",
+            "topdown/andando/orc/feminino/medio/s/05.png",
+            "topdown/andando/orc/feminino/medio/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/orc/feminino/medio/so.png",
+          "andando": [
+            "topdown/andando/orc/feminino/medio/so/01.png",
+            "topdown/andando/orc/feminino/medio/so/02.png",
+            "topdown/andando/orc/feminino/medio/so/03.png",
+            "topdown/andando/orc/feminino/medio/so/04.png",
+            "topdown/andando/orc/feminino/medio/so/05.png",
+            "topdown/andando/orc/feminino/medio/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/orc/feminino/medio/o.png",
+          "andando": [
+            "topdown/andando/orc/feminino/medio/o/01.png",
+            "topdown/andando/orc/feminino/medio/o/02.png",
+            "topdown/andando/orc/feminino/medio/o/03.png",
+            "topdown/andando/orc/feminino/medio/o/04.png",
+            "topdown/andando/orc/feminino/medio/o/05.png",
+            "topdown/andando/orc/feminino/medio/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/orc/feminino/medio/no.png",
+          "andando": [
+            "topdown/andando/orc/feminino/medio/no/01.png",
+            "topdown/andando/orc/feminino/medio/no/02.png",
+            "topdown/andando/orc/feminino/medio/no/03.png",
+            "topdown/andando/orc/feminino/medio/no/04.png",
+            "topdown/andando/orc/feminino/medio/no/05.png",
+            "topdown/andando/orc/feminino/medio/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/orc/feminino/medio/n.png",
+          "andando": [
+            "topdown/andando/orc/feminino/medio/n/01.png",
+            "topdown/andando/orc/feminino/medio/n/02.png",
+            "topdown/andando/orc/feminino/medio/n/03.png",
+            "topdown/andando/orc/feminino/medio/n/04.png",
+            "topdown/andando/orc/feminino/medio/n/05.png",
+            "topdown/andando/orc/feminino/medio/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/orc/feminino/medio/ne.png",
+          "andando": [
+            "topdown/andando/orc/feminino/medio/ne/01.png",
+            "topdown/andando/orc/feminino/medio/ne/02.png",
+            "topdown/andando/orc/feminino/medio/ne/03.png",
+            "topdown/andando/orc/feminino/medio/ne/04.png",
+            "topdown/andando/orc/feminino/medio/ne/05.png",
+            "topdown/andando/orc/feminino/medio/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/orc/feminino/medio/l.png",
+          "andando": [
+            "topdown/andando/orc/feminino/medio/l/01.png",
+            "topdown/andando/orc/feminino/medio/l/02.png",
+            "topdown/andando/orc/feminino/medio/l/03.png",
+            "topdown/andando/orc/feminino/medio/l/04.png",
+            "topdown/andando/orc/feminino/medio/l/05.png",
+            "topdown/andando/orc/feminino/medio/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/orc/feminino/medio/se.png",
+          "andando": [
+            "topdown/andando/orc/feminino/medio/se/01.png",
+            "topdown/andando/orc/feminino/medio/se/02.png",
+            "topdown/andando/orc/feminino/medio/se/03.png",
+            "topdown/andando/orc/feminino/medio/se/04.png",
+            "topdown/andando/orc/feminino/medio/se/05.png",
+            "topdown/andando/orc/feminino/medio/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "anao",
+      "versao": "feminino",
+      "biotipo": "medio",
+      "criacao": "criacao/anao/feminino/medio.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/anao/feminino/medio/s.png",
+          "andando": [
+            "topdown/andando/anao/feminino/medio/s/01.png",
+            "topdown/andando/anao/feminino/medio/s/02.png",
+            "topdown/andando/anao/feminino/medio/s/03.png",
+            "topdown/andando/anao/feminino/medio/s/04.png",
+            "topdown/andando/anao/feminino/medio/s/05.png",
+            "topdown/andando/anao/feminino/medio/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/anao/feminino/medio/so.png",
+          "andando": [
+            "topdown/andando/anao/feminino/medio/so/01.png",
+            "topdown/andando/anao/feminino/medio/so/02.png",
+            "topdown/andando/anao/feminino/medio/so/03.png",
+            "topdown/andando/anao/feminino/medio/so/04.png",
+            "topdown/andando/anao/feminino/medio/so/05.png",
+            "topdown/andando/anao/feminino/medio/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/anao/feminino/medio/o.png",
+          "andando": [
+            "topdown/andando/anao/feminino/medio/o/01.png",
+            "topdown/andando/anao/feminino/medio/o/02.png",
+            "topdown/andando/anao/feminino/medio/o/03.png",
+            "topdown/andando/anao/feminino/medio/o/04.png",
+            "topdown/andando/anao/feminino/medio/o/05.png",
+            "topdown/andando/anao/feminino/medio/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/anao/feminino/medio/no.png",
+          "andando": [
+            "topdown/andando/anao/feminino/medio/no/01.png",
+            "topdown/andando/anao/feminino/medio/no/02.png",
+            "topdown/andando/anao/feminino/medio/no/03.png",
+            "topdown/andando/anao/feminino/medio/no/04.png",
+            "topdown/andando/anao/feminino/medio/no/05.png",
+            "topdown/andando/anao/feminino/medio/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/anao/feminino/medio/n.png",
+          "andando": [
+            "topdown/andando/anao/feminino/medio/n/01.png",
+            "topdown/andando/anao/feminino/medio/n/02.png",
+            "topdown/andando/anao/feminino/medio/n/03.png",
+            "topdown/andando/anao/feminino/medio/n/04.png",
+            "topdown/andando/anao/feminino/medio/n/05.png",
+            "topdown/andando/anao/feminino/medio/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/anao/feminino/medio/ne.png",
+          "andando": [
+            "topdown/andando/anao/feminino/medio/ne/01.png",
+            "topdown/andando/anao/feminino/medio/ne/02.png",
+            "topdown/andando/anao/feminino/medio/ne/03.png",
+            "topdown/andando/anao/feminino/medio/ne/04.png",
+            "topdown/andando/anao/feminino/medio/ne/05.png",
+            "topdown/andando/anao/feminino/medio/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/anao/feminino/medio/l.png",
+          "andando": [
+            "topdown/andando/anao/feminino/medio/l/01.png",
+            "topdown/andando/anao/feminino/medio/l/02.png",
+            "topdown/andando/anao/feminino/medio/l/03.png",
+            "topdown/andando/anao/feminino/medio/l/04.png",
+            "topdown/andando/anao/feminino/medio/l/05.png",
+            "topdown/andando/anao/feminino/medio/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/anao/feminino/medio/se.png",
+          "andando": [
+            "topdown/andando/anao/feminino/medio/se/01.png",
+            "topdown/andando/anao/feminino/medio/se/02.png",
+            "topdown/andando/anao/feminino/medio/se/03.png",
+            "topdown/andando/anao/feminino/medio/se/04.png",
+            "topdown/andando/anao/feminino/medio/se/05.png",
+            "topdown/andando/anao/feminino/medio/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elarim",
+      "versao": "feminino",
+      "biotipo": "medio",
+      "criacao": "criacao/elarim/feminino/medio.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elarim/feminino/medio/s.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/medio/s/01.png",
+            "topdown/andando/elarim/feminino/medio/s/02.png",
+            "topdown/andando/elarim/feminino/medio/s/03.png",
+            "topdown/andando/elarim/feminino/medio/s/04.png",
+            "topdown/andando/elarim/feminino/medio/s/05.png",
+            "topdown/andando/elarim/feminino/medio/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elarim/feminino/medio/so.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/medio/so/01.png",
+            "topdown/andando/elarim/feminino/medio/so/02.png",
+            "topdown/andando/elarim/feminino/medio/so/03.png",
+            "topdown/andando/elarim/feminino/medio/so/04.png",
+            "topdown/andando/elarim/feminino/medio/so/05.png",
+            "topdown/andando/elarim/feminino/medio/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elarim/feminino/medio/o.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/medio/o/01.png",
+            "topdown/andando/elarim/feminino/medio/o/02.png",
+            "topdown/andando/elarim/feminino/medio/o/03.png",
+            "topdown/andando/elarim/feminino/medio/o/04.png",
+            "topdown/andando/elarim/feminino/medio/o/05.png",
+            "topdown/andando/elarim/feminino/medio/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elarim/feminino/medio/no.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/medio/no/01.png",
+            "topdown/andando/elarim/feminino/medio/no/02.png",
+            "topdown/andando/elarim/feminino/medio/no/03.png",
+            "topdown/andando/elarim/feminino/medio/no/04.png",
+            "topdown/andando/elarim/feminino/medio/no/05.png",
+            "topdown/andando/elarim/feminino/medio/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elarim/feminino/medio/n.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/medio/n/01.png",
+            "topdown/andando/elarim/feminino/medio/n/02.png",
+            "topdown/andando/elarim/feminino/medio/n/03.png",
+            "topdown/andando/elarim/feminino/medio/n/04.png",
+            "topdown/andando/elarim/feminino/medio/n/05.png",
+            "topdown/andando/elarim/feminino/medio/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elarim/feminino/medio/ne.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/medio/ne/01.png",
+            "topdown/andando/elarim/feminino/medio/ne/02.png",
+            "topdown/andando/elarim/feminino/medio/ne/03.png",
+            "topdown/andando/elarim/feminino/medio/ne/04.png",
+            "topdown/andando/elarim/feminino/medio/ne/05.png",
+            "topdown/andando/elarim/feminino/medio/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elarim/feminino/medio/l.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/medio/l/01.png",
+            "topdown/andando/elarim/feminino/medio/l/02.png",
+            "topdown/andando/elarim/feminino/medio/l/03.png",
+            "topdown/andando/elarim/feminino/medio/l/04.png",
+            "topdown/andando/elarim/feminino/medio/l/05.png",
+            "topdown/andando/elarim/feminino/medio/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elarim/feminino/medio/se.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/medio/se/01.png",
+            "topdown/andando/elarim/feminino/medio/se/02.png",
+            "topdown/andando/elarim/feminino/medio/se/03.png",
+            "topdown/andando/elarim/feminino/medio/se/04.png",
+            "topdown/andando/elarim/feminino/medio/se/05.png",
+            "topdown/andando/elarim/feminino/medio/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "humano",
+      "versao": "feminino",
+      "biotipo": "forte",
+      "criacao": "criacao/humano/feminino/forte.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/humano/feminino/forte/s.png",
+          "andando": [
+            "topdown/andando/humano/feminino/forte/s/01.png",
+            "topdown/andando/humano/feminino/forte/s/02.png",
+            "topdown/andando/humano/feminino/forte/s/03.png",
+            "topdown/andando/humano/feminino/forte/s/04.png",
+            "topdown/andando/humano/feminino/forte/s/05.png",
+            "topdown/andando/humano/feminino/forte/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/humano/feminino/forte/so.png",
+          "andando": [
+            "topdown/andando/humano/feminino/forte/so/01.png",
+            "topdown/andando/humano/feminino/forte/so/02.png",
+            "topdown/andando/humano/feminino/forte/so/03.png",
+            "topdown/andando/humano/feminino/forte/so/04.png",
+            "topdown/andando/humano/feminino/forte/so/05.png",
+            "topdown/andando/humano/feminino/forte/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/humano/feminino/forte/o.png",
+          "andando": [
+            "topdown/andando/humano/feminino/forte/o/01.png",
+            "topdown/andando/humano/feminino/forte/o/02.png",
+            "topdown/andando/humano/feminino/forte/o/03.png",
+            "topdown/andando/humano/feminino/forte/o/04.png",
+            "topdown/andando/humano/feminino/forte/o/05.png",
+            "topdown/andando/humano/feminino/forte/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/humano/feminino/forte/no.png",
+          "andando": [
+            "topdown/andando/humano/feminino/forte/no/01.png",
+            "topdown/andando/humano/feminino/forte/no/02.png",
+            "topdown/andando/humano/feminino/forte/no/03.png",
+            "topdown/andando/humano/feminino/forte/no/04.png",
+            "topdown/andando/humano/feminino/forte/no/05.png",
+            "topdown/andando/humano/feminino/forte/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/humano/feminino/forte/n.png",
+          "andando": [
+            "topdown/andando/humano/feminino/forte/n/01.png",
+            "topdown/andando/humano/feminino/forte/n/02.png",
+            "topdown/andando/humano/feminino/forte/n/03.png",
+            "topdown/andando/humano/feminino/forte/n/04.png",
+            "topdown/andando/humano/feminino/forte/n/05.png",
+            "topdown/andando/humano/feminino/forte/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/humano/feminino/forte/ne.png",
+          "andando": [
+            "topdown/andando/humano/feminino/forte/ne/01.png",
+            "topdown/andando/humano/feminino/forte/ne/02.png",
+            "topdown/andando/humano/feminino/forte/ne/03.png",
+            "topdown/andando/humano/feminino/forte/ne/04.png",
+            "topdown/andando/humano/feminino/forte/ne/05.png",
+            "topdown/andando/humano/feminino/forte/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/humano/feminino/forte/l.png",
+          "andando": [
+            "topdown/andando/humano/feminino/forte/l/01.png",
+            "topdown/andando/humano/feminino/forte/l/02.png",
+            "topdown/andando/humano/feminino/forte/l/03.png",
+            "topdown/andando/humano/feminino/forte/l/04.png",
+            "topdown/andando/humano/feminino/forte/l/05.png",
+            "topdown/andando/humano/feminino/forte/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/humano/feminino/forte/se.png",
+          "andando": [
+            "topdown/andando/humano/feminino/forte/se/01.png",
+            "topdown/andando/humano/feminino/forte/se/02.png",
+            "topdown/andando/humano/feminino/forte/se/03.png",
+            "topdown/andando/humano/feminino/forte/se/04.png",
+            "topdown/andando/humano/feminino/forte/se/05.png",
+            "topdown/andando/humano/feminino/forte/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elfo",
+      "versao": "feminino",
+      "biotipo": "forte",
+      "criacao": "criacao/elfo/feminino/forte.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elfo/feminino/forte/s.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/forte/s/01.png",
+            "topdown/andando/elfo/feminino/forte/s/02.png",
+            "topdown/andando/elfo/feminino/forte/s/03.png",
+            "topdown/andando/elfo/feminino/forte/s/04.png",
+            "topdown/andando/elfo/feminino/forte/s/05.png",
+            "topdown/andando/elfo/feminino/forte/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elfo/feminino/forte/so.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/forte/so/01.png",
+            "topdown/andando/elfo/feminino/forte/so/02.png",
+            "topdown/andando/elfo/feminino/forte/so/03.png",
+            "topdown/andando/elfo/feminino/forte/so/04.png",
+            "topdown/andando/elfo/feminino/forte/so/05.png",
+            "topdown/andando/elfo/feminino/forte/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elfo/feminino/forte/o.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/forte/o/01.png",
+            "topdown/andando/elfo/feminino/forte/o/02.png",
+            "topdown/andando/elfo/feminino/forte/o/03.png",
+            "topdown/andando/elfo/feminino/forte/o/04.png",
+            "topdown/andando/elfo/feminino/forte/o/05.png",
+            "topdown/andando/elfo/feminino/forte/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elfo/feminino/forte/no.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/forte/no/01.png",
+            "topdown/andando/elfo/feminino/forte/no/02.png",
+            "topdown/andando/elfo/feminino/forte/no/03.png",
+            "topdown/andando/elfo/feminino/forte/no/04.png",
+            "topdown/andando/elfo/feminino/forte/no/05.png",
+            "topdown/andando/elfo/feminino/forte/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elfo/feminino/forte/n.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/forte/n/01.png",
+            "topdown/andando/elfo/feminino/forte/n/02.png",
+            "topdown/andando/elfo/feminino/forte/n/03.png",
+            "topdown/andando/elfo/feminino/forte/n/04.png",
+            "topdown/andando/elfo/feminino/forte/n/05.png",
+            "topdown/andando/elfo/feminino/forte/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elfo/feminino/forte/ne.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/forte/ne/01.png",
+            "topdown/andando/elfo/feminino/forte/ne/02.png",
+            "topdown/andando/elfo/feminino/forte/ne/03.png",
+            "topdown/andando/elfo/feminino/forte/ne/04.png",
+            "topdown/andando/elfo/feminino/forte/ne/05.png",
+            "topdown/andando/elfo/feminino/forte/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elfo/feminino/forte/l.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/forte/l/01.png",
+            "topdown/andando/elfo/feminino/forte/l/02.png",
+            "topdown/andando/elfo/feminino/forte/l/03.png",
+            "topdown/andando/elfo/feminino/forte/l/04.png",
+            "topdown/andando/elfo/feminino/forte/l/05.png",
+            "topdown/andando/elfo/feminino/forte/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elfo/feminino/forte/se.png",
+          "andando": [
+            "topdown/andando/elfo/feminino/forte/se/01.png",
+            "topdown/andando/elfo/feminino/forte/se/02.png",
+            "topdown/andando/elfo/feminino/forte/se/03.png",
+            "topdown/andando/elfo/feminino/forte/se/04.png",
+            "topdown/andando/elfo/feminino/forte/se/05.png",
+            "topdown/andando/elfo/feminino/forte/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "orc",
+      "versao": "feminino",
+      "biotipo": "forte",
+      "criacao": "criacao/orc/feminino/forte.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/orc/feminino/forte/s.png",
+          "andando": [
+            "topdown/andando/orc/feminino/forte/s/01.png",
+            "topdown/andando/orc/feminino/forte/s/02.png",
+            "topdown/andando/orc/feminino/forte/s/03.png",
+            "topdown/andando/orc/feminino/forte/s/04.png",
+            "topdown/andando/orc/feminino/forte/s/05.png",
+            "topdown/andando/orc/feminino/forte/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/orc/feminino/forte/so.png",
+          "andando": [
+            "topdown/andando/orc/feminino/forte/so/01.png",
+            "topdown/andando/orc/feminino/forte/so/02.png",
+            "topdown/andando/orc/feminino/forte/so/03.png",
+            "topdown/andando/orc/feminino/forte/so/04.png",
+            "topdown/andando/orc/feminino/forte/so/05.png",
+            "topdown/andando/orc/feminino/forte/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/orc/feminino/forte/o.png",
+          "andando": [
+            "topdown/andando/orc/feminino/forte/o/01.png",
+            "topdown/andando/orc/feminino/forte/o/02.png",
+            "topdown/andando/orc/feminino/forte/o/03.png",
+            "topdown/andando/orc/feminino/forte/o/04.png",
+            "topdown/andando/orc/feminino/forte/o/05.png",
+            "topdown/andando/orc/feminino/forte/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/orc/feminino/forte/no.png",
+          "andando": [
+            "topdown/andando/orc/feminino/forte/no/01.png",
+            "topdown/andando/orc/feminino/forte/no/02.png",
+            "topdown/andando/orc/feminino/forte/no/03.png",
+            "topdown/andando/orc/feminino/forte/no/04.png",
+            "topdown/andando/orc/feminino/forte/no/05.png",
+            "topdown/andando/orc/feminino/forte/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/orc/feminino/forte/n.png",
+          "andando": [
+            "topdown/andando/orc/feminino/forte/n/01.png",
+            "topdown/andando/orc/feminino/forte/n/02.png",
+            "topdown/andando/orc/feminino/forte/n/03.png",
+            "topdown/andando/orc/feminino/forte/n/04.png",
+            "topdown/andando/orc/feminino/forte/n/05.png",
+            "topdown/andando/orc/feminino/forte/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/orc/feminino/forte/ne.png",
+          "andando": [
+            "topdown/andando/orc/feminino/forte/ne/01.png",
+            "topdown/andando/orc/feminino/forte/ne/02.png",
+            "topdown/andando/orc/feminino/forte/ne/03.png",
+            "topdown/andando/orc/feminino/forte/ne/04.png",
+            "topdown/andando/orc/feminino/forte/ne/05.png",
+            "topdown/andando/orc/feminino/forte/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/orc/feminino/forte/l.png",
+          "andando": [
+            "topdown/andando/orc/feminino/forte/l/01.png",
+            "topdown/andando/orc/feminino/forte/l/02.png",
+            "topdown/andando/orc/feminino/forte/l/03.png",
+            "topdown/andando/orc/feminino/forte/l/04.png",
+            "topdown/andando/orc/feminino/forte/l/05.png",
+            "topdown/andando/orc/feminino/forte/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/orc/feminino/forte/se.png",
+          "andando": [
+            "topdown/andando/orc/feminino/forte/se/01.png",
+            "topdown/andando/orc/feminino/forte/se/02.png",
+            "topdown/andando/orc/feminino/forte/se/03.png",
+            "topdown/andando/orc/feminino/forte/se/04.png",
+            "topdown/andando/orc/feminino/forte/se/05.png",
+            "topdown/andando/orc/feminino/forte/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "anao",
+      "versao": "feminino",
+      "biotipo": "forte",
+      "criacao": "criacao/anao/feminino/forte.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/anao/feminino/forte/s.png",
+          "andando": [
+            "topdown/andando/anao/feminino/forte/s/01.png",
+            "topdown/andando/anao/feminino/forte/s/02.png",
+            "topdown/andando/anao/feminino/forte/s/03.png",
+            "topdown/andando/anao/feminino/forte/s/04.png",
+            "topdown/andando/anao/feminino/forte/s/05.png",
+            "topdown/andando/anao/feminino/forte/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/anao/feminino/forte/so.png",
+          "andando": [
+            "topdown/andando/anao/feminino/forte/so/01.png",
+            "topdown/andando/anao/feminino/forte/so/02.png",
+            "topdown/andando/anao/feminino/forte/so/03.png",
+            "topdown/andando/anao/feminino/forte/so/04.png",
+            "topdown/andando/anao/feminino/forte/so/05.png",
+            "topdown/andando/anao/feminino/forte/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/anao/feminino/forte/o.png",
+          "andando": [
+            "topdown/andando/anao/feminino/forte/o/01.png",
+            "topdown/andando/anao/feminino/forte/o/02.png",
+            "topdown/andando/anao/feminino/forte/o/03.png",
+            "topdown/andando/anao/feminino/forte/o/04.png",
+            "topdown/andando/anao/feminino/forte/o/05.png",
+            "topdown/andando/anao/feminino/forte/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/anao/feminino/forte/no.png",
+          "andando": [
+            "topdown/andando/anao/feminino/forte/no/01.png",
+            "topdown/andando/anao/feminino/forte/no/02.png",
+            "topdown/andando/anao/feminino/forte/no/03.png",
+            "topdown/andando/anao/feminino/forte/no/04.png",
+            "topdown/andando/anao/feminino/forte/no/05.png",
+            "topdown/andando/anao/feminino/forte/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/anao/feminino/forte/n.png",
+          "andando": [
+            "topdown/andando/anao/feminino/forte/n/01.png",
+            "topdown/andando/anao/feminino/forte/n/02.png",
+            "topdown/andando/anao/feminino/forte/n/03.png",
+            "topdown/andando/anao/feminino/forte/n/04.png",
+            "topdown/andando/anao/feminino/forte/n/05.png",
+            "topdown/andando/anao/feminino/forte/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/anao/feminino/forte/ne.png",
+          "andando": [
+            "topdown/andando/anao/feminino/forte/ne/01.png",
+            "topdown/andando/anao/feminino/forte/ne/02.png",
+            "topdown/andando/anao/feminino/forte/ne/03.png",
+            "topdown/andando/anao/feminino/forte/ne/04.png",
+            "topdown/andando/anao/feminino/forte/ne/05.png",
+            "topdown/andando/anao/feminino/forte/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/anao/feminino/forte/l.png",
+          "andando": [
+            "topdown/andando/anao/feminino/forte/l/01.png",
+            "topdown/andando/anao/feminino/forte/l/02.png",
+            "topdown/andando/anao/feminino/forte/l/03.png",
+            "topdown/andando/anao/feminino/forte/l/04.png",
+            "topdown/andando/anao/feminino/forte/l/05.png",
+            "topdown/andando/anao/feminino/forte/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/anao/feminino/forte/se.png",
+          "andando": [
+            "topdown/andando/anao/feminino/forte/se/01.png",
+            "topdown/andando/anao/feminino/forte/se/02.png",
+            "topdown/andando/anao/feminino/forte/se/03.png",
+            "topdown/andando/anao/feminino/forte/se/04.png",
+            "topdown/andando/anao/feminino/forte/se/05.png",
+            "topdown/andando/anao/feminino/forte/se/06.png"
+          ]
+        }
+      }
+    },
+    {
+      "raca": "elarim",
+      "versao": "feminino",
+      "biotipo": "forte",
+      "criacao": "criacao/elarim/feminino/forte.png",
+      "topdown": {
+        "s": {
+          "parado": "topdown/parado/elarim/feminino/forte/s.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/forte/s/01.png",
+            "topdown/andando/elarim/feminino/forte/s/02.png",
+            "topdown/andando/elarim/feminino/forte/s/03.png",
+            "topdown/andando/elarim/feminino/forte/s/04.png",
+            "topdown/andando/elarim/feminino/forte/s/05.png",
+            "topdown/andando/elarim/feminino/forte/s/06.png"
+          ]
+        },
+        "so": {
+          "parado": "topdown/parado/elarim/feminino/forte/so.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/forte/so/01.png",
+            "topdown/andando/elarim/feminino/forte/so/02.png",
+            "topdown/andando/elarim/feminino/forte/so/03.png",
+            "topdown/andando/elarim/feminino/forte/so/04.png",
+            "topdown/andando/elarim/feminino/forte/so/05.png",
+            "topdown/andando/elarim/feminino/forte/so/06.png"
+          ]
+        },
+        "o": {
+          "parado": "topdown/parado/elarim/feminino/forte/o.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/forte/o/01.png",
+            "topdown/andando/elarim/feminino/forte/o/02.png",
+            "topdown/andando/elarim/feminino/forte/o/03.png",
+            "topdown/andando/elarim/feminino/forte/o/04.png",
+            "topdown/andando/elarim/feminino/forte/o/05.png",
+            "topdown/andando/elarim/feminino/forte/o/06.png"
+          ]
+        },
+        "no": {
+          "parado": "topdown/parado/elarim/feminino/forte/no.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/forte/no/01.png",
+            "topdown/andando/elarim/feminino/forte/no/02.png",
+            "topdown/andando/elarim/feminino/forte/no/03.png",
+            "topdown/andando/elarim/feminino/forte/no/04.png",
+            "topdown/andando/elarim/feminino/forte/no/05.png",
+            "topdown/andando/elarim/feminino/forte/no/06.png"
+          ]
+        },
+        "n": {
+          "parado": "topdown/parado/elarim/feminino/forte/n.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/forte/n/01.png",
+            "topdown/andando/elarim/feminino/forte/n/02.png",
+            "topdown/andando/elarim/feminino/forte/n/03.png",
+            "topdown/andando/elarim/feminino/forte/n/04.png",
+            "topdown/andando/elarim/feminino/forte/n/05.png",
+            "topdown/andando/elarim/feminino/forte/n/06.png"
+          ]
+        },
+        "ne": {
+          "parado": "topdown/parado/elarim/feminino/forte/ne.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/forte/ne/01.png",
+            "topdown/andando/elarim/feminino/forte/ne/02.png",
+            "topdown/andando/elarim/feminino/forte/ne/03.png",
+            "topdown/andando/elarim/feminino/forte/ne/04.png",
+            "topdown/andando/elarim/feminino/forte/ne/05.png",
+            "topdown/andando/elarim/feminino/forte/ne/06.png"
+          ]
+        },
+        "l": {
+          "parado": "topdown/parado/elarim/feminino/forte/l.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/forte/l/01.png",
+            "topdown/andando/elarim/feminino/forte/l/02.png",
+            "topdown/andando/elarim/feminino/forte/l/03.png",
+            "topdown/andando/elarim/feminino/forte/l/04.png",
+            "topdown/andando/elarim/feminino/forte/l/05.png",
+            "topdown/andando/elarim/feminino/forte/l/06.png"
+          ]
+        },
+        "se": {
+          "parado": "topdown/parado/elarim/feminino/forte/se.png",
+          "andando": [
+            "topdown/andando/elarim/feminino/forte/se/01.png",
+            "topdown/andando/elarim/feminino/forte/se/02.png",
+            "topdown/andando/elarim/feminino/forte/se/03.png",
+            "topdown/andando/elarim/feminino/forte/se/04.png",
+            "topdown/andando/elarim/feminino/forte/se/05.png",
+            "topdown/andando/elarim/feminino/forte/se/06.png"
+          ]
+        }
+      }
+    }
+  ],
+  "acessorios": [
+    {
+      "tipo": "cabelos",
+      "vista": "frente",
+      "id": 1,
+      "sprite": "cabelos/frente/01.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "frente",
+      "id": 2,
+      "sprite": "cabelos/frente/02.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "frente",
+      "id": 3,
+      "sprite": "cabelos/frente/03.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "frente",
+      "id": 4,
+      "sprite": "cabelos/frente/04.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "frente",
+      "id": 5,
+      "sprite": "cabelos/frente/05.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "frente",
+      "id": 6,
+      "sprite": "cabelos/frente/06.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "frente",
+      "id": 7,
+      "sprite": "cabelos/frente/07.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "frente",
+      "id": 8,
+      "sprite": "cabelos/frente/08.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "frente",
+      "id": 9,
+      "sprite": "cabelos/frente/09.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "frente",
+      "id": 10,
+      "sprite": "cabelos/frente/10.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "barbas",
+      "vista": "frente",
+      "id": 1,
+      "sprite": "barbas/frente/01.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "barbas",
+      "vista": "frente",
+      "id": 2,
+      "sprite": "barbas/frente/02.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "barbas",
+      "vista": "frente",
+      "id": 3,
+      "sprite": "barbas/frente/03.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "barbas",
+      "vista": "frente",
+      "id": 4,
+      "sprite": "barbas/frente/04.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "barbas",
+      "vista": "frente",
+      "id": 5,
+      "sprite": "barbas/frente/05.png",
+      "tamanho": [
+        256,
+        256
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "topdown",
+      "id": 1,
+      "sprite": "cabelos/topdown/01.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "topdown",
+      "id": 2,
+      "sprite": "cabelos/topdown/02.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "topdown",
+      "id": 3,
+      "sprite": "cabelos/topdown/03.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "topdown",
+      "id": 4,
+      "sprite": "cabelos/topdown/04.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "topdown",
+      "id": 5,
+      "sprite": "cabelos/topdown/05.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "topdown",
+      "id": 6,
+      "sprite": "cabelos/topdown/06.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "topdown",
+      "id": 7,
+      "sprite": "cabelos/topdown/07.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "topdown",
+      "id": 8,
+      "sprite": "cabelos/topdown/08.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "topdown",
+      "id": 9,
+      "sprite": "cabelos/topdown/09.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "cabelos",
+      "vista": "topdown",
+      "id": 10,
+      "sprite": "cabelos/topdown/10.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "barbas",
+      "vista": "topdown",
+      "id": 1,
+      "sprite": "barbas/topdown/01.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "barbas",
+      "vista": "topdown",
+      "id": 2,
+      "sprite": "barbas/topdown/02.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "barbas",
+      "vista": "topdown",
+      "id": 3,
+      "sprite": "barbas/topdown/03.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "barbas",
+      "vista": "topdown",
+      "id": 4,
+      "sprite": "barbas/topdown/04.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    },
+    {
+      "tipo": "barbas",
+      "vista": "topdown",
+      "id": 5,
+      "sprite": "barbas/topdown/05.png",
+      "tamanho": [
+        64,
+        64
+      ]
+    }
+  ],
+  "tamanho_criacao": [
+    256,
+    256
+  ],
+  "tamanho_topdown": [
+    64,
+    64
+  ]
+}

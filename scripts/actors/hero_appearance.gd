@@ -4,7 +4,8 @@ extends RefCounted
 const ATLAS_PATH = "res://assets/game/sprites/herois/compartilhados/equipamentos/hero_equipment_atlas.png"
 const HUMAN_ATLAS_PATH = "res://assets/game/sprites/herois/humano/human_equipment_atlas_vibrant.png"
 const Custom = preload("res://scripts/actors/character_customization.gd")
-const WornLayout = preload("res://assets/game/sprites/herois/armaduras_vestidas/worn_layout.gd")
+const WornLayout = {"HANDS": {}}
+const Design = preload("res://scripts/actors/nark_design.gd")
 const HUMAN_GRID = Vector2i(6, 6)
 const GRID = Vector2i(8, 6)
 const CUTOUT_SHADER = preload("res://shaders/equipment_cutout.gdshader")
@@ -78,15 +79,15 @@ static func cutout_material() -> ShaderMaterial:
 	return cutout
 
 static func body_material(state: PlayerState) -> ShaderMaterial:
-	var key: String = "%s:%s:%s:%s" % [state.race_id, state.gender_id, state.class_id, GameData.visual_armor_id(state.equipment)]
+	var key: String = "%s:%s:%s:%s" % [state.race_id, state.gender_id, state.class_id, state.equipment.get("armadura", {}).get("id", "")]
 	if not body_materials.has(key):
 		var result := ShaderMaterial.new()
 		result.shader = CUTOUT_SHADER
 		var body := body_texture(state)
 		var texture_size: Vector2 = body.atlas.get_size()
 		result.set_shader_parameter("texture_region", Vector4(body.region.position.x / texture_size.x, body.region.position.y / texture_size.y, body.region.size.x / texture_size.x, body.region.size.y / texture_size.y))
-		result.set_shader_parameter("head_cutoff", 0.22 if Custom.armored(state) else 0.0)
-		result.set_shader_parameter("orc_skin", state.race_id == "orc" and Custom.armored(state))
+		result.set_shader_parameter("head_cutoff", 0.0)
+		result.set_shader_parameter("orc_skin", false)
 		body_materials[key] = result
 	return body_materials[key]
 
@@ -129,12 +130,7 @@ static func frame(class_id: String, column: int) -> AtlasTexture:
 	return texture
 
 static func body_texture(state: PlayerState) -> AtlasTexture:
-	var armor_id: String = GameData.visual_armor_id(state.equipment)
-	if not Custom.armored(state):
-		return Custom.bald_body(state.race_id, state.gender_id)
-	if armor_id.begins_with("armadura_catalogo_"):
-		return catalog_body(state, armor_id)
-	return human_frame(state.class_id, outfit_column(armor_id))
+	return Design.body(state)
 
 static func catalog_body(state: PlayerState, item_id: String) -> AtlasTexture:
 	var key: String = item_id + ":" + state.gender_id
@@ -162,7 +158,7 @@ static func human_frame(class_id: String, column: int) -> AtlasTexture:
 	return human_frames[key]
 
 static func hand_position(state: PlayerState) -> Vector2:
-	var armor_id: String = GameData.visual_armor_id(state.equipment)
+	var armor_id: String = str(state.equipment.get("armadura", {}).get("id", ""))
 	if armor_id.begins_with("armadura_catalogo_"):
 		var number: String = str(int(str(GameData.item(armor_id).get("catalog_art", "")).trim_prefix("armadura_")))
 		if WornLayout.HANDS.has(number):
@@ -172,9 +168,6 @@ static func hand_position(state: PlayerState) -> Vector2:
 	if worn_hands.has(armor_id):
 		return worn_hands[armor_id]
 	if not Custom.armored(state):
-		var key: String = state.race_id + "_" + state.gender_id
-		var hands: Dictionary = preload("res://assets/game/sprites/herois/mascaras_maos/base_hand_layout.gd").HANDS
-		if hands.has(key): return Vector2(hands[key][0], hands[key][1])
 		if state.gender_id == "feminino":
 			return {"humano": Vector2(0.17, 0.55), "elfo": Vector2(0.20, 0.55), "orc": Vector2(0.13, 0.55), "anao": Vector2(0.14, 0.56)}.get(state.race_id, Vector2(0.20, 0.535))
 		return {"humano": Vector2(0.17, 0.55), "elfo": Vector2(0.19, 0.55), "orc": Vector2(0.12, 0.57), "anao": Vector2(0.13, 0.65)}.get(state.race_id, Vector2(0.20, 0.535))
@@ -186,25 +179,10 @@ static func hand_rect(state: PlayerState) -> Rect2:
 		return Rect2(hand_position(state) - Vector2(0.04, 0.027), Vector2(0.08, 0.054))
 	return Rect2(hand_position(state) - Vector2(0.038, 0.043), Vector2(0.076, 0.086))
 
-static func _hand_source(state: PlayerState) -> PlayerState:
-	var hand_state: PlayerState = state
-	var gloves: Dictionary = GameData.item(str(state.equipment.get("luvas", {}).get("id", "")))
-	if gloves.has("armor_set"):
-		hand_state = PlayerState.new()
-		hand_state.class_id = state.class_id
-		hand_state.race_id = state.race_id
-		hand_state.gender_id = state.gender_id
-		hand_state.equipment = {"armadura": {"id": gloves["armor_set"]}}
-	return hand_state
-
-static func hand_material(state: PlayerState) -> ShaderMaterial:
-	return body_material(_hand_source(state))
-
 static func hand_texture(state: PlayerState) -> AtlasTexture:
-	var hand_state: PlayerState = _hand_source(state)
-	var body: AtlasTexture = body_texture(hand_state)
-	var rect: Rect2 = hand_rect(hand_state)
-	var key: String = "%s:%s:%s:%s:%s" % [body.atlas.resource_path, body.region, rect, state.gender_id, GameData.visual_armor_id(state.equipment)]
+	var body: AtlasTexture = body_texture(state)
+	var rect: Rect2 = hand_rect(state)
+	var key: String = "%s:%s:%s:%s:%s" % [body.atlas.resource_path, body.region, rect, state.gender_id, state.equipment.get("armadura", {}).get("id", "")]
 	if not hand_frames.has(key):
 		var patch: AtlasTexture = AtlasTexture.new()
 		patch.atlas = body.atlas

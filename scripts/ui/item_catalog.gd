@@ -69,6 +69,8 @@ static func atlas_rect(item_id: String, class_id: String, texture_size: Vector2)
 	return Rect2(start + Vector2.ONE * 2, finish - start - Vector2.ONE * 4)
 
 static func texture_for(item_id: String, class_id: String = "guerreiro") -> Texture2D:
+	var supplied: AtlasTexture = Appearance.Design.icon(item_id, class_id)
+	if supplied != null: return supplied
 	var slot_art: String = str(GameData.item(item_id).get("slot_art", ""))
 	if slot_art in ["colar", "talisma"]:
 		return load("res://assets/game/ui/equipment_slots/%s.svg" % slot_art)
@@ -176,12 +178,8 @@ static func _tight_armor_icon(source: Texture2D) -> Texture2D:
 	return textures[key]
 
 static func icon_texture_for(item_id: String, class_id: String = "guerreiro") -> Texture2D:
-	if GameData.item(item_id).has("armor_part"):
-		var part: Dictionary = GameData.item(item_id)
-		if part["armor_part"] == "Peito":
-			var chest: Texture2D = ArmorPortraits.texture_for(str(part["armor_set"]), class_id)
-			if chest != null: return _tight_armor_icon(chest)
-		return _tight_armor_icon(preload("res://scripts/ui/armor_part_icon.gd").texture_for(item_id))
+	var supplied: AtlasTexture = Appearance.Design.icon(item_id, class_id)
+	if supplied != null: return supplied
 	var portrait: Texture2D = ArmorPortraits.texture_for(item_id, class_id)
 	if portrait != null:
 		return _tight_armor_icon(portrait)

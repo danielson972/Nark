@@ -1,21 +1,21 @@
 [gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/actors/hero.gd" id="1_hero"]
-[ext_resource type="Texture2D" path="res://assets/game/character_builder/bald_races.png" id="2_atlas"]
+[ext_resource type="Texture2D" path="res://assets/game/sprites/heroi/topdown/parado/humano/masculino/medio/s.png" id="2_atlas"]
 [ext_resource type="Script" path="res://scripts/actors/colossal_weapon_effect.gd" id="3_effect"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_preview"]
 atlas = ExtResource("2_atlas")
-region = Rect2(0, 0, 256, 512)
+region = Rect2(0, 0, 64, 64)
 
 [node name="Hero" type="Sprite2D"]
 script = ExtResource("1_hero")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.19115692, 0.19115692)
+scale = Vector2(1.5, 1.5)
 texture = SubResource("AtlasTexture_preview")
-offset = Vector2(0, -245.76)
+offset = Vector2(0, -30.72)
 
 [node name="ArmaEquipada" type="Sprite2D" parent="Sprite2D"]
 texture_filter = 1

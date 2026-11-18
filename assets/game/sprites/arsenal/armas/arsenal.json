@@ -1,0 +1,805 @@
+{
+  "versao": 1,
+  "itens": [
+    {
+      "id": "001",
+      "nome": "Espada Curta Enferrujada",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/001.png"
+    },
+    {
+      "id": "002",
+      "nome": "Sabre de Ferro Velho",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/002.png"
+    },
+    {
+      "id": "003",
+      "nome": "Espada de Treino da Guarda",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/003.png"
+    },
+    {
+      "id": "004",
+      "nome": "Espada Larga de Bronze",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/004.png"
+    },
+    {
+      "id": "005",
+      "nome": "Lâmina Polida de Aço",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/005.png"
+    },
+    {
+      "id": "006",
+      "nome": "Espada Longa do Cavaleiro",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/006.png"
+    },
+    {
+      "id": "007",
+      "nome": "Gládio de Aço Temperado",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/007.png"
+    },
+    {
+      "id": "008",
+      "nome": "Lâmina de Carapaça Branca",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/008.png"
+    },
+    {
+      "id": "009",
+      "nome": "Espada de Mithril",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/009.png"
+    },
+    {
+      "id": "010",
+      "nome": "Sabre Rúnico de Safira",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/010.png"
+    },
+    {
+      "id": "011",
+      "nome": "Lâmina do Guardião do Santuário",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/011.png"
+    },
+    {
+      "id": "012",
+      "nome": "Espada de Obsidiana",
+      "grade": "A",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/012.png"
+    },
+    {
+      "id": "013",
+      "nome": "Lâmina Arcana do Duelo",
+      "grade": "A",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/013.png"
+    },
+    {
+      "id": "014",
+      "nome": "Espada Real Celestial",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/014.png"
+    },
+    {
+      "id": "015",
+      "nome": "Soberana das Marés",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "espadas",
+      "sprite": "sprites/espadas/015.png"
+    },
+    {
+      "id": "016",
+      "nome": "Machado de Lenhador",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/016.png"
+    },
+    {
+      "id": "017",
+      "nome": "Montante de Ferro Bruto",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/017.png"
+    },
+    {
+      "id": "018",
+      "nome": "Clava Reforçada",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/018.png"
+    },
+    {
+      "id": "019",
+      "nome": "Machado de Batalha de Bronze",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/019.png"
+    },
+    {
+      "id": "020",
+      "nome": "Espadão de Aço Simples",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/020.png"
+    },
+    {
+      "id": "021",
+      "nome": "Alabarda de Aço Azul",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/021.png"
+    },
+    {
+      "id": "022",
+      "nome": "Machado Duplo Temperado",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/022.png"
+    },
+    {
+      "id": "023",
+      "nome": "Quebra-Rochas da Pedreira",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/023.png"
+    },
+    {
+      "id": "024",
+      "nome": "Montante de Mithril",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/024.png"
+    },
+    {
+      "id": "025",
+      "nome": "Machado de Esmeralda Bruta",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/025.png"
+    },
+    {
+      "id": "026",
+      "nome": "Destruidora de Colossos",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/026.png"
+    },
+    {
+      "id": "027",
+      "nome": "Espadão de Obsidiana",
+      "grade": "A",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/027.png"
+    },
+    {
+      "id": "028",
+      "nome": "Machado Carmesim do Abismo",
+      "grade": "A",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/028.png"
+    },
+    {
+      "id": "029",
+      "nome": "Montante do Rei Antigo",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/029.png"
+    },
+    {
+      "id": "030",
+      "nome": "Fúria do Leviatã",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "armas_pesadas",
+      "sprite": "sprites/armas_pesadas/030.png"
+    },
+    {
+      "id": "031",
+      "nome": "Faca de Caça Enferrujada",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/031.png"
+    },
+    {
+      "id": "032",
+      "nome": "Punhal de Couro e Ferro",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/032.png"
+    },
+    {
+      "id": "033",
+      "nome": "Estilete dos Subúrbios",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/033.png"
+    },
+    {
+      "id": "034",
+      "nome": "Adaga de Bronze Polido",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/034.png"
+    },
+    {
+      "id": "035",
+      "nome": "Adaga de Aço",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/035.png"
+    },
+    {
+      "id": "036",
+      "nome": "Punhal de Aço Azulado",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/036.png"
+    },
+    {
+      "id": "037",
+      "nome": "Adaga Prateada da Sombra",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/037.png"
+    },
+    {
+      "id": "038",
+      "nome": "Presa da Fera Branca",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/038.png"
+    },
+    {
+      "id": "039",
+      "nome": "Adaga de Mithril",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/039.png"
+    },
+    {
+      "id": "040",
+      "nome": "Adaga de Safira Sombria",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/040.png"
+    },
+    {
+      "id": "041",
+      "nome": "Lâmina do Nêmesis",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/041.png"
+    },
+    {
+      "id": "042",
+      "nome": "Adaga de Obsidiana",
+      "grade": "A",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/042.png"
+    },
+    {
+      "id": "043",
+      "nome": "Garra do Crepúsculo",
+      "grade": "A",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/043.png"
+    },
+    {
+      "id": "044",
+      "nome": "Adaga Celestial do Silêncio",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/044.png"
+    },
+    {
+      "id": "045",
+      "nome": "Presa Abissal",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "adagas",
+      "sprite": "sprites/adagas/045.png"
+    },
+    {
+      "id": "046",
+      "nome": "Arco Curto de Madeira Seca",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/046.png"
+    },
+    {
+      "id": "047",
+      "nome": "Arco de Caça Rústico",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/047.png"
+    },
+    {
+      "id": "048",
+      "nome": "Arco Improvisado de Cipó",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/048.png"
+    },
+    {
+      "id": "049",
+      "nome": "Arco Longo de Freixo",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/049.png"
+    },
+    {
+      "id": "050",
+      "nome": "Arco Reforçado de Bronze",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/050.png"
+    },
+    {
+      "id": "051",
+      "nome": "Arco Composto de Aço",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/051.png"
+    },
+    {
+      "id": "052",
+      "nome": "Arco Prateado da Patrulha",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/052.png"
+    },
+    {
+      "id": "053",
+      "nome": "Arco de Osso da Pedreira",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/053.png"
+    },
+    {
+      "id": "054",
+      "nome": "Arco Élfico de Mithril",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/054.png"
+    },
+    {
+      "id": "055",
+      "nome": "Arco de Esmeralda do Bosque",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/055.png"
+    },
+    {
+      "id": "056",
+      "nome": "Arco dos Ventos do Santuário",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/056.png"
+    },
+    {
+      "id": "057",
+      "nome": "Arco de Obsidiana",
+      "grade": "A",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/057.png"
+    },
+    {
+      "id": "058",
+      "nome": "Arco Rúnico do Horizonte",
+      "grade": "A",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/058.png"
+    },
+    {
+      "id": "059",
+      "nome": "Arco Celestial do Reino",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/059.png"
+    },
+    {
+      "id": "060",
+      "nome": "Arco das Tormentas Marinhas",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "arcos",
+      "sprite": "sprites/arcos/060.png"
+    },
+    {
+      "id": "061",
+      "nome": "Cajado de Carvalho Velho",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/061.png"
+    },
+    {
+      "id": "062",
+      "nome": "Varinha de Aprendiz",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/062.png"
+    },
+    {
+      "id": "063",
+      "nome": "Bastão de Cristal Opaco",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/063.png"
+    },
+    {
+      "id": "064",
+      "nome": "Cajado de Bronze e Âmbar",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/064.png"
+    },
+    {
+      "id": "065",
+      "nome": "Cetro de Aço Polido",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/065.png"
+    },
+    {
+      "id": "066",
+      "nome": "Cajado de Aço Azulado",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/066.png"
+    },
+    {
+      "id": "067",
+      "nome": "Bastão Prateado de Gelo",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/067.png"
+    },
+    {
+      "id": "068",
+      "nome": "Cajado de Quartzo Branco",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/068.png"
+    },
+    {
+      "id": "069",
+      "nome": "Cajado de Mithril",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/069.png"
+    },
+    {
+      "id": "070",
+      "nome": "Cetro de Safira Arcana",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/070.png"
+    },
+    {
+      "id": "071",
+      "nome": "Cajado do Oráculo Antigo",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/071.png"
+    },
+    {
+      "id": "072",
+      "nome": "Cajado de Obsidiana",
+      "grade": "A",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/072.png"
+    },
+    {
+      "id": "073",
+      "nome": "Bastão Astral de Filigrana",
+      "grade": "A",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/073.png"
+    },
+    {
+      "id": "074",
+      "nome": "Cajado Celestial Supremo",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/074.png"
+    },
+    {
+      "id": "075",
+      "nome": "Cetro do Abismo Oceânico",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "cajados_e_cetros",
+      "sprite": "sprites/cajados_e_cetros/075.png"
+    },
+    {
+      "id": "076",
+      "nome": "Lança de Madeira e Ferro",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/076.png"
+    },
+    {
+      "id": "077",
+      "nome": "Pique de Milícia",
+      "grade": "No-Grade",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/077.png"
+    },
+    {
+      "id": "078",
+      "nome": "Lança Curta de Bronze",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/078.png"
+    },
+    {
+      "id": "079",
+      "nome": "Partasana de Aço",
+      "grade": "D",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/079.png"
+    },
+    {
+      "id": "080",
+      "nome": "Lança de Cavalaria Azul",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/080.png"
+    },
+    {
+      "id": "081",
+      "nome": "Alabarda Prateada Real",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/081.png"
+    },
+    {
+      "id": "082",
+      "nome": "Lança de Carapaça Branca",
+      "grade": "C",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/082.png"
+    },
+    {
+      "id": "083",
+      "nome": "Lança de Mithril",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/083.png"
+    },
+    {
+      "id": "084",
+      "nome": "Pique Rúnico de Esmeralda",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/084.png"
+    },
+    {
+      "id": "085",
+      "nome": "Lança do Guardião da Região",
+      "grade": "B",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/085.png"
+    },
+    {
+      "id": "086",
+      "nome": "Lança de Obsidiana",
+      "grade": "A",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/086.png"
+    },
+    {
+      "id": "087",
+      "nome": "Lança Dourada da Ordem",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/087.png"
+    },
+    {
+      "id": "088",
+      "nome": "Tridente do Colossal do Mar",
+      "grade": "S",
+      "tipo": "arma",
+      "familia": "lancas",
+      "sprite": "sprites/lancas/088.png"
+    },
+    {
+      "id": "089",
+      "nome": "Escudo Redondo de Madeira",
+      "grade": "No-Grade",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/089.png"
+    },
+    {
+      "id": "090",
+      "nome": "Broquel de Ferro Velho",
+      "grade": "No-Grade",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/090.png"
+    },
+    {
+      "id": "091",
+      "nome": "Escudo de Bronze Reforçado",
+      "grade": "D",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/091.png"
+    },
+    {
+      "id": "092",
+      "nome": "Escudo Torre de Aço",
+      "grade": "D",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/092.png"
+    },
+    {
+      "id": "093",
+      "nome": "Escudo de Aço Temperado",
+      "grade": "C",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/093.png"
+    },
+    {
+      "id": "094",
+      "nome": "Escudo Prateado do Guarda",
+      "grade": "C",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/094.png"
+    },
+    {
+      "id": "095",
+      "nome": "Égide de Carapaça Branca",
+      "grade": "C",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/095.png"
+    },
+    {
+      "id": "096",
+      "nome": "Escudo de Mithril",
+      "grade": "B",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/096.png"
+    },
+    {
+      "id": "097",
+      "nome": "Escudo Rúnico de Safira",
+      "grade": "B",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/097.png"
+    },
+    {
+      "id": "098",
+      "nome": "Escudo de Obsidiana",
+      "grade": "A",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/098.png"
+    },
+    {
+      "id": "099",
+      "nome": "Baluarte Celestial do Reino",
+      "grade": "S",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/099.png"
+    },
+    {
+      "id": "100",
+      "nome": "Égide das Profundezas",
+      "grade": "S",
+      "tipo": "escudo",
+      "familia": "escudos",
+      "sprite": "sprites/escudos/100.png"
+    }
+  ]
+}

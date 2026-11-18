@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func _draw() -> void:
 	if not item_id.is_empty():
-		var is_armor: bool = (str(GameData.item(item_id).get("type", "")) == "armadura" or GameData.item(item_id).has("armor_part"))
+		var is_armor: bool = false
 		var filtering: int = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS if is_armor else CanvasItem.TEXTURE_FILTER_NEAREST
 		if texture_filter != filtering:
 			texture_filter = filtering
@@ -35,7 +35,7 @@ func _draw() -> void:
 		if texture != null:
 			var side: float = minf(size.x, size.y)
 			var destination: Rect2 = Rect2(((size - Vector2.ONE * side) * 0.5).floor(), Vector2.ONE * side)
-			if (str(GameData.item(item_id).get("type","")) == "armadura" or GameData.item(item_id).has("armor_part")):
+			if str(GameData.item(item_id).get("type","")) == "armadura":
 				var factor: float = maxf(side * 0.94, 1.0) / maxf(texture.get_width(), texture.get_height())
 				var drawn_size: Vector2 = texture.get_size()*factor
 				destination = Rect2((size-drawn_size)*0.5,drawn_size)

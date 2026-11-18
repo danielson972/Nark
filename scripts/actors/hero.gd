@@ -2,7 +2,6 @@ class_name Hero
 extends Actor
 
 const Appearance = preload("res://scripts/actors/hero_appearance.gd")
-const ArmorLayers = preload("res://scripts/actors/armor_layer_catalog.gd")
 const ItemArt = preload("res://scripts/ui/item_catalog.gd")
 var weapon_sprite: Sprite2D
 var shield_sprite: Sprite2D
@@ -12,8 +11,6 @@ var aura_effect: Sprite2D
 var appearance_key: String = ""
 var visual_height: float = 92.0
 var character_parts: Node2D
-var armor_parts: Node2D
-var armor_layer_path: String = ""
 var walk_phase: float = 0.0
 var animation_clock: float = 0.0
 
@@ -128,10 +125,9 @@ func refresh_appearance() -> void:
 	var armor_id: String = str(state.equipment.get("armadura", {}).get("id", ""))
 	var weapon_id: String = str(state.equipment.get("arma", {}).get("id", ""))
 	appearance_key = "%s:%s:%s:%s" % [state.race_id, state.class_id, armor_id, weapon_id]
-	sprite.texture = Appearance.body_texture(state)
-	_sync_armor_parts()
-	sprite.material = Appearance.world_material(Appearance.body_material(state))
-	grip_hand_sprite.material = Appearance.world_material(Appearance.hand_material(state))
+	sprite.texture = Appearance.Design.body(state, 0, 0, false)
+	sprite.material = null
+	grip_hand_sprite.material = sprite.material
 	var body_size: Vector2 = sprite.texture.get_size()
 	# O brilho acompanha o torso e os movimentos do corpo em todas as classes e raças.
 	if aura_effect != null:
@@ -141,63 +137,34 @@ func refresh_appearance() -> void:
 	base_scale = visual_height * (0.85 if state.race_id == "anao" else 1.0) / (body_size.y * (Appearance.FOOT_Y - Appearance.HEAD_Y))
 	sprite.scale = Vector2.ONE * base_scale
 	sprite.offset = Vector2(0, (0.5 - Appearance.FOOT_Y) * body_size.y)
-	_update_character_parts()
-	weapon_sprite.visible = not weapon_id.is_empty()
-	weapon_sprite.texture = null if weapon_id.is_empty() else ItemArt.texture_for(weapon_id, state.class_id)
-	grip_hand_sprite.visible = not weapon_id.is_empty()
-	grip_hand_sprite.texture = Appearance.hand_texture(state) if grip_hand_sprite.visible else null
-	if weapon_sprite.texture != null:
-		weapon_sprite.material = Appearance.world_material(Appearance.weapon_material(state, weapon_sprite.texture))
-		var weapon_size: Vector2 = weapon_sprite.texture.get_size()
-		weapon_sprite.scale = Vector2.ONE * (body_size.y * Appearance.weapon_height(state.class_id, weapon_id) / weapon_size.y)
-	colossal_effect.visible = weapon_id == "arma_b"
+	weapon_sprite.texture = Appearance.Design.icon(weapon_id, state.class_id) if not weapon_id.is_empty() else null
+	weapon_sprite.visible = weapon_sprite.texture != null
+	weapon_sprite.material = null
+	if weapon_sprite.visible:
+		weapon_sprite.scale = Vector2.ONE * 28.0 / weapon_sprite.texture.get_height()
 	var shield_id: String = str(state.equipment.get("escudo", {}).get("id", ""))
-	shield_sprite.texture = ItemArt.texture_for(shield_id, state.class_id) if not shield_id.is_empty() else null
+	shield_sprite.texture = Appearance.Design.icon(shield_id, state.class_id) if not shield_id.is_empty() else null
 	shield_sprite.visible = shield_sprite.texture != null
-	if shield_sprite.visible:
-		shield_sprite.material = Appearance.world_material(Appearance.shield_material(shield_id, shield_sprite.texture))
-		shield_sprite.scale = Vector2.ONE * body_size.y * 0.28 / shield_sprite.texture.get_height()
+	shield_sprite.material = null
+	if shield_sprite.visible: shield_sprite.scale = Vector2.ONE * 22.0 / shield_sprite.texture.get_height()
+	grip_hand_sprite.hide()
+	if character_parts != null: character_parts.hide()
+	colossal_effect.visible = weapon_id == "arma_b"
 	_update_equipment_pose()
 
-
 func _update_equipment_pose() -> void:
-	_update_character_parts()
-	if shield_sprite != null and shield_sprite.visible:
-		var point: Vector2 = Appearance.shield_anchor(state)
-		var dimensions: Vector2 = sprite.texture.get_size()
-		var shield_mirror: float = -1.0 if sprite.flip_h else 1.0
-		var shield_delta: Vector2 = armor_parts.part_offset("Peito") if armor_parts != null else Vector2.ZERO
-		shield_sprite.position = Vector2(((point.x - 0.5) * dimensions.x + shield_delta.x) * shield_mirror, (point.y - Appearance.FOOT_Y) * dimensions.y + shield_delta.y)
-		shield_sprite.flip_h = sprite.flip_h
-		shield_sprite.z_index = -1 if facing.y < -0.5 else 2
-	if weapon_sprite == null or weapon_sprite.texture == null:
-		return
-	var mirror: float = -1.0 if sprite.flip_h else 1.0
-	var direction: Vector2 = facing.normalized() if facing.length_squared() > 0.001 else Vector2.DOWN
-	var body_size: Vector2 = sprite.texture.get_size()
-	var hand: Vector2 = Appearance.hand_position(state)
-	var hand_delta: Vector2 = armor_parts.part_offset("Luvas") if armor_parts != null else Vector2.ZERO
-	weapon_sprite.position = Vector2(((hand.x - 0.5) * body_size.x + hand_delta.x) * mirror, (hand.y - Appearance.FOOT_Y) * body_size.y + hand_delta.y)
-	grip_hand_sprite.position = weapon_sprite.position
-	grip_hand_sprite.flip_h = sprite.flip_h
-	var weapon_id: String = str(state.equipment.get("arma", {}).get("id", ""))
-	var pivot: Vector2 = Appearance.weapon_pivot(state.class_id, weapon_id)
-	weapon_sprite.offset = (Vector2(0.5, 0.5) - pivot) * weapon_sprite.texture.get_size()
-	weapon_sprite.offset.x *= mirror
-	weapon_sprite.flip_h = sprite.flip_h
-	var swing_rotation: float = sin((1.0 - attack_swing / 0.18) * PI) * 0.8 if attack_swing > 0.0 else 0.0
-	var vertical_turn: float = -PI * 0.5 if absf(direction.y) > absf(direction.x) and direction.y < 0.0 else (PI * 0.5 if absf(direction.y) > absf(direction.x) else 0.0)
-	var walk_sway: float = sin(walk_phase) * 0.055 if velocity.length() > 24.0 else 0.0
-	weapon_sprite.rotation = (Appearance.weapon_rotation(state.class_id, weapon_id) + vertical_turn + swing_rotation + walk_sway) * mirror
-	if absf(direction.y) > absf(direction.x) and direction.y < 0.0:
-		weapon_sprite.z_index = -1
-		grip_hand_sprite.z_index = -2
-	elif absf(direction.y) > absf(direction.x) and direction.y > 0.0:
-		weapon_sprite.z_index = 2
-		grip_hand_sprite.z_index = 3
-	else:
-		weapon_sprite.z_index = Appearance.weapon_layer(state.class_id)
-		grip_hand_sprite.z_index = 2
+	if state == null or weapon_sprite == null: return
+	var row: int = Appearance.Design.direction_row(facing)
+	var mirror: float = -1.0 if row in [5, 6, 7] else 1.0
+	var motion: float = sin(animation_clock * 9.0 * TAU / 6.0) if velocity.length() > 1.0 else 0.0
+	var swing: float = sin(clampf(1.0 - attack_swing / 0.18, 0.0, 1.0) * PI) * 1.1 if attack_swing > 0.0 else 0.0
+	weapon_sprite.position = Vector2(-15 * mirror, -18 + motion)
+	weapon_sprite.rotation = (0.35 + swing) * mirror
+	weapon_sprite.flip_h = mirror < 0
+	weapon_sprite.z_index = -1 if row in [3, 4, 5] else 2
+	shield_sprite.position = Vector2(19 * mirror, -16 + motion)
+	shield_sprite.flip_h = mirror < 0
+	shield_sprite.z_index = -1 if row in [3, 4, 5] else 2
 
 
 func has_passive(skill_id: String) -> bool:
@@ -230,55 +197,22 @@ func _process(delta: float) -> void :
 
 
 func _update_hero_animation(delta: float) -> void:
-	if sprite == null:
-		return
-	animation_clock += delta
-	var moving: bool = velocity.length() > 24.0
+	if sprite == null or state == null: return
+	var moving: bool = velocity.length() > 1.0
 	if moving:
-		var cadence: float = 13.0 if dodge_time > 0.0 or dash_time > 0.0 else (10.5 if sprinting else 8.5)
-		walk_phase = fposmod(walk_phase + delta * cadence, TAU)
-	var direction: Vector2 = facing.normalized() if facing.length_squared() > 0.001 else Vector2.DOWN
-	if absf(direction.x) > 0.12:
-		# A arte humana enviada olha à esquerda; as artes antigas olham à direita.
-		sprite.flip_h = direction.x > 0.0
+		animation_clock += delta * (1.5 if sprinting or dodge_time > 0.0 or dash_time > 0.0 else 1.0)
 	else:
-		sprite.flip_h = false
-	var step_wave: float = sin(walk_phase)
-	var bob: float = -absf(step_wave) * 2.4 if moving else sin(animation_clock * 1.8) * 0.55
-	var side_step: float = cos(walk_phase) * 1.1 if moving else 0.0
-	var attack_amount: float = 0.0
-	if attack_swing > 0.0:
-		var progress: float = clampf(1.0 - attack_swing / 0.18, 0.0, 1.0)
-		attack_amount = sin(progress * PI)
-	sprite.position = Vector2(side_step, bob) + direction * attack_amount * 3.2
-	var lean: float = direction.x * step_wave * 0.025 if moving else 0.0
-	lean += (direction.x * 0.04 - direction.y * 0.015) * attack_amount
-	sprite.rotation = lean
-	var squash: float = absf(step_wave) * 0.018 if moving else 0.0
-	squash += attack_amount * 0.008
-	sprite.scale = Vector2(base_scale * (1.0 + squash), base_scale * (1.0 - squash))
-	_update_character_parts()
-
-func _sync_armor_parts() -> void:
-	var path: String = ArmorLayers.configuration_key(state)
-	if path != armor_layer_path or (not path.is_empty() and not is_instance_valid(armor_parts)):
-		if is_instance_valid(armor_parts):
-			armor_parts.get_parent().remove_child(armor_parts)
-			armor_parts.queue_free()
-		armor_parts = ArmorLayers.instantiate(state)
-		armor_layer_path = path
-		if armor_parts != null:
-			armor_parts.name = "ArmaduraEmPartes"
-			sprite.add_child(armor_parts)
-	if armor_parts != null: armor_parts.configure(state, true)
-	sprite.self_modulate.a = 0.0 if armor_parts != null else 1.0
+		animation_clock = 0.0
+	var row: int = Appearance.Design.direction_row(facing)
+	var frame: int = int(animation_clock * 9.0) % 6 if moving else 0
+	sprite.texture = Appearance.Design.body(state, row, frame, false, moving)
+	sprite.flip_h = false
+	sprite.position = Vector2.ZERO
+	sprite.rotation = 0.0
+	sprite.scale = Vector2.ONE * base_scale
 
 func _update_character_parts() -> void:
-	if character_parts != null and state != null and sprite.texture != null:
-		if armor_parts != null:
-			armor_parts.place(Vector2(-128, -512 * Appearance.FOOT_Y), Vector2.ONE, sprite.flip_h)
-		character_parts.hair_enabled = armor_parts == null or not armor_parts.shows_helmet()
-		character_parts.configure(state, Vector2(-128, -512 * Appearance.FOOT_Y), Vector2.ONE, sprite.flip_h)
+	pass
 
 
 func _tick_timers(delta: float) -> void :

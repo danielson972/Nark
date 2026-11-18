@@ -43,6 +43,7 @@ var creation_class: = "guerreiro"
 var creation_hair_style: int = 0
 var creation_hair_color: String = "castanho"
 var creation_gender_id: String = "masculino"
+var creation_body_type: String = "medio"
 var creation_beard_style: int = 0
 var creation_beard_color: String = "original"
 var creation_preview: VBoxContainer
@@ -463,7 +464,8 @@ func show_creation() -> void:
 	assembly.back_requested.connect(func(): show_title(SaveGame.has_save()))
 	overlay.add_child(assembly)
 
-func _submit_assembled_character(race_id: String, class_id: String, hero_name: String, hair_style: int, hair_color: String, gender_id: String, beard_style: int = 0, beard_color: String = "original") -> void:
+func _submit_assembled_character(race_id: String, class_id: String, hero_name: String, hair_style: int, hair_color: String, gender_id: String, beard_style: int = 0, beard_color: String = "original", body_type: String = "medio") -> void:
+	creation_body_type = body_type
 	creation_race = race_id
 	creation_class = class_id
 	creation_hair_style = hair_style
@@ -809,13 +811,10 @@ func show_pause_panel() -> void :
 
 
 func _has_equipment_workspace() -> bool:
-	return current_panel in ["inventory", "status", "armor_parts"] and is_instance_valid(equipment_workspace) and not equipment_workspace.is_queued_for_deletion()
-
-func show_armor_parts_inventory() -> void:
-	_create_equipment_workspace(true, true)
+	return current_panel in ["inventory", "status"] and is_instance_valid(equipment_workspace) and not equipment_workspace.is_queued_for_deletion()
 
 func show_inventory_panel() -> void:
-	if _has_equipment_workspace() and current_panel != "armor_parts":
+	if _has_equipment_workspace():
 		equipment_workspace.open_inventory()
 		return
 	_create_equipment_workspace(true)
@@ -836,8 +835,8 @@ func refresh_equipment_panels() -> void:
 	if _has_equipment_workspace():
 		equipment_workspace.refresh_data()
 
-func _create_equipment_workspace(with_inventory: bool, armor_parts_only: bool = false) -> void:
-	current_panel = "armor_parts" if armor_parts_only else ("inventory" if with_inventory else "status")
+func _create_equipment_workspace(with_inventory: bool) -> void:
+	current_panel = "inventory" if with_inventory else "status"
 	modal_layer.visible = true
 	for child in modal_layer.get_children():
 		modal_layer.remove_child(child)
@@ -846,7 +845,7 @@ func _create_equipment_workspace(with_inventory: bool, armor_parts_only: bool = 
 	shade.color = Color(0.015, 0.01, 0.008, 0.8)
 	modal_layer.add_child(shade)
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	equipment_workspace = preload("res://scenes/ui/armor_parts_inventory.tscn").instantiate() if armor_parts_only else EquipmentPanelsView.instantiate()
+	equipment_workspace = EquipmentPanelsView.instantiate()
 	inventory_view = equipment_workspace.get_node("InventoryPanel")
 	status_view = equipment_workspace.get_node("StatusPanel")
 	inventory_view.configure(state)
@@ -854,7 +853,7 @@ func _create_equipment_workspace(with_inventory: bool, armor_parts_only: bool = 
 	inventory_view.visible = with_inventory
 	equipment_workspace.action_requested.connect(func(action: String, payload: Dictionary) -> void: panel_action.emit(action, payload))
 	equipment_workspace.panels_changed.connect(func(inventory_open: bool, status_open: bool) -> void:
-		current_panel = ("armor_parts" if armor_parts_only else "inventory") if inventory_open else ("status" if status_open else "")
+		current_panel = "inventory" if inventory_open else ("status" if status_open else "")
 	)
 	modal_layer.add_child(equipment_workspace)
 
@@ -1220,22 +1219,10 @@ class RegionMapView extends Control:
 
 func show_developer_shop(kind: String) -> void:
 	current_panel = kind
-	var titles := {"dev_items": "Arsenal", "dev_armor_parts": "Peças de armadura", "dev_skills": "Biblioteca", "dev_tools": "Bancada de testes", "dev_quests": "Quadro de missões", "dev_arena": "Arena de monstros"}
+	var titles := {"dev_items": "Arsenal", "dev_skills": "Biblioteca", "dev_tools": "Bancada de testes", "dev_quests": "Quadro de missões", "dev_arena": "Arena de monstros"}
 	var content := _npc_list(str(titles.get(kind, "Sala Secreta")))
 	content.add_child(UiKit.label("Tudo grátis · Progresso temporário", 12, UiKit.GOLD))
 	match kind:
-		"dev_armor_parts":
-			content.add_child(UiKit.label("Receba as peças e equipe pelo inventário para misturar conjuntos.", 13))
-			var sets := OptionButton.new()
-			sets.name = "ArmorSetSelector"
-			for number: int in range(1, 101):
-				sets.add_item("%03d · %s" % [number, GameData.item_short_name("armadura_catalogo_%03d" % number)])
-			content.add_child(sets)
-			var pieces := VBoxContainer.new()
-			pieces.name = "ArmorSetPieces"
-			content.add_child(pieces)
-			sets.item_selected.connect(func(index: int) -> void: _fill_armor_parts(pieces, index + 1))
-			_fill_armor_parts(pieces, 1)
 		"dev_items":
 			content.add_theme_constant_override("separation", 4)
 			_developer_currency_buttons(content)
@@ -1316,9 +1303,8 @@ func _fill_developer_shop_category(parent: VBoxContainer, category: int) -> void
 		parent.remove_child(child)
 		child.queue_free()
 	for id: String in GameData.ITEMS:
-		if GameData.item(id).has("armor_part"): continue
 		var type: String = str(GameData.item(id).get("type", ""))
-		var item_category: int = 0 if type in ["arma", "escudo"] else (1 if type == "armadura" else 2)
+		var item_category: int = 0 if type in ["arma", "escudo"] else (1 if type in ["armadura", "elmo", "peito", "luvas", "calca", "botas"] else 2)
 		if item_category == category:
 			parent.add_child(_developer_item_row(id))
 
@@ -1346,7 +1332,7 @@ func _developer_item_row(item_id: String) -> Control:
 	title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	title.tooltip_text = "%s\n%s" % [item.get("name", item_id), item.get("desc", "")]
 	info.add_child(title)
-	var kind: String = str({"arma": "Arma", "armadura": "Armadura", "anel": "Anel", "colar": "Colar", "talisma": "Talismã", "escudo": "Escudo", "material": "Material", "livro": "Livro", "chave": "Chave", "consumivel": "Consumível"}.get(str(item.get("type", "")), GameData.PART_NAMES.get(str(item.get("type", "")), "Item")))
+	var kind: String = str({"arma": "Arma", "armadura": "Armadura", "elmo": "Elmo", "peito": "Peitoral", "luvas": "Luvas", "calca": "Calça", "botas": "Botas", "anel": "Anel", "colar": "Colar", "talisma": "Talismã", "escudo": "Escudo", "material": "Material", "livro": "Livro", "chave": "Chave", "consumivel": "Consumível"}.get(str(item.get("type", "")), "Item"))
 	info.add_child(theme_kit.text("%s · %s · Grátis" % [kind, item.get("grade", "NG")], 11, theme_kit.MUTED))
 	for qty: int in [1, 10]:
 		var receive: Button = theme_kit.button("×%d" % qty)
@@ -1384,10 +1370,3 @@ func _item_art(item_id: String, side: int = 48) -> Control:
 	icon.custom_minimum_size = Vector2(side, side)
 	icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	return icon
-
-func _fill_armor_parts(parent: VBoxContainer, number: int) -> void:
-	for child in parent.get_children():
-		parent.remove_child(child)
-		child.queue_free()
-	for slot: String in GameData.ARMOR_PARTS:
-		parent.add_child(_developer_item_row("armadura_catalogo_%03d_%s" % [number, slot]))

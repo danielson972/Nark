@@ -66,7 +66,7 @@ static func bald_body(race_id: String, gender_id: String = "masculino") -> Atlas
 	return frames[key]
 
 static func armored(state: PlayerState) -> bool:
-	var armor_id := GameData.visual_armor_id(state.equipment)
+	var armor_id := str(state.equipment.get("armadura", {}).get("id", ""))
 	# The racial base already wears the starter outfit. Replacing it with the
 	# armor mannequin changes its proportions and shrinks the selected head.
 	if armor_id == "roupa_basica":

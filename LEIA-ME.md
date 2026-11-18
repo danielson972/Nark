@@ -124,3 +124,98 @@ Validação: `relatorios/verify_equipment_slots.gd` e `relatorios/verify_referen
 As 100 armaduras do catálogo e as 30 variantes dos trajes de classe agora usam ícones de torso com fundo transparente, seguindo o peitoral de referência. Os ícones aparecem na mochila, detalhes e slots equipados, sobre as cores dinâmicas de raridade. As peças vestidas pelo personagem mantêm suas próprias imagens.
 
 Pranchas, recursos individuais e prompts: `assets/game/ui/items/armor_portraits/README.md`. Prévia: `relatorios/icones-armaduras-cores.png`. Validação: `relatorios/verify_armor_portraits.gd`.
+
+
+## Novos heróis e arsenal — 18/11/2026
+
+A criação usa agora as bases de `assets/game/sprites/racas/`: Humano, Elfo,
+Orc, Anão e Elarim; modelos masculino/feminino; corpos magro, médio e forte.
+Há dez cabelos, cinco barbas e cores. A criação usa uma prévia frontal estática,
+sem setas ou controles de animação, com os modelos enviados em
+`assets/game/ui/creation/front_races_reference.png`, exibidos com até 160 px de altura.
+A caminhada usa os seis quadros de cada linha, a 9 fps, com cadência maior ao correr.
+O tipo de corpo acompanha o save; saves antigos assumem o corpo médio.
+Elarim usa provisoriamente os bônus raciais de Elfo.
+
+Os cinco espaços novos são Elmo, Peitoral, Luvas, Calça e Botas. As 150 peças
+fornecidas estão no Arsenal da sala de desenvolvimento. Novos personagens
+recebem peitoral, calça e botas No Grade. Equipar uma peça retira o traje antigo
+inteiro; equipar um traje antigo retira as cinco peças, devolvendo tudo à mochila.
+Armas e escudos usam os 100 sprites individuais do novo arsenal. Tank usa
+provisoriamente as armaduras de Guerreiro; Atirador usa as de Arqueiro.
+Os itens antigos continuam cadastrados para preservar os saves.
+As peças novas mantêm a ausência de bônus de atributos do catálogo fornecido.
+
+A composição compartilhada está em `scripts/actors/nark_design.gd`.
+Corpos têm oito vistas animadas reais. Cabelos, barbas e peças de armadura
+foram fornecidos com uma única vista e recebem adaptações de posição, largura,
+espelhamento e sobreposição; ainda precisam de artes direcionais próprias para
+um acabamento consistente nas laterais e nas costas. As imagens originais
+fornecidas não foram modificadas.
+
+Validação: `relatorios/verify_new_design.gd`, com 1.440 quadros, 150 peças,
+100 armas/escudos, persistência de aparência e animação/ataque das seis classes.
+Resultado: `relatorios/new-design-test.log`. A abertura real da criação e do
+inventário foi renderizada por `relatorios/preview_new_design.gd`; imagens
+`new-character-creation.png`, `new-equipment-panel.png` e galerias na mesma pasta.
+
+
+### Criação novamente editável na aba 2D
+
+Abra `scenes/character_creation.tscn` no Godot. Fundo, menus, textos, botões e
+personagens estão salvos como nós da cena. Os scripts apenas conectam as ações,
+selecionam a aparência e atualizam visibilidade e cores; não recriam a montagem.
+
+Em `Margens/Colunas/Apresentacao/Personagem/Apoio/Modelos`, cada grupo de raça e
+modelo contém `Base`, `Cabelos/Modelo1..10` e `Barbas/Modelo1..5`. Posição, escala,
+rotação e recorte dos Sprite2D são editáveis e preservados durante as seleções.
+Para ver outra camada no editor, altere sua visibilidade na árvore. A criação
+continua frontal e estática, sem setas e sem equipamentos.
+
+Cabelos e barbas agora usam recursos persistentes nos Sprite2D e materiais que
+preservam a transparência, substituindo os acessórios temporários desenhados
+pelo método `_draw`. Verificação renderizada: `relatorios/verify_editable_creation.gd`;
+resultado: `relatorios/editable-creation-test.log` (dez montagens, cem camadas de
+cabelo e cinquenta de barba). Prévia: `relatorios/editable-creation-hair-beard.png`.
+
+
+### Alinhamento pela edição do humano masculino e porte físico
+
+A posição (-545, -230.50003) e a escala (1.3664985, 1.3664985) da Base humana
+masculina foram preservadas como referência da montagem. As dez combinações
+raciais/de modelo agora apoiam os pés no mesmo ponto do pedestal; cabelos e
+barbas acompanham o transform da respectiva Base. O cálculo dos encaixes ignora
+pixels quase transparentes que ampliavam incorretamente os limites das imagens.
+
+Cada grupo contém `Base` (médio), `BaseMagro` e `BaseForte`, além de Cabelos e
+Barbas. O seletor Corpo alterna essas camadas sem reposicionar a montagem. A
+prancha frontal fornecida tem um único porte: as prévias magra e forte ajustam
+a silhueta do tronco com `shaders/creation_body_shape.gdshader`, preservando
+rosto, altura e pés. Os sprites do jogo continuam usando as variantes magra,
+média e forte fornecidas em racas/caminhada.
+
+Validação: `relatorios/verify_creation_builds.gd` testa as trinta combinações,
+a preservação do ajuste humano, a linha dos pés e a mudança visual do porte.
+Imagens: `creation-aligned-models.png` e `creation-build-comparison.png` em relatorios.
+
+
+### Novo estilo heroi — artes específicas de criação e jogo
+
+Os recursos ativos agora vêm de `assets/game/sprites/heroi/personagens.json`.
+A criação usa os 30 arquivos de `heroi/criacao` (cinco raças, dois modelos,
+três portes reais), com cabelos e barbas de `heroi/cabelos/frente` e
+`heroi/barbas/frente`. A cena continua montada em Sprite2D editáveis em 2D,
+sem animação, setas, armas ou armaduras. A prévia preserva a altura visual e o
+ponto de apoio da montagem anterior. BaseMagro e BaseForte usam os desenhos
+fornecidos; não usam mais o shader de deformação da silhueta.
+
+No mundo e no inventário, os corpos vêm de `heroi/topdown/parado` e
+`heroi/topdown/andando`, com seis quadros por direção e 9 fps. Cabelos e barbas
+usam as versões topdown. As IDs de aparência e os saves continuam compatíveis.
+As imagens fornecidas permanecem intactas. Os nós de personagens e acessórios
+estão em `Margens/Colunas/Apresentacao/Personagem/Apoio/Modelos` na cena de criação.
+
+Validação: 30 prévias com recursos corretos e ponto de apoio preservado em
+`relatorios/creation-builds-test.log`; caminhadas, armas, escudos e fluxo do jogo
+em `relatorios/new-design-test.log`. A imagem de comparação dos portes está em
+`relatorios/creation-build-comparison.png`.
