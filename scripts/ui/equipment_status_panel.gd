@@ -2,14 +2,24 @@ extends Control
 ## Equipment and status remain a separate, visually editable scene.
 signal action_requested(action: String, payload: Dictionary)
 signal equipment_selected(item_id: String, slot: String)
-const SLOT_NAMES = {"armadura": "Traje", "arma": "Arma", "escudo": "Escudo", "anel": "Anel", "colar": "Colar", "talisma": "Talismã", "aura": "Hero"}
+const SLOT_NAMES = {"elmo": "Elmo", "peito": "Peitoral", "luvas": "Luvas", "calca": "Calça", "botas": "Botas", "armadura": "Traje", "arma": "Arma", "escudo": "Escudo", "anel": "Anel", "colar": "Colar", "talisma": "Talismã", "aura": "Hero"}
 var state: PlayerState
+@export var show_armor_parts: bool = false
 var slot_buttons: Dictionary = {}
 
 func configure(player: PlayerState) -> void:
 	state = player
 
 func _ready() -> void:
+	size.y = 646.0
+	$ArmorPartsFrame.hide()
+	if show_armor_parts:
+		for slot: String in ["armadura"]:
+			get_node("Equipment_" + slot).hide()
+			get_node("OutfitCaption" if slot == "armadura" else "Caption_" + slot).hide()
+	for part: String in GameData.ARMOR_PARTS:
+		get_node("Equipment_" + part).visible = show_armor_parts
+		get_node("Caption_" + part).visible = show_armor_parts
 	if state == null:
 		state = PlayerState.create("Herói", "humano", "guerreiro")
 	%Portrait.state = state

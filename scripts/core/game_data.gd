@@ -370,7 +370,35 @@ const GRADES: = [
 
 
 
-const ITEMS: = {
+const ARMOR_PARTS = {"elmo": "Elmo", "peito": "Peito", "luvas": "Luvas", "calca": "Calca", "botas": "Botas"}
+const PART_NAMES = {"elmo": "Elmo", "peito": "Peitoral", "luvas": "Luvas", "calca": "Calça", "botas": "Botas"}
+static var ITEMS: Dictionary = _build_items()
+
+static func visual_armor_id(equipment: Dictionary) -> String:
+	# The torso defines the skeleton. Boots/gloves alone must not move the head
+	# or change the proportions of the character's remaining starter clothes.
+	for slot: String in ["peito"]:
+		var piece: Dictionary = item(str(equipment.get(slot, {}).get("id", "")))
+		if piece.has("armor_set"): return str(piece["armor_set"])
+	return str(equipment.get("armadura", {}).get("id", ""))
+
+static func _build_items() -> Dictionary:
+	var result: Dictionary = BASE_ITEMS.duplicate(true)
+	for id: String in BASE_ITEMS:
+		if not id.begins_with("armadura_catalogo_"): continue
+		for slot: String in ARMOR_PARTS:
+			var part: Dictionary = BASE_ITEMS[id].duplicate(true)
+			part["name"] = "%s · %s" % [PART_NAMES[slot], part["name"]]
+			part["type"] = slot
+			part["armor_set"] = id
+			part["armor_part"] = ARMOR_PARTS[slot]
+			part["desc"] = "Peça independente. Pode ser combinada com outras armaduras."
+			for stat: String in ["weight", "value", "defense", "attack", "hp", "mp"]:
+				if part.has(stat): part[stat] = float(part[stat]) / 5.0
+			result[id + "_" + slot] = part
+	return result
+
+const BASE_ITEMS: = {
 	"hero": {"name": "Hero", "type": "aura", "grade": "NG", "value": 0,
 		"weight": 0.0, "desc": "Visual cosmético: brilho dourado animado no torso. Sem bônus de atributos."},
 	"roupa_basica": {"name": "Roupa Básica", "type": "armadura", "grade": "NG", "value": 5,

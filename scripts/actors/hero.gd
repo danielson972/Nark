@@ -131,7 +131,7 @@ func refresh_appearance() -> void:
 	sprite.texture = Appearance.body_texture(state)
 	_sync_armor_parts()
 	sprite.material = Appearance.world_material(Appearance.body_material(state))
-	grip_hand_sprite.material = sprite.material
+	grip_hand_sprite.material = Appearance.world_material(Appearance.hand_material(state))
 	var body_size: Vector2 = sprite.texture.get_size()
 	# O brilho acompanha o torso e os movimentos do corpo em todas as classes e raças.
 	if aura_effect != null:
@@ -260,7 +260,7 @@ func _update_hero_animation(delta: float) -> void:
 	_update_character_parts()
 
 func _sync_armor_parts() -> void:
-	var path: String = ArmorLayers.scene_path(state)
+	var path: String = ArmorLayers.configuration_key(state)
 	if path != armor_layer_path or (not path.is_empty() and not is_instance_valid(armor_parts)):
 		if is_instance_valid(armor_parts):
 			armor_parts.get_parent().remove_child(armor_parts)

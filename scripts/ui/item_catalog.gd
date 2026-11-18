@@ -160,10 +160,31 @@ static func _catalog_texture(item_id: String, class_id: String = "guerreiro") ->
 	textures[cache_key] = texture
 	return texture
 
+static func _tight_armor_icon(source: Texture2D) -> Texture2D:
+	var key: String = "tight_armor:%s" % source.get_instance_id()
+	if textures.has(key): return textures[key]
+	var pixels: Image = source.get_image()
+	pixels.convert(Image.FORMAT_RGBA8)
+	for y: int in pixels.get_height():
+		for x: int in pixels.get_width():
+			if pixels.get_pixel(x, y).a < 0.75:
+				pixels.set_pixel(x, y, Color.TRANSPARENT)
+	var bounds: Rect2i = pixels.get_used_rect()
+	if bounds.has_area(): pixels = pixels.get_region(bounds)
+	pixels.generate_mipmaps()
+	textures[key] = ImageTexture.create_from_image(pixels)
+	return textures[key]
+
 static func icon_texture_for(item_id: String, class_id: String = "guerreiro") -> Texture2D:
+	if GameData.item(item_id).has("armor_part"):
+		var part: Dictionary = GameData.item(item_id)
+		if part["armor_part"] == "Peito":
+			var chest: Texture2D = ArmorPortraits.texture_for(str(part["armor_set"]), class_id)
+			if chest != null: return _tight_armor_icon(chest)
+		return _tight_armor_icon(preload("res://scripts/ui/armor_part_icon.gd").texture_for(item_id))
 	var portrait: Texture2D = ArmorPortraits.texture_for(item_id, class_id)
 	if portrait != null:
-		return portrait
+		return _tight_armor_icon(portrait)
 	var source := texture_for(item_id,class_id)
 	if source == null or str(GameData.item(item_id).get("type","")) != "armadura":
 		return source

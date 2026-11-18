@@ -135,6 +135,14 @@ func material_for(body: AtlasTexture) -> ShaderMaterial:
 	material.set_shader_parameter("texture_region",texture_region(body))
 	return material
 func build(state: PlayerState, path: String) -> void:
+	var id: String = str(state.equipment.armadura.id)
+	var hand_mask_texture: Texture2D = null
+	var hand_mask: Image = null
+	if id.begins_with("armadura_catalogo_"):
+		var mask_path: String = "res://assets/game/sprites/herois/mascaras_maos/%s.png" % id.replace("armadura_catalogo_", "armadura_")
+		if ResourceLoader.exists(mask_path):
+			hand_mask_texture = load(mask_path)
+			hand_mask = hand_mask_texture.get_image()
 	var body: AtlasTexture = Appearance.body_texture(state)
 	var image: Image = body.get_image()
 	var dimensions: Vector2 = image.get_size()
@@ -143,13 +151,22 @@ func build(state: PlayerState, path: String) -> void:
 	var near: Vector2 = Appearance.hand_position(state)*dimensions
 	gloves.append(hand_box(image,near))
 	gloves.append(hand_box(image,Vector2(dimensions.x-near.x,near.y),true))
+	if hand_mask != null:
+		for side: int in 2:
+			var lo := Vector2i(256, 512)
+			var hi := Vector2i.ZERO
+			for y: int in 512:
+				for x: int in range(side * 128, side * 128 + 128):
+					if hand_mask.get_pixel(x, y).r <= 0.5: continue
+					lo = Vector2i(mini(lo.x, x), mini(lo.y, y))
+					hi = Vector2i(maxi(hi.x, x), maxi(hi.y, y))
+			gloves[side] = Rect2(Vector2(lo), Vector2(hi - lo + Vector2i.ONE))
 	var armored: bool = Custom.armored(state)
 	var head: Rect2 = Rect2() if armored else Custom.head_rect(state)
 	var waist: float = 306.0 if armored else 300.0
 	if not armored and state.race_id == "anao" and state.gender_id == "masculino": waist = 378.0
 	var boots: float = 420.0
 	if state.class_id == "mago" and armored: waist = 320.0
-	var id: String = str(state.equipment.armadura.id)
 	if id.begins_with("armadura_catalogo_"):
 		var number: int = int(str(GameData.item(id).get("catalog_art", "")).trim_prefix("armadura_"))
 		if number <= 10: waist = 312.0
@@ -163,6 +180,8 @@ func build(state: PlayerState, path: String) -> void:
 			if image.get_pixel(x,y).a <= 0.04: continue
 			if armored and y+0.5 < 512*0.22 and x+0.5 > 256*0.26 and x+0.5 < 256*0.74: continue
 			var part: int = part_at(Vector2(x+0.5,y+0.5),gloves,head,waist,boots)
+			if hand_mask != null:
+				part = 1 if hand_mask.get_pixel(x, y).r > 0.5 else (3 if y + 0.5 >= boots else (2 if y + 0.5 >= waist else 0))
 			if part < 0: continue
 			lows[part] = Vector2i(mini(lows[part].x,x),mini(lows[part].y,y))
 			highs[part] = Vector2i(maxi(highs[part].x,x),maxi(highs[part].y,y))
@@ -198,6 +217,9 @@ func build(state: PlayerState, path: String) -> void:
 		texture.region = Rect2(body.region.position+Vector2(bounds.position),Vector2(bounds.size))
 		texture.filter_clip = true
 		var material := material_for(body)
+		if hand_mask_texture != null:
+			material.set_shader_parameter("use_armor_hand_mask", true)
+			material.set_shader_parameter("armor_hand_mask", hand_mask_texture)
 		material.set_shader_parameter("armor_layer",index)
 		material.set_shader_parameter("armor_glove_a",rect_vector(Rect2(gloves[0].position/dimensions,gloves[0].size/dimensions)))
 		material.set_shader_parameter("armor_glove_b",rect_vector(Rect2(gloves[1].position/dimensions,gloves[1].size/dimensions)))
@@ -214,6 +236,7 @@ func build(state: PlayerState, path: String) -> void:
 	var helmet_material: ShaderMaterial = material_for(helmet) if helmet != null else null
 	if helmet_material != null: helmet_material.set_shader_parameter("helmet_hollow",true)
 	var helm := sprite(root,"Elmo",helmet,Vector2.ZERO,helmet_material)
+	helm.flip_h = true
 	helm.visible = false
 	helm.z_index = 4
 	if helmet != null:

@@ -3,9 +3,10 @@ extends Control
 signal action_requested(action: String, payload: Dictionary)
 
 const FILTERS = [["all", "Todos"], ["weapons", "Armas"], ["armor", "Armaduras"], ["materials", "Materiais"], ["consumables", "Consumíveis"], ["quest", "Missões"]]
-const TYPE_NAMES = {"arma": "Arma", "armadura": "Armadura", "anel": "Anel", "colar": "Colar", "talisma": "Talismã", "escudo": "Escudo", "aura": "Visual Hero", "consumivel": "Consumível", "material": "Material", "chave": "Missão", "livro": "Livro"}
+const TYPE_NAMES = {"elmo": "Elmo", "peito": "Peitoral", "luvas": "Luvas", "calca": "Calça", "botas": "Botas", "arma": "Arma", "armadura": "Armadura", "anel": "Anel", "colar": "Colar", "talisma": "Talismã", "escudo": "Escudo", "aura": "Visual Hero", "consumivel": "Consumível", "material": "Material", "chave": "Missão", "livro": "Livro"}
 
 var state: PlayerState
+@export var parts_only: bool = false
 var selected_id: String = ""
 var selected_slot: String = ""
 var filter_tab: String = "all"
@@ -56,6 +57,7 @@ func _ready() -> void:
 		var button: Button = get_node("%Filter_" + id)
 		tab_buttons[id] = button
 		button.pressed.connect(_change_filter.bind(id))
+		if parts_only: button.visible = id in ["all", "weapons", "armor"]
 	for action: String in ["equip", "unequip", "use_item", "store", "drop_item"]:
 		var button: Button = get_node("%Action_" + action)
 		action_buttons[action] = button
@@ -86,8 +88,14 @@ func _populate_bag() -> void:
 	var entries: Array = state.inventory.filter(func(entry: Dictionary) -> bool: return _matches_filter(str(entry["id"])))
 	if selected_slot.is_empty() and (selected_id.is_empty() or not _matches_filter(selected_id)):
 		selected_id = str(entries[0]["id"]) if not entries.is_empty() else ""
+	while bag_grid.get_child_count() < entries.size():
+		# Extend the authored cell layout only when the bag needs more rows.
+		var extra: Button = bag_grid.get_child(0).duplicate(Node.DUPLICATE_SCRIPTS | Node.DUPLICATE_USE_INSTANTIATION)
+		extra.name = "BagSlot_%d" % bag_grid.get_child_count()
+		bag_grid.add_child(extra)
+		extra.pressed.connect(_select_button.bind(extra))
+		extra.gui_input.connect(_slot_input.bind(extra))
 	var cells: Array[Node] = bag_grid.get_children()
-	assert(entries.size() <= cells.size(), "Add more native inventory slots to the scene for the expanded item catalog.")
 	var visible_count: int = maxi(64, ceili(float(entries.size()) / 8.0) * 8)
 	for index in cells.size():
 		var button: Button = cells[index]
@@ -112,9 +120,10 @@ func _populate_bag() -> void:
 
 func _matches_filter(item_id: String) -> bool:
 	var kind: String = str(GameData.item(item_id).get("type", ""))
+	if parts_only and (not PlayerState.EQUIP_SLOTS.has(kind) or kind == "armadura"): return false
 	match filter_tab:
 		"weapons": return kind in ["arma", "escudo"]
-		"armor": return kind == "armadura"
+		"armor": return kind == "armadura" or GameData.ARMOR_PARTS.has(kind)
 		"consumables": return kind == "consumivel"
 		"materials": return kind == "material"
 		"quest": return kind in ["chave", "livro"]

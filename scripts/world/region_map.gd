@@ -130,6 +130,7 @@ func generate_developer_room() -> void:
 	props.clear()
 	for entry: Array in [
 		["dev_items", "Arsenal", Vector2i(8, 7)],
+		["dev_armor_parts", "Peças de armadura", Vector2i(16, 10)],
 		["dev_skills", "Biblioteca", Vector2i(12, 7)],
 		["dev_tools", "Bancada", Vector2i(16, 7)],
 		["dev_quests", "Missões", Vector2i(8, 14)],

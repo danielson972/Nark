@@ -47,7 +47,6 @@ text_editor/behavior/indent/size=4
 
 [gui]
 
-fonts/dynamic_fonts/use_oversampling=true
 theme/default_font_generate_mipmaps=true
 
 [input]

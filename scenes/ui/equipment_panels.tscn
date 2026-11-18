@@ -17,7 +17,7 @@ script = ExtResource("1_w0y4n")
 [node name="StatusPanel" type="Control" parent="." unique_id=315778877 instance=ExtResource("2_ew05o")]
 anchors_preset = 0
 offset_right = 480.0
-offset_bottom = 646.0
+offset_bottom = 742.0
 script = ExtResource("3_wdrlt")
 
 [node name="InventoryPanel" type="Control" parent="." unique_id=1166237097 instance=ExtResource("4_3jhxs")]

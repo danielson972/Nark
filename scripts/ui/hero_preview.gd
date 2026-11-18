@@ -53,7 +53,7 @@ func _draw() -> void:
 	var body_material: ShaderMaterial = Appearance.body_material(state)
 	if material != body_material:
 		material = body_material
-	held_hand.material = body_material
+	held_hand.material = Appearance.hand_material(state)
 	var source_size: Vector2 = body.get_size()
 	# Fit the complete bald base with a small portrait margin.
 	var content := Rect2(Vector2.ZERO, source_size)
@@ -105,7 +105,7 @@ func _draw() -> void:
 		held_hand.scale = hand.size * destination_size / held_hand.texture.get_size()
 
 func _sync_armor_parts() -> void:
-	var path: String = ArmorLayers.scene_path(state)
+	var path: String = ArmorLayers.configuration_key(state)
 	if path != armor_layer_path or (not path.is_empty() and not is_instance_valid(armor_parts)):
 		if is_instance_valid(armor_parts):
 			remove_child(armor_parts)

@@ -4,7 +4,7 @@ extends RefCounted
 signal equipment_changed
 
 
-const EQUIP_SLOTS: = ["arma", "armadura", "escudo", "anel", "colar", "talisma", "aura"]
+const EQUIP_SLOTS: = ["arma", "armadura", "escudo", "anel", "colar", "talisma", "aura", "elmo", "peito", "luvas", "calca", "botas"]
 
 var hero_name: = "Herói"
 var race_id: = "humano"
